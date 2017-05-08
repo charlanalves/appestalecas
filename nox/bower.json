@@ -1,0 +1,38 @@
+{
+  "name": "mAlpha2",
+  "version": "1.5.0",
+  "authors": [
+    "Krzysiek Furtak <krzysztof.furtak@gmail.com>"
+  ],
+  "description": "Mobile template",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "mobile",
+    "template"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "fontawesome#~4.x.x",
+    "framework7": "~1.x.x",
+    "jquery": "~2.x.x",
+    "jquery-validation": "jquery-validate#~1.x.x",
+    "owl-carousel": "~1.x.x",
+    "scrollAnimate": "https://github.com/cardume/scrollAnimate.git",
+    "scrollme": "~1.x.x",
+    "swipebox": "~1.x.x",
+    "swiper": "~3.x.x",
+    "Tweetie": "~2.x.x"
+  },
+  "devDependencies": {
+    "chartjs": "~1.x.x"
+  }
+}
