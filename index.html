@@ -464,7 +464,7 @@
 
         <div class="pages navbar-fixed toolbar-fixed ">
             <div data-page="index" class="page ">
-                <div class="page-content">
+                <div class="page-content" id="lista-promocao">
 
                     <div class="nice-header header-fix-top small">
                         <div class="logo anim-logo">
@@ -483,7 +483,7 @@
                         </svg>
                     </div>
 
-                    <article>
+                    <article style="display: none">
                         <div class="author primeira-promo">
                             <img src="assets/img/tmp/ava-demo.jpg" alt=""/>
                             <span>
@@ -510,120 +510,6 @@
 			   -->
                         </div>
                         <img class="article-bg" src="assets/img/tmp/temp_1.png" alt=""/>
-                    </article>
-
-                    <article>
-                        <div class="author">
-                            <img src="assets/img/tmp/ava-demo.jpg" alt=""/>
-                            <span>
-                                by<br>Lu Mayer
-                            </span>
-                        </div>
-                         <!-- 
-                        <div class="buttons">
-                            <a href="#"><span class="icon-bubble-dots"></span></a>
-                            <a href="#"><span class="icon-heart"></span></a>
-                        </div>
-		 -->
-                        <div class="tags promocoes">
-                            <span class="badge badge-primary badge-square text-uppercase"><span class="text-cashback">100%</span></span>
-                        </div>
-                        <div class="text">
-                            <h2>
-                                <a href="about.html">Lorem ipsum dolor sit amet</a>
-                            </h2>
-                           <!-- 
-			    <span>300 likes</span>
-                            <span>23 comments</span>
-                            <span>14 000 views</span>
-			   -->
-                        </div>
-                        <img class="article-bg" src="assets/img/tmp/temp_2.png" alt=""/>
-                    </article>
-
-                    <article>
-                        <div class="author">
-                            <img src="assets/img/tmp/ava-demo.jpg" alt=""/>
-                            <span>
-                                by<br>Lu Mayer
-                            </span>
-                        </div>
-                        <!-- 
-                        <div class="buttons">
-                            <a href="#"><span class="icon-bubble-dots"></span></a>
-                            <a href="#"><span class="icon-heart"></span></a>
-                        </div>
-		 -->
-                       <div class="tags promocoes">
-                            <span class="badge badge-primary badge-square text-uppercase"><span class="text-cashback">100%</span></span>
-                        </div>
-                        <div class="text">
-                            <h2>
-                                <a href="about.html">Lorem ipsum dolor sit amet</a>
-                            </h2>
-                           <!-- 
-			    <span>300 likes</span>
-                            <span>23 comments</span>
-                            <span>14 000 views</span>
-			   -->
-                        </div>
-                        <img class="article-bg" src="assets/img/tmp/temp_3.png" alt=""/>
-                    </article>
-                    <article>
-                        <div class="author">
-                            <img src="assets/img/tmp/ava-demo.jpg" alt=""/>
-                            <span>
-                                by<br>Lu Mayer
-                            </span>
-                        </div>
-                        <!-- 
-                        <div class="buttons">
-                            <a href="#"><span class="icon-bubble-dots"></span></a>
-                            <a href="#"><span class="icon-heart"></span></a>
-                        </div>
-		 -->
-                      <div class="tags promocoes">
-                            <span class="badge badge-primary badge-square text-uppercase"><span class="text-cashback">100%</span></span>
-                        </div>
-                        <div class="text">
-                            <h2>
-                                <a href="about.html">Lorem ipsum dolor sit amet</a>
-                            </h2>
-                           <!-- 
-			    <span>300 likes</span>
-                            <span>23 comments</span>
-                            <span>14 000 views</span>
-			   -->
-                        </div>
-                        <img class="article-bg" src="assets/img/tmp/temp_4.png" alt=""/>
-                    </article>
-                    <article>
-                        <div class="author">
-                            <img src="assets/img/tmp/ava-demo.jpg" alt=""/>
-                            <span>
-                                by<br>Lu Mayer
-                            </span>
-                        </div>
-                       <!-- 
-                        <div class="buttons">
-                            <a href="#"><span class="icon-bubble-dots"></span></a>
-                            <a href="#"><span class="icon-heart"></span></a>
-                        </div>
-		 -->
-                       <div class="tags promocoes">
-                            <span class="badge badge-primary badge-square text-uppercase"><span class="text-cashback">100%</span></span>
-                        </div>
-                        <div class="text">
-                            <h2>
-                                <a href="about.html">Lorem ipsum dolor sit amet</a>
-                            </h2>
-                           <!-- 
-			    <span>300 likes</span>
-                            <span>23 comments</span>
-                            <span>14 000 views</span>
-			   -->
-                        </div>
-                        <img class="article-bg" src="assets/img/tmp/temp_5.png" alt=""/>
                     </article>
 
                 </div>
@@ -754,6 +640,47 @@
 <script type="text/javascript" src="assets/js/min/app.js"></script>
 <script type="text/javascript" src="assets/js/animations.js"></script>
 
+<script type="text/javascript" src="assets/js/global.js"></script>
+
+<script>
+
+    var ajaxParams = {};
+    ajaxParams.url = 'http://localhost/cashback/frontend/web/index.php?r=api-empresa/promocao';
+    ajaxParams.type = 'POST';
+    ajaxParams.dataType = 'json';
+
+    var ajax = $.ajax(ajaxParams);
+    ajax.always(function (data) {
+
+        if (typeof data == 'object') {
+            var promocao = '';
+            for (var i in data) {
+                promocao += '<article>' + "\n" +
+                '<div class="author ' + (i > 0 ? '' : 'primeira-promo' ) + '">' + "\n" +
+                    '<img src="' + data[i].CB04_URL_LOGOMARCA + '" alt=""/>' + "\n" +
+                    '<span>' + "\n" +
+                        '<div class="motel-name">' + data[i].CB04_NOME + '</div><div class="short-desc">' + data[i].CB04_END_COMPLEMENTO + '</div>' + "\n" +
+                    '</span>' + "\n" +
+                '</div>' + "\n" +
+                '<div class="tags promocoes">' + "\n" +
+                    '<span class="badge badge-primary badge-square text-uppercase"><span class="text-cashback">' + Util.formatNumber(data[i].CB06_DINHEIRO_VOLTA,2) + '%</span></span>' + "\n" +
+                '</div>' + "\n" +
+                '<div class="text">' + "\n" +
+                    '<h2>' + "\n" +
+                        '<a href="about.html">' + data[i].CB05_TITULO + ': ' + data[i].CB06_DESCRICAO + '</a>' + "\n" +
+                    '</h2>' + "\n" +
+                '</div>' + "\n" +
+                '<img class="article-bg" src="' + data[i].CB14_URL + '" alt=""/>' + "\n" + 
+                '</article>' + "\n";
+            }
+            $("div#lista-promocao").append(promocao); 
+        }
+
+    });
+
+</script>
 
 </body>
 </html>
+
+
