@@ -34,9 +34,73 @@
     <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.theme.css">
 
     <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="assets/themes//style.css" id="theme-style">
+    <!--<link rel="stylesheet" href="assets/themes//style.css" id="theme-style">-->
 </head>
 <body class="">
+
+  <div class="login-screen">
+
+    <div class="pages navbar-fixed toolbar-fixed">
+        <div data-page="login" class="page">
+
+            <div class="page-content">
+
+                <div class="nice-header header-fix-top small">
+                    <div class="logo">
+                        <h1>NOX</h1>
+                        <h2>HTML Responsive Template</h2>
+                    </div>
+                    <svg class="anim-svg" viewBox="0 0 629 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                        <defs></defs>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                            <g id="Splash" sketch:type="MSArtboardGroup" transform="translate(-60.000000, -749.000000)" fill="#FFFFFF">
+                                <g id="flaga" sketch:type="MSLayerGroup">
+                                    <path d="M60.7617187,750.025391 L375.435547,811.568359 L688.558594,749.867188 L60.7617187,750.025391 Z" id="Path-30" sketch:type="MSShapeGroup"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="login-view-box mt-50">
+
+                    <div class="list login-form-box">
+                        <form id="login-form" class="form nice-label">
+
+                            <div class="form-row">
+                                <label for="login"><span class="icon-man"></span></label>
+                                <input type="text" name="cpf_cnpj" placeholder="CPF/CNPJ">
+                            </div>
+                            <div class="form-row">
+                                <label for="password"><span class="icon-lock"></span></label>
+                                <input type="password" name="password" placeholder="Senha">
+                            </div>
+
+                            <a href="#"
+                                class="button button-primary button-fill"
+                                id="login-button">Entrar</a>
+
+                            <div class="text-right forgot-password">
+                                <a href="#"></a>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div class="footer-link text-center">
+                        <a href="registration.html">
+                            Cadastre-se aqui
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+  </div>
 
 <div class="statusbar-overlay"></div>
 <div class="panel-overlay"></div>
@@ -638,14 +702,21 @@
 
 <script type="text/javascript" src="assets/js/jflickrfeed.min.js"></script>
 <script type="text/javascript" src="assets/js/min/app.js"></script>
+<script type="text/javascript" src="assets/js/appExt.js"></script>
 <script type="text/javascript" src="assets/js/animations.js"></script>
 
 <script type="text/javascript" src="assets/js/global.js"></script>
 
 <script>
 
+    $$('#login-button').on('click', function () {
+        var formData = myApp.formToJSON('#login-form');
+        validateLogin(formData);
+    });
+    
+
     var ajaxParams = {};
-    ajaxParams.url = 'http://localhost/cashback/frontend/web/index.php?r=api-empresa/promocao';
+    ajaxParams.url = appConfig.url + 'api-empresa/promocao';
     ajaxParams.type = 'POST';
     ajaxParams.dataType = 'json';
 
