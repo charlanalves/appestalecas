@@ -1,11 +1,14 @@
 
 var appConfig = {
-    url: 'http://localhost/cashback/frontend/web/index.php?r='
+    url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',
+    url: 'http://localhost/cashback/frontend/web/index.php?r=',
+    urlFoto: 'http://localhost/cashback/frontend/web/',
+    localStorageName: 'esUser'
 };
 
 var validateLogin = function (data) {
 
-    var attrName = 'esUser',
+    var attrName = appConfig.localStorageName,
         errorStr = '',
         ajaxParams = {};
         ajaxParams.type = 'POST';
@@ -35,9 +38,8 @@ var validateLogin = function (data) {
                 for (var i in data.error) {
                     errorStr += data.error[i][0] + "\n";
                 }
-                alert(errorStr);
-                localStorage.setItem(attrName, '');
-                myApp.loginScreen();
+                myApp.alert(errorStr, 'Opss');
+                logout();
                 
             } else {
                 localStorage.setItem(attrName, JSON.stringify(data));
@@ -46,14 +48,86 @@ var validateLogin = function (data) {
         });
         
     } else {
-        localStorage.setItem(attrName, '');
-        myApp.loginScreen();
+        logout();
     }
 
 };
-validateLogin();
 
+var loginForm = function () {
+    myApp.loginScreen();
+};
+
+var logout = function () {
+    localStorage.setItem(appConfig.localStorageName, '');
+    loginForm();
+};
 
 var ajaxUser = function () {
 
 };
+
+var ajaxApi = function (method, params, callback) {
+    
+    ajaxParams = {};
+    ajaxParams.type = 'POST';
+    ajaxParams.dataType = 'json';
+    ajaxParams.data = params;
+    ajaxParams.url = appConfig.url + 'api-empresa/' + method;
+
+    var ajax = $.ajax(ajaxParams);
+    ajax.always(function (data) {
+        if ( typeof data.error != "undefined" ) {
+            var errorStr = '';
+            for (var i in data.error) {
+                errorStr += "* " + data.error[i][0] + "<br />";
+            }
+            myApp.alert(errorStr, 'Opss');
+
+        } else if ( typeof callback == 'function' ) {
+            callback(data);
+        }
+    });
+    
+};
+
+
+// Template7 - begin -----------------------------------------------------------
+
+// funcoes
+Template7.registerHelper('count', function (a, options) {
+  return a.length;
+});
+
+Template7.registerHelper('foto', function (a, options) {
+  return appConfig.urlFoto + a;
+});
+
+// Class Template --------------------------------------------------------------
+class Template {
+
+    constructor (templateId) {
+        this.templateId = templateId;
+        this.templateCompiled = Template7(document.getElementById(this.templateId).innerHTML).compile();
+        this.dataCompiled = '';
+    }
+
+    compileData (data) {
+        this.dataCompiled = this.templateCompiled({data: data});
+    }
+    
+    loadData () {
+        return (typeof this.dataCompiled == 'string' ? document.getElementById('destino-' + this.templateId).innerHTML = this.dataCompiled : false);
+    }
+    
+    compileAndLoadData (data) {
+        this.compileData (data);
+        this.loadData ();
+    }
+    
+}
+
+// Template7 - end -------------------------------------------------------------
+
+
+
+validateLogin();

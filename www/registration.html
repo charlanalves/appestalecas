@@ -29,38 +29,36 @@
             <div class="login-view-box mt-50">
 
                 <div class="list login-form-box">
-                    <form ng-submit="tryLogin()" class="form nice-label">
+                    <form id="loginCreate-form" class="form nice-label">
 
                         <div class="form-row">
-                            <label for="login"><span class="icon-man"></span></label>
-                            <input type="text" id="login" placeholder="Login">
+                            <label for="cpf_cnpj"><span class="icon-man"></span></label>
+                            <input type="text" name="cpf_cnpj" placeholder="CPF">
+                        </div>
+                        <div class="form-row">
+                            <label for="name"><span class="icon-man"></span></label>
+                            <input type="text" name="name" placeholder="Nome completo">
                         </div>
                         <div class="form-row">
                             <label for="email"><span class="icon-at-sign"></span></label>
-                            <input type="email" id="email" placeholder="EMail">
+                            <input type="email" name="email" placeholder="Email">
                         </div>
                         <div class="form-row">
                             <label for="password"><span class="icon-lock"></span></label>
-                            <input type="password" id="password" placeholder="Password">
+                            <input type="password" name="password" placeholder="Password">
                         </div>
+                        <!--
                         <div class="form-row">
                             <label for="password-2"><span class="icon-lock"></span></label>
                             <input type="password" id="password-2" placeholder="Retype Password">
                         </div>
+                        -->
 
-                        <a href="#"
-                           class="button button-primary button-fill"
-                           id="login-button">Sign Up</a>
+                        <a href="#" class="button button-primary button-fill" id="loginCreate-button">Criar conta</a>
 
                         <div class="text-center or-social">
-                            or sign up using
+                            já tem uma conta? <a href="index.html">Fazer login</a>
                         </div>
-
-                        <div class="buttons-row mb-20">
-                            <a href="#" class="button button-light">Facebook</a>
-                            <a href="#" class="button button-light">Twitter</a>
-                        </div>
-
 
                     </form>
                 </div>
