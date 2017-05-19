@@ -1,0 +1,56 @@
+<div class="navbar navbar-clear">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="index.html" class="link back">
+                <span class="icon-chevron-left"></span> <span>Voltar</span>
+            </a>
+        </div>
+        <div class="center sliding">Convidar amigo</div>
+        <div class="right">
+            <a href="#" class="link icon-only" data-panel="right">
+                <!--<span class="kkicon icon-alarm"></span>-->
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="invite-friend" class="page" id="destino-templateInviteFriend">
+
+        <!-- Template -->
+        <script type="text/template" id="templateInviteFriend">
+
+            <div class="page-content">
+                <div class="content-block mt-10">
+
+                    <div class="list-block">
+                        <ul>
+                            <li class="align-top">
+                                <h2> Assim que seu amigo começar a utilizar o CashBack, você e ele <strong>ganham R$ 10,00</strong> cada!</h2>
+                            </li>
+                            <li class="">
+                                <div class="item-input">
+                                    <textarea id="texto-convite-amigo" onclick="Util.copyElement($(this))" readonly="true" style="background-color: #FFF; height: 300px; padding: 10px" >{{data}}</textarea>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="toolbar tabbar">
+                <div class="toolbar-inner">
+                    <a href="#" class="link"  style="color:#000" onclick="Util.copyElement($('textarea#texto-convite-amigo'))">
+                        COPIAR
+                    </a>
+                    <a href="#" class="link active" onclick="window.location.href='whatsapp://send?text=' + decodeURI('{{data}}')">
+                        COMPARTILHAR
+                    </a>
+                </div>
+            </div>
+
+        </script>
+
+    </div>
+</div>

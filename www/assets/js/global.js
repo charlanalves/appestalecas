@@ -150,12 +150,11 @@ var Util = {
         document.execCommand("copy");
         $tempInput.remove();
 
-        $.smallBox({
-            title: "Copiado...",
-            color: "#739E73",
-            iconSmall: "fa fa-copy",
-            timeout: 1000
+        myApp.addNotification({
+            title: 'Copiado...',
+            hold: 1500
         });
+        
     },
     formatNumber: function (n, c, d, t) {
         var n,

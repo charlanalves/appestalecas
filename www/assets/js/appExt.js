@@ -6,6 +6,10 @@ var appConfig = {
     localStorageName: 'esUser'
 };
 
+var getUserData = function () {
+    return (typeof localStorage[appConfig.localStorageName] == "string" ? JSON.parse(localStorage[appConfig.localStorageName]) : false);
+}
+
 var validateLogin = function (data) {
 
     var attrName = appConfig.localStorageName,
@@ -44,6 +48,7 @@ var validateLogin = function (data) {
             } else {
                 localStorage.setItem(attrName, JSON.stringify(data));
                 myApp.closeModal();
+                return true;
             }
         });
         
@@ -62,8 +67,14 @@ var logout = function () {
     loginForm();
 };
 
-var ajaxUser = function () {
-
+var ajaxApiUser = function (method, params, callback) {
+    var UserData = getUserData(), params = (params || {});
+    if (typeof UserData.auth_key == "string"){
+        params.auth_key = UserData.auth_key;
+        ajaxApi(method, params, callback);
+    } else {
+        logout();
+    }
 };
 
 var ajaxApi = function (method, params, callback) {
@@ -71,7 +82,7 @@ var ajaxApi = function (method, params, callback) {
     ajaxParams = {};
     ajaxParams.type = 'POST';
     ajaxParams.dataType = 'json';
-    ajaxParams.data = params;
+    ajaxParams.data = (params || {});
     ajaxParams.url = appConfig.url + 'api-empresa/' + method;
 
     var ajax = $.ajax(ajaxParams);
@@ -122,6 +133,16 @@ class Template {
     compileAndLoadData (data) {
         this.compileData (data);
         this.loadData ();
+    }
+    
+    compileAjax (method, params, callback) {
+        var templateCompiled = this;
+        ajaxApi(method, params, function(a) {
+            templateCompiled.compileAndLoadData(a);
+            if (typeof callback == "function") {
+                callback(a);
+            }
+        });
     }
     
 }

@@ -169,6 +169,16 @@
                             <li>
                             <li class="divider"></li>
                             <li>
+                                <a href="invite-friend.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-filter"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Convidar amigo</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="filter.html" class="item-link close-panel item-content">
                                     <div class="item-media">
                                         <i class="fa fa-filter"></i>
@@ -592,6 +602,20 @@
                       slidesPerView: 4
                     });
                 });
+
+            });
+
+            // callback: filter
+            myApp.onPageInit('invite-friend', function (page) {                
+
+                // fecha modal se algum estiver aberto
+                myApp.closeModal();
+
+                // Template do convite de amigo
+                var templateInviteFriend = new Template('templateInviteFriend');
+
+                // busca texto do convite + cod
+                templateInviteFriend.compileAjax('invite-friend', {user_auth_key: getUserData().auth_key});
 
             });
 

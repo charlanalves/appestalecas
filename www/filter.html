@@ -73,7 +73,18 @@
             </div>
             
         </div>
-
+    
+        <div class="toolbar tabbar">
+            <div class="toolbar-inner">
+                <a href="index.html" class="link"  style="color:#000">
+                    FECHAR
+                </a>
+                <a href="#" class="link active" onclick="mainView.router.loadPage('index.html?cat=' + $('input[type=radio][name=categoria-radio]:checked').val() + '&ord=' + $('input[type=radio][name=ordem-radio]:checked').val())">
+                    APLICAR
+                </a>
+            </div>
+        </div>
+        
         <!-- Template -->
         <script type="text/template" id="templateFilter">
             <div class="swiper-slide">
@@ -97,17 +108,6 @@
                 {{/each}}
             {{/if}}
         </script>
-    
-        <div class="toolbar tabbar">
-            <div class="toolbar-inner">
-                <a href="index.html" class="link"  style="color:#000">
-                    FECHAR
-                </a>
-                <a href="#" class="link active" onclick="mainView.router.loadPage('index.html?cat=' + $('input[type=radio][name=categoria-radio]:checked').val() + '&ord=' + $('input[type=radio][name=ordem-radio]:checked').val())">
-                    APLICAR
-                </a>
-            </div>
-        </div>
         
     </div>
 </div>
