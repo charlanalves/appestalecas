@@ -11,7 +11,6 @@ var getUserData = function () {
 }
 
 var validateLogin = function (data) {
-
     var attrName = appConfig.localStorageName,
         errorStr = '',
         ajaxParams = {};
@@ -48,6 +47,7 @@ var validateLogin = function (data) {
             } else {
                 localStorage.setItem(attrName, JSON.stringify(data));
                 myApp.closeModal();
+                mainView.router.loadPage('main.html');
                 return true;
             }
         });
@@ -59,6 +59,7 @@ var validateLogin = function (data) {
 };
 
 var loginForm = function () {
+    mainView.router.loadPage('main.html');
     myApp.loginScreen();
 };
 
@@ -87,7 +88,7 @@ var ajaxApi = function (method, params, callback) {
 
     var ajax = $.ajax(ajaxParams);
     ajax.always(function (data) {
-        if ( typeof data.error != "undefined" ) {
+        if ( typeof data.error != "undefined" && data.error) {
             var errorStr = '';
             for (var i in data.error) {
                 errorStr += "* " + data.error[i][0] + "<br />";
@@ -111,6 +112,10 @@ Template7.registerHelper('count', function (a, options) {
 
 Template7.registerHelper('foto', function (a, options) {
   return appConfig.urlFoto + a;
+});
+
+Template7.registerHelper('real', function (a, options) {
+    return String(parseFloat(a).toFixed(2)).replace('.',',');
 });
 
 // Class Template --------------------------------------------------------------
@@ -148,7 +153,3 @@ class Template {
 }
 
 // Template7 - end -------------------------------------------------------------
-
-
-
-validateLogin();

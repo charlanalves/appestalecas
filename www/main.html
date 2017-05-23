@@ -1,0 +1,72 @@
+
+<div class="navbar navbar-clear anim-navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link icon-only open-panel">
+                <span class="kkicon icon-menu"></span>
+            </a>
+        </div>
+        <div class="center sliding">
+            <span class="anim-logo-smalal" style="font-weight: bold;">E$TALECAS</span>
+        </div>
+        <div class="right">
+            <a href="search.html" class="link icon-only" data-panel="right">
+                <span class="fa fa-search fa-lg"></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="main" class="page">
+        <div class="page-content" id="destino-templateMain"></div>
+
+        <!-- Template -->
+        <script type="text/template" id="templateMain">
+
+            <div class="nice-header header-fix-top small">
+                <div class="logo anim-logo">
+                    <h2>Saldo Atual</h2>
+                    <h1>R$ {{real data.saldoAtual}}</h1>
+                </div>
+                <svg class="anim-svg" viewBox="0 0 629 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                    <defs></defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                        <g id="Splash" sketch:type="MSArtboardGroup" transform="translate(-60.000000, -749.000000)" fill="#FFFFFF">
+                            <g id="flaga" sketch:type="MSLayerGroup">
+                                <path d="M60.7617187,750.025391 L375.435547,811.568359 L688.558594,749.867188 L60.7617187,750.025391 Z" id="Path-30" sketch:type="MSShapeGroup"></path>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            {{#each data.estabelecimentos}}
+                <article>
+                    <div class="author {{#if @first}} primeira-promo {{/if}}">
+                        <img src="{{CB04_URL_LOGOMARCA}}" alt=""/>
+                        <span>
+                            <div class="motel-name">{{CB04_NOME}}</div>
+                            <div class="short-desc">{{CB04_END_COMPLEMENTO}}</div>
+                        </span>
+                    </div>
+                    <div class="tags promocoes">
+                        <span class="badge badge-primary badge-square text-uppercase">
+                            <span class="text-cashback">
+                                {{real CB06_DINHEIRO_VOLTA}}%
+                            </span>
+                        </span>
+                    </div>
+                    <div class="text">
+                        <h2>
+                            <a href="company.html">{{CB05_TITULO}}: {{CB06_DESCRICAO}}</a>
+                        </h2>
+                    </div>
+                    <img class="article-bg" src="{{CB14_URL}}" alt=""/>
+                </article>
+            {{/each}}
+
+        </script>
+
+    </div>
+</div>

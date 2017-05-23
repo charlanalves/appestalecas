@@ -5588,7 +5588,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
   line-height: 1;
 }
 .nice-header .balance div:before {
-  content: '$';
+  /*content: '$';*/
   font-size: 24px;
   letter-spacing: 3px;
 }
