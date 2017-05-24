@@ -1,4 +1,3 @@
-
 <div class="navbar navbar-clear anim-navbar">
     <div class="navbar-inner">
         <div class="left">
@@ -19,7 +18,11 @@
 
 <div class="pages">
     <div data-page="main" class="page">
-        <div class="page-content" id="destino-templateMain"></div>
+
+        <!-- Page content should have additional "pull-to-refresh-content" class -->
+        <div class="page-content">
+            <div class="list-block" id="destino-templateMain"></div>
+        </div>
 
         <!-- Template -->
         <script type="text/template" id="templateMain">

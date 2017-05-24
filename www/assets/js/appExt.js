@@ -47,7 +47,7 @@ var validateLogin = function (data) {
             } else {
                 localStorage.setItem(attrName, JSON.stringify(data));
                 myApp.closeModal();
-                mainView.router.loadPage('main.html');
+                //mainView.router.loadPage('main.html');
                 return true;
             }
         });

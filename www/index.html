@@ -187,6 +187,16 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="establishment.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Estabelecimentos</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="shopping.html" class="item-link close-panel item-content">
                                     <div class="item-media">
                                         <i class="fa fa-"></i>
@@ -281,13 +291,18 @@
                 validateLogin();
             });
             
-            myApp.onPageInit('main', function (page) {
+            var callbackLoadMain = function (page) {
+                var page;
                 validateLogin();
                 var templateMain = new Template('templateMain');
                 $.extend(page.query, {user_auth_key: getUserData().auth_key});
-                templateMain.compileAjax('promocao', page.query);
-            });
-
+                templateMain.compileAjax('promocao', page.query, function (a) {
+                    if (!a.estabelecimentos.length) {
+                        myApp.alert('Nenhum estabelecimento encontrado para o filtro selecionado...', 'Opss', function(){ mainView.router.loadPage('filter.html'); });   
+                    }
+                });
+            };  
+            myApp.onPageInit('main', callbackLoadMain);
 
             // callback: registration
             myApp.onPageInit('registration', function (page) {
@@ -412,6 +427,18 @@
 
                 // busca dados da tela de compras realizadas
                 templateShopping.compileAjax('shopping', {user_auth_key: getUserData().auth_key});
+
+            });
+
+            // callback: establishment
+            myApp.onPageInit('establishment', function (page) {
+                validateLogin();
+
+                // Template
+                var templateEstablishment = new Template('templateEstablishment');
+
+                // busca dados da lista de estabelecimentos
+                templateEstablishment.compileAjax('establishment', {});
 
             });
 
