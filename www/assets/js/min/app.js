@@ -234,7 +234,7 @@ var myApp = new Framework7({
     swipeBackPage: !1,
     pushState: !0,
     swipePanel: "left",
-    modalTitle: "Title"
+    modalTitle: ""
 }), $$ = Dom7;
 
 $$("body").on("click", ".js-add-to-fav", function() {

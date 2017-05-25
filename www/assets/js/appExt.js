@@ -7,34 +7,23 @@ var appConfig = {
 };
 
 var getUserData = function () {
-    return (typeof localStorage[appConfig.localStorageName] == "string" ? JSON.parse(localStorage[appConfig.localStorageName]) : false);
+    return (typeof localStorage[appConfig.localStorageName] == "string" ? JSON.parse((localStorage[appConfig.localStorageName] || '{}')) : false);
 }
 
 var validateLogin = function (data) {
-    var attrName = appConfig.localStorageName,
-        errorStr = '',
+    var attrName = appConfig.localStorageName;
+
+    // novo login
+    if (typeof data == 'object') {
+        var errorStr = ''
         ajaxParams = {};
         ajaxParams.type = 'POST';
         ajaxParams.dataType = 'json';
         ajaxParams.data = '';
-        ajaxParams.url = '';
-
-    // novo login
-    if (typeof data == 'object') {
         ajaxParams.url = appConfig.url + 'api-empresa/login';
         ajaxParams.data = data;
 
-    // valida usuario logado
-    } else {
-        var localStorageObj = (localStorage.getItem(attrName) ? JSON.parse(localStorage.getItem(attrName)) : false);
-        if (typeof localStorageObj.auth_key != 'undefined') {
-            ajaxParams.url = appConfig.url + 'api-empresa/login-active';
-            ajaxParams.data = {auth_key: localStorageObj.auth_key};
-        }
-    }
-    
-    // Ajax para validar o usuario
-    if (ajaxParams.data) {
+        // Ajax para validar o usuario
         var ajax = $.ajax(ajaxParams);
         ajax.always(function (data) {
             if (typeof data.error != "undefined") {
@@ -42,25 +31,29 @@ var validateLogin = function (data) {
                     errorStr += data.error[i][0] + "\n";
                 }
                 myApp.alert(errorStr, 'Opss');
-                logout();
+                return false;
                 
             } else {
                 localStorage.setItem(attrName, JSON.stringify(data));
-                myApp.closeModal();
-                //mainView.router.loadPage('main.html');
-                return true;
+                mainView.router.loadPage('main.html');
+                return true
             }
         });
-        
-    } else {
-        logout();
-    }
 
+    // valida usuario logado
+    } else {
+        var localStorageObj = (localStorage.getItem(attrName) ? JSON.parse(localStorage.getItem(attrName)) : false);
+        if (typeof localStorageObj.auth_key == 'undefined') {
+            return false;
+        } else {
+             return true
+        }        
+    }
 };
 
 var loginForm = function () {
-    mainView.router.loadPage('main.html');
-    myApp.loginScreen();
+    myApp.closeModal();
+    mainView.router.loadPage('login.html');
 };
 
 var logout = function () {
@@ -102,6 +95,21 @@ var ajaxApi = function (method, params, callback) {
     
 };
 
+var securePage = function (page, callback) {
+    var page;
+    var callback = (typeof callback == 'function') ? callback : function(){};
+    myApp.onPageAfterAnimation(page, function (pg) {
+        (validateLogin()) ? callback(pg) : logout();
+    });
+};
+
+var enablePanelLeft = function () {
+    $('div#panel-left').addClass('panel-left');
+}
+
+var disablePanelLeft = function () {
+    $('div#panel-left').removeClass('panel-left');
+}
 
 // Template7 - begin -----------------------------------------------------------
 
