@@ -137,6 +137,41 @@ var Form = function (formId) {
             checkbox += '<label class="checkbox"><input type="checkbox" name="' + checkboxName + '[]" value="' + key + '"><i></i>' + value + '</label>' + "\n";
         });
         destiny.append($("<div></div>").attr("class", "inline-group").html(checkbox));
+    },   
+    this.clear = function (itemName) {
+        if (typeof itemName == 'string') {
+            var item = this[itemName], qtdItem = item.length;
+            if (qtdItem > 1) {
+                for(var i=0; i<qtdItem; i++){
+                    if (item[i].type == 'checkbox' || item[i].type == 'radio') {
+                        item[i].checked = false;
+                    } else {
+                        item[i].value = '';
+                    }
+                }
+            } else {
+                item.value = '';
+            }
+
+        } else {
+            var input = this.inputs();
+            for (var i in input) {
+                switch(input[i].type) {
+                    case 'password':
+                    case 'select-multiple':
+                    case 'select-one':
+                    case 'text':
+                    case 'textarea':
+                        input[i].value = '';
+                        break;
+                    case 'checkbox':
+                    case 'radio':
+                        for (var ii in input[i].input)
+                            input[i].input[ii].checked = false;
+                        break;
+                }
+            }
+        }
     };
     
     var $inputs = this.form.find(':input'), data = this;

@@ -38,17 +38,19 @@
 
                 {{#each data}}
                     <li>
-                        <div class="item-content">
-                            <div class="item-media"><img src="{{foto IMG}}" width="50"></div>
-                            <div class="item-inner">
-                                <div class="item-title-row">
-                                    <div class="item-title">{{CB17_NOME_PRODUTO}}</div>
-                                    <div class="item-after">R$ {{real CB17_VLR_UNID}}</div>
+                        <a href="{{#if "CB16_STATUS === '10'"}}checkout.html?order={{CB16_ID}}{{else}}#{{/if}}" class="link">
+                            <div class="item-content">
+                                <div class="item-media"><img src="{{foto IMG}}" width="50"></div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">{{CB17_NOME_PRODUTO}}</div>
+                                        <div class="item-after">R$ {{real CB17_VLR_UNID}}</div>
+                                    </div>
+                                    <div class="item-subtitle"></div>
+                                    <div class="item-text">{{CB16_DT}} &rarr; {{STATUS}}</div>
                                 </div>
-                                <div class="item-subtitle"></div>
-                                <div class="item-text">{{CB16_DT}} &rarr; {{STATUS}}</div>
                             </div>
-                        </div>
+                        </a>
                     </li>
                 {{/each}}
 

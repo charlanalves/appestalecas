@@ -144,6 +144,7 @@ class Template {
     }
     
     compileAndLoadData (data) {
+        var data = (data || {});
         this.compileData (data);
         this.loadData ();
     }

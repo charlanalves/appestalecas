@@ -42,41 +42,55 @@
                 margin: 5px 0;
             }
 
+            /* CSS CHECKOUT ------------------------------------------------- */
+            #tabbar-checkout div[class*="col-"] {
+                text-align: center;
+                color: #FFF;
+                padding: 5px 0px;
+                font-size: 11px;
+            }
+            #tabbar-checkout div[class*="col-"] strong {
+                font-size: 22px;
+                 display:block; 
+                 clear:both
+            }
+            
             /* CSS FILTRO --------------------------------------------------- */
-            .swiper-wrapper {
+            #page-filter .swiper-wrapper {
                 margin: 5px;
             }
-            .swiper-slide {
+            #page-filter .swiper-slide {
                 color:#000;
                 background: #FFF;
                 box-sizing: border-box;
                 border: 1px solid #ccc;
             }
-            .swiper-slide label {
+            #page-filter .swiper-slide label {
                 text-align:center;
                 display:block;
                 padding-top: 20px;
                 padding-bottom: 100%;
                 font-size:16px;
             }
-            .swiper-slide label div {
+            #page-filter .swiper-slide label div {
                 text-align:center;
                 width: 100%;
             }
-            .swiper-slide label div.item-inner {
+            #page-filter .swiper-slide label div.item-inner {
                 padding-top: 35px;
             }
-            .swiper-container {
+            #page-filter .swiper-container {
                 height: 120px;
                 margin: 5px;
             }
-            .swiper-container label.label-radio input[type=checkbox]:checked~.item-inner, label.label-radio input[type=radio]:checked~.item-inner {
+            #page-filter .swiper-slide label.label-radio input[type=radio]:checked~.item-inner {
                 background-size: 32px;
                 background-position: center top;
             }
-            .swiper-container label.label-radio input[type=radio]~.item-inner {
+            #page-filter .swiper-slide label.label-radio input[type=radio]~.item-inner {
                 padding-right: 0px;
             }
+            
             
         </style>
 
@@ -402,7 +416,46 @@
             // alterar senha
             securePage('change-password', function (page) {
                 var templateProfile = new Template('templateChangePassword');
-                templateProfile.compileAjax('change-password', {user_auth_key: getUserData().auth_key});
+                templateProfile.compileAndLoadData();
+
+                // form - alterar senha
+                var formChangePassword = new Form('changePassword-form');
+                
+                // salvar
+                $('a#changePassword-submit').on('click', function () {
+                    ajaxApiUser('change-password', formChangePassword.getFormData(), function(a){
+                        if(typeof a.message != 'undefined') {
+                            formChangePassword.clear();
+                            myApp.alert('',a.message);
+                        }
+                    });
+                });
+                
+            });
+
+
+            // -----------------------------------------------------------------
+            // checkout
+            securePage('checkout', function (page) {
+                var templateProfile = new Template('templateCheckout'),
+                param = page.query;
+                param.user_auth_key = getUserData().auth_key;
+                templateProfile.compileAjax('checkout', param, function (a) {
+                    if(a === false) {
+                        mainView.router.loadPage('main.html'); 
+                        
+                    } else {
+                        // form - checkout
+                        var formCheckout = new Form('checkout-form');
+
+                        // salvar
+                        $('a#checkout-submit').on('click', function () {
+                            console.log(formCheckout.getFormData());
+                            //ajaxApiUser('checkout', formCheckout.getFormData(), function(a){});
+                        });
+                    }
+                });
+                
             });
 
             
