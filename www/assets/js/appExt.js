@@ -1,13 +1,13 @@
 
 var appConfig = {
     url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',
-    url: 'http://localhost/cashback/frontend/web/index.php?r=',
-    urlFoto: 'http://localhost/cashback/frontend/web/',
+    url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
+    urlFoto: 'http://localhost/apiestalecas/frontend/web/',
     localStorageName: 'esUser'
 };
 
 var getUserData = function () {
-    return (typeof localStorage[appConfig.localStorageName] == "string" ? JSON.parse((localStorage[appConfig.localStorageName] || '{}')) : false);
+    return (typeof [appConfig.localStorageName] == "string" ? JSON.parse((localStorage[appConfig.localStorageName] || '{}')) : false);
 }
 
 var validateLogin = function (data) {
@@ -81,14 +81,19 @@ var ajaxApi = function (method, params, callback) {
 
     var ajax = $.ajax(ajaxParams);
     ajax.always(function (data) {
-        if ( typeof data.error != "undefined" && data.error) {
+        if ( typeof data.error != "undefined" && data.error && typeof data.status == "undefined") {
             var errorStr = '';
             for (var i in data.error) {
                 errorStr += "* " + data.error[i][0] + "<br />";
             }
             myApp.alert(errorStr, 'Opss');
 
-        } else if ( typeof callback == 'function' ) {
+        } else if ( data.status == false ) {
+            myApp.alert(data.retorno, 'Opss');
+            console.error(data.dev);
+            console.info(data.lastResponse);
+        } 
+        else if ( typeof callback == 'function' ) {
             callback(data);
         }
     });
