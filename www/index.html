@@ -42,14 +42,19 @@
                 margin: 5px 0;
             }
 
-            /* CSS CHECKOUT ------------------------------------------------- */
-            #tabbar-checkout div[class*="col-"] {
+            .buttonTabProduct {
+                min-height: 32px;
+                line-height: 30px;
+            }
+
+            /* CSS TAB BAR "COMPRAR" ---------------------------------------- */
+            #tabbar-buy div[class*="col-"] {
                 text-align: center;
                 color: #FFF;
                 padding: 5px 0px;
                 font-size: 11px;
             }
-            #tabbar-checkout div[class*="col-"] strong {
+            #tabbar-buy div[class*="col-"] strong {
                 font-size: 22px;
                  display:block; 
                  clear:both
@@ -256,7 +261,6 @@
             // index carrega a pagina principal de promocoes ou tela de login
             (validateLogin()) ? mainView.router.loadPage('main.html') : mainView.router.loadPage('login.html');
 
-
             // -----------------------------------------------------------------
             // login
             myApp.onPageInit('login', function (page) {
@@ -286,8 +290,7 @@
             // -----------------------------------------------------------------
             // promocoes
             securePage('main', function (page) {
-                
-                templateMain = new Template('templateMain');
+                var templateMain = new Template('templateMain');
                 $.extend(page.query, {user_auth_key: getUserData().auth_key});
                 templateMain.compileAjax('promocao', page.query, function (a) {
                     if (!a.estabelecimentos.length) {
@@ -345,7 +348,6 @@
             securePage('invite-friend', function (page) {
                 var templateInviteFriend = new Template('templateInviteFriend');
                 templateInviteFriend.compileAjax('invite-friend', {user_auth_key: getUserData().auth_key});
-                
             });
 
 
@@ -423,7 +425,12 @@
                 
                 // salvar
                 $('a#changePassword-submit').on('click', function () {
-                    ajaxApiUser('change-password', formChangePassword.getFormData(), function(a){
+                    var param = formChangePassword.getFormData();
+                    if(param['current-password'] === '' || param['new-password'] === '') {
+                        myApp.alert('','Preencha os dois campos.');
+                        return;
+                    }
+                    ajaxApiUser('change-password', param, function(a){
                         if(typeof a.message != 'undefined') {
                             formChangePassword.clear();
                             myApp.alert('',a.message);
@@ -453,6 +460,112 @@
                             console.log(formCheckout.getFormData());
                             //ajaxApiUser('checkout', formCheckout.getFormData(), function(a){});
                         });
+                    }
+                });
+                
+            });
+
+
+            // -----------------------------------------------------------------
+            // produtos do estabelecimento
+            securePage('company', function (page) {
+                var templateProfile = new Template('templateCompany'),
+                paramDefault = {company: '', product: ''},
+                paramNew = page.query,
+                companyAtual = paramNew.company;
+                
+                $.extend(paramDefault, paramNew);
+                
+                templateProfile.compileAjax('company', paramDefault, function (a) {
+                    if(a === false || !a.produtos.length) {
+                        mainView.router.loadPage('main.html'); 
+                        
+                    } else {
+                        var a, idProdutoAtual = false, promocaoAtual = false;
+                        
+                        // Template do produto (fotos, abas e btn "comprar")
+                        a.loadTemplateProduto = function (id) {
+                            idProdutoAtual = id;
+                            var templateProduct = new Template('templateProduct', idProdutoAtual);
+                            templateProduct.compileAjax('company-product', {product: idProdutoAtual}, function(r_product){
+                                
+                                // slider image
+                                myApp.swiper('.swiper-image-product', {
+                                    pagination:'.swiper-image-product .swiper-pagination',
+                                    paginationHide: false,
+                                    paginationClickable: true,
+                                    spaceBetween: 50, // between slides
+                                    preloadImages: false,
+                                    lazyLoading: true,
+                                    //nextButton: '.swiper-button-next',
+                                    //prevButton: '.swiper-button-prev',
+                                });
+                                
+                                // carrega abas do produto
+                                a.loadTemplatePromocoes();
+                                a.loadTemplateRegras();
+                                a.loadTemplateLocal();
+                                
+                            });
+                            
+                        };
+                        
+                        // Template com as promocoes do produto (list)
+                        a.loadTemplatePromocoes = function () {
+                            var templatePromotions = new Template('templatePromotions', idProdutoAtual);
+                            templatePromotions.compileAjax('company-promotions', {product: idProdutoAtual}, function(r_promotions){
+                                
+                                // cria evento de click nas promocoes
+                                $$('.promocoes-do-produto').on('click', function (){
+                                    var dataPromocao = $(this).attr('user-data');
+                                    if (dataPromocao) {
+                                        a.loadValueTabbarBuy(JSON.parse(dataPromocao));
+                                    }
+                                });
+                                
+                            });
+                        };
+                        
+                        // Template com as regras do produto (Text)
+                        a.loadTemplateRegras = function () {
+                            var templateRules = new Template('templateRules', idProdutoAtual);
+                            templateRules.compileAjax('company-rules', {product: idProdutoAtual});
+                        };
+                        
+                        // Template com informacoes sobre o local (Text)
+                        a.loadTemplateLocal = function () {
+                            var templateLocal = new Template('templateLocal', idProdutoAtual);
+                            templateLocal.compileAjax('company-local', {company: companyAtual});
+                        };
+                        
+                        // carrega valores na tab bar Comprar
+                        a.loadValueTabbarBuy = function (data) {
+                            $('#tabbar-buy #tabbar-buy-pague').text('R$ ' + data.valor);
+                            $('#tabbar-buy #tabbar-buy-de-volta').text(data.deVolta + '%');
+                        };
+                        
+                        // cria os evento de click nas abas dos produtos
+                        $$('.show-tab').on('click', function () {
+                            a.loadTemplateProduto($(this).attr('data-product'));
+                        });
+                        
+                        // cria os evento de click no botao comprar
+                        $$('#tabbar-buy #buy-submit').on('click', function () {
+                            // se alguma promocao estiver marcada realiza o pedido
+                            if (typeof promocaoAtual === 'object') {
+                                ajaxApiUser('company-buy-product', promocaoAtual, function (a) {
+                                    if(a) {
+                                        mainView.router.loadPage('checkout.html?order=' + a);
+                                    }
+                                });
+                            } else {
+                                myApp.alert('', 'Selecione uma promoção');
+                            }
+                        });
+                        
+                        // carrega o produto da "aba ativa"
+                        a.loadTemplateProduto(a.produtoAtual.CB05_ID);
+                        
                     }
                 });
                 

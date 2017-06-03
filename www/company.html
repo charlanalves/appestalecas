@@ -5,82 +5,170 @@
                 <span class="icon-chevron-left"></span> <span>Voltar</span>
             </a>
         </div>
-        <div class="center sliding"></div>
+        <div class="center sliding">Estabelecimento</div>
         <div class="right">
-            <a href="#" class="link icon-only open-panel" data-panel="right">
-                <span class="kkicon icon-alarm"></span>
+            <a href="#" class="link icon-only" data-panel="right">
+                <!--<span class="kkicon icon-alarm"></span>-->
             </a>
         </div>
     </div>
 </div>
 
-<div class="view another-view navbar-fixed">
-    <!-- Pages -->
-    <div class="pages">
-        <div class="page no-toolbar" data-page="article">
-            <div class="page-content navbar-fix">
+<div class="pages">
+    <div data-page="company" class="page">
 
-                <div class="full-page-image" style="background-image: url('assets/img/tmp/temp_2.jpg');">
-                    <div class="article-data">
-                        <div class="tags">
-                            <span class="badge badge-primary badge-square text-uppercase">travel</span>
-                        </div>
+        <div class="page-content">
+            <div id="destino-templateCompany" style="margin-bottom: 100px;"></div>
+        </div>
 
-                        <small>
-                            <span>30.03.2015</span>
-                            <span class="ml-20">10 min read</span>
-                        </small>
-
-                        <h1>Etiam ullamcorper. Suspendisse a pellentesque dui.</h1>
-
-                        <hr>
-
-                        <small>ALAN MAYER</small>
-                    </div>
+        <div class="toolbar tabbar" id="tabbar-buy" style="height: 110px;background: #FC5241;">
+            <div class="row">
+                <div class="col-50">
+                    Pague <strong id="tabbar-buy-pague">R$ 00,00</strong>
                 </div>
-
-                <div class="content-block mt-5">
-
-                    <p class="first-letter">Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna.</p>
-
-                    <p>Nullam wisi ultricies a, gravida vitae, dapibus risus ante sodales lectus blandit eu, tempor diam pede cursus vitae, ultricies eu, faucibus quis, porttitor eros cursus lectus, pellentesque eget, bibendum a, gravida ullamcorper quam.</p>
-
-                    <blockquote>
-                        Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus.
-                        <span class="author">Mark Max</span>
-                    </blockquote>
-
-                    <p>
-                        <ul>
-                            <li>List example</li>
-                            <li>List example</li>
-                            <li>List example</li>
-                            <li>List example</li>
-                            <li>List example</li>
-                        </ul>
-
-                        <ol>
-                            <li>Another list example</li>
-                            <li>Another list example</li>
-                            <li>Another list example</li>
-                            <li>Another list example</li>
-                            <li>Another list example</li>
-                        </ol>
-                    </p>
-
-                    <p>Quisque cursus et, porttitor risus. Aliquam sem. In hendrerit nulla quam nunc, accumsan congue. Lorem ipsum primis in nibh vel risus. Sed vel lectus. Ut sagittis, ipsum dolor quam.</p>
-
-                    <h1>H1 title sample</h1>
-                    <h2>H2 title sample</h2>
-                    <h3>H3 title sample</h3>
-                    <h4>H4 title sample</h4>
-                    <h5>H5 title sample</h5>
-                    <h6>H6 title sample</h6>
-
-                    <p>Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.</p>
-
+                <div class="col-50">
+                    Receba de volta <strong id="tabbar-buy-de-volta">0,00%</strong>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-10"></div>
+                <div class="col-80">
+                    <a href="#" class="button button-secondary button-fill" id="buy-submit">COMPRAR</a>
+                </div>
+                <div class="col-10"></div>
+            </div>
         </div>
+
+
+
+        <!-- Template com as abas dos produtos produtos -->
+        <script type="text/template" id="templateCompany">
+
+            <div class="content-block mt-10" style="margin-bottom: 0px;">
+                <div class="buttons-row">
+                    {{#each data.produtos}}
+                        <a href="#tab{{CB05_ID}}" data-product="{{CB05_ID}}" class="show-tab tab-link button button-secondary {{#if active}}active{{/if}}">{{CB05_NOME_CURTO}}</a>
+                    {{/each}}
+                </div>
+            </div>
+
+            <div class="tabs">
+
+                {{#each data.produtos}}
+                    <div id="tab{{CB05_ID}}" class="tab {{#if active}}active{{/if}}">
+                        <div class="content-block" style="margin: 0px;">
+                            <h2 style="margin: 5px 0px;">{{CB05_TITULO}}</h2>
+                            <div id="destino-templateProduct{{CB05_ID}}"></div>
+                        </div>
+                    </div>
+               {{/each}}
+
+            </div>
+
+        </script>
+        
+
+        <!-- Template detalhe do produto -->
+        <script type="text/template" id="templateProduct">
+
+            <!-- Slider (fotos do produto) -->
+            <div class="swiper-custom">
+                <div class="swiper-container swiper-image-product">
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-wrapper">
+                        {{#each data.IMG}}
+                        <div class="swiper-slide" style="max-height: 220px; min-height: 180px">
+                            <img data-src="{{foto CB14_URL}}" class="swiper-lazy">
+                            <div class="preloader"></div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+                <!-- <div class="swiper-button-prev"></div> -->
+                <!-- <div class="swiper-button-next"></div> -->
+            </div>
+
+            <!-- Abas (promocoes, info, local) -->
+            <div class="content-block" style="margin: 0px 0px; padding: 0px;">
+                <div class="buttons-row">
+                    <a href="#tab-product-1-{{data.PRODUTO}}" class="show-tab-product-1 tab-link button buttonTabProduct button-primary active">
+                        Promoções
+                    </a>
+                    <a href="#tab-product-2-{{data.PRODUTO}}" class="show-tab-product-2 tab-link button buttonTabProduct button-primary">
+                        Regras
+                    </a>
+                    <a href="#tab-product-3-{{data.PRODUTO}}" class="show-tab-product-3 tab-link button buttonTabProduct button-primary">
+                        Local
+                    </a>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <div id="tab-product-1-{{data.PRODUTO}}" class="tab active">
+                    <div class="content-block" style="margin: 0px; padding: 0px;">
+                        <div id="destino-templatePromotions{{data.PRODUTO}}">Promoções</div>
+                    </div>
+                </div>
+                <div id="tab-product-2-{{data.PRODUTO}}" class="tab">
+                    <div class="content-block" style="margin: 0px; padding: 0px;">
+                        <div id="destino-templateRules{{data.PRODUTO}}">Regras</div>
+                    </div>
+                </div>
+                <div id="tab-product-3-{{data.PRODUTO}}" class="tab">
+                    <div class="content-block" style="margin: 0px; padding: 0px;">
+                        <div id="destino-templateLocal{{data.PRODUTO}}">Local</div>
+                    </div>
+                </div>
+            </div>
+
+        </script>
+
+
+        <!-- Template promocoes/variacoes do produto -->
+        <script type="text/template" id="templatePromotions">
+            {{#each data.PROMOCOES}}
+            <div class="list-block media-list promocoes-do-produto" user-data='{"produto":"{{@root.data.PRODUTO}}", "promocao":"{{CB06_ID}}", "valor":"{{real CB06_PRECO_PROMOCIONAL}}", "deVolta":"{{real CB06_DINHEIRO_VOLTA}}"}'>
+              <ul>
+                <li>
+                  <label class="label-checkbox item-content" style="padding-left: 5px;">
+                    <input type="radio" name="promocoes-checkbox">
+                    <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                    <div class="item-inner" style="padding: 10px 2px; margin-left: 10px;">
+                      <div class="item-title-row">
+                        <div class="item-title">{{CB06_DESCRICAO}}</div>
+                        <div class="item-after">
+                            <strong class="alert alert-success">CB + {{real CB06_DINHEIRO_VOLTA}}%</strong>
+                        </div>
+                      </div>
+                      <div class="item-subtitle">{{CB06_TITULO}}</div>
+                      <div class="item-text">
+                            <span style="font-size: 11px;">de R$ {{real CB06_PRECO}}</span>
+                            <strong> por R$ {{real CB06_PRECO_PROMOCIONAL}}</strong>
+                      </div>
+                    </div>
+                  </label>
+                </li>
+              </ul>
+            </div>
+            {{/each}}
+        </script>
+
+        <!-- Template regras do produto -->
+        <script type="text/template" id="templateRules">
+            <blockquote>
+                {{data.CB05_IMPORTANTE}}
+            </blockquote>
+        </script>        
+
+        <!-- Template local do produto -->
+        <script type="text/template" id="templateLocal">
+            <h2>
+                <i class="fa fa-map-marker"></i>
+                {{data.CB04_END_LOGRADOURO}} {{data.CB04_END_NUMERO}}, {{data.CB04_END_BAIRRO}}
+                <br />
+                {{data.CB04_END_CIDADE}} - {{data.CB04_END_UF}}
+            </h2>
+        </script>  
+
     </div>
 </div>

@@ -1,13 +1,14 @@
 
 var appConfig = {
     url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',
-    url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
+    url: 'http://localhost/cashback/frontend/web/index.php?r=',
     urlFoto: 'http://localhost/apiestalecas/frontend/web/',
+    urlFoto: 'http://localhost/cashback/frontend/web/',
     localStorageName: 'esUser'
 };
 
 var getUserData = function () {
-    return (typeof [appConfig.localStorageName] == "string" ? JSON.parse((localStorage[appConfig.localStorageName] || '{}')) : false);
+    return (typeof [appConfig.localStorageName] == "object" ? JSON.parse((localStorage[appConfig.localStorageName] || '{}')) : false);
 }
 
 var validateLogin = function (data) {
@@ -134,10 +135,11 @@ Template7.registerHelper('real', function (a, options) {
 // Class Template --------------------------------------------------------------
 class Template {
 
-    constructor (templateId) {
+    constructor (templateId, i) {
         this.templateId = templateId;
         this.templateCompiled = Template7(document.getElementById(this.templateId).innerHTML).compile();
         this.dataCompiled = '';
+        this.i = (i || ''); // controle de destino - para destinos dinamicos
     }
 
     compileData (data) {
@@ -145,7 +147,7 @@ class Template {
     }
     
     loadData () {
-        return (typeof this.dataCompiled == 'string' ? document.getElementById('destino-' + this.templateId).innerHTML = this.dataCompiled : false);
+        return (typeof this.dataCompiled == 'string' ? document.getElementById('destino-' + this.templateId + this.i).innerHTML = this.dataCompiled : false);
     }
     
     compileAndLoadData (data) {
