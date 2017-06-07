@@ -540,6 +540,7 @@
                         
                         // carrega valores na tab bar Comprar
                         a.loadValueTabbarBuy = function (data) {
+                            promocaoAtual = data;
                             $('#tabbar-buy #tabbar-buy-pague').text('R$ ' + data.valor);
                             $('#tabbar-buy #tabbar-buy-de-volta').text(data.deVolta + '%');
                         };

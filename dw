@@ -1,0 +1,110 @@
+[33mcommit e313d2bf97eb1c2fbc9e7684806cd26ec8794879[m
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Sat Jun 3 01:21:48 2017 -0300
+
+    Tela de produtos do estabelecimento
+
+[33mcommit ebd51b4fb4780e0c2a36b7c56f05c3898d5624bb[m
+Merge: 64c357a adc3163
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Tue May 30 23:08:22 2017 -0300
+
+    Merge branch 'dev' of https://github.com/charlanalves/appestalecas into dev
+
+[33mcommit 64c357aaecb8991007bbfca9f65a3d41089a0f2e[m
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Tue May 30 23:06:19 2017 -0300
+
+    ajustes + conclusao da tela de checkout
+
+[33mcommit adc31639fdae6bfec2d0c16d7528b4e0d2f0357e[m
+Author: Charlan Santos <charlan.job@gmail.com>
+Date:   Sun May 28 22:27:32 2017 -0700
+
+    alterações no tratamento de erros
+
+[33mcommit 3e3e4cd44064f53ebb70c47413f45370e3e1e1bc[m
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Thu May 25 20:58:21 2017 -0300
+
+    ajustes
+
+[33mcommit 5b4d90f8b4dd8d41d1ea7981a3bc23a056f738c4[m
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Tue May 23 22:29:13 2017 -0300
+
+    ajustes + lista de estabelecimentos
+
+[33mcommit c1110354e26cd9c4efe091e4311540f7d2cafccb[m
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Tue May 23 00:23:54 2017 -0300
+
+    solicitacao de saque + ajustes
+
+[33mcommit 52a600304633ac30b74eb374ad1484ddf90ae268[m
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Fri May 19 01:52:47 2017 -0300
+
+    convidar amigo
+
+[33mcommit 3a16afa43662cfddbe53371c0714126250a1c681[m
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Tue May 16 01:30:55 2017 -0300
+
+    pesquisa + filtro
+
+[33mcommit 4fd2b1786f049ca9a32614ae8d033b1458ffadaf[m
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Wed May 10 00:50:59 2017 -0300
+
+    login
+
+[33mcommit 600fd2ea5544159899e40ab09262fe86c4d6d9c5[m
+Merge: f3e1bb1 3fa2ad6
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Wed May 10 00:46:14 2017 -0300
+
+    Merge branch 'dev' of https://github.com/charlanalves/appestalecas into dev
+
+[33mcommit f3e1bb1bdbc2592dd9e71e05182252ef2d4cda8d[m
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Wed May 10 00:45:42 2017 -0300
+
+    login
+
+[33mcommit 3fa2ad6cb0a403445f40060bd6661261d06c8e2d[m
+Author: Charlan Santos <charlan.job@gmail.com>
+Date:   Tue May 9 18:33:37 2017 -0700
+
+    init cordova
+
+[33mcommit 121ff6f10cbe4a7a214c84451352e57d47bb1839[m
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Mon May 8 22:29:36 2017 -0300
+
+    tela: promocoes
+
+[33mcommit 82ddc77b55632d81eb5c7d8ce9e20e03f791a762[m
+Merge: e6bf296 fceb7e7
+Author: Charlan Santos <charlan.job@gmail.com>
+Date:   Mon May 8 23:45:48 2017 +0000
+
+    Merge branch 'master' of https://github.com/charlanalves/appestalecas
+
+[33mcommit e6bf2966b58ea6c23e04192dd4beca93147c38ac[m
+Author: Charlan Santos <charlan.job@gmail.com>
+Date:   Mon May 8 23:44:56 2017 +0000
+
+    init
+
+[33mcommit fceb7e73906044efb4bcedaf2c914d09cffb69ef[m
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Mon May 8 20:43:09 2017 -0300
+
+    arquivos
+
+[33mcommit 0b2e9ab5f831ac46c7e60d7f77d32c5cf3ca4fd7[m
+Author: eduardomatias <eduardomatias.1989@gmail.com>
+Date:   Mon May 8 20:41:44 2017 -0300
+
+    first commit
