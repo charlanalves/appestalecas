@@ -250,7 +250,14 @@
         <script type="text/javascript" src="assets/js/masked-input/jquery.maskMoney.min.js"></script>
         <script type="text/javascript" src="assets/js/appExt.js"></script>
         <script type="text/javascript" src="assets/js/global.js"></script>
-
+        
+        
+        <!-- iugu local -->
+        <script type="text/javascript" src="assets/js/iugu.js"></script>
+        <!-- iugu remoto -->
+        <!-- <script type="text/javascript" src="https://js.iugu.com/v2"></script> -->
+        <script type="text/javascript" src="assets/js/formatter.js"></script>
+        
         <script>
 
             // mascara de CPF
@@ -440,12 +447,12 @@
                 
             });
 
-
             // -----------------------------------------------------------------
             // checkout
             securePage('checkout', function (page) {
                 var templateProfile = new Template('templateCheckout'),
-                param = page.query;
+                pageQuery = page.query,
+                param = pageQuery;
                 param.user_auth_key = getUserData().auth_key;
                 templateProfile.compileAjax('checkout', param, function (a) {
                     if(a === false) {
@@ -457,9 +464,40 @@
 
                         // salvar
                         $('a#checkout-submit').on('click', function () {
-                            console.log(formCheckout.getFormData());
-                            //ajaxApiUser('checkout', formCheckout.getFormData(), function(a){});
+                            
+                            // codigo da iugu
+                            ajaxApiUser('iugu-id-account', {}, function(a){
+                                if(a){
+                                    Iugu.setAccountID(a);
+                                    //Iugu.setTestMode(true);
+                                    
+                                    // Entradas de Texto Inteligentes - Formatter.js
+                                    Iugu.setup();
+                                    
+                                    // cria token do pagamento
+                                    Iugu.createPaymentToken(formCheckout.form[0], function(data) {
+                                        if (data.errors) {
+                                            myApp.alert("Erro salvando cartão: " + JSON.stringify(data.errors));
+
+                                        } else {
+                                            $("#token").val( data.id );
+                                            
+                                            paramPurchase = pageQuery;
+                                            paramPurchase.data = formCheckout.getFormData();
+                                            ajaxApiUser('checkout-purchase', paramPurchase, function(a){
+                                                
+                                            });
+                                        }
+
+                                    }); 
+                                }
+                                
+                            });
+                            
+                            return;
+                            
                         });
+                        
                     }
                 });
                 

@@ -27,7 +27,9 @@
 
 				<form id="checkout-form" class="form nice-label" action=""  method="POST">
 				        	
-			    	<input type="hidden" name="user_auth_key">
+			    	<input type="hidden" name="user_auth_key" />
+	    	        <input type="hidden" name="token" id="token" value="" readonly="true" />
+
 					<div class="list-block">
 						<ul>
 						    <li>CPF / CNPJ
@@ -73,6 +75,20 @@
 					<div class="list-block">
 						<ul>
 							<li>Pagamento
+						        <img  style="background-color: #fff; float: right;" src="http://storage.pupui.com.br/9CA0F40E971643D1B7C8DE46BBC18396/assets/cc-icons.e8f4c6b4db3cc0869fa93ad535acbfe7.png" alt="Visa, Master, Diners. Amex" border="0" />
+
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<select name="FORMA-PAGAMENTO" data-adquirente="">
+												{{#each data.forma_pagamento}}
+												<option value="{{CB08_ID}}">{{CB08_NOME}}</option>
+												{{/each}}
+											</select>
+										</div>
+									</div>
+								</div>
+								<!--
 								<label class="label-radio item-content form-row">
 									<input type="radio" name="FORMA-PAGAMENTO" value="credito" checked="checked">
 									<div class="item-media">
@@ -82,12 +98,23 @@
 										<div class="item-title">Crédito</div>
 									</div>
 								</label>
+								<label class="label-radio item-content form-row">
+									<input type="radio" name="FORMA-PAGAMENTO" value="saldo">
+									<div class="item-media">
+										<i class="icon icon-form-radio"></i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">Saldo</div>
+									</div>
+								</label>
+								-->
 							</li>
+
 						    <li>Número do cartão
 								<div class="item-content form-row">
 									<div class="item-inner">
 										<div class="item-input">
-											<input type="text" name="N-CARTAO" placeholder="">
+											<input type="text" value="4111111111111111" autocomplete="off" class="credit_card_number" data-iugu="number" placeholder="">
 										</div>
 									</div>
 								</div>
@@ -96,7 +123,7 @@
 								<div class="item-content form-row">
 									<div class="item-inner">
 										<div class="item-input">
-											<input type="text" name="NOME-CARTAO" placeholder="">
+											<input type="text" value="aeasda dasd ddd" class="credit_card_name" data-iugu="full_name" placeholder="">
 										</div>
 									</div>
 								</div>
@@ -105,7 +132,7 @@
 								<div class="item-content form-row">
 									<div class="item-inner">
 										<div class="item-input">
-											<input type="text" name="VALIDATE-CARTAO" placeholder="" value="">
+											<input type="text" autocomplete="off" class="credit_card_expiration" data-iugu="expiration" placeholder="MM/AA" value="12/18">
 										</div>
 									</div>
 								</div>
@@ -114,7 +141,7 @@
 								<div class="item-content form-row">
 									<div class="item-inner">
 										<div class="item-input">
-											<input type="email" name="CVV-CARTAO" placeholder="" value="">
+											<input type="text" autocomplete="off" class="credit_card_cvv" data-iugu="verification_value"  placeholder="" value="455">
 										</div>
 									</div>
 								</div>
