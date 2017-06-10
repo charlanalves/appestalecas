@@ -80,8 +80,10 @@ var ajaxApi = function (method, params, callback) {
     ajaxParams.data = (params || {});
     ajaxParams.url = appConfig.url + 'api-empresa/' + method;
 
+    $.blockUI();
     var ajax = $.ajax(ajaxParams);
     ajax.always(function (data) {
+        $.unblockUI();
         if ( typeof data.error != "undefined" && data.error && typeof data.status == "undefined") {
             var errorStr = '';
             for (var i in data.error) {
