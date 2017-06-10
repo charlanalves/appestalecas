@@ -477,7 +477,7 @@
                                     // cria token do pagamento
                                     Iugu.createPaymentToken(formCheckout.form[0], function(data) {
                                         if (data.errors) {
-                                            myApp.alert("Erro salvando cartão: " + JSON.stringify(data.errors));
+                                            myApp.alert(Util.errorCartToString(data.errors));
 
                                         } else {
                                             $("#token").val( data.id );

@@ -414,5 +414,45 @@ var Util = {
         ajaxParams.data = formData;
 
         return ajaxParams;
+    },
+    errorCartToString: function (data) {
+        var strError = '',
+        getErro = function (a){
+            var b = a;
+            switch(a) {
+                case 'is_invalid':
+                    b = 'Inválido';
+                break;
+                case 'is_empty':
+                    b = 'Não pode ficar em branco';
+                break;
+            }
+            return b;
+        },
+        getAtributo = function (a){
+            var b = a;
+            switch(a) {
+                case 'number':
+                    b = 'Numero do cartão: ';
+                break;
+                case 'full_name':
+                    b = 'Nome impresso no cartão: ';
+                break;
+                case 'expiration':
+                    b = 'Validade do cartão: ';
+                break;
+                case 'verification_value':
+                    b = 'CVV: ';
+                break;
+                case 'last_name':
+                    b = 'Último nome: ';
+                break;
+            }
+            return b;
+        };
+        for (var attribute in data) {
+            strError += getAtributo(attribute) + getErro(data[attribute]) + '<br />';
+        }
+        return strError;
     }
 };
