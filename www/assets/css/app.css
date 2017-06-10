@@ -6979,3 +6979,67 @@ article .author {
 .author.primeira-promo {
     margin-top: 15px;
 }
+
+.list-block .item-content {
+    border: solid 1px #d6d6d6 !important;    
+    background: white;
+    color: #464646 !important;
+}
+
+
+.page-content {
+    background: #f9f9f9 !important;
+}
+.content-block {
+    color: #f0f0f0;
+    padding: 0;
+}
+
+.content-block.mt-10 {
+    display: none;
+}
+
+span.tituloProduto h2 {
+    position: relative;
+    bottom: -278px;
+    z-index: 2;
+    font-size: 15px;
+    padding-left: 5px;
+}
+
+div#destino-templateCompany {
+    position: relative;
+    top: -75px
+}
+
+blockquote {
+    padding: 0 0 0 20px;
+    margin: 10px 0;
+    border-left: 5px solid #FC5241;
+    font-family: 'robotolight_italic', sans-serif;
+    color: #4a4a4a;
+    line-height: 36px;
+    padding-right: 15px;
+    text-align: justify;
+}
+
+div#destino-templateLocal1 h2 {
+    color: #717171;
+    padding-left: 20px;
+    font-size: 17px;
+}
+
+.alert.alert-success {
+    background-color: none;
+    border-color: none;
+    color: #34c240;
+}
+
+label.label-checkbox input[type=checkbox]:checked+.item-media i.icon-form-checkbox, label.label-checkbox input[type=radio]:checked+.item-media i.icon-form-checkbox {
+    border: none;
+    background-color: #4e93af;
+}
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #4e93af;
+}

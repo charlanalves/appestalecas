@@ -525,6 +525,8 @@
                         a.loadTemplateProduto = function (id) {
                             idProdutoAtual = id;
                             var templateProduct = new Template('templateProduct', idProdutoAtual);
+                          
+                            
                             templateProduct.compileAjax('company-product', {product: idProdutoAtual}, function(r_product){
                                 
                                 // slider image
