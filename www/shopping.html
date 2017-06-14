@@ -39,7 +39,12 @@
 
                 {{#each data}}
                     <li>
-                        <a href="{{#if "CB16_STATUS === '10'"}}checkout.html?order={{CB16_ID}}{{else}}#{{/if}}" class="link">
+                    {{#js_compare "this.CB16_STATUS == 10"}}
+                        <a href='checkout.html?order={{CB16_ID}}' class="link">
+                    {{else}}
+                        <a href='#' class="link">
+                    {{/js_compare}}
+                        
                             <div class="item-content">
                                 <div class="item-media"><img src="{{foto IMG}}" width="50"></div>
                                 <div class="item-inner">
