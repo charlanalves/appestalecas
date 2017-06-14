@@ -18,7 +18,7 @@
     <div data-page="company" class="page">
 
         <div class="page-content">
-            <div id="destino-templateCompany" style="margin-bottom: 100px;"></div>
+            <div id="destino-templateCompany" style="margin-bottom: 100px;"></div>            
         </div>
 
         <div class="toolbar tabbar" id="tabbar-buy" style="height: 110px;background: #FC5241;">
@@ -40,7 +40,6 @@
         </div>
 
 
-
         <!-- Template com as abas dos produtos produtos -->
         <script type="text/template" id="templateCompany">
 
@@ -51,13 +50,13 @@
                     {{/each}}
                 </div>
             </div>
-
+				
             <div class="tabs">
 
                 {{#each data.produtos}}
                     <div id="tab{{CB05_ID}}" class="tab {{#if active}}active{{/if}}">
                         <div class="content-block" style="margin: 0px;">
-                            <h2 style="margin: 5px 0px;">{{CB05_TITULO}}</h2>
+                            <span class="tituloProduto"><h2 style="margin: 5px 0px;">{{CB05_TITULO}}</h2></span>
                             <div id="destino-templateProduct{{CB05_ID}}"></div>
                         </div>
                     </div>
@@ -77,7 +76,7 @@
                     <div class="swiper-pagination"></div>
                     <div class="swiper-wrapper">
                         {{#each data.IMG}}
-                        <div class="swiper-slide" style="max-height: 220px; min-height: 180px">
+                        <div class="swiper-slide" style="max-height: 272px; min-height: 180px">
                             <img data-src="{{foto CB14_URL}}" class="swiper-lazy">
                             <div class="preloader"></div>
                         </div>
@@ -137,7 +136,7 @@
                       <div class="item-title-row">
                         <div class="item-title">{{CB06_DESCRICAO}}</div>
                         <div class="item-after">
-                            <strong class="alert alert-success">CB + {{real CB06_DINHEIRO_VOLTA}}%</strong>
+                            <strong class="percCb">CB + {{real CB06_DINHEIRO_VOLTA}}%</strong>
                         </div>
                       </div>
                       <div class="item-subtitle">{{CB06_TITULO}}</div>
