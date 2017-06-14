@@ -44,28 +44,30 @@
             </div>
 
             {{#each data.estabelecimentos}}
-                <article>
-                    <div class="author {{#if @first}} primeira-promo {{/if}}">
-                        <img src="{{foto CB04_URL_LOGOMARCA}}" alt=""/>
-                        <span>
-                            <div class="motel-name">{{CB04_NOME}}</div>
-                            <div class="short-desc">{{CB04_END_COMPLEMENTO}}</div>
-                        </span>
-                    </div>
-                    <div class="tags promocoes">
-                        <span class="badge badge-primary badge-square text-uppercase">
-                            <span class="text-cashback">
-                                {{real CB06_DINHEIRO_VOLTA}}%
+                <a href="company.html?company={{CB04_ID}}&product={{CB05_ID}}">
+                    <article>
+                        <div class="author {{#if @first}} primeira-promo {{/if}}">
+                            <img src="{{foto CB04_URL_LOGOMARCA}}" alt=""/>
+                            <span>
+                                <div class="motel-name">{{CB04_NOME}}</div>
+                                <div class="short-desc">{{CB04_END_COMPLEMENTO}}</div>
                             </span>
-                        </span>
-                    </div>
-                    <div class="text">
-                        <h2>
-                            <a href="company.html?company={{CB04_ID}}&product={{CB05_ID}}">{{CB05_TITULO}}: {{CB06_DESCRICAO}}</a>
-                        </h2>
-                    </div>
-                    <img class="article-bg" src="{{foto CB14_URL}}" alt=""/>
-                </article>
+                        </div>
+                        <div class="tags promocoes">
+                            <span class="badge badge-primary badge-square text-uppercase">
+                                <span class="text-cashback">
+                                    {{real CB06_DINHEIRO_VOLTA}}%
+                                </span>
+                            </span>
+                        </div>
+                        <div class="text">
+                            <h2>
+                                {{CB05_TITULO}}: {{CB06_DESCRICAO}}
+                            </h2>
+                        </div>
+                        <img class="article-bg" src="{{foto CB14_URL}}" alt=""/>
+                    </article>
+                </a>
             {{/each}}
 
         </script>

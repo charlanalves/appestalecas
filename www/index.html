@@ -414,6 +414,14 @@
 
 
             // -----------------------------------------------------------------
+            // mensagem de compra realizada
+            securePage('purchase-message', function (page) {
+                var templatePurchaseMessage = new Template('templatePurchaseMessage');
+                templatePurchaseMessage.compileAjax('purchase-message', {});
+            });
+
+
+            // -----------------------------------------------------------------
             // perfil
             securePage('profile', function (page) {
                 var templateProfile = new Template('templateProfile');
@@ -486,7 +494,7 @@
                                     ajaxApiUser('checkout-purchase', paramPurchase, function(a){
                                         if (a.status === true) {
                                             myApp.alert('Pagamento efetuado!', 'Tudo Certo');
-                                            mainView.router.loadPage('shopping.html');
+                                            mainView.router.loadPage('purchase-message.html');
                                         } else {
                                             myApp.alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
                                             
@@ -563,6 +571,11 @@
                                     }
                                 });
                                 
+                                // verifica se alguma promocao foi marcada para atualizar os valores de compra
+                                promocaoSelecionada = $('input[name="promocoes-checkbox"]:checked');
+                                if(promocaoSelecionada){
+                                    promocaoSelecionada.trigger( "click" );
+                                }
                             });
                         };
                         
