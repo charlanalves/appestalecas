@@ -7043,3 +7043,27 @@ label.label-checkbox input[type=checkbox]:checked+.item-media i.icon-form-checkb
     opacity: 1;
     background: #4e93af;
 }
+
+.form.nice-label .form-row input {
+    color: rgba(0, 0, 0, 0.9) !important;
+
+}
+
+.form.nice-label .form-row input {
+    border: none;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.9);
+    background: transparent;
+    line-height: 40px;
+    vertical-align: top;
+    padding: 0 10px;
+}
+.list-block ul {
+    background: #fff !important;
+}
+.list-block > ul {    
+    COLOR: #6d6d6d;
+    border: solid 1px #b9b9b9;
+    border-radius: 9px;
+    padding: 10px;
+}
