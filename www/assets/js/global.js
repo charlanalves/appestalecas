@@ -1,10 +1,14 @@
 
-$.blockUI.defaults.css.border = 'none';
-$.blockUI.defaults.css.padding = '0px';
-$.blockUI.defaults.css.textAlign = 'center';
-$.blockUI.defaults.css.backgroundColor = 'rgba(8, 4, 4, 1))';
-$.blockUI.defaults.css.opacity = .3;
-$.blockUI.defaults.message = '<img src="assets/img/loading.gif">';
+$.blockUI.defaults.message = '<img src="assets/img/loading.gif" />';
+$.blockUI.defaults.css = { 
+            padding: 0,
+            margin: 0,
+            width: '30%',
+            top: '40%',
+            left: '35%',
+            textAlign: 'center',
+            cursor: 'wait'
+        };
 //$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
 
 

@@ -414,6 +414,14 @@
 
 
             // -----------------------------------------------------------------
+            // mensagem de compra realizada
+            securePage('purchase-message', function (page) {
+                var templatePurchaseMessage = new Template('templatePurchaseMessage');
+                templatePurchaseMessage.compileAjax('purchase-message', {});
+            });
+
+
+            // -----------------------------------------------------------------
             // perfil
             securePage('profile', function (page) {
                 var templateProfile = new Template('templateProfile');
@@ -462,41 +470,41 @@
                         // form - checkout
                         var formCheckout = new Form('checkout-form');
 
+                        // iugu
+                        ajaxApiUser('iugu-id-account', {}, function(a){
+                            if(a){
+                                Iugu.setAccountID(a); // id Iugu
+                                Iugu.setTestMode(true); // para teste
+                                Iugu.setup(); // validar os dados de cartao no form
+                            }
+                        });
+
                         // salvar
                         $('a#checkout-submit').on('click', function () {
-                            
-                            // codigo da iugu
-                            ajaxApiUser('iugu-id-account', {}, function(a){
-                                if(a){
-                                    Iugu.setAccountID(a);
-                                    Iugu.setTestMode(true);
-                                    
-                                    // Entradas de Texto Inteligentes - Formatter.js
-                                    Iugu.setup();
-                                    
-                                    // cria token do pagamento
-                                    Iugu.createPaymentToken(formCheckout.form[0], function(data) {
-                                        if (data.errors) {
-                                            myApp.alert(Util.errorCartToString(data.errors));
 
+                            // cria token do pagamento
+                            Iugu.createPaymentToken(formCheckout.form[0], function(data) {
+                                if (data.errors) {
+                                    myApp.alert(Util.errorCartToString(data.errors), 'Opss');
+
+                                } else {
+                                    $("#token").val( data.id );
+                                    paramPurchase = pageQuery;
+                                    paramPurchase.data = formCheckout.getFormData();
+                                    ajaxApiUser('checkout-purchase', paramPurchase, function(a){
+                                        if (a.status === true) {
+                                            myApp.alert('Pagamento efetuado!', 'Tudo Certo');
+                                            mainView.router.loadPage('purchase-message.html');
                                         } else {
-                                            $("#token").val( data.id );
+                                            myApp.alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
                                             
-                                            paramPurchase = pageQuery;
-                                            paramPurchase.data = formCheckout.getFormData();
-                                            ajaxApiUser('checkout-purchase', paramPurchase, function(a){
-                                                
-                                            });
                                         }
-
-                                    }); 
+                                    });
                                 }
-                                
                             });
-                            
                             return;
                             
-                        });
+                        }); 
                         
                     }
                 });
@@ -563,6 +571,11 @@
                                     }
                                 });
                                 
+                                // verifica se alguma promocao foi marcada para atualizar os valores de compra
+                                promocaoSelecionada = $('input[name="promocoes-checkbox"]:checked');
+                                if(promocaoSelecionada){
+                                    promocaoSelecionada.trigger( "click" );
+                                }
                             });
                         };
                         

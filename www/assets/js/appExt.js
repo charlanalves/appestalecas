@@ -1,10 +1,20 @@
 
 var appConfig = {
+
     url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',
     //url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
    // urlFoto: 'http://localhost/apiestalecas/frontend/web/',
 	urlFoto: 'http://52.67.208.141/cashbackdev/frontend/web/',
     //urlFoto: 'http://localhost/cashback/frontend/web/',
+
+    //url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',
+    //url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
+    //urlFoto: 'http://localhost/apiestalecas/frontend/web/',
+	
+    // Eduardo
+    //url: 'http://localhost/cashback/frontend/web/index.php?r=',
+    //urlFoto: 'http://localhost/cashback/frontend/web/',
+
     localStorageName: 'esUser'
 };
 
@@ -17,17 +27,10 @@ var validateLogin = function (data) {
 
     // novo login
     if (typeof data == 'object') {
-        var errorStr = ''
-        ajaxParams = {};
-        ajaxParams.type = 'POST';
-        ajaxParams.dataType = 'json';
-        ajaxParams.data = '';
-        ajaxParams.url = appConfig.url + 'api-empresa/login';
-        ajaxParams.data = data;
+        var errorStr = '';
 
         // Ajax para validar o usuario
-        var ajax = $.ajax(ajaxParams);
-        ajax.always(function (data) {
+        var ajax = ajaxApi('login', data, function (data) {
             if (typeof data.error != "undefined") {
                 for (var i in data.error) {
                     errorStr += data.error[i][0] + "\n";
