@@ -126,7 +126,7 @@ Template7.registerHelper('foto', function (a, options) {
 });
 
 Template7.registerHelper('real', function (a, options) {
-    return String(parseFloat(a).toFixed(2)).replace('.',',');
+    return (typeof a === 'numeric') ? String(parseFloat(a).toFixed(2)).replace('.',',') : '0,00';
 });
 
 // Class Template --------------------------------------------------------------

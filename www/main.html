@@ -26,10 +26,11 @@
         <!-- Template -->
         <script type="text/template" id="templateMain">
 
-            <div class="nice-header header-fix-top small">
-                <div class="logo anim-logo">
+            <div class="nice-header header-fix-top small" style="min-height: 145px;">
+                <div class="logo anim-logo" style="padding: 0 10px 0px;">
                     <h2>Saldo Atual</h2>
                     <h1>R$ {{real data.saldoAtual}}</h1>
+                    <h2 style="margin-top: 4px; text-align: left; background-color: #dc493a; padding: 3px;">Pendente: {{real data.saldoPendente}}</h2>
                 </div>
                 <svg class="anim-svg" viewBox="0 0 629 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
                     <defs></defs>
@@ -42,6 +43,33 @@
                     </g>
                 </svg>
             </div>
+
+            {{#each data.estabelecimentos}}
+                <a href="company.html?company={{CB04_ID}}&product={{CB05_ID}}">
+                    <article>
+                        <div class="author {{#if @first}} primeira-promo {{/if}}">
+                            <img src="{{foto CB04_URL_LOGOMARCA}}" alt=""/>
+                            <span>
+                                <div class="motel-name">{{CB04_NOME}}</div>
+                                <div class="short-desc">{{CB04_END_COMPLEMENTO}}</div>
+                            </span>
+                        </div>
+                        <div class="tags promocoes">
+                            <span class="badge badge-primary badge-square text-uppercase">
+                                <span class="text-cashback">
+                                    {{real CB06_DINHEIRO_VOLTA}}%
+                                </span>
+                            </span>
+                        </div>
+                        <div class="text">
+                            <h2>
+                                {{CB05_TITULO}}: {{CB06_DESCRICAO}}
+                            </h2>
+                        </div>
+                        <img class="article-bg" src="{{foto CB14_URL}}" alt=""/>
+                    </article>
+                </a>
+            {{/each}}
 
             {{#each data.estabelecimentos}}
                 <a href="company.html?company={{CB04_ID}}&product={{CB05_ID}}">
