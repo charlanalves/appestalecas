@@ -259,7 +259,13 @@
         <script type="text/javascript" src="assets/js/formatter.js"></script>
         
         <script>
-
+            
+            $(".btnBack").click(function(){
+                var backButtonEvent = document.createEvent('Events');
+                backButtonEvent.initEvent('backbutton', false, false);
+                document.dispatchEvent(backButtonEvent);
+            });
+            
             // mascara de CPF
             // $("input[name='cpf_cnpj']").mask("999.999.999-99").attr('placeholder', 'CPF');
             

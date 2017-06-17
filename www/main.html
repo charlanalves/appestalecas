@@ -18,18 +18,22 @@
 
 <div class="pages">
     <div data-page="main" class="page">
-
         <div class="page-content">
             <div class="list-block" id="destino-templateMain"></div>
+            <a href="filter.html">
+                <div class="button button-primary button-fill mb-10" style="display:scroll; position:fixed; bottom:0px; right:10px; z-index: 9999">
+                    <i class="fa fa-lg fa-filter"></i>
+                </div>
+            </a>
         </div>
 
         <!-- Template -->
         <script type="text/template" id="templateMain">
 
             <div class="nice-header header-fix-top small" style="min-height: 145px;">
-                <div class="logo anim-logo" style="padding: 0 10px 0px;">
+                <div class="logo anim-logo" style="padding: 0 20px 0px;">
                     <h2>Saldo Atual</h2>
-                    <h1>R$ {{real data.saldoAtual}}</h1>
+                    <h1>R$ {{real data.saldoLiberado}}</h1>
                     <h2 style="margin-top: 4px; text-align: left; background-color: #dc493a; padding: 3px;">Pendente: {{real data.saldoPendente}}</h2>
                 </div>
                 <svg class="anim-svg" viewBox="0 0 629 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
