@@ -38,6 +38,10 @@
         <!--<link rel="stylesheet" href="assets/themes//style.css" id="theme-style">-->
 
         <style>
+            .pages, .pages input, .pages select, .pages textarea, .pages option {
+                color: #000 !important;
+            }
+            
             .list-block {
                 margin: 5px 0;
             }
@@ -370,27 +374,37 @@
                 var templateCashOut = new Template('templateCashOut');
                 var callbackCashOut = function (a) {
                     
-                    // form de solicitacao de saque
-                    var formCashOut = new Form('cashOut-form');
-                    
-                    // add opcoes de banco
-                    formCashOut.addOptionsSelect("CB03_COD_BANCO", a.bancos);
-                    
-                    // add opcoes de tipo de conta
-                    formCashOut.addOptionsSelect("CB03_TP_CONTA", a.tp_conta);
-                    
-                    // add mascara de moeda (REAL)
-                    formCashOut.setMoney(["CB03_VALOR"]);
-                    
-                    // set attributes
-                    if (typeof a.conta_bancaria != "undefined") {
-                        formCashOut.setFormData(a.conta_bancaria);
+                    if(a.saque_realizado == true) {
+                        myApp.alert('Solicitação de saque realizada com sucesso.', 'Tudo certo!');
+                        ajaxCashOut();
+                        return;
+                        
+                    } else {
+
+                        // form de solicitacao de saque
+                        var formCashOut = new Form('cashOut-form');
+
+                        // add opcoes de banco
+                        formCashOut.addOptionsSelect("CB03_COD_BANCO", a.bancos);
+
+                        // add opcoes de tipo de conta
+                        formCashOut.addOptionsSelect("CB03_TP_CONTA", a.tp_conta);
+
+                        // add mascara de moeda (REAL)
+                        formCashOut.setMoney(["CB03_VALOR"]);
+
+                        // set attributes
+                        if (typeof a.conta_bancaria != "undefined") {
+                            formCashOut.setFormData(a.conta_bancaria);
+                            formCashOut.form.find('select, input').attr('disabled', true);
+                            formCashOut.form.find('input[name=CB03_VALOR]').attr('disabled', false);
+                        }
+
+                        $('a#cashOut-submit').on('click', function () {
+                            ajaxCashOut(formCashOut.getFormData());
+                        });
                     }
-                    
-                    $('a#cashOut-submit').on('click', function () {
-                        ajaxCashOut(formCashOut.getFormData());
-                    });
-                };
+                },
 
                 // busca dados da tela de solicitacao de saque
                 ajaxCashOut = function (param) { 
