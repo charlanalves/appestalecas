@@ -231,7 +231,7 @@
         <div class="views">
             <div class="view view-main">
                 <div class="navbar"></div>
-                <div class="pages navbar-fixed toolbar-fixed "></div>
+                <div class="pages navbar-fixed toolbar-fixed " id="page-main" ></div>
             </div>
         </div>
 
@@ -264,11 +264,6 @@
         
         <script>
             
-            $(".btnBack").click(function(){
-                var backButtonEvent = document.createEvent('Events');
-                backButtonEvent.initEvent('backbutton', false, false);
-                document.dispatchEvent(backButtonEvent);
-            });
             
             // mascara de CPF
             // $("input[name='cpf_cnpj']").mask("999.999.999-99").attr('placeholder', 'CPF');

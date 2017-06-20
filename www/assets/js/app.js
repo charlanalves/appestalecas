@@ -3,7 +3,8 @@ var myApp = new Framework7({
     swipeBackPage: false,
     pushState: true,
     swipePanel: 'left',
-    modalTitle: 'Title'
+    modalTitle: 'Title',
+    cache: true,
 });
 
 // If we need to use custom DOM library, let's save it to $$ variable:
