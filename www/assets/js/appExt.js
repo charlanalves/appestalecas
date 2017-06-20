@@ -112,11 +112,9 @@ var securePage = function (page, callback) {
     var page;
     var callback = (typeof callback == 'function') ? callback : function(){};
     
-    var t = myApp.onPageBack(page, function (pg) {
+    myApp.onPageBack(page, function (pg) {
         appConfig.back = true;
     });
-    
-    console.log(t);
     
     myApp.onPageAfterAnimation(page, function (pg) {
         if(!appConfig.back) {
