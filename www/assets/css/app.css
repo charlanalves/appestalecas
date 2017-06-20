@@ -7067,3 +7067,21 @@ label.label-checkbox input[type=checkbox]:checked+.item-media i.icon-form-checkb
     border-radius: 9px;
     padding: 10px;
 }
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    black;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    black;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    black;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:   black;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    black;
+}

@@ -310,11 +310,14 @@
                 var templateMain = new Template('templateMain');
                 $.extend(page.query, {user_auth_key: getUserData().auth_key});
                 templateMain.compileAjax('promocao', page.query, function (a) {
-                    if (!a.estabelecimentos.length) {
-                        myApp.alert('Nenhum estabelecimento encontrado para o filtro selecionado...', 'Opss', function(){ 
-                            mainView.router.loadPage('filter.html'); 
+
+                	if (typeof a.estabelecimentos == 'undefined') {	
+                        	myApp.alert('Nenhum estabelecimento cadastrado...', 'Opss');
+            		}else if(typeof a.estabelecimentos == 'undefined' || !a.estabelecimentos.length) {	
+	                        myApp.alert('Nenhum estabelecimento encontrado para o filtro selecionado...', 'Opss', function(){ 
+	                            mainView.router.loadPage('filter.html'); 
                         });
-                    }
+                	}
                 });
             });
             
