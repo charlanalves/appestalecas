@@ -7085,3 +7085,9 @@ label.label-checkbox input[type=checkbox]:checked+.item-media i.icon-form-checkb
 ::-ms-input-placeholder { /* Microsoft Edge */
    color:    black;
 }
+
+.form.nice-label .form-row {
+   
+    border: 1px solid #767676;
+   
+}
