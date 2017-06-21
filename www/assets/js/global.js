@@ -430,6 +430,9 @@ var Util = {
                 case 'is_empty':
                     b = 'Não pode ficar em branco';
                 break;
+                case 'is not a valid credit card number':
+                    b = 'Não é valido';
+                break;
             }
             return b;
         },
@@ -439,6 +442,12 @@ var Util = {
                 case 'number':
                     b = 'Numero do cartão: ';
                 break;
+                case 'first_name':
+                    b = 'Primeiro nome: ';
+                break;
+                case 'last_name':
+                    b = 'Último nome: ';
+                break;
                 case 'full_name':
                     b = 'Nome impresso no cartão: ';
                 break;
@@ -447,9 +456,6 @@ var Util = {
                 break;
                 case 'verification_value':
                     b = 'CVV: ';
-                break;
-                case 'last_name':
-                    b = 'Último nome: ';
                 break;
             }
             return b;
