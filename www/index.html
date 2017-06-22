@@ -482,6 +482,10 @@
                         mainView.router.loadPage('main.html'); 
                         
                     } else {
+                        
+                        // abre as opcoes de forma de pagamento na tela
+                        $("#CHECKOUT-FORMA-PAGAMENTO").trigger("click");
+                        
                         // form - checkout
                         var formCheckout = new Form('checkout-form');
 
