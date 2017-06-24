@@ -478,7 +478,8 @@
             securePage('checkout', function (page) {
                 var templateProfile = new Template('templateCheckout'),
                 pageQuery = page.query,
-                param = pageQuery;
+                param = pageQuery,
+                formaPagamento;
                 param.user_auth_key = getUserData().auth_key;
                 templateProfile.compileAjax('checkout', param, function (a) {
                     if(a === false) {
@@ -491,9 +492,6 @@
 
                         // abre opcao de pagamento
                         Util.openSelect('#CHECKOUT-FORMA-PAGAMENTO');
-
-                        //add evento de change na forma de pagamento
-                        formCheckout.form.attr('onchange', 'validateFormaPagamento()');
                         
                         // iugu
                         ajaxApiUser('iugu-id-account', {}, function(a){
@@ -504,29 +502,53 @@
                             }
                         });
 
+                        // altera forma de pagamento
+                        $('select#CHECKOUT-FORMA-PAGAMENTO').change(function (){
+                            formaPagamento = this.value;
+                            if (formaPagamento == 1) {
+                                $('div#DATA-CARD').hide('fast');
+                            } else {
+                                $('div#DATA-CARD').show('fast');
+                            }
+                        });
+                        
+                        var callbackCheckout =  function(a){
+                            if (a.status === true) {
+                                myApp.alert('Pagamento efetuado!', 'Tudo Certo');
+                                mainView.router.loadPage('purchase-message.html');
+                            } else {
+                                myApp.alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
+
+                            }
+                        };
+                        
                         // salvar
                         $('a#checkout-submit').on('click', function () {
 
-                            // cria token do pagamento
-                            Iugu.createPaymentToken(formCheckout.form[0], function(data) {
-                                if (data.errors) {
-                                    myApp.alert(Util.errorCartToString(data.errors), 'Opss');
 
-                                } else {
-                                    $("#token").val( data.id );
-                                    paramPurchase = pageQuery;
-                                    paramPurchase.data = formCheckout.getFormData();
-                                    ajaxApiUser('checkout-purchase', paramPurchase, function(a){
-                                        if (a.status === true) {
-                                            myApp.alert('Pagamento efetuado!', 'Tudo Certo');
-                                            mainView.router.loadPage('purchase-message.html');
-                                        } else {
-                                            myApp.alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
-                                            
-                                        }
-                                    });
-                                }
-                            });
+                            var formDataCheckout = pageQuery;
+                            formDataCheckout.data = formCheckout.getFormData();
+
+                            // se nao pagar com saldo estaleca
+                            if(formaPagamento != 1){
+                                
+                                // cria token do pagamento IUGU
+                                Iugu.createPaymentToken(formCheckout.form[0], function(data) {
+                                    if (data.errors) {
+                                        myApp.alert(Util.errorCartToString(data.errors), 'Opss');
+
+                                    } else {
+                                        $("#token").val( data.id );
+                                        formDataCheckout.data = formCheckout.getFormData();
+                                        ajaxApiUser('checkout-purchase', formDataCheckout, callbackCheckout);
+                                    }
+                                });
+                                
+                            } else {
+                                ajaxApiUser('checkout-purchase', formDataCheckout, callbackCheckout);
+                                
+                            }   
+                            
                             return;
                             
                         }); 
