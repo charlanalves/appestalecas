@@ -486,12 +486,15 @@
                         
                     } else {
                         
-                        // abre as opcoes de forma de pagamento na tela
-                        $("#CHECKOUT-FORMA-PAGAMENTO").trigger("click");
-                        
                         // form - checkout
                         var formCheckout = new Form('checkout-form');
 
+                        // abre opcao de pagamento
+                        Util.openSelect('#CHECKOUT-FORMA-PAGAMENTO');
+
+                        //add evento de change na forma de pagamento
+                        formCheckout.form.attr('onchange', 'validateFormaPagamento()');
+                        
                         // iugu
                         ajaxApiUser('iugu-id-account', {}, function(a){
                             if(a){
