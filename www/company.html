@@ -1,14 +1,9 @@
-<div class="navbar navbar-clear">
+
+<div class="navbar navbar-clear" style="background: transparent;border: 0px!important;height: 44px;">
     <div class="navbar-inner">
         <div class="left">
             <a href="#" class="link back">
-                <span class="icon-chevron-left"></span> <span>Voltar</span>
-            </a>
-        </div>
-        <div class="center sliding">Estabelecimento</div>
-        <div class="right">
-            <a href="#" class="link icon-only" data-panel="right">
-                <!--<span class="kkicon icon-alarm"></span>-->
+                <i class="fa fa-lg fa-chevron-circle-left"></i>
             </a>
         </div>
     </div>
@@ -27,7 +22,7 @@
                     Pague <strong id="tabbar-buy-pague">R$ 00,00</strong>
                 </div>
                 <div class="col-50">
-                    Receba de volta <strong id="tabbar-buy-de-volta">0,00%</strong>
+                    Receba de volta <strong id="tabbar-buy-de-volta">R$ 0,00</strong>
                 </div>
             </div>
             <div class="row">
@@ -126,7 +121,7 @@
         <!-- Template promocoes/variacoes do produto -->
         <script type="text/template" id="templatePromotions">
             {{#each data.PROMOCOES}}
-            <div class="list-block media-list promocoes-do-produto" user-data='{"produto":"{{@root.data.PRODUTO}}", "promocao":"{{CB06_ID}}", "valor":"{{real CB06_PRECO_PROMOCIONAL}}", "deVolta":"{{real CB06_DINHEIRO_VOLTA}}"}'>
+            <div class="list-block media-list promocoes-do-produto" user-data='{"produto":"{{@root.data.PRODUTO}}", "promocao":"{{CB06_ID}}", "valor":"{{real CB06_PRECO_PROMOCIONAL}}", "deVolta":"{{percent CB06_PRECO_PROMOCIONAL CB06_DINHEIRO_VOLTA}}"}'>
               <ul>
                 <li>
                   <label class="label-checkbox item-content" style="padding-left: 5px;">
