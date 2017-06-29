@@ -292,9 +292,10 @@
                 });
 
                 // callback login create
-                var callbackLoginCreate = function(a) {
-                    myApp.alert('','Usuário cadastrado!');
-                    mainView.router.loadPage('index.html');
+                var callbackLoginCreate = function(data) {                      
+                    saveUserLSAndRedirectToIndex(appConfig.localStorageName, JSON.parse(data.retorno));
+                    //myApp.alert('','Usuário cadastrado!');
+                    //mainView.router.loadPage('index.html');
                 };
             });
             

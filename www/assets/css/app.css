@@ -5320,7 +5320,7 @@ blockquote .author {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
-  color: #f0f0f0;
+  color: black;
 }
 
 h1 {
@@ -6980,12 +6980,12 @@ article .author {
     margin-top: 15px;
 }
 
+
 .list-block .item-content {
-    border: solid 1px #d6d6d6 !important;    
+    /* border: solid 1px #d6d6d6 !important; */
     background: white;
     color: #464646 !important;
 }
-
 
 .page-content {
     background: #f9f9f9 !important;
@@ -7001,7 +7001,7 @@ article .author {
 
 span.tituloProduto h2 {
     position: relative;
-    bottom: -278px;
+    bottom: -241px;
     z-index: 2;
     font-size: 15px;
     padding-left: 5px;
@@ -7062,7 +7062,7 @@ label.label-checkbox input[type=checkbox]:checked+.item-media i.icon-form-checkb
     background: #fff !important;
 }
 .list-block > ul {    
-    COLOR: #6d6d6d;
+    color: #989898;
     border: solid 1px #b9b9b9;
     border-radius: 9px;
     padding: 10px;
@@ -7090,4 +7090,8 @@ label.label-checkbox input[type=checkbox]:checked+.item-media i.icon-form-checkb
    
     border: 1px solid #767676;
    
+}
+
+span.tituloProduto h2 {
+    color: white !important;
 }
