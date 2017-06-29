@@ -16,8 +16,7 @@ var appConfig = {
     urlFoto: 'http://localhost/cashback/frontend/web/',
 
     localStorageName: 'esUser',
-    back: false,
-    backCount: 0,
+    back: false
 };
 
 var getUserData = function () {
@@ -112,15 +111,13 @@ var ajaxApi = function (method, params, callback) {
 var securePage = function (page, callback) {
     var page;
     var callback = (typeof callback == 'function') ? callback : function(){};
-        
-    appConfig.back = false;
+    
     myApp.onPageBack(page, function (pg) {
         appConfig.back = true;
-        appConfig.backCout++;
     });
     
     myApp.onPageAfterAnimation(page, function (pg) {
-        if(!appConfig.back) {
+        if(!appConfig.back || pg.name == 'main') {
             (validateLogin()) ? callback(pg) : logout();
             
         } else {
