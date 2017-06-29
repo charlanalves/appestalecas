@@ -26,7 +26,7 @@
         <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-144x144.png">
         <meta name="theme-color" content="#ffffff">
     -->
-        <title>NOX</title>
+        <title>ESTALECAS</title>
 
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
         <link rel="stylesheet" href="bower_components/framework7/dist/css/framework7.ios.min.css" type="text/css">
@@ -38,6 +38,11 @@
         <!--<link rel="stylesheet" href="assets/themes//style.css" id="theme-style">-->
 
         <style>
+            
+            .navbar:after {
+                height: 0px;
+            }
+            
             .pages, .pages input, .pages select, .pages textarea, .pages option {
                 color: #000 !important;
             }
@@ -642,7 +647,7 @@
                         a.loadValueTabbarBuy = function (data) {
                             promocaoAtual = data;
                             $('#tabbar-buy #tabbar-buy-pague').text('R$ ' + data.valor);
-                            $('#tabbar-buy #tabbar-buy-de-volta').text(data.deVolta + '%');
+                            $('#tabbar-buy #tabbar-buy-de-volta').text('R$ ' + data.deVolta);
                         };
                         
                         // cria os evento de click nas abas dos produtos

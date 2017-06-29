@@ -16,7 +16,8 @@ var appConfig = {
     urlFoto: 'http://localhost/cashback/frontend/web/',
 
     localStorageName: 'esUser',
-    back: false
+    back: false,
+    topTransparent: ['company']
 };
 
 var getUserData = function () {
@@ -117,9 +118,16 @@ var securePage = function (page, callback) {
     });
     
     myApp.onPageAfterAnimation(page, function (pg) {
+        
+        // trata barra top
+        if($.inArray(pg.name, appConfig.topTransparent) == 0) {
+            $('.navbar').css('background', 'transparent');
+        } else {
+            $('.navbar').css('background', '#FC5241');
+        }
+        
         if(!appConfig.back || pg.name == 'main') {
-            (validateLogin()) ? callback(pg) : logout();
-            
+            (validateLogin()) ? callback(pg) : logout();   
         } else {
             appConfig.back = false;
         }
@@ -139,6 +147,12 @@ var disablePanelLeft = function () {
 // funcoes
 Template7.registerHelper('count', function (a, options) {
   return a.length;
+});
+
+Template7.registerHelper('percent', function (a, b) {
+    a = parseFloat(a.replace(',','.'));
+    b = parseFloat(b.replace(',','.'));
+  return String(parseFloat(a * (b / 100)).toFixed(2)).replace('.',',');
 });
 
 Template7.registerHelper('foto', function (a, options) {
