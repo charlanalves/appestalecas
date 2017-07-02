@@ -7,14 +7,14 @@ var appConfig = {
     urlFoto: 'http://52.67.208.141/cashbackdev/frontend/web/',	
 //	urlFoto: 'http://localhost/apiestalecas/frontend/web/',
     //urlFoto: 'http://localhost/cashback/frontend/web/',
-
+    
     //url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',
     //url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
     //urlFoto: 'http://localhost/apiestalecas/frontend/web/',
-	
+    
     // Eduardo
-    //url: 'http://localhost/cashback/frontend/web/index.php?r=',
-    //urlFoto: 'http://localhost/cashback/frontend/web/',
+    url: 'http://localhost/cashback/frontend/web/index.php?r=',
+    urlFoto: 'http://localhost/cashback/frontend/web/',
 
     localStorageName: 'esUser',
     back: false,
@@ -135,9 +135,8 @@ var securePage = function (page, callback) {
         
         if(!appConfig.back || pg.name == 'main') {
             (validateLogin()) ? callback(pg) : logout();   
-        } else {
-            appConfig.back = false;
         }
+        appConfig.back = false;
     });
 };
 
