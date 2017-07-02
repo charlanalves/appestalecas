@@ -1,11 +1,11 @@
 
 var appConfig = {
 
-   // url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',	
-    url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
+    url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',	
+  //  url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
     
-  //  urlFoto: 'http://52.67.208.141/cashbackdev/frontend/web/',	
-	urlFoto: 'http://localhost/apiestalecas/frontend/web/',
+    urlFoto: 'http://52.67.208.141/cashbackdev/frontend/web/',	
+//	urlFoto: 'http://localhost/apiestalecas/frontend/web/',
     //urlFoto: 'http://localhost/cashback/frontend/web/',
 
     //url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',
