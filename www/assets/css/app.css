@@ -4835,11 +4835,11 @@ hr.align-center::after {
 
 .contact-type-list .contact-icon {
   font-size: 26px;
-  color: #FC5241;
+  color: #be0000;
 }
 .contact-type-list .contact-label {
   font-size: 11px;
-  color: #FC5241;
+  color: #be0000;
   font-family: 'robotobold', Arial, Tahoma, sans-serif;
 }
 .contact-type-list .contact-text {
@@ -4872,7 +4872,7 @@ hr.align-center::after {
 }
 
 .navbar-color-primary {
-  background: #FC5241 !important;
+  background: #be0000 !important;
   color: #ffffff !important;
 }
 
@@ -5080,7 +5080,7 @@ i.icon.icon-next::before {
 blockquote {
   padding: 0 0 0 20px;
   margin: 10px 0;
-  border-left: 5px solid #FC5241;
+  border-left: 5px solid #be0000;
   font-family: 'robotolight_italic', sans-serif;
 }
 blockquote .author {
@@ -5104,21 +5104,21 @@ blockquote .author {
   border: 1px solid;
 }
 .button.button-primary {
-  border-color: #FC5241;
-  color: #FC5241;
+  border-color: #be0000;
+  color: #be0000;
 }
 .button.button-primary:hover, .button.button-primary.active, .button.button-primary.active-state {
-  background: #FC5241;
+  background: #be0000;
   color: #ffffff;
 }
 .button.button-primary.button-fill {
-  background: #FC5241;
+  background: #be0000;
   color: #ffffff;
 }
 .button.button-primary.button-fill:hover, .button.button-primary.button-fill.active, .button.button-primary.button-fill.active-state {
-  border-color: #FC5241;
+  border-color: #be0000;
   background: #2E2C37;
-  color: #FC5241;
+  color: #be0000;
 }
 .button.button-secondary {
   border-color: #4e93af;
@@ -5182,7 +5182,7 @@ blockquote .author {
 }
 .button-header > span {
   display: inline-block;
-  background: #FC5241;
+  background: #be0000;
   width: 41px;
   height: 41px;
   border-radius: 50%;
@@ -5325,7 +5325,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-family: 'robotolight', sans-serif;
-  color: #FC5241;
+  color: #be0000;
 }
 
 h2 {
@@ -5366,7 +5366,7 @@ img {
 }
 
 .badge-primary {
-  background: #FC5241;
+  background: #be0000;
   color: #ffffff;
 }
 
@@ -5376,7 +5376,7 @@ img {
 }
 
 .owl-theme .owl-controls .owl-page span {
-  background-color: #FC5241;
+  background-color: #be0000;
 }
 
 header.small {
@@ -5404,7 +5404,7 @@ header.small .row > div span {
 }
 
 .color-box {
-  background-color: #FC5241;
+  background-color: #be0000;
   color: #FFFFFF;
 }
 
@@ -5493,7 +5493,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 
 .nice-header {
   position: relative;
-  background: #FC5241;
+  background: #be0000;
   color: #ffffff;
   min-height: 250px;
   text-align: center;
@@ -5533,7 +5533,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
   }
 }
 .nice-header svg g {
-  fill: #FC5241;
+  fill: #be0000;
 }
 .nice-header .logo {
   position: relative;
@@ -5699,13 +5699,13 @@ html:not(.watch-active-state) .list-block .item-link:active {
 /*    5. HEADER/FOOTER/SIDEBAR                 */
 /* =========================================== */
 .navbar {
-  background: #FC5241;
+  background: #be0000;
   color: #ffffff;
   font-family: 'robotolight', sans-serif;
   text-transform: uppercase;
 }
 .navbar:after {
-  background: #FC5241;
+  background: #be0000;
 }
 .navbar .kkicon {
   font-size: 20px;
@@ -5747,12 +5747,12 @@ html:not(.watch-active-state) .list-block .item-link:active {
 }
 .navbar-anim-on-scroll.active,
 .navbar.navbar-clear.active {
-  background: #FC5241;
+  background: #be0000;
   color: #ffffff;
 }
 .navbar-anim-on-scroll.active:after,
 .navbar.navbar-clear.active:after {
-  background: #FC5241;
+  background: #be0000;
 }
 .navbar-anim-on-scroll.active a.link,
 .navbar.navbar-clear.active a.link {
@@ -5801,7 +5801,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
   color: #FFFFFF;
 }
 .panel .list-block .list-group ul li .item-primary:hover {
-  background: #FC5241;
+  background: #be0000;
 }
 .panel .list-block .list-group ul li:after {
   background-color: #333333;
@@ -5861,7 +5861,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 /* =========================================== */
 [data-page="settings"] .item-media > span {
   font-size: 20px;
-  color: #FC5241;
+  color: #be0000;
 }
 
 .page-bg {
@@ -5877,7 +5877,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 }
 
 .page-bg-color {
-  background: #FC5241;
+  background: #be0000;
 }
 .page-bg-color[data-page="menu"] {
   background: url("../img/bg.jpg") no-repeat top center transparent;
@@ -5919,7 +5919,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
   box-shadow: 0 2px 1px -2px rgba(0, 0, 0, 0.3);
 }
 .dashboard-menu .menu-link:hover {
-  background: #FC5241;
+  background: #be0000;
   background: rgba(252, 82, 65, 0.7);
 }
 .dashboard-menu .menu-link > span:first-child {
@@ -5989,7 +5989,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 .popup h2 {
   text-transform: uppercase;
   font-family: 'robotoblack', sans-serif;
-  color: #FC5241;
+  color: #be0000;
   font-size: 28px;
   margin-bottom: 5px;
   margin-top: 10px;
@@ -6032,7 +6032,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 .popup .more-info {
   position: absolute;
   bottom: 20px;
-  color: #FC5241;
+  color: #be0000;
   text-align: center;
   width: 100%;
   margin-left: -20px;
@@ -6044,7 +6044,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 .picker-modal .toolbar:before, .picker-modal .toolbar:after,
 .popup .toolbar:before,
 .popup .toolbar:after {
-  background: #FC5241;
+  background: #be0000;
   background: rgba(252, 82, 65, 0.9);
   content: '';
   position: absolute;
@@ -6067,7 +6067,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 }
 .picker-modal .toolbar a,
 .popup .toolbar a {
-  color: #FC5241;
+  color: #be0000;
   font-family: 'robotolight', sans-serif;
 }
 .picker-modal .close-popup,
@@ -6075,7 +6075,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
   position: absolute;
   top: 15px;
   right: 15px;
-  color: #FC5241;
+  color: #be0000;
 }
 .picker-modal .close-popup > span,
 .popup .close-popup > span {
@@ -6117,14 +6117,14 @@ html:not(.watch-active-state) .list-block .item-link:active {
 .popup .swiper-container .swiper-slide .button {
   color: #FFFFFF;
   border-color: #FFFFFF;
-  background: #FC5241;
+  background: #be0000;
   height: 44px;
   line-height: 44px;
 }
 .picker-modal .swiper-container .bottom-color,
 .popup .swiper-container .bottom-color {
   position: absolute;
-  background: #FC5241;
+  background: #be0000;
   top: 50%;
   left: 0;
   right: 0;
@@ -6159,7 +6159,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 }
 .picker-modal.picker-calendar .picker-calendar-day.picker-calendar-day-selected span,
 .popup.picker-calendar .picker-calendar-day.picker-calendar-day-selected span {
-  background: #FC5241;
+  background: #be0000;
   color: #ffffff;
 }
 
@@ -6506,7 +6506,7 @@ article .text span {
   color: #333333;
 }
 .card.card-header-map .card-footer a, .card.card-header-pic .card-footer a {
-  color: #FC5241;
+  color: #be0000;
 }
 .card.card-header-icon .card-header {
   background: #666666;
@@ -6532,7 +6532,7 @@ article .text span {
   line-height: 1.4;
 }
 .card.card-header-icon .card-content-inner a > h4 {
-  color: #FC5241;
+  color: #be0000;
   font-size: 14px;
   margin-bottom: 5px;
 }
@@ -6582,10 +6582,10 @@ article .text span {
   padding: 0 15px;
 }
 .blog-box li .blog-list .text .title {
-  color: #FC5241;
+  color: #be0000;
 }
 .blog-box li .blog-list .text .title a {
-  color: #FC5241;
+  color: #be0000;
 }
 .blog-box li .blog-list .text small {
   font-size: 11px;
@@ -6681,7 +6681,7 @@ article .text span {
   top: 19px;
   left: 10px;
   content: "";
-  color: #FC5241;
+  color: #be0000;
   font-size: 20px;
   line-height: 1;
 }
@@ -6747,7 +6747,7 @@ article .text span {
 }
 
 .accordion-item.accordion-item-expanded .accordion-item-toggle {
-  background: #FC5241;
+  background: #be0000;
   color: #ffffff;
 }
 .accordion-item.accordion-item-expanded .accordion-item-content {
@@ -6755,7 +6755,7 @@ article .text span {
 }
 .accordion-item .accordion-item-toggle {
   padding: 5px 10px;
-  border: 1px solid #FC5241;
+  border: 1px solid #be0000;
   margin-top: -1px;
 }
 
@@ -6818,11 +6818,11 @@ article .text span {
   content: "\f099";
   top: 8px;
   left: 15px;
-  color: #FC5241;
+  color: #be0000;
   font-size: 22px;
 }
 .twitter-content ul li a {
-  color: #FC5241;
+  color: #be0000;
 }
 
 /* =========================================== */
@@ -6860,7 +6860,7 @@ article .text span {
   width: 100%;
 }
 .message.message-sent .message-text {
-  background-color: #FC5241;
+  background-color: #be0000;
   color: #ffffff;
 }
 .message .message-text {
@@ -6873,7 +6873,7 @@ article .text span {
   font-size: 15px;
 }
 .messagebar textarea + .link {
-  color: #FC5241;
+  color: #be0000;
   font-size: 18px;
 }
 
@@ -7015,7 +7015,7 @@ div#destino-templateCompany {
 blockquote {
     padding: 0 0 0 20px;
     margin: 10px 0;
-    border-left: 5px solid #FC5241;
+    border-left: 5px solid #be0000;
     font-family: 'robotolight_italic', sans-serif;
     color: #4a4a4a;
     line-height: 36px;

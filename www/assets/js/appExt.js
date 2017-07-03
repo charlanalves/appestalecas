@@ -130,7 +130,7 @@ var securePage = function (page, callback) {
         if($.inArray(pg.name, appConfig.topTransparent) == 0) {
             $('.navbar').css('background', 'transparent');
         } else {
-            $('.navbar').css('background', '#FC5241');
+            $('.navbar').css('background', '#be0000');
         }
         
         if(!appConfig.back || pg.name == 'main') {
