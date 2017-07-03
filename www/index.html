@@ -105,6 +105,13 @@
                 padding-right: 0px;
             }
             
+            .navbar-fixed .page-content, .navbar-through .page-content {
+                padding-top: 35px;        
+            }
+            
+            .list-block .item-inner:after{
+                height: 0px;
+            }
             
         </style>
 
@@ -142,6 +149,16 @@
                                 </a>
                             </li>
                             -->
+                            <li>
+                                <a href="category.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-th-list"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Categorias</div>
+                                    </div>
+                                </a>
+                            </li>
                             <li>
                                 <a href="main.html" class="item-link close-panel item-content">
                                     <div class="item-media">
@@ -237,6 +254,25 @@
             <div class="view view-main">
                 <div class="navbar"></div>
                 <div class="pages navbar-fixed toolbar-fixed " id="page-main" ></div>
+                <div class="toolbar tabbar tabbar-labels">
+                    <div class="toolbar-inner">
+                        <a href="#tab1" class="tab-link active">
+                            <img src="assets/img/icones/buscar-sel.jpg" style="width: 71px" />
+                        </a>
+                        <a href="#tab2" class="tab-link">
+                            <img src="assets/img/icones/promocoes.png" style="width: 36px" />
+                        </a>
+                        <a href="#tab3" class="tab-link">
+                            <img src="assets/img/icones/indique.png" style="width: 36px" />
+                        </a>
+                        <a href="#tab4" class="tab-link">
+                            <img src="assets/img/icones/resgatar.png" style="width: 36px" />
+                        </a>
+                        <a href="#tab5" class="tab-link">
+                            <img src="assets/img/icones/conta.png" style="width: 36px" />
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -276,7 +312,7 @@
             
             // -----------------------------------------------------------------
             // index carrega a pagina principal de promocoes ou tela de login
-            (validateLogin()) ? mainView.router.loadPage('main.html') : mainView.router.loadPage('login.html');
+            (validateLogin()) ? mainView.router.loadPage('category.html') : mainView.router.loadPage('login.html');
 
             // -----------------------------------------------------------------
             // login
@@ -327,7 +363,6 @@
             // pesquisa
             securePage('search', function (page) {
                 var templateSearch = new Template('templateSearch');
-
                 // realiza pesquisa
                 $$('#btn-pesquisa').on('click', function () {
                     var dataPesquisa = $('input#campo-pesquisa').val();
@@ -335,12 +370,21 @@
                         ajaxApi('search', {param: dataPesquisa}, callbackSearch);
                     }
                 });
-
                 // callback da pesquisa
                 var callbackSearch = function(a) {
                     templateSearch.compileAndLoadData(a);
                 };
-
+                
+            });
+            
+            
+            // -----------------------------------------------------------------
+            // lista promocoes por categoria
+            securePage('promotions-by-category', function (page) {
+                var templateEstablishment = new Template('templatePromotionsByCategory');
+                templateEstablishment.compileAjax('promotions-by-category', {param: page.query.category}, function (a) {
+                    $('.title-top').text(a.category);
+                });
             });
 
 
@@ -361,6 +405,14 @@
                     });
                 });
 
+            });
+
+
+            // -----------------------------------------------------------------
+            // categorias
+            securePage('category', function (page) {
+                var templateEstablishment = new Template('templateCategory');
+                templateEstablishment.compileAjax('category', {user_auth_key: getUserData().auth_key});
             });
 
 

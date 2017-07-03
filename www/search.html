@@ -18,34 +18,59 @@
     <div data-page="search" class="page">
         <div class="page-content">
             <div class="list-block">
-                <div class="item-content">
-                    <!--<div class="item-media"><i class="icon"></i></div>-->
+                <div class="item-content" style="margin: 10px; margin-bottom: 5px; margin-top: 15px; border-radius: 10px;">
+                    <div class="item-media"><i class="fa fa-search"></i></div>
                     <div class="item-inner">
                         <div class="item-input"><input type="text" id="campo-pesquisa" placeholder="Pesquise aqui"></div>
-                        <div class="item-after"><a href="#" class="button active" id="btn-pesquisa">ok</a></div>
+                        <div class="item-after"><a href="#" class="button active" id="btn-pesquisa" style="margin-top: -9px;">ok</a></div>
                     </div>
                 </div>
-                <ul id="destino-templateSearch"></ul>
+                <ul id="destino-templateSearch" style="border: 0px"></ul>
             </div>
         </div>
 
         <!-- Template -->
         <script type="text/template" id="templateSearch">
             {{#if data}}
-                <li class="item-divider">
-                    <div class="item-content">
+                <li>
+                    <div class="item-content" style="padding: 5px 2px; border-bottom: 1px silver solid;">
                         <div class="item-title">Resultado</div>
                         <div class="item-after">{{count data}}</div>
                     </div>
                 </li>
                 {{#each data reverse="false"}}
                     <li>
-                        <a href="company.html?company={{EMPRESA_ID}}" class="item-link item-content">
-                            <!-- <div class="item-media"><i class="icon icon-camera"></i></div> -->
-                            <div class="item-media"><img src="{{foto IMG}}" width="50"></div>
-                            <div class="item-inner">
-                                <div class="item-title">{{EMPRESA_NOME}}</div>
+                        <a href="company.html?company={{EMPRESA_ID}}" class="">
+
+                            <div class="item-content" style="padding: 5px 0px; border-bottom: 1px silver solid; height: 135px">
+                                <div class="item-media"><img src="{{foto IMG}}" width="120"></div>
+                                <div class="item-inner" style="padding: 10px 2px; margin-left: 10px;">
+                                  <div class="item-title-row" style="margin-top: -50px;">
+                                    
+                                    <div class="item-title">{{EMPRESA_NOME}}</div>
+
+                                    <div class="item-after" style="display: block;">
+                                        {{CB06_DESCRICAO}}
+                                        <br />
+                                        <span style="font-size: 11px;text-decoration: line-through;">R$ {{real CB06_PRECO}}</span>
+                                        <br />
+                                        <strong> por R$ {{real CB06_PRECO_PROMOCIONAL}}</strong>
+                                        <span class="badge badge-primary badge-square text-uppercase" style="
+                                            top: 0px!important;
+                                            right: 0px!important;
+                                            float: right!important;
+                                            padding: 10px 6px!important;
+                                            margin: 5px;
+                                            position: absolute;
+                                            background: linear-gradient(to bottom, #1db5e9 0%, #1496c3 100%);
+                                            font-size: 12px;">
+                                            {{real CB06_DINHEIRO_VOLTA}}%
+                                        </span>
+                                    </div>
+                                  </div>
+                                </div>
                             </div>
+
                         </a>
                     </li>
                 {{/each}}
