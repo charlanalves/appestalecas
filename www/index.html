@@ -113,6 +113,22 @@
                 height: 0px;
             }
             
+            .link-tabbar-bottom i{
+                font-size: 30px;
+            }
+            .link-tabbar-bottom{
+                color: #666!important;
+            }
+            
+            .link-tabbar-bottom.active{
+                color: #FFF!important;
+                background-color: #be0000;
+            }
+            
+            .link-tabbar-bottom img {
+                max-width: inherit; 
+                width: 71px!important;
+            }
         </style>
 
     </head>
@@ -251,29 +267,40 @@
 
         <!-- Views -->
         <div class="views">
+            
             <div class="view view-main">
+                
                 <div class="navbar"></div>
+                
                 <div class="pages navbar-fixed toolbar-fixed " id="page-main" ></div>
-                <div class="toolbar tabbar tabbar-labels">
+                
+                <div class="toolbar tabbar tabbar-labels" id="tabbar-bottom" style="z-index: 99999999!important">
                     <div class="toolbar-inner">
-                        <a href="#tab1" class="tab-link active">
-                            <img src="assets/img/icones/buscar-sel.jpg" style="width: 71px" />
+                        <a href="category.html" class="link link-tabbar-bottom active-category">
+                            <i class="fa fa-search"></i>
+                            <span class="tabbar-label">buscar</span>
                         </a>
-                        <a href="#tab2" class="tab-link">
-                            <img src="assets/img/icones/promocoes.png" style="width: 36px" />
+                        <a href="main.html" class="link link-tabbar-bottom active-main">
+                            <i class="fa fa-fire"></i>
+                            <span class="tabbar-label">promoções</span>
                         </a>
-                        <a href="#tab3" class="tab-link">
-                            <img src="assets/img/icones/indique.png" style="width: 36px" />
+                        <a href="invite-friend.html" class="link link-tabbar-bottom active-invite-friend">
+                            <i class="fa fa-gift"></i>
+                            <span class="tabbar-label">indique um amigo</span>
                         </a>
-                        <a href="#tab4" class="tab-link">
-                            <img src="assets/img/icones/resgatar.png" style="width: 36px" />
+                        <a href="cash-out.html" class="link link-tabbar-bottom active-cash-out">
+                            <i class="fa fa-usd"></i>
+                            <span class="tabbar-label">resgatar</span>
                         </a>
-                        <a href="#tab5" class="tab-link">
-                            <img src="assets/img/icones/conta.png" style="width: 36px" />
+                        <a href="change-password.html" class="link link-tabbar-bottom active-change-password">
+                            <i class="fa fa-user"></i>
+                            <span class="tabbar-label">conta</span>
                         </a>
                     </div>
                 </div>
+                
             </div>
+            
         </div>
 
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>

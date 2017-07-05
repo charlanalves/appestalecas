@@ -18,7 +18,8 @@ var appConfig = {
 
     localStorageName: 'esUser',
     back: false,
-    topTransparent: ['company']
+    topTransparent: ['company'],
+    tabbarBottomShow: ['category', 'main', 'invite-friend', 'cash-out', 'change-password']
 };
 
 var getUserData = function () {
@@ -120,14 +121,28 @@ var securePage = function (page, callback) {
     var page;
     var callback = (typeof callback == 'function') ? callback : function(){};
     
+    // evento antes da animacao da page
+    myApp.onPageBeforeAnimation(page, function (pg) {
+        // controla menu inferior div#tabbar-bottom
+        var tabbarBottom = $('div#tabbar-bottom');
+        if($.inArray(pg.name, appConfig.tabbarBottomShow) >= 0) {
+            tabbarBottom.find('.link-tabbar-bottom').removeClass('active');
+            tabbarBottom.find('.link-tabbar-bottom.active-' + pg.name).addClass('active');
+            tabbarBottom.show();
+        } else {
+            tabbarBottom.hide();
+        }
+    });
+    
+    // evento voltar (class BACK)
     myApp.onPageBack(page, function (pg) {
         appConfig.back = true;
     });
     
+    // evento apos a animacao da page
     myApp.onPageAfterAnimation(page, function (pg) {
-        
         // trata barra top
-        if($.inArray(pg.name, appConfig.topTransparent) == 0) {
+        if($.inArray(pg.name, appConfig.topTransparent) >= 0) {
             $('.navbar').css('background', 'transparent');
         } else {
             $('.navbar').css('background', '#be0000');
