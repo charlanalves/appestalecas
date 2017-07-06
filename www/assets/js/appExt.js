@@ -18,7 +18,7 @@ var appConfig = {
 
     localStorageName: 'esUser',
     back: false,
-    topTransparent: ['company'],
+    topTransparent: ['company', 'main'],
     tabbarBottomShow: ['category', 'main', 'invite-friend', 'cash-out', 'change-password']
 };
 
@@ -123,6 +123,7 @@ var securePage = function (page, callback) {
     
     // evento antes da animacao da page
     myApp.onPageBeforeAnimation(page, function (pg) {
+        
         // controla menu inferior div#tabbar-bottom
         var tabbarBottom = $('div#tabbar-bottom');
         if($.inArray(pg.name, appConfig.tabbarBottomShow) >= 0) {
@@ -132,6 +133,14 @@ var securePage = function (page, callback) {
         } else {
             tabbarBottom.hide();
         }
+        
+        // controla barra top
+        if($.inArray(pg.name, appConfig.topTransparent) >= 0) {
+            $('.navbar').css('background', 'transparent');
+        } else {
+            $('.navbar').css('background', '#be0000');
+        }
+        
     });
     
     // evento voltar (class BACK)
@@ -141,12 +150,6 @@ var securePage = function (page, callback) {
     
     // evento apos a animacao da page
     myApp.onPageAfterAnimation(page, function (pg) {
-        // trata barra top
-        if($.inArray(pg.name, appConfig.topTransparent) >= 0) {
-            $('.navbar').css('background', 'transparent');
-        } else {
-            $('.navbar').css('background', '#be0000');
-        }
         
         if(!appConfig.back || pg.name == 'main') {
             (validateLogin()) ? callback(pg) : logout();   

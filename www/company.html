@@ -1,4 +1,3 @@
-
 <div class="navbar navbar-clear" style="background: transparent;border: 0px!important;height: 44px;">
     <div class="navbar-inner">
         <div class="left">
@@ -18,7 +17,7 @@
             <div id="destino-templateCompany" style="margin-bottom: 100px;"></div>            
         </div>
 
-        <div class="toolbar tabbar" id="tabbar-buy" style="height: 110px;background: #FC5241;">
+        <div class="toolbar tabbar" id="tabbar-buy" style="height: 110px;background: #be0000;">
             <div class="row">
                 <div class="col-50">
                     Pague <strong id="tabbar-buy-pague">R$ 00,00</strong>
@@ -53,7 +52,6 @@
                 {{#each data.produtos}}
                     <div id="tab{{CB05_ID}}" class="tab {{#if active}}active{{/if}}">
                         <div class="content-block" style="margin: 0px;">
-                            <span class="tituloProduto"><h2 style="margin: 5px 0px;">{{CB05_TITULO}}</h2></span>
                             <div id="destino-templateProduct{{CB05_ID}}"></div>
                         </div>
                     </div>
@@ -71,7 +69,7 @@
             <div class="swiper-custom">
                 <div class="swiper-container swiper-image-product">
                     <div class="swiper-pagination"></div>
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper" style="color: #000!important">
                         {{#each data.IMG}}
                         <div class="swiper-slide" style="max-height: 272px; min-height: 180px">
                             <img data-src="{{foto CB14_URL}}" class="swiper-lazy">
@@ -83,9 +81,23 @@
                 <!-- <div class="swiper-button-prev"></div> -->
                 <!-- <div class="swiper-button-next"></div> -->
             </div>
-{{data.IMG[0].CB14_PRODUTO_ID}}
+
+            <div class="content-block" style="
+                margin: 0px 0px; 
+                padding: 0px;
+                z-index: 99!important;
+                margin-top: -35px;
+                position: absolute;
+                color: #FFF;
+                padding: 6px;
+                font-size: 18px;">
+                <!--<span class="tituloProduto"><h2 style="margin: 5px 0px;"></h2></span>-->
+                <!--{{data.IMG[0].CB14_PRODUTO_ID}}-->
+                {{data.TITULO}}
+            </div>
+
             <!-- Abas (promocoes, info, local) -->
-            <div class="content-block" style="margin: 0px 0px; padding: 0px;">
+            <div class="content-block" style="margin: 10px 0px 5px 0px; padding: 0px;">
                 <div class="buttons-row">
                     <a href="#tab-product-1-{{data.PRODUTO}}" class="show-tab-product-1 tab-link button buttonTabProduct button-primary active">
                         Promoções
