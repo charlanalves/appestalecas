@@ -14,7 +14,7 @@
     <div data-page="company" class="page">
 
         <div class="page-content">
-            <div id="destino-templateCompany" style="margin-bottom: 100px;"></div>            
+            <div id="destino-templateCompany" style="margin-bottom: 50px;"></div>            
         </div>
 
         <div class="toolbar tabbar" id="tabbar-buy" style="height: 110px;background: #be0000;">
@@ -90,10 +90,21 @@
                 position: absolute;
                 color: #FFF;
                 padding: 6px;
-                font-size: 18px;">
+                font-size: 18px;
+                text-shadow: 0.1em 0.1em 0.2em #222">
                 <!--<span class="tituloProduto"><h2 style="margin: 5px 0px;"></h2></span>-->
                 <!--{{data.IMG[0].CB14_PRODUTO_ID}}-->
-                {{data.TITULO}}
+                {{data.PRODUTO_DATA.CB04_NOME}}
+            </div>
+
+            <div class="content-block" style="
+                color: #222;
+                padding: 5px;
+                margin: 0px;
+                text-align: justify;
+                font-size: 18px;">
+                <strong">{{data.PRODUTO_DATA.CB05_TITULO}}:</strong> 
+                {{data.PRODUTO_DATA.CB05_DESCRICAO}}
             </div>
 
             <!-- Abas (promocoes, info, local) -->
@@ -136,22 +147,55 @@
         <script type="text/template" id="templatePromotions">
             {{#each data.PROMOCOES}}
             <div class="list-block media-list promocoes-do-produto" user-data='{"produto":"{{@root.data.PRODUTO}}", "promocao":"{{CB06_ID}}", "valor":"{{real CB06_PRECO_PROMOCIONAL}}", "deVolta":"{{percent CB06_PRECO_PROMOCIONAL CB06_DINHEIRO_VOLTA}}"}'>
-              <ul>
+              <ul style="padding: 5px;">
                 <li>
                   <label class="label-checkbox item-content" style="padding-left: 5px;">
                     <input type="radio" name="promocoes-checkbox" {{#if @first}} checked="true" {{/if}}>
                     <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
-                    <div class="item-inner" style="padding: 10px 2px; margin-left: 10px;">
-                      <div class="item-title-row">
-                        <div class="item-title">{{CB06_DESCRICAO}}</div>
+                    <div class="item-inner" style="padding: 0px 2px; margin-left: 5px;">
+                      <div class="item-title-row" style="min-height: 60px;">
+                        <div class="item-title" style="
+                            word-wrap: break-word!important;
+                            width: 100%;
+                            height: auto;
+                            white-space: inherit;">
+                            {{CB06_DESCRICAO}}
+                        </div>
                         <div class="item-after">
-                            <strong class="percCb">CB + {{real CB06_DINHEIRO_VOLTA}}%</strong>
+                            <!--<strong class="percCb">CB + {{real CB06_DINHEIRO_VOLTA}}%</strong>-->
+                            <div style="font-size: 11px; float: right; text-align: right;">
+                                <span style="text-decoration: line-through;">
+                                    R$ {{real CB06_PRECO}}
+                                </span>
+                                <br />
+                                <strong style="font-size: 18px; color: #be0000">
+                                    R$ {{real CB06_PRECO_PROMOCIONAL}}
+                                </strong>    
+                            </div>
                         </div>
                       </div>
-                      <div class="item-subtitle">{{CB06_TITULO}}</div>
-                      <div class="item-text">
-                            <span style="font-size: 11px;">de R$ {{real CB06_PRECO}}</span>
-                            <strong> por R$ {{real CB06_PRECO_PROMOCIONAL}}</strong>
+                      <!--<div class="item-subtitle">{{CB06_TITULO}}</div>-->
+                      <div class="item-text" style="border-top: 1px #ededed solid; height: inherit;">
+
+                            <span style="font-size: 12px;">
+                                Ganhe de volta 
+                                <span class="badge badge-primary badge-square text-uppercase" style="
+                                top: 0px!important;
+                                right: 0px!important;
+                                padding: 9px 6px!important;
+                                margin: 5px;
+                                background: linear-gradient(to bottom, #1db5e9 0%, #1496c3 100%);
+                                font-size: 12px;">
+                                    {{real CB06_DINHEIRO_VOLTA}}%
+                                </span>
+                            </span>
+                            <span style="font-size: 12px; float: right; font-weight: bold; padding-top: 5px;">
+                                R$ {{percent CB06_PRECO_PROMOCIONAL CB06_DINHEIRO_VOLTA}}
+                            </span>
+                            <!--
+                            <span style="font-size: 11px;">R$ {{real CB06_PRECO}}</span>
+                            <strong> R$ {{real CB06_PRECO_PROMOCIONAL}}</strong>
+                            -->
                       </div>
                     </div>
                   </label>

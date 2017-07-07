@@ -395,13 +395,15 @@
                 $$('#btn-pesquisa').on('click', function () {
                     var dataPesquisa = $('input#campo-pesquisa').val();
                     if (dataPesquisa) {
-                        ajaxApi('search', {param: dataPesquisa}, callbackSearch);
+                        ajaxApi('search', {param:{texto:dataPesquisa,limite:0}}, callbackSearch);
                     }
                 });
                 // callback da pesquisa
                 var callbackSearch = function(a) {
                     templateSearch.compileAndLoadData(a);
                 };
+                
+                $('input#campo-pesquisa').focus();
                 
             });
             
