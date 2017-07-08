@@ -16,7 +16,7 @@
 
 <div class="pages">
     <div data-page="search" class="page">
-        <div class="page-content">
+        <div class="page-content infinite-scroll">
             <div class="list-block">
                 <div class="item-content" style="margin: 10px; margin-bottom: 5px; margin-top: 15px; border-radius: 10px;">
                     <div class="item-media"><i class="fa fa-search"></i></div>
@@ -26,12 +26,17 @@
                     </div>
                 </div>
                 <ul id="destino-templateSearch" style="border: 0px; padding-top: 5px;"></ul>
+                <!-- Preloader -->
+                <div class="infinite-scroll-preloader">
+                    <!--<div class="preloader"></div>-->
+                </div>
             </div>
         </div>
 
         <!-- Template -->
         <script type="text/template" id="templateSearch">
             {{#if data}}
+                <!--
                 <li>
                     <div class="item-content" style="
                         border-bottom: 1px #DFDFDF solid;
@@ -42,6 +47,7 @@
                         <div class="item-title">Resultados: <strong>{{count data}}</strong></div>
                     </div>
                 </li>
+                -->
                 {{#each data reverse="false"}}
                     <li>
                         <a href="company.html?company={{CB04_ID}}&product={{CB06_PRODUTO_ID}}" class="">
