@@ -7108,3 +7108,7 @@ span.tituloProduto h2 {
 h1 {    
     color: #00a0be;
 }
+
+.navbar-inner, .toolbar-inner {
+    padding: 0 0px;
+}
