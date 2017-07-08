@@ -25,7 +25,7 @@
                         <div class="item-after"><a href="#" class="button active" id="btn-pesquisa" style="margin-top: -9px;">ok</a></div>
                     </div>
                 </div>
-                <ul id="destino-templateSearch" style="border: 0px"></ul>
+                <ul id="destino-templateSearch" style="border: 0px; padding-top: 5px;"></ul>
             </div>
         </div>
 
@@ -33,44 +33,44 @@
         <script type="text/template" id="templateSearch">
             {{#if data}}
                 <li>
-                    <div class="item-content" style="padding: 5px 2px; border-bottom: 1px silver solid;">
-                        <div class="item-title">Resultado</div>
-                        <div class="item-after">{{count data}}</div>
+                    <div class="item-content" style="
+                        border-bottom: 1px #DFDFDF solid;
+                        padding: 0px;
+                        min-height: inherit;
+                        font-size: 14px;
+                        color: #777!important;">
+                        <div class="item-title">Resultados: <strong>{{count data}}</strong></div>
                     </div>
                 </li>
                 {{#each data reverse="false"}}
                     <li>
-                        <a href="company.html?company={{EMPRESA_ID}}" class="">
-
+                        <a href="company.html?company={{CB04_ID}}&product={{CB06_PRODUTO_ID}}" class="">
                             <div class="item-content" style="padding: 5px 0px; border-bottom: 1px silver solid; height: 135px">
-                                <div class="item-media"><img src="{{foto IMG}}" width="120"></div>
+                                <div class="item-media"><img src="{{#if CB14_URL}}{{foto CB14_URL}}{{else}}assets/img/sem_imagem2.jpg{{/if}}" width="150"></div>
                                 <div class="item-inner" style="padding: 10px 2px; margin-left: 10px;">
                                   <div class="item-title-row" style="margin-top: -50px;">
                                     
-                                    <div class="item-title">{{EMPRESA_NOME}}</div>
+                                    <div class="item-title">{{CB04_NOME}}</div>
 
                                     <div class="item-after" style="display: block;">
-                                        {{CB06_DESCRICAO}}
+                                        {{CB05_TITULO}}
                                         <br />
-                                        <span style="font-size: 11px;text-decoration: line-through;">R$ {{real CB06_PRECO}}</span>
+                                        <strong> a partir de R$ {{real MIN_PRECO}}</strong>
                                         <br />
-                                        <strong> por R$ {{real CB06_PRECO_PROMOCIONAL}}</strong>
+                                        receba até 
                                         <span class="badge badge-primary badge-square text-uppercase" style="
                                             top: 0px!important;
                                             right: 0px!important;
-                                            float: right!important;
-                                            padding: 10px 6px!important;
+                                            padding: 9px 6px!important;
                                             margin: 5px;
-                                            position: absolute;
                                             background: linear-gradient(to bottom, #1db5e9 0%, #1496c3 100%);
                                             font-size: 12px;">
-                                            {{real CB06_DINHEIRO_VOLTA}}%
+                                            {{real MAX_CB}}%
                                         </span>
                                     </div>
                                   </div>
                                 </div>
                             </div>
-
                         </a>
                     </li>
                 {{/each}}
