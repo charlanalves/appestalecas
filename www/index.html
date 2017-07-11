@@ -355,6 +355,7 @@
             // -----------------------------------------------------------------
             // login
             myApp.onPageInit('login', function (page) {
+                $('div#tabbar-bottom').hide();
                 $$('#login-button').on('click', function () {
                     validateLogin(myApp.formToJSON('#login-form'));
                 });
@@ -364,7 +365,7 @@
             // -----------------------------------------------------------------
             // registration
             myApp.onPageInit('registration', function (page) {
-
+                $('div#tabbar-bottom').hide();
                 // envia form de cadastro de usuario
                 $$('#loginCreate-button').on('click', function () {
                     ajaxApi('login-create', myApp.formToJSON('#loginCreate-form'), callbackLoginCreate);
@@ -405,15 +406,6 @@
                     stopLoading = false,
                     templateSearch = new Template('templateSearch');
                     
-                // realiza pesquisa
-                $$('#btn-pesquisa').on('click', function () {
-                    dataPesquisa = $('input#campo-pesquisa').val();                    
-                    stopLoading = false;
-                    templateSearch.clear();
-                    limite = 0;
-                    findApp();
-                });
-                
                 // busca registros
                 var findApp = function() {
                     if (dataPesquisa) {
@@ -431,7 +423,15 @@
                     }
                 };
                 
-                $('input#campo-pesquisa').focus();
+                $$('input#campo-pesquisa').focus();
+                
+                $$('a#btn-pesquisa').on('click', function () {
+                    dataPesquisa = $('input#campo-pesquisa').val();                    
+                    stopLoading = false;
+                    templateSearch.clear();
+                    limite = 0;
+                    findApp();
+                });
                 
                 $$('.infinite-scroll').on('infinite', function () {
                     
