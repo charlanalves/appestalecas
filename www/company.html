@@ -150,7 +150,7 @@
               <ul style="padding: 5px;">
                 <li>
                   <label class="label-checkbox item-content" style="padding-left: 5px;">
-                    <input type="radio" name="promocoes-checkbox" {{#if @first}} checked="true" {{/if}}>
+                    <input type="radio" name="promocoes-checkbox" {{checked_html @root.data.PROMOCAO_SELECIONADA this.CB06_ID}}>
                     <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
                     <div class="item-inner" style="padding: 0px 2px; margin-left: 5px;">
                       <div class="item-title-row" style="min-height: 60px;">

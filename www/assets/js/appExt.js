@@ -18,6 +18,7 @@ var appConfig = {
 
     localStorageName: 'esUser',
     back: false,
+    backRecarregou: true,
     topTransparent: ['company', 'main'],
     tabbarBottomShow: ['category', 'main', 'invite-friend', 'cash-out', 'change-password']
 };
@@ -151,10 +152,14 @@ var securePage = function (page, callback) {
     // evento apos a animacao da page
     myApp.onPageAfterAnimation(page, function (pg) {
         
-        if(!appConfig.back || pg.name == 'main') {
-            (validateLogin()) ? callback(pg) : logout();   
+        if(!appConfig.back || appConfig.backRecarregou) {
+            (validateLogin()) ? callback(pg) : logout();
+            appConfig.backRecarregou = false;
+        } else {
+            appConfig.backRecarregou = true;
         }
         appConfig.back = false;
+        
     });
 };
 
@@ -171,6 +176,10 @@ var disablePanelLeft = function () {
 // funcoes
 Template7.registerHelper('count', function (a, options) {
   return a.length;
+});
+
+Template7.registerHelper('checked_html', function (a, b) {
+  return (a == b ? 'checked="true"' : '');
 });
 
 Template7.registerHelper('percent', function (a, b) {
