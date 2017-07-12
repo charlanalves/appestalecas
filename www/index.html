@@ -761,7 +761,7 @@
                         // Template com as promocoes do produto (list)
                         a.loadTemplatePromocoes = function () {
                             var templatePromotions = new Template('templatePromotions', idProdutoAtual);
-                            templatePromotions.compileAjax('company-promotions', {product: idProdutoAtual}, function(r_promotions){
+                            templatePromotions.compileAjax('company-promotions', paramNew, function(r_promotions){
                                 
                                 // cria evento de click nas promocoes
                                 $$('.promocoes-do-produto').on('click', function (){
