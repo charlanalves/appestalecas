@@ -198,12 +198,20 @@ class Template {
         this.i = (i || ''); // controle de destino - para destinos dinamicos
     }
 
+    clear () {
+        document.getElementById('destino-' + this.templateId + this.i).innerHTML = '';
+    }
+    
     compileData (data) {
         this.dataCompiled = this.templateCompiled({data: data});
     }
     
     loadData () {
         return (typeof this.dataCompiled == 'string' ? document.getElementById('destino-' + this.templateId + this.i).innerHTML = this.dataCompiled : false);
+    }
+    
+    appendData () {
+        return (typeof this.dataCompiled == 'string' ? $('#destino-' + this.templateId + this.i).append(this.dataCompiled) : false);
     }
     
     compileAndLoadData (data) {
