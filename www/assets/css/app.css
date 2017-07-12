@@ -7095,3 +7095,20 @@ label.label-checkbox input[type=checkbox]:checked+.item-media i.icon-form-checkb
 span.tituloProduto h2 {
     color: white !important;
 }
+.navbar, .subnavbar, .toolbar {
+    background: #ffffff;
+}
+.form.nice-label .form-row {
+    border-bottom: 1px solid #767676;
+}
+.color-default{
+ background-color: #be0000;
+}
+
+h1 {    
+    color: #00a0be;
+}
+
+.navbar-inner, .toolbar-inner {
+    padding: 0 0px;
+}

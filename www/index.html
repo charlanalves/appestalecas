@@ -202,7 +202,7 @@
                                         <i class="fa fa-home"></i>
                                     </div>
                                     <div class="item-inner">
-                                        <div class="item-title">Estabelecimentos</div>
+                                        <!--<div class="item-title">Estabelecimentos</div>-->
                                     </div>
                                 </a>
                             </li>
@@ -340,10 +340,27 @@
         <!-- iugu remoto -->
         <!-- <script type="text/javascript" src="https://js.iugu.com/v2"></script> -->
         <script type="text/javascript" src="assets/js/formatter.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
         
         <script>
             
-            
+        document.addEventListener('deviceready', onDeviceReady, false);
+
+            function onDeviceReady () {
+               window.addEventListener('native.keyboardshow', function(e){
+                   alert('haha')
+                  a = document.querySelectorAll('.toolbar')[0];
+                  a.style.display = "none";                  
+                });
+
+
+                window.addEventListener('native.keyboardhide', function keyboardHideHandler(e){
+                   alert('hehe')
+                    a = document.querySelectorAll('.toolbar')[0];
+                    a.style.display = "block";
+                });
+
+            }   
             // mascara de CPF
             // $("input[name='cpf_cnpj']").mask("999.999.999-99").attr('placeholder', 'CPF');
             
