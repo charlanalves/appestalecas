@@ -38,7 +38,9 @@
         <!--<link rel="stylesheet" href="assets/themes//style.css" id="theme-style">-->
 
         <style>
-            
+            .negrito {
+                font-weight: bold;
+            }
             .navbar:after {
                 height: 0px;
             }
@@ -55,6 +57,12 @@
                 min-height: 32px;
                 line-height: 30px;
             }
+            
+            select, input {
+                padding: 0 10px!important;    
+                font-size: 16px;
+            }
+            
 
             /* CSS TAB BAR "COMPRAR" ---------------------------------------- */
             #tabbar-buy div[class*="col-"] {
@@ -340,7 +348,7 @@
         <!-- iugu remoto -->
         <!-- <script type="text/javascript" src="https://js.iugu.com/v2"></script> -->
         <script type="text/javascript" src="assets/js/formatter.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
+        <!--<script type="text/javascript" src="cordova.js"></script>-->
         
         <script>
             
@@ -383,11 +391,30 @@
             // registration
             myApp.onPageInit('registration', function (page) {
                 $('div#tabbar-bottom').hide();
-                // envia form de cadastro de usuario
-                $$('#loginCreate-button').on('click', function () {
-                    ajaxApi('login-create', myApp.formToJSON('#loginCreate-form'), callbackLoginCreate);
-                });
+                var formRegistration = new Form('loginCreate-form');
 
+                // get politica de privacidade + termos de uso
+                ajaxApi('politica-privacidade-termos-uso', {}, function (a) {
+                    
+                    $$('a#alert-politica-privacidade').on('click', function () {
+                        myApp.alert(a.PP, 'Política de privacidade');
+                    });
+
+                    $$('a#alert-termos-uso').on('click', function () {
+                        myApp.alert(a.TU, 'Termos de uso');
+                    });
+
+                    // envia form de cadastro de usuario
+                    $$('#loginCreate-button').on('click', function () {
+                        if(formRegistration.isChecked('PP') && formRegistration.isChecked('TU')) {
+                            ajaxApi('login-create', myApp.formToJSON('#loginCreate-form'), callbackLoginCreate);
+                        } else {
+                            myApp.alert('Não é possível criar uma conta sem ler e concordar com a <strong>política de privacidade</strong> e os <strong>termos de uso</strong>', 'Importante');
+                        }
+                    });
+
+                });
+                
                 // callback login create
                 var callbackLoginCreate = function(data) {                      
                     saveUserLSAndRedirectToIndex(appConfig.localStorageName, JSON.parse(data.retorno));
@@ -526,8 +553,8 @@
                 var callbackCashOut = function (a) {
                     
                     if(a.saque_realizado == true) {
-                        myApp.alert('Solicitação de saque realizada com sucesso.', 'Tudo certo!');
-                        ajaxCashOut();
+                        //myApp.alert('Solicitação de saque realizada com sucesso.', 'Tudo certo!');                        
+                        mainView.router.loadPage('cash-out-message.html');
                         return;
                         
                     } else {
@@ -543,16 +570,21 @@
 
                         // add mascara de moeda (REAL)
                         formCashOut.setMoney(["CB03_VALOR"]);
-
-                        // set attributes
-                        if (typeof a.conta_bancaria != "undefined") {
+                            
+                        if (a.conta_bancaria.CB03_AGENCIA) {
                             formCashOut.setFormData(a.conta_bancaria);
                             formCashOut.form.find('select, input').attr('disabled', true);
                             formCashOut.form.find('input[name=CB03_VALOR]').attr('disabled', false);
                         }
-
+                        
                         $('a#cashOut-submit').on('click', function () {
-                            ajaxCashOut(formCashOut.getFormData());
+                            var dadosForm = formCashOut.getFormData();
+                            var dadosCompl = {CB03_NOME_BANCO: formCashOut.getSelected('CB03_COD_BANCO').text};
+                            ajaxCashOut($.extend(dadosCompl,dadosForm));
+                        });
+                        
+                        $('a#alert-regras').on('click', function () {
+                            myApp.alert(a.regras, 'Regras para saque');
                         });
                     }
                 },
@@ -565,6 +597,14 @@
                 
                 ajaxCashOut();
                 
+            });
+            
+            
+            // -----------------------------------------------------------------
+            // Mensagem de saque
+            securePage('cash-out-message', function (page) {
+                var templatePurchaseMessage = new Template('templateCashOutMessage');
+                templatePurchaseMessage.compileAjax('cash-out-message', {user_auth_key: getUserData().auth_key});
             });
 
 

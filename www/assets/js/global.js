@@ -31,7 +31,16 @@ var Form = function (formId) {
             }
         });
         return data;
+    },    
+    this.getSelected = function (name) {
+        var selected = this.form.find('select[name=' + name + '] option:selected');
+        return {text: selected.text(), value: selected.val()};
     },
+    this.isChecked = function (name) {
+        var checked = this.form.find('input[name=' + name + ']:checked').val();
+        return (typeof checked != 'undefined' ? checked : false);
+    },
+            
     this.send = function (url, callback)
     {
         var ajaxParams = {},

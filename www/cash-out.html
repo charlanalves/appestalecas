@@ -5,7 +5,9 @@
                 <span class="icon-chevron-left"></span> <span>Voltar</span>
             </a>
         </div>
-        <div class="center sliding">$acar</div>
+        <div class="center sliding">
+            <span class="anim-logo-smalal negrito">$acar</span>
+        </div>
         <div class="right">
             <a href="#" class="link icon-only" data-panel="right">
                 <!--<span class="kkicon icon-alarm"></span>-->
@@ -17,7 +19,7 @@
 <div class="pages">
     <div data-page="cash-out" class="page">
         <div class="page-content">
-            <div class="list-block">
+            <div class="list-block" style="margin-bottom: 50px;">
 	            <div id="destino-templateCashOut"></div>
             </div>
         </div>
@@ -47,7 +49,16 @@
 						<div class="item-content">Agência:
 							<div class="item-inner">
 								<div class="item-input">
-									<input type="text" name="CB03_AGENCIA" placeholder="" required="">
+									<input type="number" name="CB03_AGENCIA" placeholder="" required="">
+								</div>
+							</div>
+						</div>
+                    </div>
+                    <div class="form-row">
+						<div class="item-content">Conta:
+							<div class="item-inner">
+								<div class="item-input">
+									<input type="number" name="CB03_NUM_CONTA" placeholder="" required="">
 								</div>
 							</div>
 						</div>
@@ -81,7 +92,7 @@
 	                </div>
                     <a href="#" class="button button-primary button-fill" id="cashOut-submit">Solicitar saque</a>
                     <div class="text-center">
-                        <small>Veja as regras para sacar <a href="index.html">aqui</a></small>
+                        <small>Veja as regras para sacar <a href="#" id="alert-regras">aqui</a></small>
                     </div>
                 </form>
             </div>

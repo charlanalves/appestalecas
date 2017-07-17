@@ -1,0 +1,62 @@
+<div class="navbar navbar-clear">
+    <div class="navbar-inner">
+        <div class="left">
+            <!--
+            <a href="#" class="link back">
+                <span class="icon-chevron-left"></span> <span>Voltar</span>
+            </a>
+            -->
+        </div>
+        <div class="center sliding">
+            <span class="anim-logo-smalal negrito">$olicitação de $aque</span>
+        </div>
+        <div class="right">
+            <!--
+            <a href="#" class="link icon-only" data-panel="right">
+                <span class="kkicon icon-alarm"></span>
+            </a>
+            -->
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="cash-out-message" class="page">
+        
+        <div class="page-content">
+            <div class="list-block" style="margin-bottom: 50px;">
+                <div id="destino-templateCashOutMessage" style="margin-bottom: 50px; color: #000!important"></div>
+            </div>
+        </div>
+    
+        <div class="toolbar tabbar">
+            <div class="toolbar-inner">
+                <a href="category.html" class="link active">
+                    Ir para a página inicial
+                </a>
+            </div>
+        </div>
+        
+        <!-- Template -->
+        <script type="text/template" id="templateCashOutMessage">
+
+            <!-- saldo atual -->
+            <div class="item-content" style="padding: 0 15px;">
+                <small>Saldo Atual:</small>
+                <h1><strong>R$ {{real data.saldoAtual}}</strong></h1>
+            </div>
+
+            <!-- mensagem -->
+            <div class="item-content" style="padding: 0 15px; text-align: center;">
+                <div class="alert alert-info">
+                    <span>
+                        <h1>Saque realizado com sucesso!</h1><br/>
+                        <strong>Em até {{data.prazo}} dias úteis</strong> o valor solicitado estará em sua conta bancária.
+                    </span>
+                </div>
+            </div>
+
+        </script>
+        
+    </div>
+</div>

@@ -1,7 +1,7 @@
 <div class="pages">
     <div data-page="main" class="page">
         <div class="page-content" style="padding-top: 0px;">
-            <div class="list-block" id="destino-templateMain"></div>
+            <div class="list-block" id="destino-templateMain" style="margin: 0px;"></div>
             <a href="filter.html">
                 <div class="button button-primary button-fill mb-10" style="display:scroll; position:fixed; bottom:45px; right:5px; z-index: 9999">
                     <i class="fa fa-lg fa-filter"></i>
@@ -14,7 +14,7 @@
 
             {{#each data.estabelecimentos}}
                 <a href="company.html?company={{CB04_ID}}&product={{CB05_ID}}">
-                    <article>
+                    <article style="margin-bottom: -5px;">
                         <div class="author {{#if @first}} primeira-promo {{/if}}">
                             <img src="{{foto CB04_URL_LOGOMARCA}}" alt=""/>
                             <span>
