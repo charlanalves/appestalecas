@@ -7,7 +7,9 @@
             </a>
             -->
         </div>
-        <div class="center sliding">Compra</div>
+        <div class="center sliding">
+            <span class="anim-logo-smalal negrito">Compra</span>
+        </div>
         <div class="right">
             <!--
             <a href="#" class="link icon-only" data-panel="right">
@@ -22,12 +24,14 @@
     <div data-page="purchase-message" class="page">
         
         <div class="page-content">
-            <div id="destino-templatePurchaseMessage" style="margin-bottom: 100px; color: #000!important"></div>
+            <div class="list-block">
+            <div id="destino-templatePurchaseMessage" style="margin-bottom: 50px; color: #000!important"></div>
+            </div>
         </div>
     
         <div class="toolbar tabbar">
             <div class="toolbar-inner">
-                <a href="main.html" class="link active">
+                <a href="category.html" class="link active">
                     Ir para a página inicial
                 </a>
             </div>
@@ -35,7 +39,13 @@
         
         <!-- Template -->
         <script type="text/template" id="templatePurchaseMessage">
-            {{data.message}}
+
+            <!-- mensagem -->
+            <div class="item-content" style="padding: 0 15px; text-align: center;">
+                <div class="alert alert-info" style="margin: 15px 0px;">
+                    <span>{{data.message}}</span>
+                </div>
+            </div>
         </script>
         
     </div>
