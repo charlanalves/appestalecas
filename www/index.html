@@ -63,6 +63,17 @@
                 font-size: 16px;
             }
             
+            .button-valid-1 {background: #30b8ff!important;}
+            .button-valid-2 {background-color: #175779!important;}
+            .button-valid-3 {background-color: #0f3c54!important;}
+            .button-valid-1,.button-valid-2,.button-valid-3 {
+                border: 0px!important;
+                width: 100%;
+                font-weight: bold;
+                font-size: 18px;
+                margin: 2px 5px!important;
+                right: 8px;
+            }
 
             /* CSS TAB BAR "COMPRAR" ---------------------------------------- */
             #tabbar-buy div[class*="col-"] {
@@ -374,7 +385,7 @@
             
             
             // -----------------------------------------------------------------
-            // index carrega a pagina principal de promocoes ou tela de login
+            // index carrega a pagina principal ou tela de login
             (validateLogin()) ? mainView.router.loadPage('category.html') : mainView.router.loadPage('login.html');
 
             // -----------------------------------------------------------------
@@ -384,6 +395,65 @@
                 $$('#login-button').on('click', function () {
                     validateLogin(myApp.formToJSON('#login-form'));
                 });
+            });
+            
+
+            // -----------------------------------------------------------------
+            // validar email
+            myApp.onPageInit('valid-email', function (page) {
+                
+                var param = getUserData();
+                if(param.email_valid) {goMain();}
+                
+                $('div#tabbar-bottom').hide();
+                
+                var templateValidEmail = new Template('templateValidEmail');
+                templateValidEmail.compileAndLoadData(param);
+                
+                // btn validar conta de email
+                $$('a#ValidEmail').on('click', function () {
+                    ajaxApi('verifica-email', param, function (a) {
+                        if(a){
+                            validaEmail();
+                            goMain();
+                        } else {
+                            myApp.alert('Acesse seu e-mail e clique no link ou se você não recebeu o e-mail clique no botão "reenviar e-mail".','A conta não foi ativada'); 
+                        }
+                    });
+                });
+                
+                // btn reenviar email
+                $$('a#ReenviarEmail').on('click', function () {
+                    ajaxApi('reenviar-email-validacao', param, function (a) {
+                        console.log(a.responseText);
+                       //myApp.alert(a.msg,'Atenção'); 
+                    });
+                });
+                
+                // btn alterar email
+                $$('a#AlterarEmail').on('click', function () {
+                    myApp.modal({
+                        title:  'Alterar E-mail',
+                        text: '<div class="list-block"><div class="item-content"><div class="item-input"><input type="email" id="valid_new_email" placeholder="Novo e-mail"></div></div></div>',
+                        buttons: [
+                            {text: 'Cancelar', onClick: function() {}},
+                            {text: 'Salvar', onClick: function() {
+                                    var novoEmail = $('input#valid_new_email').val();
+                                    ajaxApi('alterar-email-usuario', {param: param, new_email: novoEmail}, function (a) {
+                                        if(typeof a.responseText != 'undefined'){
+                                            myApp.alert('Seu e-mail não foi alterado: ' + a.responseText,'Opss');
+                                        } else {
+                                            myApp.alert('','E-mail alterado com sucesso!');
+                                            $('div#destino-templateValidEmail strong').text(novoEmail);
+                                        }
+                                    });
+                                }
+                            }
+                        ]
+                    });
+                    $('input#valid_new_email').focus();
+                });
+                
             });
             
             

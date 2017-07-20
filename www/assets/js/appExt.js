@@ -26,11 +26,21 @@ var appConfig = {
 var getUserData = function () {
     return (typeof [appConfig.localStorageName] == "object" ? JSON.parse((localStorage[appConfig.localStorageName] || '{}')) : false);
 }
+var validaEmail = function() {
+    var dados = getUserData();
+    localStorage.setItem(appConfig.localStorageName, JSON.stringify($.extend(dados,{email_valid: 1})));
+}
 var saveUserLSAndRedirectToIndex = function(attrName,data){
     localStorage.setItem(attrName, JSON.stringify(data));
-    mainView.router.loadPage('main.html');
+    // verifica email valido
+    if(data.email_valid != 1) {
+        mainView.router.loadPage('valid-email.html');
+    } else {
+        goMain();
+    }
     return true;
 }
+var goMain = function() {mainView.router.loadPage('category.html');};
 var validateLogin = function (data) {
     var attrName = appConfig.localStorageName;
 
@@ -48,7 +58,7 @@ var validateLogin = function (data) {
                 return false;
                 
             } else {
-               return saveUserLSAndRedirectToIndex(attrName, data);
+                return saveUserLSAndRedirectToIndex(attrName, data);
             }
         });
 
@@ -59,6 +69,8 @@ var validateLogin = function (data) {
         }
         var localStorageObj = (localStorage.getItem(attrName) ? JSON.parse(localStorage.getItem(attrName)) : false);
         if (typeof localStorageObj.auth_key == 'undefined') {
+            return false;
+        } else if (localStorageObj.email_valid != 1) {
             return false;
         } else {
              return true
