@@ -7074,7 +7074,7 @@ label.label-checkbox input[type=checkbox]:checked+.item-media i.icon-form-checkb
 
 .form.nice-label .form-row {
    
-    border: 1px solid #767676;
+    /*border: 1px solid #767676;*/
    
 }
 
@@ -7097,4 +7097,27 @@ h1 {
 
 .navbar-inner, .toolbar-inner {
     padding: 0 0px;
+}
+
+.list-block input[type=time], .list-block input[type=number], .list-block input[type=search], .list-block input[type=text], .list-block input[type=password], .list-block input[type=email], .list-block input[type=tel], .list-block input[type=url], .list-block input[type=date], .list-block input[type=datetime-local], .list-block select, .list-block textarea {
+  
+    height: 22px;
+  
+}
+
+.list-block .item-content {
+  
+    min-height: 27px;
+  
+}
+
+.list-block .item-inner {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    min-height: 18px;
+}
+
+.list-block input[type=time], .list-block input[type=number], .list-block input[type=search], .list-block input[type=text], .list-block input[type=password], .list-block input[type=email], .list-block input[type=tel], .list-block input[type=url], .list-block input[type=date], .list-block input[type=datetime-local], .list-block select, .list-block textarea {
+
+    height: 22px;
 }
