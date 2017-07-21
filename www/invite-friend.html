@@ -9,9 +9,11 @@
             <span class="anim-logo-smalal negrito">Convidar amigo</span>
         </div>
         <div class="right">
+            <!--
             <a href="#" class="link icon-only" data-panel="right">
-                <!--<span class="kkicon icon-alarm"></span>-->
+                <span class="kkicon icon-alarm"></span>
             </a>
+            -->
         </div>
     </div>
 </div>
@@ -22,11 +24,44 @@
         <!-- Template -->
         <script type="text/template" id="templateInviteFriend">
 
-            <div class="page-content">
+            <div class="page-content" style="background: url('assets/img/gift.jpg') no-repeat top center!important;">
                 <div class="content-block mt-10" style="display: block;">
 
-                    <div class="list-block">
-                        <ul>
+
+                <h1 style="
+                    margin-top: 130px;
+                    text-align: center;
+                    padding: 5px;
+                    font-weight: bold;
+                    font-size: 20px;
+                    padding-left: 140px;">
+                    CONVIDE SEUS AMIGOS <br /> E GANHE JUNTO COM ELES!
+                </h1>
+
+                <h2 style="
+                    margin-top: 100px;
+                    text-align: center;
+                    padding: 5px;
+                    font-weight: bold;
+                    font-size: 14px;
+                    position: relative;
+                    padding-left: 85px;">
+                    {{data.texto}}
+                </h2>
+
+                <div class="content-block mt-10" style="display: block;">
+
+                    <a href="#" class="button button-primary button-fill" id="btn-convidar-amigos" style="margin: 35px;margin-bottom: 7px;">Convidar Amigos</a>
+                    <div class="text-center">
+                        <a href="#" id="alert-regras-convite" style="color: #FFF">Veja as regras aqui</a>
+                    </div>
+
+                </div>
+
+
+
+                    <div class="list-block" style="display: none">
+                        <ul style="background: transparent!important;">
                             <li class="align-top">
                                 <h2> Assim que seu amigo começar a utilizar o CashBack, você e ele <strong>ganham R$ 10,00</strong> cada!</h2>
                             </li>
@@ -41,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="toolbar tabbar">
+            <div class="toolbar tabbar" style="display: none">
                 <div class="toolbar-inner">
                     <a href="#" class="link"  style="color:#000" onclick="Util.copyElement($('textarea#texto-convite-amigo'))">
                         COPIAR

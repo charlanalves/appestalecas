@@ -612,7 +612,16 @@
             // convidar amigo
             securePage('invite-friend', function (page) {
                 var templateInviteFriend = new Template('templateInviteFriend');
-                templateInviteFriend.compileAjax('invite-friend', {user_auth_key: getUserData().auth_key});
+                templateInviteFriend.compileAjax('invite-friend', {user_auth_key: getUserData().auth_key}, function (a) {
+                    var r = a;
+                    $$('a#btn-convidar-amigos').on('click', function () {
+                        // codigo para abrir o compartilhamento no cell
+                        // texto: r.texto;
+                    });
+                    $$('a#alert-regras-convite').on('click', function () {
+                        myApp.alert(r.regras, 'REGRAS');
+                    });
+                });
             });
 
 
