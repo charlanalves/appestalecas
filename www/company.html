@@ -68,12 +68,12 @@
 
             <!-- Slider (fotos do produto) -->
             <div class="swiper-custom">
-                <div class="swiper-container swiper-image-product">
+                <div class="swiper-container swiper-image-product" style="background-color: #222;">
                     <div class="swiper-pagination"></div>
                     <div class="swiper-wrapper" style="color: #000!important">
                         {{#each data.IMG}}
                         <div class="swiper-slide" style="max-height: 272px; min-height: 180px">
-                            <img data-src="{{foto CB14_URL}}" class="swiper-lazy">
+                            <img data-src="{{foto CB14_URL}}" class="swiper-lazy" style="">
                             <div class="preloader"></div>
                         </div>
                         {{/each}}
@@ -92,7 +92,9 @@
                 color: #FFF;
                 padding: 6px;
                 font-size: 18px;
-                text-shadow: 0.1em 0.1em 0.2em #222">
+                text-shadow: 0.1em 0.1em 0.2em #222;
+                width: 100%;
+                background: rgba(33, 33, 33, 0.5);">
                 <!--<span class="tituloProduto"><h2 style="margin: 5px 0px;"></h2></span>-->
                 <!--{{data.IMG[0].CB14_PRODUTO_ID}}-->
                 {{data.PRODUTO_DATA.CB04_NOME}}

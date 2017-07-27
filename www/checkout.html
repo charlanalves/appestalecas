@@ -23,7 +23,7 @@
 	    <!-- Template -->
 	    <script type="text/template" id="templateCheckout">
 
-	        <div class="page-content" style="padding-bottom: 120px; padding-top: 54px;">
+	        <div class="page-content" style="padding-bottom: 0px; padding-top: 54px;">
 
 				<form id="checkout-form" class="form nice-label" action=""  method="POST">
 				        	
@@ -81,7 +81,7 @@
 									<div class="item-inner">
 										<div class="item-input">
 											<select name="FORMA-PAGAMENTO" id="CHECKOUT-FORMA-PAGAMENTO" data-adquirente="">
-												<option value="">selecione...</option>
+												<!--<option value="">selecione...</option>-->
 												{{#each data.forma_pagamento}}
 												<option value="{{CB08_ID}}">{{CB08_NOME}}</option>
 												{{/each}}
@@ -155,8 +155,28 @@
 						</ul>
 					</div>
 		       	</form>
+
+		        <div class="color-default" id="tabbar-buy" style="height: 125px;padding-top: 10px;margin-top: 15px;">
+					<div class="row">
+					    <div class="col-50">
+					    	Pague <strong>R$ {{real data.CB16_VALOR}}</strong>
+					    </div>
+					    <div class="col-50">
+					    	Receba de volta <strong>R$ {{real data.CB16_VLR_CB_TOTAL}}</strong>
+					    </div>
+					</div>
+					<div class="row">
+					    <div class="col-10"></div>
+					    <div class="col-80">
+			    			<a href="#" class="button button-secondary button-fill" id="checkout-submit">FINALIZAR A COMPRA</a>
+					    </div>
+					    <div class="col-10"></div>
+					</div>
+				</div>
+
 	        </div>
 
+	        <!--
 	        <div class="toolbar tabbar color-default" id="tabbar-buy" style="height: 110px;">
 				<div class="row">
 				    <div class="col-50">
@@ -174,6 +194,7 @@
 				    <div class="col-10"></div>
 				</div>
 	        </div>
+	        -->
 
 	    </script>
         
