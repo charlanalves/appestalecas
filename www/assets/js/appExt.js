@@ -13,13 +13,13 @@ var appConfig = {
     //urlFoto: 'http://localhost/apiestalecas/frontend/web/',
     
     // Eduardo
-    url: 'http://localhost/cashback/frontend/web/index.php?r=',
-    urlFoto: 'http://localhost/cashback/frontend/web/',
+  //  url: 'http://localhost/cashback/frontend/web/index.php?r=',
+   // urlFoto: 'http://localhost/cashback/frontend/web/',
 
     localStorageName: 'esUser',
     back: false,
     backRecarregou: true,
-    topTransparent: ['company', 'main'],
+    topTransparent: ['company', 'main','invite-friend'],
     tabbarBottomShow: ['category', 'main', 'invite-friend', 'cash-out', 'change-password']
 };
 

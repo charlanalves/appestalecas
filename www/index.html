@@ -359,7 +359,7 @@
         <!-- iugu remoto -->
         <!-- <script type="text/javascript" src="https://js.iugu.com/v2"></script> -->
         <script type="text/javascript" src="assets/js/formatter.js"></script>
-        <!--<script type="text/javascript" src="cordova.js"></script>-->
+        <script type="text/javascript" src="cordova.js"></script>
         
         <script>
             
@@ -621,6 +621,20 @@
                     $$('a#alert-regras-convite').on('click', function () {
                         myApp.alert(r.regras, 'REGRAS');
                     });
+					//$('.navbar').hide();
+				
+					//Ao clicar na tela convidar amigo abre o aplicativo WhatsApp para compartilhamento
+				   $('#sh').on('click',function(){
+						window.plugins.socialsharing.shareViaWhatsApp(
+							'Use o APP Estalecas e receba seu dinheiro de volta! Cadastre-se agora mesmo e ganhe 20 Reais na sua primeira compra.',
+							'assets/img/logo_estalecas.png', 
+							'https://www.website.com/foo/#bar?a=b'
+						);
+					})
+					
+					
+
+					
                 });
             });
 

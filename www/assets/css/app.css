@@ -7121,3 +7121,34 @@ h1 {
 
     height: 22px;
 }
+
+.list-block .item-media+.item-inner {
+    margin-left: 2px;
+}
+
+.list-block .item-inner {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    min-height: 32px;
+}
+
+
+.page-content.indicar #sh {
+    display: block;
+    left: 0px;
+    top: 43px;
+    position: absolute;
+    height: 537px;
+    width: 100%;
+}
+.page-content.indicar {
+    background: url(../img/gift.jpg) top center !important;
+    background-size: contain !important;
+}
+.text-center.regras-convite {
+    position: absolute;
+    top: 0;
+    left: 34%;
+    text-transform: uppercase;
+    font-size: 11px;
+}
