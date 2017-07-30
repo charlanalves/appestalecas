@@ -795,8 +795,11 @@
                                 $('div#DATA-CARD').hide('fast');
                             } else {
                                 $('div#DATA-CARD').show('fast');
+                                $('div#DATA-CARD input.credit_card_number').focus();
                             }
                         });
+                        
+                        $('select#CHECKOUT-FORMA-PAGAMENTO').trigger('change');
                         
                         var callbackCheckout =  function(a){
                             if (a.status === true) {
