@@ -1,0 +1,95 @@
+<div class="navbar navbar-clear">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link back">
+                <span class="icon-chevron-left"></span> <span>Voltar</span>
+            </a>
+        </div>
+        <div class="center sliding">Extato</div>
+        <div class="right">
+            <a href="#" class="link icon-only" data-panel="right">
+                <!--<span class="kkicon icon-alarm"></span>-->
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+
+    <div data-page="extract" class="page">
+
+        <div class="page-content">
+
+            <div class="list-block" id="destino-templateExtract"></div>
+
+            <div class="list-block" id="destino-templateExtractList"></div>
+
+	    </div>
+
+        <!-- Template Saldo -->
+        <script type="text/template" id="templateExtract">
+		    <div class="nice-header header-fix-top small" style="min-height: 145px;">
+		        <div class="logo anim-logo" style="padding: 0 20px 0px;">
+		            <h2>Saldo Atual</h2>
+		            <h1>R$ {{real data.saldo}}</h1>
+		        </div>
+		    </div>
+
+            <div class="item-content" style="margin: 10px; margin-bottom: 5px; margin-top: 15px; border-radius: 10px;">
+                <div class="item-media"><i class="fa fa-calendar"></i></div>
+                <div class="item-inner">
+                    <div class="item-input">
+	                    <select id="extract-periodo">
+			                {{#each data.ultimosMeses reverse="false"}}
+	                    		<option value="{{@key}}">{{this}}</option>
+	                    	{{/each}}
+	                    </select>
+                    </div>
+                    <div class="item-after"><a href="#" class="button active" id="btn-filtrar-extrato" style="margin-top: -9px;">ok</a></div>
+                </div>
+            </div>
+
+	    </script>
+
+
+        <!-- Template Lista -->
+        <script type="text/template" id="templateExtractList">
+            {{#if data}}
+                <ul style="border: 0px; padding-top: 5px;">
+	                {{#each data reverse="false"}}
+	                    <li>
+                            <div class="item-content" style="padding: 5px 0px; border-bottom: 1px silver solid; height: 135px">
+                                <div class="item-inner" style="padding: 10px 2px; margin-left: 10px;">
+                                  <div class="item-title-row" style="width: 100%;">
+                                    <div class="item-title">
+	                                    <small>{{data DT_CRIACAO}}</small>
+	                                    <br />
+                                    	{{CB04_NOME}} - {{CB04_END_BAIRRO}}
+                                        <span class="badge badge-primary badge-square text-uppercase" style="
+                                            top: 0px!important;
+                                            right: 0px!important;
+                                            padding: 9px 6px!important;
+                                            margin: 5px;
+                                            float: right;
+                                            background: linear-gradient(to bottom, #1db5e9 0%, #1496c3 100%);
+                                            font-size: 12px;">
+                                             {{percent2 VALOR CB16_VALOR}}%
+                                        </span>
+                                        <br />
+                                        <div style="margin-top: 10px; padding-right: 5px;">
+                                        	PAGAMENTO ({{CB16_FORMA_PAG}}) <span style="float: right;">R$ -{{real CB16_VALOR}}</span>
+                                        </div>
+                                        <br />
+                                        <center>Crédito <strong>+{{real VALOR}}</strong></center>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+	                    </li>
+	                {{/each}}
+                </ul>
+            {{/if}}
+        </script>
+        
+    </div>
+</div>
