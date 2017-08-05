@@ -20,6 +20,7 @@ var appConfig = {
     back: false,
     backRecarregou: true,
     topTransparent: ['company', 'main'],
+    panelLeftHide: ['login', 'valid-email', 'registration'],
     tabbarBottomShow: ['category', 'main', 'invite-friend', 'cash-out', 'change-password']
 };
 
@@ -153,6 +154,9 @@ var securePage = function (page, callback) {
         } else {
             $('.navbar').css('background', '#be0000');
         }
+        
+        // controla exibicao do meu
+        myApp.params.swipePanel = ($.inArray(pg.name, appConfig.panelLeftHide) >= 0) ? false : 'left';
         
     });
     
