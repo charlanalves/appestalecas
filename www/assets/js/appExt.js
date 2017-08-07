@@ -19,7 +19,8 @@ var appConfig = {
     localStorageName: 'esUser',
     back: false,
     backRecarregou: true,
-    topTransparent: ['company', 'main','invite-friend'],
+    topTransparent: ['company', 'main'],
+    panelLeftHide: ['login', 'valid-email', 'registration'],
     tabbarBottomShow: ['category', 'main', 'invite-friend', 'cash-out', 'change-password']
 };
 
@@ -154,6 +155,9 @@ var securePage = function (page, callback) {
             $('.navbar').css('background', '#be0000');
         }
         
+        // controla exibicao do meu
+        myApp.params.swipePanel = ($.inArray(pg.name, appConfig.panelLeftHide) >= 0) ? false : 'left';
+        
     });
     
     // evento voltar (class BACK)
@@ -200,8 +204,24 @@ Template7.registerHelper('percent', function (a, b) {
   return String(parseFloat(a * (b / 100)).toFixed(2)).replace('.',',');
 });
 
+Template7.registerHelper('percent2', function (a, b) {
+    a = parseFloat(a.replace(',','.'));
+    b = parseFloat(b.replace(',','.'));
+  return String(parseFloat((a / b) * 100).toFixed(2)).replace('.',',');
+});
+
 Template7.registerHelper('foto', function (a, options) {
   return appConfig.urlFoto + a;
+});
+
+Template7.registerHelper('data', function (a) {
+    d = new Date(a);
+    month = String(d.getMonth() + 1);
+    day = String(d.getDate());
+    year = String(d.getFullYear());
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    return day + '/' + month + '/' + year;
 });
 
 Template7.registerHelper('real', function (a, options) {

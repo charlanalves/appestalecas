@@ -236,6 +236,16 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="extract.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-list"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Extrato</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="cash-out.html" class="item-link close-panel item-content">
                                     <div class="item-media">
                                         <i class="fa fa-money"></i>
@@ -706,6 +716,32 @@
             securePage('shopping', function (page) {
                 var templateShopping = new Template('templateShopping');
                 templateShopping.compileAjax('shopping', {user_auth_key: getUserData().auth_key});
+            });
+
+
+            // -----------------------------------------------------------------
+            // extrato
+            securePage('extract', function (page) {
+                
+                // lista extrato
+                var templateExtractList = new Template('templateExtractList');
+                var findExtract = function() {
+                    dataPeriodo = $('select#extract-periodo option:selected').val();
+                    templateExtractList.compileAjax('extract-list', {periodo:dataPeriodo,user_auth_key:getUserData().auth_key});
+                };
+                
+                // saldo + periodos
+                var templateExtract = new Template('templateExtract');
+                templateExtract.compileAjax('extract', {user_auth_key: getUserData().auth_key}, function () {
+                    // depois de carregar o saldo e montar o select com os meses carrega o extrato para o periodo selecionado
+                    findExtract();
+                    // cria evento de clique no botao de busca de extrato por periodo
+                    $('a#btn-filtrar-extrato').on('click', function () {
+                        templateExtractList.clear();
+                        findExtract();
+                    });
+                });
+                
             });
 
 
