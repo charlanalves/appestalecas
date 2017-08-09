@@ -138,7 +138,9 @@
 								<div class="item-content form-row">
 									<div class="item-inner">
 										<div class="item-input">
-											<input type="text" autocomplete="off" class="credit_card_expiration" data-iugu="expiration" placeholder="MM/AA" value="">
+											<input type="text" class="credit_card_expiration-1" maxlength="2" pattern="([0-9]|[0-9])" placeholder="MÊS" value="" style="width: 48%!important; float: left; margin-right: 10px;">
+											<input type="text" class="credit_card_expiration-2" maxlength="2" pattern="([0-9]|[0-9])" placeholder="ANO" value="" style="width: 48%!important; float: left; margin-right: 0px;">
+											<input type="hidden" class="credit_card_expiration" data-iugu="expiration" value="" style="display: none;">
 										</div>
 									</div>
 								</div>
@@ -147,7 +149,7 @@
 								<div class="item-content form-row">
 									<div class="item-inner">
 										<div class="item-input">
-											<input type="number" autocomplete="off" class="credit_card_cvv" data-iugu="verification_value"  placeholder="" value="">
+											<input type="text" autocomplete="off" class="credit_card_cvv" maxlength="3" pattern="([0-9]|[0-9]|[0-9])"  data-iugu="verification_value"  placeholder="" value="">
 										</div>
 									</div>
 								</div>

@@ -824,6 +824,14 @@
                             }
                         });
 
+                        // altera validade
+                        $('input.credit_card_expiration-1, input.credit_card_expiration-2').attr('maxlength', 2).change(function (){
+                            mes = $('input.credit_card_expiration-1').val();
+                            ano = $('input.credit_card_expiration-2').val();
+                            $('input.credit_card_expiration').val(mes + '/' + ano);
+                        });
+                        
+
                         // altera forma de pagamento
                         $('select#CHECKOUT-FORMA-PAGAMENTO').change(function (){
                             formaPagamento = this.value;
