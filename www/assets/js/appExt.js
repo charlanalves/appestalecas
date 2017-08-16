@@ -24,6 +24,9 @@ var appConfig = {
     tabbarBottomShow: ['category', 'main', 'invite-friend', 'cash-out', 'change-password']
 };
 
+var blockPanelLeft = function (pgName) {    
+    myApp.params.swipePanel = ($.inArray(pgName, appConfig.panelLeftHide) >= 0) ? false : 'left';
+}
 var getUserData = function () {
     return (typeof [appConfig.localStorageName] == "object" ? JSON.parse((localStorage[appConfig.localStorageName] || '{}')) : false);
 }
@@ -156,7 +159,7 @@ var securePage = function (page, callback) {
         }
         
         // controla exibicao do meu
-        myApp.params.swipePanel = ($.inArray(pg.name, appConfig.panelLeftHide) >= 0) ? false : 'left';
+        blockPanelLeft(pg.name);
         
     });
     
