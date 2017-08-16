@@ -89,8 +89,13 @@
             }
             
             /* CSS FILTRO --------------------------------------------------- */
+            #page-filter .content-block-title{
+                color: #000;
+                font-weight: bold
+            }
             #page-filter .swiper-wrapper {
                 margin: 5px;
+                color: #000;
             }
             #page-filter .swiper-slide {
                 color:#000;
@@ -101,8 +106,7 @@
             #page-filter .swiper-slide label {
                 text-align:center;
                 display:block;
-                padding-top: 20px;
-                padding-bottom: 100%;
+                padding-top: 10px;
                 font-size:16px;
             }
             #page-filter .swiper-slide label div {
@@ -110,14 +114,15 @@
                 width: 100%;
             }
             #page-filter .swiper-slide label div.item-inner {
-                padding-top: 35px;
+                padding-top: 30px;
             }
             #page-filter .swiper-container {
                 height: 120px;
                 margin: 5px;
+                overflow: visible;
             }
             #page-filter .swiper-slide label.label-radio input[type=radio]:checked~.item-inner {
-                background-size: 32px;
+                background-size: 25px;
                 background-position: center top;
             }
             #page-filter .swiper-slide label.label-radio input[type=radio]~.item-inner {
@@ -401,9 +406,30 @@
             // -----------------------------------------------------------------
             // login
             myApp.onPageInit('login', function (page) {
+                blockPanelLeft(page.name);
                 $('div#tabbar-bottom').hide();
                 $$('#login-button').on('click', function () {
                     validateLogin(myApp.formToJSON('#login-form'));
+                });
+                
+                $$('a#linkEsqueceuSenha').on('click', function () {
+                    cpf_cnpj = $('form#login-form input[name=cpf_cnpj]').val();
+                    if(!cpf_cnpj) {
+                        myApp.alert('Preencha o campo e-mail e clique no link para recebeu em seu e-mail uma nova senha.', 'Esqueceu a senha?'); 
+                    } else {
+                        ajaxApi('nova-senha', {cpf_cnpj: cpf_cnpj}, function(r) {
+                            if(r.status == null) {
+                                myApp.alert('Sua conta nao foi encontrada, verifique os dados informados e tente novamente.', 'Esqueceu a senha?');                     
+                                
+                            } else if(r.status) {
+                                myApp.alert('Foi enviado um e-mail para <strong>' + r.email + '</strong> com a nova senha!', 'Esqueceu a senha?');                     
+                                
+                            } else {
+                                myApp.alert('Não foi possível recuperar a senha, tente novamente.', 'Esqueceu a senha?');                     
+                                
+                            }
+                        });
+                    }
                 });
             });
             
@@ -411,7 +437,7 @@
             // -----------------------------------------------------------------
             // validar email
             myApp.onPageInit('valid-email', function (page) {
-                
+                blockPanelLeft(page.name);
                 var param = getUserData();
                 if(param.email_valid) {goMain();}
                 
@@ -470,6 +496,7 @@
             // -----------------------------------------------------------------
             // registration
             myApp.onPageInit('registration', function (page) {
+                blockPanelLeft(page.name);
                 $('div#tabbar-bottom').hide();
                 var formRegistration = new Form('loginCreate-form');
 
@@ -808,6 +835,22 @@
                                 Iugu.setTestMode(true); // para teste
                                 Iugu.setup(); // validar os dados de cartao no form
                             }
+                        });
+                        
+                        // btn info
+                        $$('i#info-validade').on('click', function () {
+                            var buttons = [
+                                {text: '<span style="text-align:justify;padding:10px;font-size:15px;"><h1 style="margin: 0px;">VENCIMENTO</h1>A data de vencimento está na parte da frente do cartão, abaixo do número.</span><img src="assets/img/cvv-caption_new.png" style="width: 140px;">', label: true},
+                                {text: 'OK', bg: 'blue', color: 'red'}
+                            ];
+                            myApp.actions(buttons);
+                        });
+                        $$('i#info-CVV').on('click', function () {
+                            var buttons = [
+                                {text: '<span style="text-align:justify;padding:10px;font-size:15px;"><h1 style="margin:0px;">CVV</h1>O código de três dígitos do seu cartão, localizado no verso.</span><img src="assets/img/cvv-caption_new.png" style="width: 140px;">', label: true},
+                                {text: 'OK', bg: 'blue', color: 'red'}
+                            ];
+                            myApp.actions(buttons);
                         });
 
                         // altera validade
