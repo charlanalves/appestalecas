@@ -1,0 +1,82 @@
+<div class="navbar navbar-clear">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link back">
+                <span class="icon-chevron-left"></span> <span>Voltar</span>
+            </a>
+        </div>
+        <div class="center sliding title-top"></div>
+        <div class="right">
+            <a href="#" class="link icon-only" data-panel="right">
+                <!--<span class="kkicon icon-alarm"></span>-->
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="promotions-by-category" class="page">
+        <div class="page-content" style="padding-bottom: 0px;">
+            <div class="list-block">
+                <ul id="destino-templatePromotionsByCategory"></ul>
+            </div>
+        </div>
+
+        <!-- Template -->
+        <script type="text/template" id="templatePromotionsByCategory">
+            {{#if data.result}}
+                <!--
+                <li class="item-divider">
+                    <div class="item-content">
+                        <div class="item-title">Resultado</div>
+                        <div class="item-after">{{count data}}</div>
+                    </div>
+                </li>
+                -->
+                {{#each data.result reverse="false"}}
+                    <li>
+                        <a href="company.html?company={{CB04_ID}}&product={{CB06_PRODUTO_ID}}&promotion={{CB06_ID}}" class="">
+                            <div class="item-content" style="padding: 5px 0px; border-bottom: 1px silver solid; height: 135px">
+                                <div class="item-media"><img src="{{#if CB14_URL}}{{foto CB14_URL}}{{else}}assets/img/sem_imagem2.jpg{{/if}}" width="150"></div>
+                                <div class="item-inner" style="padding: 10px 2px; margin-left: 10px;">
+                                  <div class="item-title-row" style="margin-top: -50px;">
+                                    
+                                    <div class="item-title">{{CB04_NOME}}</div>
+
+                                    <div class="item-after" style="display: block;">
+                                        {{CB06_DESCRICAO}}
+                                        <br />
+                                        <span style="font-size: 11px;text-decoration: line-through;">R$ {{real CB06_PRECO}}</span>
+                                        <br />
+                                        <strong> por R$ {{real CB06_PRECO_PROMOCIONAL}}</strong>
+                                        <span class="badge badge-primary badge-square text-uppercase" style="
+                                            top: 0px!important;
+                                            right: 0px!important;
+                                            float: right!important;
+                                            padding: 9px 6px!important;
+                                            margin: 5px;
+                                            position: absolute;
+                                            background: linear-gradient(to bottom, #1db5e9 0%, #1496c3 100%);
+                                            font-size: 12px;">
+                                            {{real CB06_DINHEIRO_VOLTA}}%
+                                        </span>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+
+                            <!--
+                            <div class="item-media"><img src="{{foto CB14_URL}}" width="50"></div>
+                            <div class="item-inner">
+                                <div class="item-title">{{CB04_NOME}}</div>
+                            </div>
+                            -->
+
+                        </a>
+                    </li>
+                {{/each}}
+            {{/if}}
+        </script>
+        
+    </div>
+</div>

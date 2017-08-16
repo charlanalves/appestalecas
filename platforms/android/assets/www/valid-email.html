@@ -1,0 +1,62 @@
+<div class="navbar navbar-clear">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link back">
+                <!--<span class="icon-chevron-left"></span> <span>Voltar</span>-->
+            </a>
+        </div>
+        <div class="center sliding">
+            <span class="anim-logo-smalal negrito">Confirmação de E-mail</span>
+        </div>
+        <div class="right">
+            <a href="#" class="link icon-only" data-panel="right">
+                <!--<span class="kkicon icon-alarm"></span>-->
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="valid-email" class="page">
+        <div class="page-content">
+            <div class="list-block">
+	            <div id="destino-templateValidEmail"></div>
+            </div>
+        </div>
+
+        <!-- Template -->
+        <script type="text/template" id="templateValidEmail">
+
+	        <!-- saldo atual -->
+            <div class="item-content" style="padding: 0 15px;">
+
+	            <div class="alert alert-info text-center" style="color: #000!important">
+	                <h1 style="color: #000!important;margin-bottom: 0px">Falta Pouco :)</h1>
+	                <h2 style="color: #000!important;margin-top: 0px">Confirmação de E-mail:</h2>
+	                <span>
+	                    Enviamos um e-mail parar: <strong>{{data.email}}</strong> com o link de ativação.
+	                    <br/><br/>
+	                    Acesse sua caixa de entrada e clique no link para validar sua conta.
+	                    <br/><br/>
+	                    Após validar o e-mail, clique no botão abaixo.
+	                    <br/><br/>
+	                </span>
+	            </div>
+            </div>	
+
+            <div class="item-content">
+	            <a href="#" class="button button-primary button-fill button-valid-1" id="ValidEmail">VALIDAR CONTA</a>
+            </div>
+
+            <div class="item-content">
+	            <a href="#" class="button button-primary button-fill button-valid-2" id="ReenviarEmail">REENVIAR E-MAIL</a>
+            </div>
+
+            <div class="item-content">
+	            <a href="#" class="button button-primary button-fill button-valid-3" id="AlterarEmail">ALTERAR E-MAIL</a>
+            </div>
+
+        </script>
+        
+    </div>
+</div>

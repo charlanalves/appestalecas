@@ -1,0 +1,92 @@
+<div class="navbar navbar-clear anim-navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link icon-only open-panel">
+                <span class="kkicon icon-menu"></span>
+            </a>
+        </div>
+        <div class="center sliding">
+            <span class="anim-logo-smalal" style="font-weight: bold;">E$TALECAS</span>
+        </div>
+        <div class="right">
+            <!--
+            <a href="search.html" class="link icon-only" data-panel="right">
+                <span class="fa fa-search fa-lg"></span>
+            </a>
+            -->
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="category" class="page">
+        <div class="page-content" style="background-color: #EEE!important">
+            <div class="list-block" id="destino-templateCategory"></div>
+        </div>
+
+        <!-- Template -->
+        <script type="text/template" id="templateCategory">
+
+            <div class="nice-header header-fix-top small" style="min-height: 145px;">
+                <div class="logo anim-logo" style="padding: 0 20px 0px;">
+                    <h2>Saldo Atual</h2>
+                    <h1>R$ {{real data.saldo}}</h1>
+                    <!--
+                    <h2 style="margin-top: 4px; text-align: left; background-color: #dc493a; padding: 3px;">
+                        Pendente: {{real data.saldoPendente}}
+                    </h2>
+                    -->
+                </div>
+            </div>
+
+            <a href="search.html" class="link">
+                <div class="item-content" style="margin: 10px; margin-bottom: 5px; border-radius: 10px;">
+                    <!--<div class="item-media"><i class="icon"></i></div>-->
+                    <div class="item-media"><i class="fa fa-search"></i></div>
+                    <div class="item-inner" style="height:0px">
+                        <div class="item-input"><input type="text" placeholder="Procure pelo produto, serviço ou nome da loja" style="font-size: 13px;"></div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="item-content" style="display: table!important; width: 100%!important;background: transparent;padding: 3px;">
+                {{#each data.categoria}}
+                <div style="
+                    width: 29%!important;
+                    margin: 6px 1%;
+                    padding: 4px;float: left;
+                    ">
+                    <a href="promotions-by-category.html?category={{CB10_ID}}">
+                        <div class="category-ico" style="
+                            width: 100%!important;
+                            border-radius: 7px;
+                            text-align: center;
+                            background: #FFF url(assets/img/category/{{CB10_ICO}}) no-repeat center center;
+                            border-radius: 10px;
+                            height: 145px!important;">
+
+                            <span class="badge badge-primary badge-square text-uppercase" style="
+                                top: 0px!important;
+                                right: 0px!important;
+                                float: right!important;
+                                padding: 9px 6px!important;
+                                margin: 5px;
+                                background: linear-gradient(to bottom, #1db5e9 0%, #1496c3 100%);
+                                font-size: 12px;">
+                                {{real MAX_CB_CATEGORIA}}%
+                            </span>
+
+                            <span style="padding-top: 110px!important;display: block;">
+                                {{CB10_NOME}}
+                            </span>
+
+                        </div>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+
+        </script>
+
+    </div>
+</div>

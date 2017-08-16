@@ -1,0 +1,113 @@
+<div class="navbar navbar-clear">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link back">
+                <span class="icon-chevron-left"></span> <span>Voltar</span>
+            </a>
+        </div>
+        <div class="center sliding">Filtrar</div>
+        <div class="right">
+            <a href="#" class="link icon-only" data-panel="right">
+                <!--<span class="kkicon icon-alarm"></span>-->
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="filter" id="page-filter" class="page">
+        
+        <div class="page-content">
+
+            <div class="content-block-title">Categoria:</div>
+            <div class="swiper-container swiper-4">
+              <div class="swiper-pagination"></div>
+              <div class="swiper-wrapper" id="destino-templateFilter"></div>
+            </div>
+            
+            <div class="content-block-title">Ordenar por:</div>
+            <div class="swiper-container swiper-4">
+              <div class="swiper-pagination"></div>
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <label class="label-radio item-content">
+                        <input type="radio" name="ordem-radio" value="destaque" checked>
+                        <div class="item-inner">
+                            <div class="item-title">Destaque</div>
+                        </div>
+                    </label>
+                </div>
+                <div class="swiper-slide">
+                    <label class="label-radio item-content">
+                        <input type="radio" name="ordem-radio" value="mais-proximos">
+                        <div class="item-inner">
+                            <div class="item-title">Mais Próximos</div>
+                        </div>
+                    </label>
+                </div>
+                <div class="swiper-slide">
+                    <label class="label-radio item-content">
+                        <input type="radio" name="ordem-radio" value="mais-vendidos">
+                        <div class="item-inner">
+                            <div class="item-title">Mais Vendidos</div>
+                        </div>
+                    </label>
+                </div>
+                <div class="swiper-slide">
+                    <label class="label-radio item-content">
+                        <input type="radio" name="ordem-radio" value="menor-preco">
+                        <div class="item-inner">
+                            <div class="item-title">Menor Preço</div>
+                        </div>
+                    </label>
+                </div>
+                <div class="swiper-slide">
+                    <label class="label-radio item-content">
+                        <input type="radio" name="ordem-radio" value="maior-preco">
+                        <div class="item-inner">
+                            <div class="item-title">Maior Preço</div>
+                        </div>
+                    </label>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+    
+        <div class="toolbar tabbar">
+            <div class="toolbar-inner">
+                <a href="#" class="link back"  style="color:#000">
+                    FECHAR
+                </a>
+                <a href="#" class="link active" onclick="mainView.router.loadPage('main.html?cat=' + $('input[type=radio][name=categoria-radio]:checked').val() + '&ord=' + $('input[type=radio][name=ordem-radio]:checked').val())">
+                    APLICAR
+                </a>
+            </div>
+        </div>
+        
+        <!-- Template -->
+        <script type="text/template" id="templateFilter">
+            <div class="swiper-slide">
+                <label class="label-radio item-content">
+                    <input type="radio" name="categoria-radio" value="0" checked>
+                    <div class="item-inner">
+                        <div class="item-title">Todas</div>
+                    </div>
+                </label>
+            </div>
+            {{#if data}}
+                {{#each data reverse="false"}}
+                    <div class="swiper-slide">
+                        <label class="label-radio item-content">
+                            <input type="radio" name="categoria-radio" value="{{CB10_ID}}">
+                            <div class="item-inner">
+                                <div class="item-title">{{CB10_NOME}}</div>
+                            </div>
+                        </label>
+                    </div>
+                {{/each}}
+            {{/if}}
+        </script>
+        
+    </div>
+</div>

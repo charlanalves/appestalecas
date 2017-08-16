@@ -1,0 +1,89 @@
+<!--
+<div class="navbar navbar-clear">
+    <div class="navbar-inner">
+        <div class="left">
+            <!--
+            <a href="#" class="link back">
+                <span class="icon-chevron-left"></span> <span>Voltar</span>
+            </a>
+            -->
+        </div>
+        <div class="center sliding">
+            <span class="anim-logo-smalal negrito">Convidar amigo</span>
+        </div>
+        <div class="right">
+            <!--
+            <a href="#" class="link icon-only" data-panel="right">
+                <span class="kkicon icon-alarm"></span>
+            </a>
+         
+        </div>
+    </div>
+</div> -->
+
+<div class="pages">
+    <div data-page="invite-friend" class="page" id="destino-templateInviteFriend">
+
+        <!-- Template -->
+        <script type="text/template" id="templateInviteFriend">
+
+
+            <div class="page-content indicar" >
+		<a id="sh" ></a>
+                <div class="content-block mt-10" style="display: block;">
+
+
+               <!-- <h2 style="
+                    margin-top: 100px;
+                    text-align: center;
+                    padding: 5px;
+                    font-weight: bold;
+                    font-size: 14px;
+                    position: relative;
+                    padding-left: 85px;">
+                    {{data.texto}}
+                </h2>
+				-->
+                <div class="content-block mt-10" style="display: block;">
+
+                <!--    <a href="#" class="button button-primary button-fill" id="btn-convidar-amigos" style="margin: 35px;margin-bottom: 7px;">Convidar Amigos</a> -->
+			
+                    <div class="text-center regras-convite">
+                        <a href="#" id="alert-regras-convite" style="color: #FFF">Veja as regras aqui</a>
+                    </div>
+
+                </div>
+
+
+
+                    <div class="list-block" style="display: none">
+                        <ul style="background: transparent!important;">
+                            <li class="align-top">
+                                <h2> Assim que seu amigo começar a utilizar o CashBack, você e ele <strong>ganham R$ 10,00</strong> cada!</h2>
+                            </li>
+                            <li class="">
+                                <div class="item-input">
+                                    <textarea id="texto-convite-amigo" onclick="Util.copyElement($(this))" readonly="true" style="background-color: #FFF; height: 300px; padding: 10px" >{{data}}</textarea>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="toolbar tabbar" style="display: none">
+                <div class="toolbar-inner">
+                    <a href="#" class="link"  style="color:#000" onclick="Util.copyElement($('textarea#texto-convite-amigo'))">
+                        COPIAR
+                    </a>
+                    <a href="#" class="link active" onclick="window.location.href='whatsapp://send?text=' + decodeURI('{{data}}')">
+                        COMPARTILHAR
+                    </a>
+                </div>
+            </div>
+
+        </script>
+
+    </div>
+</div>

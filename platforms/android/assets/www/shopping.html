@@ -1,0 +1,68 @@
+<div class="navbar navbar-clear">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link back">
+                <span class="icon-chevron-left"></span> <span>Voltar</span>
+            </a>
+        </div>
+        <div class="center sliding">Compras</div>
+        <div class="right">
+            <a href="#" class="link icon-only" data-panel="right">
+                <!--<span class="kkicon icon-alarm"></span>-->
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="shopping" class="page">
+
+        <div class="page-content">
+            <div class="list-block media-list">
+                <ul id="destino-templateShopping"></ul>
+            </div>
+        </div>
+
+        <!-- Template -->
+        <script type="text/template" id="templateShopping">
+
+            {{#unless data}}
+
+                <li>
+                    <div class="item-content">
+                        <div class="item-title">Nenhuma compra realizada</div>
+                        <div class="item-after"></div>
+                    </div>
+                </li>
+
+            {{else}}
+
+                {{#each data}}
+                    <li>
+                    {{#js_compare "this.CB16_STATUS == 10"}}
+                        <a href='checkout.html?order={{CB16_ID}}' class="link">
+                    {{else}}
+                        <a href='#' class="link">
+                    {{/js_compare}}
+                        
+                            <div class="item-content">
+                                <div class="item-media"><img src="{{foto IMG}}" width="50"></div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">{{CB17_NOME_PRODUTO}}</div>
+                                        <div class="item-after">R$ {{real CB16_VALOR}}</div>
+                                    </div>
+                                    <div class="item-subtitle"></div>
+                                    <div class="item-text">{{CB16_DT}} &rarr; {{STATUS}}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                {{/each}}
+
+            {{/unless}}
+
+        </script>
+        
+    </div>
+</div>
