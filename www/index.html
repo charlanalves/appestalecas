@@ -98,15 +98,16 @@
                 color: #000;
             }
             #page-filter .swiper-slide {
-                color:#000;
+                color: #000;
                 background: #FFF;
                 box-sizing: border-box;
-                border: 1px solid #ccc;
+                border: 1px solid #d8d8d8;
+                border-radius: 12px;
+                margin-right: 18px!important
             }
             #page-filter .swiper-slide label {
                 text-align:center;
                 display:block;
-                padding-top: 10px;
                 font-size:16px;
             }
             #page-filter .swiper-slide label div {
@@ -114,7 +115,7 @@
                 width: 100%;
             }
             #page-filter .swiper-slide label div.item-inner {
-                padding-top: 30px;
+                padding-top: 22px;
             }
             #page-filter .swiper-container {
                 height: 120px;
@@ -124,13 +125,16 @@
             #page-filter .swiper-slide label.label-radio input[type=radio]:checked~.item-inner {
                 background-size: 25px;
                 background-position: center top;
+                background-image: initial;
+                background-color: #e8fbff;
+                height: 96px;
+                border-radius: 12px;
             }
             #page-filter .swiper-slide label.label-radio input[type=radio]~.item-inner {
                 padding-right: 0px;
             }
             
             .navbar-fixed .page-content, .navbar-through .page-content {
-                padding-top: 35px;        
             }
             
             .list-block .item-inner:after{
@@ -280,6 +284,7 @@
                                     </div>
                                 </a>
                             </li>
+                            <!--
                             <li>
                                 <a href="change-password.html" class="item-link close-panel item-content">
                                     <div class="item-media">
@@ -290,6 +295,7 @@
                                     </div>
                                 </a>
                             </li>
+                            -->
                             <li>
                                 <a href="#" class="item-link close-panel item-content" onclick="logout()">
                                     <div class="item-media">
@@ -848,7 +854,12 @@
             securePage('change-password', function (page) {
                 var templateProfile = new Template('templateChangePassword');
                 templateProfile.compileAndLoadData();
-
+                
+                // vefifica se e obrigatoria a alteracao da senha
+                if(typeof page.query.r != 'undefined') {
+                    myApp.alert('É muito importante para sua segurança!','Altere sua senha');
+                }
+                
                 // form - alterar senha
                 var formChangePassword = new Form('changePassword-form');
                 
@@ -863,6 +874,7 @@
                         if(typeof a.message != 'undefined') {
                             formChangePassword.clear();
                             myApp.alert('',a.message);
+                            validaAlteracaoSenha();
                         }
                     });
                 });

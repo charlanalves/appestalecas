@@ -34,6 +34,11 @@ var validaEmail = function() {
     var dados = getUserData();
     localStorage.setItem(appConfig.localStorageName, JSON.stringify($.extend(dados,{email_valid: 1})));
 }
+var validaAlteracaoSenha = function() {
+    var dados = getUserData();
+    localStorage.setItem(appConfig.localStorageName, JSON.stringify($.extend(dados,{password_reset_token: ""})));
+    goMain();
+}
 var saveUserLSAndRedirectToIndex = function(attrName,data){
     localStorage.setItem(attrName, JSON.stringify(data));
     // verifica email valido
@@ -170,6 +175,13 @@ var securePage = function (page, callback) {
     
     // evento apos a animacao da page
     myApp.onPageAfterAnimation(page, function (pg) {
+        
+        // obriga alterar a senha se utilizou o recurso de recuperar
+        var dadosUser = getUserData();
+        if(dadosUser.password_hash == dadosUser.password_reset_token && pg.name != 'change-password') {
+            mainView.router.loadPage('change-password.html?r=true');
+            return false;
+        }
         
         if(!appConfig.back || appConfig.backRecarregou) {
             (validateLogin()) ? callback(pg) : logout();
