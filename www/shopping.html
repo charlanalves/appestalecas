@@ -42,7 +42,11 @@
                     {{#js_compare "this.CB16_STATUS == 10"}}
                         <a href='checkout.html?order={{CB16_ID}}' class="link">
                     {{else}}
-                        <a href='#' class="link">
+                        {{#js_compare "this.CB16_STATUS_DELIVERY != 3"}}
+                            <a href='delivery-message.html?order={{CB16_ID}}' class="link">
+                        {{else}}
+                            <a href='#' class="link">
+                        {{/js_compare}}
                     {{/js_compare}}
                         
                             <div class="item-content">
@@ -53,7 +57,7 @@
                                         <div class="item-after">R$ {{real CB16_VALOR}}</div>
                                     </div>
                                     <div class="item-subtitle"></div>
-                                    <div class="item-text">{{CB16_DT}} &rarr; {{STATUS}}</div>
+                                    <div class="item-text">{{CB16_DT}} &rarr; {{STATUS}} {{#if STATUS_DELIVERY}} ({{STATUS_DELIVERY}}) {{/if}}</div>
                                 </div>
                             </div>
                         </a>

@@ -53,6 +53,9 @@ var goMain = function() {mainView.router.loadPage('category.html');};
 var validateLogin = function (data) {
     var attrName = appConfig.localStorageName;
 
+    // geolocalizacao
+    geolocation();
+    
     // novo login
     if (typeof data == 'object') {
         var errorStr = '';
@@ -86,6 +89,7 @@ var validateLogin = function (data) {
         }    
         
     }
+    
 };
 
 var loginForm = function () {
@@ -200,6 +204,52 @@ var enablePanelLeft = function () {
 
 var disablePanelLeft = function () {
     $('div#panel-left').removeClass('panel-left');
+}
+
+var geolocation = function() {
+    var onSuccess = function(position) {
+        var newData = {latitude: position.coords.latitude, longitude: position.coords.longitude}
+        var dados = getUserData();
+        localStorage.setItem(appConfig.localStorageName, JSON.stringify($.extend(dados, newData)));
+    };
+    function onError(error) {}
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+}
+
+var distanteDeMin = function (lat_destino, long_destino){
+    var dados = getUserData();
+    return calcDistancia(dados.latitude, dados.longitude, lat_destino, long_destino)
+}
+
+var calcDistancia = function (lat_inicial, long_inicial, lat_final, long_final)
+{
+    d2r = 0.017453292519943295769236;
+
+    dlong = (long_final - long_inicial) * d2r;
+    dlat = (lat_final - lat_inicial) * d2r;
+
+    temp_sin = Math.sin(dlat/2.0);
+    temp_cos = Math.cos(lat_inicial * d2r);
+    temp_sin2 = Math.sin(dlong/2.0);
+
+    a = (temp_sin * temp_sin) + (temp_cos * temp_cos) * (temp_sin2 * temp_sin2);
+    c = 2.0 * Math.atan2(Math.sqrt(a), Math.sqrt(1.0 - a));
+
+    return 6368.1 * c;
+}
+
+var getMyAddress = function () {
+    param = getUserData();
+    var j = $.ajax('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + param.latitude + ',' + param.longitude);
+    j.always(function(a) {
+        var address = a.results[0].address_components;
+        console.log('Logradouro:' + address[1].short_name);
+        console.log('Bairro:' + address[2].short_name);
+        console.log('Cidade:' + address[3].short_name);
+        console.log('Estado:' + address[5].long_name);
+        console.log('UF:' + address[5].short_name);
+        console.log('Pais:' + address[6].short_name);
+    });
 }
 
 // Template7 - begin -----------------------------------------------------------
