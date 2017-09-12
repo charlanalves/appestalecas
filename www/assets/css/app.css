@@ -7152,3 +7152,34 @@ h1 {
     text-transform: uppercase;
     font-size: 11px;
 }
+
+.list-block select {
+    -webkit-appearance: menulist;
+    -moz-appearance: none;
+    -ms-appearance: none;
+}
+a#cashOut-submit {
+    width: 306px;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-color: white;
+}
+
+#valorco{
+	font-size: 30px;
+}
+
+
+.page-content.page-cash-out {
+    padding-top: 0px;
+}
+.form.nice-label .form-row input {
+    font-size: 20px;
+}
+
+.floatLeft50 {
+    width: 50%;
+    float: left;
+	z-index:999999;
+}

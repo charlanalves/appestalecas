@@ -7,22 +7,22 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "io.cordova.appestalecasv1"
         },
-        "nl.madebymark.share": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.cordova.appestalecasv1"
         },
         "cordova-plugin-x-socialsharing": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "io.cordova.appestalecasv1"
         },
-        "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "io.cordova.appestalecas"
+        "nl.madebymark.share": {
+            "PACKAGE_NAME": "io.cordova.appestalecasv1"
         }
     },
     "dependent_plugins": {
         "es6-promise-plugin": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "io.cordova.appestalecasv1"
         }
     }
 }

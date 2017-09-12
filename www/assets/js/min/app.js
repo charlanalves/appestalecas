@@ -238,7 +238,7 @@ var myApp = new Framework7({
 }), $$ = Dom7;
 
 $$("body").on("click", ".js-add-to-fav", function() {
-    myApp.alert("You love this post!", "");
+    alert("You love this post!", "");
 });
 
 var mainView = myApp.addView(".view-main", {
@@ -333,7 +333,7 @@ $$(".popup-splash").on("opened", function() {
             message: "Hello, how are you? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut posuere erat. Pellentesque id elementum urna, a aliquam ante. Donec vitae volutpat orci. Aliquam sed molestie risus, quis tincidunt dui.",
             media: '<img width="44" height="44" style="border-radius:100%" src="http://lorempixel.com/output/people-q-c-100-100-9.jpg">',
             onClose: function() {
-                myApp.alert("Notification closed");
+                alert("Notification closed");
             }
         });
     }), $(".zoom").swipebox(), $(".navbar").removeClass("navbar-clear"), "index" !== page.name && "dashboard-1" !== page.name && "post" !== page.name && "menu" !== page.name && "login" !== page.name && "registration" !== page.name && "article" !== page.name && "splash" !== page.name || $(".navbar").addClass("navbar-clear"), 
@@ -356,7 +356,7 @@ $$(".popup-splash").on("opened", function() {
             myApp.showPreloader(), $.post("/email.php", data).done(function(data) {
                 myApp.hidePreloader();
                 var response = JSON.parse(data);
-                response.error ? myApp.alert(response.msg, "") : (myApp.alert(response.msg, ""), 
+                response.error ? alert(response.msg, "") : (alert(response.msg, ""), 
                 form.find("input[type=text], input[type=email], textarea").val(""));
             });
         }

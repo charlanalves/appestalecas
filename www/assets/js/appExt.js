@@ -1,10 +1,10 @@
 
 var appConfig = {
 
-    //url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',	
-  //  url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
+    url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',	
+ //  url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
     
-    //urlFoto: 'http://52.67.208.141/cashbackdev/frontend/web/',	
+    urlFoto: 'http://52.67.208.141/cashbackdev/frontend/web/',	
 //	urlFoto: 'http://localhost/apiestalecas/frontend/web/',
     //urlFoto: 'http://localhost/cashback/frontend/web/',
     
@@ -15,12 +15,12 @@ var appConfig = {
     // Eduardo
   //  url: 'http://localhost/cashback/frontend/web/index.php?r=',
    // urlFoto: 'http://localhost/cashback/frontend/web/',
-
+    indicacaoUrl:'http://52.67.208.141/cashbackdev/indicacao/register.php?auth_key=',
     localStorageName: 'esUser',
     back: false,
     backRecarregou: true,
-    topTransparent: ['company', 'main'],
-    panelLeftHide: ['login', 'valid-email', 'registration'],
+    topTransparent: ['company', 'main', 'cash-out','invite-friend'],
+    panelLeftHide: ['login', 'valid-email', 'registration','invite-friend'],
     tabbarBottomShow: ['category', 'main', 'invite-friend', 'cash-out', 'change-password']
 };
 
@@ -63,13 +63,15 @@ var validateLogin = function (data) {
                 for (var i in data.error) {
                     errorStr += data.error[i][0] + "\n";
                 }
-                myApp.alert(errorStr, 'Opss');
+                alert(errorStr, 'Opss');
+				
                 return false;
                 
             } else {
                 return saveUserLSAndRedirectToIndex(attrName, data);
             }
         });
+		myApp.closeModal('')
 
     // valida usuario logado
     } else {
@@ -125,10 +127,10 @@ var ajaxApi = function (method, params, callback) {
             for (var i in data.error) {
                 errorStr += "* " + data.error[i][0] + "<br />";
             }
-            myApp.alert(errorStr, 'Opss');
+            alert(errorStr, 'Opss');
 
         } else if ( data.status == false ) {
-            myApp.alert(data.retorno, 'Opss');
+            alert(data.retorno, 'Opss');
             console.error(data.dev);
             console.info(data.lastResponse);
         } 
@@ -287,5 +289,10 @@ class Template {
     }
     
 }
+
+
+        
+            
+        
 
 // Template7 - end -------------------------------------------------------------

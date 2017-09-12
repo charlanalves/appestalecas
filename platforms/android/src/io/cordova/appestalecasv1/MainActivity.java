@@ -17,7 +17,7 @@
        under the License.
  */
 
-package io.cordova.appestalecas;
+package io.cordova.appestalecasv1;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

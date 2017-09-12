@@ -1,26 +1,27 @@
-<div class="navbar navbar-clear">
+<!-- <div class="navbar navbar-clear">
     <div class="navbar-inner">
         <div class="left">
-	        <!--
+	        
             <a href="#" class="link back">
                 <span class="icon-chevron-left"></span> <span>Voltar</span>
             </a>
-            -->
+            
         </div>
         <div class="center sliding">
             <span class="anim-logo-smalal negrito">$acar</span>
         </div>
         <div class="right">
             <a href="#" class="link icon-only" data-panel="right">
-                <!--<span class="kkicon icon-alarm"></span>-->
+               <span class="kkicon icon-alarm"></span>
             </a>
         </div>
     </div>
 </div>
+-->
 
 <div class="pages">
-    <div data-page="cash-out" class="page">
-        <div class="page-content">
+    <div data-page="cash-out" class="page no-navbar">
+        <div class="page-content page-cash-out">
             <div class="list-block" style="margin-bottom: 50px;">
 	            <div id="destino-templateCashOut"></div>
             </div>
@@ -30,14 +31,24 @@
         <script type="text/template" id="templateCashOut">
 
 	        <!-- saldo atual -->
-            <div class="item-content" style="padding: 0 15px;">
+            <div class="item-content" style="padding: 0 15px; height: 53px;">
 				<small>Saldo Atual:</small>
 				<h1><strong>R$ {{real data.conta_bancaria.CB03_SAQUE_MAX}}</strong></h1>
             </div>
+			    <a href="#" class="button button-primary button-fill" id="cashOut-submit">Solicitar saque</a>
 	        <!-- formulario para saque -->
             <div class="list form-box">
                 <form id="cashOut-form" class="form nice-label" action="{{data.utl_action}}"  method="POST">
                 	<input type="hidden" name="user_auth_key">
+					 <div class="form-row">
+						<div class="item-content"><span style=" width: 113px;">Valor (R$):</span>
+							<div class="item-inner">
+								<div class="item-input">
+									<input type="text"  id="valorco" name="CB03_VALOR" value="{{real data.conta_bancaria.CB03_SAQUE_MAX}}">
+								</div>
+							</div>
+						</div>
+                    </div>
                     <div class="form-row">
 						<div class="item-content">Banco:
 							<div class="item-inner">
@@ -47,25 +58,7 @@
 							</div>
 						</div>
                     </div>
-                    <div class="form-row">
-						<div class="item-content">Agência:
-							<div class="item-inner">
-								<div class="item-input">
-									<input type="number" name="CB03_AGENCIA" placeholder="" required="">
-								</div>
-							</div>
-						</div>
-                    </div>
-                    <div class="form-row">
-						<div class="item-content">Conta:
-							<div class="item-inner">
-								<div class="item-input">
-									<input type="number" name="CB03_NUM_CONTA" placeholder="" required="">
-								</div>
-							</div>
-						</div>
-                    </div>
-                    <div class="form-row">
+					<div class="form-row">
 						<div class="item-content">Tipo:
 							<div class="item-inner">
 								<div class="item-input">
@@ -74,28 +67,45 @@
 							</div>
 						</div>
                     </div>
-                    <div class="form-row">
-						<div class="item-content">Valor:
+                    <div class="form-row floatLeft50">
+					<div style = "font-size: 12px; padding-bottom: 6px;">Somente os números da Agência com o digito</div>
+						<div class="item-content"><span style="font-size: 15px;">Agência</span>
 							<div class="item-inner">
-								<div class="item-input">
-									<input type="text" name="CB03_VALOR" placeholder="" required="">
+								<div class="item-input font30">
+									<input type="number" name="CB03_AGENCIA" required="true"  pattern="\d+">
 								</div>
 							</div>
 						</div>
                     </div>
+                    <div class="form-row">
+					<div style = "font-size: 12px; padding-bottom: 6px;">Somente os números da conta com o digito</div>
+						<div class="item-content"><span style="font-size: 15px;">Conta</span>	
+						<div class="item-inner">
+								<div class="item-input font30">
+									<input type="number" name="CB03_NUM_CONTA" placeholder="" required="true" pattern="\d+">
+								</div>
+							</div>
+						</div>
+                    </div>
+                    
+                   
 	                <div class="alert alert-info">
 	                    <strong>Importante:</strong>
 	                    <span>
 		                    <br/>
-		                    &bull; O valor mínimo para saque: <strong>R$ {{real data.conta_bancaria.CB03_SAQUE_MIN}}</strong>
+		                    &bull; O valor mínimo para saque é de <strong>R$ {{real data.conta_bancaria.CB03_SAQUE_MIN}};</strong>
 		                    <br/>
-		                    &bull; O Saque permite apenas transferência para conta bancária registradas com o mesmo CPF desta conta CashBack.
+		                    &bull; O saque é permitido para contas bancárias do mesmo cpf cadastrado no app;
+							 <br/>
+		                    &bull; O valor transferido estará em sua conta bancária em até 3 dias úteis;
 	                    </span>
 	                </div>
-                    <a href="#" class="button button-primary button-fill" id="cashOut-submit">Solicitar saque</a>
-                    <div class="text-center">
+                
+                    <!--
+					<div class="text-center">
                         <small>Veja as regras para sacar <a href="#" id="alert-regras">aqui</a></small>
                     </div>
+					-->
                 </form>
             </div>
 

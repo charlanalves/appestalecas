@@ -2,7 +2,7 @@
 var appConfig = {
 
     url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',	
-  //  url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
+ //  url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
     
     urlFoto: 'http://52.67.208.141/cashbackdev/frontend/web/',	
 //	urlFoto: 'http://localhost/apiestalecas/frontend/web/',
@@ -15,21 +15,29 @@ var appConfig = {
     // Eduardo
   //  url: 'http://localhost/cashback/frontend/web/index.php?r=',
    // urlFoto: 'http://localhost/cashback/frontend/web/',
-
+    indicacaoUrl:'http://52.67.208.141/cashbackdev/indicacao/register.php?auth_key=',
     localStorageName: 'esUser',
     back: false,
     backRecarregou: true,
-    topTransparent: ['company', 'main'],
-    panelLeftHide: ['login', 'valid-email', 'registration'],
+    topTransparent: ['company', 'main', 'cash-out','invite-friend'],
+    panelLeftHide: ['login', 'valid-email', 'registration','invite-friend'],
     tabbarBottomShow: ['category', 'main', 'invite-friend', 'cash-out', 'change-password']
 };
 
+var blockPanelLeft = function (pgName) {    
+    myApp.params.swipePanel = ($.inArray(pgName, appConfig.panelLeftHide) >= 0) ? false : 'left';
+}
 var getUserData = function () {
     return (typeof [appConfig.localStorageName] == "object" ? JSON.parse((localStorage[appConfig.localStorageName] || '{}')) : false);
 }
 var validaEmail = function() {
     var dados = getUserData();
     localStorage.setItem(appConfig.localStorageName, JSON.stringify($.extend(dados,{email_valid: 1})));
+}
+var validaAlteracaoSenha = function() {
+    var dados = getUserData();
+    localStorage.setItem(appConfig.localStorageName, JSON.stringify($.extend(dados,{password_reset_token: ""})));
+    goMain();
 }
 var saveUserLSAndRedirectToIndex = function(attrName,data){
     localStorage.setItem(attrName, JSON.stringify(data));
@@ -55,13 +63,15 @@ var validateLogin = function (data) {
                 for (var i in data.error) {
                     errorStr += data.error[i][0] + "\n";
                 }
-                myApp.alert(errorStr, 'Opss');
+                alert(errorStr, 'Opss');
+				
                 return false;
                 
             } else {
                 return saveUserLSAndRedirectToIndex(attrName, data);
             }
         });
+		myApp.closeModal('')
 
     // valida usuario logado
     } else {
@@ -117,10 +127,10 @@ var ajaxApi = function (method, params, callback) {
             for (var i in data.error) {
                 errorStr += "* " + data.error[i][0] + "<br />";
             }
-            myApp.alert(errorStr, 'Opss');
+            alert(errorStr, 'Opss');
 
         } else if ( data.status == false ) {
-            myApp.alert(data.retorno, 'Opss');
+            alert(data.retorno, 'Opss');
             console.error(data.dev);
             console.info(data.lastResponse);
         } 
@@ -156,7 +166,7 @@ var securePage = function (page, callback) {
         }
         
         // controla exibicao do meu
-        myApp.params.swipePanel = ($.inArray(pg.name, appConfig.panelLeftHide) >= 0) ? false : 'left';
+        blockPanelLeft(pg.name);
         
     });
     
@@ -167,6 +177,13 @@ var securePage = function (page, callback) {
     
     // evento apos a animacao da page
     myApp.onPageAfterAnimation(page, function (pg) {
+        
+        // obriga alterar a senha se utilizou o recurso de recuperar
+        var dadosUser = getUserData();
+        if(dadosUser.password_hash == dadosUser.password_reset_token && pg.name != 'change-password') {
+            mainView.router.loadPage('change-password.html?r=true');
+            return false;
+        }
         
         if(!appConfig.back || appConfig.backRecarregou) {
             (validateLogin()) ? callback(pg) : logout();
@@ -272,5 +289,10 @@ class Template {
     }
     
 }
+
+
+        
+            
+        
 
 // Template7 - end -------------------------------------------------------------

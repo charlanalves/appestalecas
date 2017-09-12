@@ -14,13 +14,13 @@
     ]
   ],
   "_from": "cordova-plugin-x-socialsharing@latest",
-  "_id": "cordova-plugin-x-socialsharing@5.1.8",
+  "_id": "cordova-plugin-x-socialsharing@5.2.0",
   "_inCache": true,
   "_location": "/cordova-plugin-x-socialsharing",
-  "_nodeVersion": "6.10.1",
+  "_nodeVersion": "6.10.3",
   "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/cordova-plugin-x-socialsharing-5.1.8.tgz_1493190449329_0.858195977518335"
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-x-socialsharing-5.2.0.tgz_1502539883309_0.31688803248107433"
   },
   "_npmUser": {
     "name": "eddyverbruggen",
@@ -41,8 +41,8 @@
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-x-socialsharing/-/cordova-plugin-x-socialsharing-5.1.8.tgz",
-  "_shasum": "439a1d2f4736627628826e5195ae539b54e6248a",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-x-socialsharing/-/cordova-plugin-x-socialsharing-5.2.0.tgz",
+  "_shasum": "1a22476bc58d46c1d2a9a84c4f121e629cacab14",
   "_shrinkwrap": null,
   "_spec": "cordova-plugin-x-socialsharing",
   "_where": "C:\\xampp\\htdocs\\appestalecasteste\\node_modules",
@@ -67,8 +67,8 @@
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "439a1d2f4736627628826e5195ae539b54e6248a",
-    "tarball": "https://registry.npmjs.org/cordova-plugin-x-socialsharing/-/cordova-plugin-x-socialsharing-5.1.8.tgz"
+    "shasum": "1a22476bc58d46c1d2a9a84c4f121e629cacab14",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-x-socialsharing/-/cordova-plugin-x-socialsharing-5.2.0.tgz"
   },
   "engines": [
     {
@@ -76,7 +76,7 @@
       "version": ">=3.0.0"
     }
   ],
-  "gitHead": "7a2c4ad29946f9675ab8fad3075ae7f3ebc20fd0",
+  "gitHead": "bb2aa2bbeda5e685d75aa165cae2706b1f6bd1cf",
   "homepage": "https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin#readme",
   "keywords": [
     "Social",
@@ -111,5 +111,5 @@
     "url": "git+https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git"
   },
   "scripts": {},
-  "version": "5.1.8"
+  "version": "5.2.0"
 }
