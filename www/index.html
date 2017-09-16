@@ -1045,6 +1045,7 @@ alert = function(a,b,c = 'error'){
                 formaPagamento;
                 param.user_auth_key = getUserData().auth_key;
                 templateProfile.compileAjax('checkout', param, function (a) {
+                    var a;
                     if(a === false) {
                         mainView.router.loadPage('main.html'); 
                         
@@ -1105,11 +1106,11 @@ alert = function(a,b,c = 'error'){
                         
                         $('select#CHECKOUT-FORMA-PAGAMENTO').trigger('change');
                         
-                        var callbackCheckout =  function(a){
-                            if (a.status === true) {
-                                alert('Pagamento efetuado!', 'Tudo Certo');
-                                // testa se o pedido é delivery.. exibe pagina diferente
-                                if (!a.retorno.delivery) {
+                        var callbackCheckout =  function(r){
+                            if (r.status === true) {
+									alert('Pagamento efetuado!', 'Tudo Certo');
+                                // testa se o pedido é delivery.. exibe pagina personalizada
+                                if (!a.CB06_DISTRIBUICAO) {
                                     mainView.router.loadPage('purchase-message.html');
                                 } else {
                                     mainView.router.loadPage('delivery-message.html');
