@@ -603,16 +603,15 @@ alert = function(a,b,c = 'error'){
             // promocoes
             securePage('main', function (page) {
                 var templateMain = new Template('templateMain');
-                $.extend(page.query, {user_auth_key: getUserData().auth_key});
+                $.extend(page.query, getUserData());
                 templateMain.compileAjax('promocao', page.query, function (a) {
-
-                	if (typeof a.estabelecimentos == 'undefined') {	
-                        	alert('Nenhum estabelecimento cadastrado...', 'Opss');
-            		}else if(typeof a.estabelecimentos == 'undefined' || !a.estabelecimentos.length) {	
-	                        alert('Nenhum estabelecimento encontrado para o filtro selecionado...', 'Opss', function(){ 
-	                            mainView.router.loadPage('filter.html'); 
+                    if (typeof a.estabelecimentos == 'undefined') {	
+                        alert('Nenhum estabelecimento cadastrado...', 'Opss');
+                    }else if(typeof a.estabelecimentos == 'undefined' || !a.estabelecimentos.length) {	
+                        alert('Nenhum estabelecimento encontrado para o filtro selecionado...', 'Opss', function(){ 
+                            mainView.router.loadPage('filter.html'); 
                         });
-                	}
+                    }
                 });
             });
             
@@ -874,6 +873,20 @@ alert = function(a,b,c = 'error'){
                 var templatePurchaseMessage = new Template('templateCashOutMessage');
                 templatePurchaseMessage.compileAjax('cash-out-message', {user_auth_key: getUserData().auth_key});
             });
+            
+            
+            // -----------------------------------------------------------------
+            // Mensagem de delivery
+            securePage('delivery-message', function (page) {
+                var param = page.query;
+                $.extend(param, getUserData());
+                var templatePurchaseMessage = new Template('templateDeliveryMessage');
+                templatePurchaseMessage.compileAjax('delivery-message', param, function(a){
+                    if(!a){
+                        goMain();    
+                    }
+                });
+            });
 
 
             // -----------------------------------------------------------------
@@ -966,6 +979,63 @@ alert = function(a,b,c = 'error'){
                 
             });
 
+
+            // -----------------------------------------------------------------
+            // delivery address
+            securePage('delivery-address', function (page) {
+                var templateProfile = new Template('templateDeliveryAddress'),
+                param = getUserData();
+                $.extend(param, page.query);
+                templateProfile.compileAjax('delivery-address', param, function (a) {
+                    
+                    // form - delivery address
+                    var formDeliveryAddress = new Form('delivery-address-form');
+                    formDeliveryAddress.setFormData(a);
+                    
+                    // Busca CEP  
+                    var ultimoCEP = ultimoCEPV = '';
+                    $('#delivery-address-form input[name=CB16_COMPRADOR_END_CEP').keyup(function () {
+                        var v = this.value;
+                        if (v.length === 8 && ultimoCEP !== v) {
+                            ultimoCEP = v;
+                            Util.getEnderecoByCEP(v, function (data) {
+                                if (data.erro) {
+                                    alert('O CEP digitado não foi encontrado, verifique o CEP ou preencha os dados do endereço');
+                                    formDeliveryAddress.clear(['CB16_COMPRADOR_END_LOGRADOURO','CB16_COMPRADOR_END_BAIRRO','CB16_COMPRADOR_END_CIDADE','CB16_COMPRADOR_END_UF']);                                    
+                                    formDeliveryAddress.CB16_COMPRADOR_END_CEP.focus();
+                                } else {
+                                    formDeliveryAddress.setFormData({
+                                        CB16_COMPRADOR_END_LOGRADOURO: data.logradouro,
+                                        CB16_COMPRADOR_END_BAIRRO: data.bairro,
+                                        CB16_COMPRADOR_END_CIDADE: data.localidade,
+                                        CB16_COMPRADOR_END_UF: data.uf
+                                    });
+                                    formDeliveryAddress.CB16_COMPRADOR_END_NUMERO.focus();
+                                }
+                            });
+                        } else if (v.length > 9 || v == '') {
+                            this.value = (ultimoCEPV.length === 1 ? '' : ultimoCEPV);
+                            return false;
+                        } else {
+                            ultimoCEPV = v;
+                        }
+                    });
+                    
+                    // salvar
+                    $('a#delivery-address-submit').on('click', function () {    
+                        var UserData = getUserData(), params = {};
+                            params.auth_key = UserData.auth_key;
+                            params.order = param.order;
+                            params.address = formDeliveryAddress.getFormData();
+                        ajaxApi('delivery-address', params, function (a) {
+                            mainView.router.loadPage('checkout.html?order=' + param.order);
+                        });
+                    });
+                    
+                });
+            });
+            
+            
             // -----------------------------------------------------------------
             // checkout
             securePage('checkout', function (page) {
@@ -977,6 +1047,9 @@ alert = function(a,b,c = 'error'){
                 templateProfile.compileAjax('checkout', param, function (a) {
                     if(a === false) {
                         mainView.router.loadPage('main.html'); 
+                        
+                    } else if(a.delivery === true) {
+                        mainView.router.loadPage('delivery-address.html?order=' + param.order); 
                         
                     } else {
                         
@@ -1035,7 +1108,12 @@ alert = function(a,b,c = 'error'){
                         var callbackCheckout =  function(a){
                             if (a.status === true) {
                                 alert('Pagamento efetuado!', 'Tudo Certo');
-                                mainView.router.loadPage('purchase-message.html');
+                                // testa se o pedido é delivery.. exibe pagina diferente
+                                if (!a.retorno.delivery) {
+                                    mainView.router.loadPage('purchase-message.html');
+                                } else {
+                                    mainView.router.loadPage('delivery-message.html');
+                                }
                             } else {
                                 alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
 

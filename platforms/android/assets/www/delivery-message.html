@@ -1,0 +1,101 @@
+<div class="navbar navbar-clear">
+    <div class="navbar-inner">
+        <div class="left">
+            <!--
+            <a href="#" class="link back">
+                <span class="icon-chevron-left"></span> <span>Voltar</span>
+            </a>
+            -->
+        </div>
+        <div class="center sliding">
+            <span class="anim-logo-smalal negrito">Delivery</span>
+        </div>
+        <div class="right">
+            <!--
+            <a href="#" class="link icon-only" data-panel="right">
+                <span class="kkicon icon-alarm"></span>
+            </a>
+            -->
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="delivery-message" class="page">
+        
+        <div class="page-content">
+            <div class="list-block">
+            <div id="destino-templateDeliveryMessage" style="margin-bottom: 50px; color: #000!important"></div>
+            </div>
+        </div>
+    
+        <div class="toolbar tabbar">
+            <div class="toolbar-inner">
+                <a href="category.html" class="link active">
+                    Ir para a página inicial
+                </a>
+            </div>
+        </div>
+        
+        <!-- Template -->
+        <script type="text/template" id="templateDeliveryMessage">
+
+            <!-- mensagem -->
+            <div class="item-content" style="padding: 0 10px; text-align: center;">
+                <div class="alert" style="margin: 0px 0px 15px 0px; width: 100%">
+
+                    <h2>Obrigado, {{data.nome_user}}</h2>
+
+                    <span style="font-size: 16px">
+                        Parabéns. Você ganhou <strong>R$ {{real data.vlr_cashback}}</strong> de volta nessa compra.
+                        <br/>
+                        Seu pedido feito a <strong>{{data.empresa_nome}}</strong> está sendo preparado.
+                        <br/>
+                        {{#if data.entrega_inicial}}
+                            {{#if data.entrega_termino}}
+                                Entrega: entre <strong>{{data.entrega_inicial}}</strong> e <strong>{{data.entrega_termino}}</strong> hs.
+                                <br/>
+                            {{/if}}
+                        {{/if}}
+                        {{#if data.empresa_telefone}}
+                            Você pode entrar em contato com {{data.empresa_nome}} através do numero <numero>{{data.empresa_telefone}}</numero>.
+                            <br/>
+                        {{/if}}
+                    </span>
+
+                    <div class="data-table" style="margin-top: 10px">
+                      <table style="width: 100%">
+                        <thead>
+                          <tr>
+                            <th class="label-cell" style="width: 80%" colspan="2"><strong>Detalhe do pedido</strong></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="label-cell" align="left"><strong>{{data.produto_descricao}}</strong></td><td class="numeric-cell" align="right">R$ {{real data.produto_valor}}</td>
+                          </tr>
+                          <tr>
+                            <td class="label-cell" align="left">Subtotal</td><td class="numeric-cell" align="right">R$ {{real data.subtotal}}</td>
+                          </tr>
+                          <tr>
+                            <td class="label-cell" align="left">Taxa entrega</td><td class="numeric-cell" align="right">R$ {{real data.taxa_entrega}}</td>
+                          </tr>
+                          <tr>
+                            <td class="label-cell" align="left"><strong>Total</strong></td><td class="numeric-cell" align="right">R$ {{real data.total}}</td>
+                          </tr>
+                          <tr>
+                            <td class="label-cell" colspan="2" align="left" style="padding-top: 10px"><strong>Endereço de entrega</strong><br />{{data.endereco_entrega}}</td>
+                          </tr>
+                          <tr>
+                            <td class="label-cell" colspan="2" align="left" style="padding-top: 10px"><strong>Forma de Pagamento</strong><br />&bull; {{data.pagamento}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                </div>
+            </div>
+        </script>
+        
+    </div>
+</div>

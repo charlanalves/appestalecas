@@ -152,20 +152,34 @@ var Form = function (formId) {
         destiny.append($("<div></div>").attr("class", "inline-group").html(checkbox));
     },   
     this.clear = function (itemName) {
-        if (typeof itemName == 'string') {
-            var item = this[itemName], qtdItem = item.length;
-            if (qtdItem > 1) {
-                for(var i=0; i<qtdItem; i++){
-                    if (item[i].type == 'checkbox' || item[i].type == 'radio') {
-                        item[i].checked = false;
-                    } else {
-                        item[i].value = '';
+        // se nao informar o itemName limpa todos os itens do form
+        if (typeof itemName != 'undefined') {
+            var clearItem = function (item) {
+                var qtdItem = item.length;
+                if (qtdItem > 1) {
+                    for(var i=0; i<qtdItem; i++){
+                        if (item[i].type == 'checkbox' || item[i].type == 'radio') {
+                            item[i].checked = false;
+                        } else {
+                            item[i].value = '';
+                        }
                     }
+                } else {
+                    item.value = '';
                 }
-            } else {
-                item.value = '';
+            };
+            
+            // para limpar apenas um campo, informa o attr name
+            if (typeof itemName == 'string') {    
+                clearItem(this[itemName]);
+                
+            // para mais de um item envia um array com os attr name
+            } else if (typeof itemName == 'object') {
+                for (var i in itemName) {
+                    clearItem(this[itemName[i]]);
+                }
             }
-
+            
         } else {
             var input = this.inputs();
             for (var i in input) {

@@ -1,0 +1,115 @@
+<div class="navbar navbar-clear">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link back">
+                <!--<span class="icon-chevron-left"></span> <span>Voltar</span>-->
+            </a>
+        </div>
+        <div class="center sliding">
+            <span class="anim-logo-smalal" style="font-weight: bold;">Local de entrega</span>
+        </div>
+        <div class="right">
+            <a href="#" class="link icon-only" data-panel="right">
+                <!--<span class="kkicon icon-alarm"></span>-->
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+
+    <div data-page="delivery-address" class="page" id="destino-templateDeliveryAddress">
+
+	    <!-- Template -->
+	    <script type="text/template" id="templateDeliveryAddress">
+
+	        <div class="page-content" style="padding-bottom: 0px; padding-top: 54px;">
+
+				<form id="delivery-address-form" class="form nice-label" action=""  method="POST">
+
+					<div class="list-block">
+						<ul>
+						    <li>CEP
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="number" name="CB16_COMPRADOR_END_CEP" placeholder="" value="{{data.CB16_COMPRADOR_END_CEP}}">
+										</div>
+									</div>
+								</div>
+						    </li>
+						    <li>Logradouro
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="text" name="CB16_COMPRADOR_END_LOGRADOURO" placeholder="" value="{{data.CB16_COMPRADOR_END_LOGRADOURO}}">
+										</div>
+									</div>
+								</div>
+						    </li>
+						    <li>Numero
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="number" name="CB16_COMPRADOR_END_NUMERO" value="{{data.CB16_COMPRADOR_END_NUMERO}}" placeholder="" value="">
+										</div>
+									</div>
+								</div>
+						    </li>
+						    <li>Bairro
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="text" name="CB16_COMPRADOR_END_BAIRRO" placeholder="" value="{{data.CB16_COMPRADOR_END_BAIRRO}}">
+										</div>
+									</div>
+								</div>
+						    </li>
+						    <li>Cidade
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="text" name="CB16_COMPRADOR_END_CIDADE" placeholder="" value="{{data.CB16_COMPRADOR_END_CIDADE}}">
+										</div>
+									</div>
+								</div>
+						    </li>
+						    <li>UF
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="text" name="CB16_COMPRADOR_END_UF" placeholder="" value="{{data.CB16_COMPRADOR_END_UF}}">
+										</div>
+									</div>
+								</div>
+						    </li>
+						    <li>Complemento
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="text" name="CB16_COMPRADOR_END_COMPLEMENTO" placeholder="" value="{{data.CB16_COMPRADOR_END_COMPLEMENTO}}">
+										</div>
+									</div>
+								</div>
+						    </li>
+						</ul>
+					</div>
+
+		       	</form>
+
+		        <div class="color-default" id="tabbar-buy" style="height: 60px;padding-top: 10px;margin-top: 15px;">
+					<div class="row">
+					    <div class="col-10"></div>
+					    <div class="col-80">
+			    			<a href="#" class="button button-secondary button-fill" id="delivery-address-submit">SALVAR LOCAL DE ENTREGA</a>
+					    </div>
+					    <div class="col-10"></div>
+					</div>
+				</div>
+
+	        </div>
+
+	    </script>
+        
+    </div>
+</div>
