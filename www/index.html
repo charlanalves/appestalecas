@@ -964,10 +964,10 @@
                             if (r.status === true) {
                                 myApp.alert('Pagamento efetuado!', 'Tudo Certo');
                                 // testa se o pedido é delivery.. exibe pagina personalizada
-                                if (!a.CB06_DISTRIBUICAO) {
+                                if (a.CB06_DISTRIBUICAO == "0") {
                                     mainView.router.loadPage('purchase-message.html');
                                 } else {
-                                    mainView.router.loadPage('delivery-message.html');
+                                    mainView.router.loadPage('delivery-message.html?order=' + param.order);
                                 }
                             } else {
                                 myApp.alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
