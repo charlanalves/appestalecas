@@ -1,0 +1,204 @@
+<div class="navbar navbar-clear">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link back">
+                <span class="icon-chevron-left"></span> <span>Voltar</span>
+            </a>
+        </div>
+        <div class="center sliding">
+            <span class="anim-logo-smalal" style="font-weight: bold;">Checkout</span>
+        </div>
+        <div class="right">
+            <a href="#" class="link icon-only" data-panel="right">
+                <!--<span class="kkicon icon-alarm"></span>-->
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+
+    <div data-page="checkout" class="page" id="destino-templateCheckout">
+
+	    <!-- Template -->
+	    <script type="text/template" id="templateCheckout">
+
+	        <div class="page-content" style="padding-bottom: 0px; padding-top: 54px;">
+
+				<form id="checkout-form" class="form nice-label" action=""  method="POST">
+				        	
+			    	<input type="hidden" name="user_auth_key" />
+	    	        <input type="hidden" name="token" id="token" value="" readonly="true" />
+
+					<div class="list-block" style="display: none;">
+						<ul>
+						    <li>CPF / CNPJ
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="text" name="CPF_CNPJ" placeholder="" disabled="" value="{{data.cpf_cnpj}}">
+										</div>
+									</div>
+								</div>
+						    </li>
+						    <li>Nome
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="text" name="NOME" placeholder="" disabled="" value="{{data.name}}">
+										</div>
+									</div>
+								</div>
+						    </li>
+						    <li>Telefone
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="number" name="TELEFONE" placeholder="" value="">
+										</div>
+									</div>
+								</div>
+						    </li>
+						    <li>Email
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="email" name="EMAIL" placeholder="" value="{{data.email}}">
+										</div>
+									</div>
+								</div>
+						    </li>
+						</ul>
+					</div>
+
+					<div class="content-block-title" style="margin: 0px"></div>
+					<div class="list-block">
+						<ul>
+							<li>Pagamento
+						        <img  style="background-color: #fff; float: right;" src="http://storage.pupui.com.br/9CA0F40E971643D1B7C8DE46BBC18396/assets/cc-icons.e8f4c6b4db3cc0869fa93ad535acbfe7.png" alt="Visa, Master, Diners. Amex" border="0" />
+
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<select name="FORMA-PAGAMENTO" id="CHECKOUT-FORMA-PAGAMENTO" data-adquirente="">
+												<!--<option value="">selecione...</option>-->
+												{{#each data.forma_pagamento}}
+												<option value="{{CB08_ID}}">{{CB08_NOME}}</option>
+												{{/each}}
+											</select>
+										</div>
+									</div>
+								</div>
+								<!--
+								<label class="label-radio item-content form-row">
+									<input type="radio" name="FORMA-PAGAMENTO" value="credito" checked="checked">
+									<div class="item-media">
+										<i class="icon icon-form-radio"></i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">Crédito</div>
+									</div>
+								</label>
+								<label class="label-radio item-content form-row">
+									<input type="radio" name="FORMA-PAGAMENTO" value="saldo">
+									<div class="item-media">
+										<i class="icon icon-form-radio"></i>
+									</div>
+									<div class="item-inner">
+										<div class="item-title">Saldo</div>
+									</div>
+								</label>
+								-->
+							</li>
+						<ul>
+					</div>
+
+					<div class="content-block-title" style="margin: 0px"></div>
+					<div class="list-block" id="DATA-CARD" style="display: none">
+						<ul>
+						    <li>Número do cartão
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="number" value="" autocomplete="off" class="credit_card_number" data-iugu="number" placeholder="">
+										</div>
+									</div>
+								</div>
+						    </li>
+						    <li>Nome impresso no cartão
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="text" value="" class="credit_card_name" data-iugu="full_name" placeholder="">
+										</div>
+									</div>
+								</div>
+						    </li>
+						    <li>Validade <i class="fa fa-info-circle" id="info-validade"></i>
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="text" class="credit_card_expiration-1" maxlength="2" pattern="([0-9]|[0-9])" placeholder="MÊS" value="" style="width: 48%!important; float: left; margin-right: 10px;">
+											<input type="text" class="credit_card_expiration-2" maxlength="2" pattern="([0-9]|[0-9])" placeholder="ANO" value="" style="width: 48%!important; float: left; margin-right: 0px;">
+											<input type="hidden" class="credit_card_expiration" data-iugu="expiration" value="" style="display: none;">
+										</div>
+									</div>
+								</div>
+						    </li>
+						    <li>CVV <i class="fa fa-info-circle" id="info-CVV"></i>
+								<div class="item-content form-row">
+									<div class="item-inner">
+										<div class="item-input">
+											<input type="text" autocomplete="off" class="credit_card_cvv" maxlength="3" pattern="([0-9]|[0-9]|[0-9])"  data-iugu="verification_value"  placeholder="" value="">
+										</div>
+									</div>
+								</div>
+						    </li>
+						</ul>
+					</div>
+		       	</form>
+
+		        <div class="color-default" id="tabbar-buy" style="height: 125px;padding-top: 10px;margin-top: 15px;">
+					<div class="row">
+					    <div class="col-50">
+					    	Pague <strong>R$ {{real data.CB16_VALOR}}</strong>
+					    </div>
+					    <div class="col-50">
+					    	Receba de volta <strong>R$ {{real data.CB16_VLR_CB_TOTAL}}</strong>
+					    </div>
+					</div>
+					<div class="row">
+					    <div class="col-10"></div>
+					    <div class="col-80">
+			    			<a href="#" class="button button-secondary button-fill" id="checkout-submit">FINALIZAR A COMPRA</a>
+					    </div>
+					    <div class="col-10"></div>
+					</div>
+				</div>
+
+	        </div>
+
+	        <!--
+	        <div class="toolbar tabbar color-default" id="tabbar-buy" style="height: 110px;">
+				<div class="row">
+				    <div class="col-50">
+				    	Pague <strong>R$ {{real data.CB16_VALOR}}</strong>
+				    </div>
+				    <div class="col-50">
+				    	Receba de volta <strong>R$ {{real data.CB16_VLR_CB_TOTAL}}</strong>
+				    </div>
+				</div>
+				<div class="row">
+				    <div class="col-10"></div>
+				    <div class="col-80">
+		    			<a href="#" class="button button-secondary button-fill" id="checkout-submit">FINALIZAR A COMPRA</a>
+				    </div>
+				    <div class="col-10"></div>
+				</div>
+	        </div>
+	        -->
+
+	    </script>
+        
+    </div>
+</div>

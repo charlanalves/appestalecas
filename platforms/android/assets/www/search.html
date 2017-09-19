@@ -1,0 +1,87 @@
+<div class="navbar navbar-clear">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link back">
+                <span class="icon-chevron-left"></span> <span>Voltar</span>
+            </a>
+        </div>
+        <div class="center sliding">Pesquisar</div>
+        <div class="right">
+            <a href="#" class="link icon-only" data-panel="right">
+                <!--<span class="kkicon icon-alarm"></span>-->
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="search" class="page">
+        <div class="page-content infinite-scroll">
+            <div class="list-block">
+                <div class="item-content" style="margin: 10px; margin-bottom: 5px; margin-top: 15px; border-radius: 10px;">
+                    <div class="item-media"><i class="fa fa-search"></i></div>
+                    <div class="item-inner">
+                        <div class="item-input"><input type="text" id="campo-pesquisa" placeholder="Pesquise aqui"></div>
+                        <div class="item-after"><a href="#" class="button active" id="btn-pesquisa" style="margin-top: -9px;">ok</a></div>
+                    </div>
+                </div>
+                <ul id="destino-templateSearch" style="border: 0px; padding-top: 5px;"></ul>
+                <!-- Preloader -->
+                <div class="infinite-scroll-preloader">
+                    <!--<div class="preloader"></div>-->
+                </div>
+            </div>
+        </div>
+
+        <!-- Template -->
+        <script type="text/template" id="templateSearch">
+            {{#if data}}
+                <!--
+                <li>
+                    <div class="item-content" style="
+                        border-bottom: 1px #DFDFDF solid;
+                        padding: 0px;
+                        min-height: inherit;
+                        font-size: 14px;
+                        color: #777!important;">
+                        <div class="item-title">Resultados: <strong>{{count data}}</strong></div>
+                    </div>
+                </li>
+                -->
+                {{#each data reverse="false"}}
+                    <li>
+                        <a href="company.html?company={{CB04_ID}}&product={{CB06_PRODUTO_ID}}" class="">
+                            <div class="item-content" style="padding: 5px 0px; border-bottom: 1px silver solid; height: 135px">
+                                <div class="item-media"><img src="{{#if CB14_URL}}{{foto CB14_URL}}{{else}}assets/img/sem_imagem2.jpg{{/if}}" width="150"></div>
+                                <div class="item-inner" style="padding: 10px 2px; margin-left: 10px;">
+                                  <div class="item-title-row" style="margin-top: -50px;">
+                                    
+                                    <div class="item-title">{{CB04_NOME}}</div>
+
+                                    <div class="item-after" style="display: block;">
+                                        {{CB05_TITULO}}
+                                        <br />
+                                        <strong> a partir de R$ {{real MIN_PRECO}}</strong>
+                                        <br />
+                                        receba até 
+                                        <span class="badge badge-primary badge-square text-uppercase" style="
+                                            top: 0px!important;
+                                            right: 0px!important;
+                                            padding: 9px 6px!important;
+                                            margin: 5px;
+                                            background: linear-gradient(to bottom, #1db5e9 0%, #1496c3 100%);
+                                            font-size: 12px;">
+                                            {{real MAX_CB}}%
+                                        </span>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                {{/each}}
+            {{/if}}
+        </script>
+        
+    </div>
+</div>

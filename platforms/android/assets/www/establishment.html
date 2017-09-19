@@ -1,0 +1,51 @@
+<div class="navbar navbar-clear">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link back">
+                <span class="icon-chevron-left"></span> <span>Voltar</span>
+            </a>
+        </div>
+        <div class="center sliding">
+            <span class="anim-logo-smalal" style="font-weight: bold;">Estabelecimentos</span>
+        </div>
+        <div class="right">
+            <a href="search.html" class="link icon-only" data-panel="right">
+                <span class="fa fa-search fa-lg"></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="pages">
+    <div data-page="establishment" class="page">
+        <div class="page-content">
+            <div class="list-block media-list">
+                <ul id="destino-templateEstablishment"></ul>
+            </div>
+        </div>
+
+        <!-- Template -->
+        <script type="text/template" id="templateEstablishment">
+
+            {{#each data}}
+                <li>
+                    <a href="company.html?company={{CB04_ID}}" class="item-link item-content">
+                        <div class="item-media"><img src="{{foto CB04_URL_LOGOMARCA}}" width="50"></div>
+                        <div class="item-inner">
+                            <div class="item-title-row">
+                                <div class="item-title">{{CB04_NOME}}</div>
+                                <div class="item-after">
+                                    <span class="badge badge-primary">{{real CASHBACK}}%</span>
+                                </div>
+                            </div>
+                            <div class="item-subtitle"></div>
+                            <div class="item-text" style="font-size: 12px">{{CB04_END_BAIRRO}}, {{CB04_END_CIDADE}} - {{CB04_END_UF}}</div>
+                        </div>
+                    </a>
+                </li>
+            {{/each}}
+
+        </script>
+        
+    </div>
+</div>

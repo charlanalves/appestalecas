@@ -35,7 +35,9 @@
         <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.theme.css" type="text/css">
 
         <link rel="stylesheet" href="assets/css/app.css" type="text/css">
+		<link rel="stylesheet" href="assets/css/sweetalert.css" type="text/css">
         <!--<link rel="stylesheet" href="assets/themes//style.css" id="theme-style">-->
+		
 
         <style>
             .negrito {
@@ -113,6 +115,7 @@
             #page-filter .swiper-slide label div {
                 text-align:center;
                 width: 100%;
+				height: 96px;
             }
             #page-filter .swiper-slide label div.item-inner {
                 padding-top: 22px;
@@ -123,12 +126,14 @@
                 overflow: visible;
             }
             #page-filter .swiper-slide label.label-radio input[type=radio]:checked~.item-inner {
-                background-size: 25px;
-                background-position: center top;
-                background-image: initial;
-                background-color: #e8fbff;
-                height: 96px;
-                border-radius: 12px;
+                  background-size: 25px;
+				background-position: center top;
+				background-image: initial;
+				background-color: #0089be;
+				height: 96px;
+				border-radius: 12px;
+				color: white;
+				font-size: 14px;
             }
             #page-filter .swiper-slide label.label-radio input[type=radio]~.item-inner {
                 padding-right: 0px;
@@ -380,13 +385,64 @@
         <!-- iugu remoto -->
         <!-- <script type="text/javascript" src="https://js.iugu.com/v2"></script> -->
         <script type="text/javascript" src="assets/js/formatter.js"></script>
-        <!--<script type="text/javascript" src="cordova.js"></script>-->
+		<script type="text/javascript" src="assets/js/sweetalert.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
         
-        <script>
-            
-        document.addEventListener('deviceready', onDeviceReady, false);
+<script>
+alert = function(a,b,c = 'error'){
+	
+	   swal(b, a, c);
+}
 
-            function onDeviceReady () {
+             document.addEventListener('deviceready', function(){
+			    modalConectionLost = myApp.modal({
+					title: 'Sem internet!',
+					text: 'Verifique sua conexão para continuar.',
+					afterText:  '<div class="swiper-container" style="width: auto; margin:5px -15px -15px">'+
+								  '<div class="swiper-pagination"></div>'+
+								  '<div class="swiper-wrapper">'+                    
+									'<div class="swiper-slide"><img src="assets/img/lostcon.png" height="150"></div>'+
+								  '</div>'+
+								'</div>',
+				/*	buttons: [
+					  {
+						text: 'Tentar Novamente!',
+						bold: true,
+						onClick: function () {									 
+							if (navigator.connection.type == Connection.NONE) {
+								tentarNovamente7();
+							}else {
+							
+								$('.modal-overlay.modal-overlay-visible').hide();
+								$('.modal').hide();
+								
+							}
+						}
+					  },
+					]*/
+				  });
+				$('.modal').hide();
+				$('.modal-overlay.modal-overlay-visible').hide();
+				
+				 // Tratamento de erros de conexão
+				 document.addEventListener("offline", onOffline, false);
+				 document.addEventListener("online", onOnline, false);				 
+					function onOffline() {
+							 $('.modal').show();
+							 $('.modal-overlay.modal-overlay-visible').show();
+					}
+
+					function onOnline() {
+						$('.modal').hide();
+						$('.modal-overlay.modal-overlay-visible').hide();
+					}
+				 }, false);
+      //  document.addEventListener('deviceready', onDeviceReady, false);
+
+         //   function onDeviceReady () {
+			//alert('device ready')
+			
+			
            /*    window.addEventListener('native.keyboardshow', function(e){
                    alert('haha')
                   a = document.querySelectorAll('.toolbar')[0];
@@ -400,7 +456,7 @@
                     a.style.display = "block";
                 });
 */
-            }   
+           // }   
             // mascara de CPF
             // $("input[name='cpf_cnpj']").mask("999.999.999-99").attr('placeholder', 'CPF');
             
@@ -415,23 +471,29 @@
                 blockPanelLeft(page.name);
                 $('div#tabbar-bottom').hide();
                 $$('#login-button').on('click', function () {
-                    validateLogin(myApp.formToJSON('#login-form'));
+					var cpf_cnpj = $('form#login-form input[name=cpf_cnpj]').val();
+					    pass = $('form#login-form input[name=password]').val();
+					  if (cpf_cnpj == '' || pass == '' ){
+							 alert('Os campos CPF/CNPJ e SENHA são obrigatórios.', 'Preencha os campos:');                     
+					  } else {
+						validateLogin(myApp.formToJSON('#login-form'));
+					}
                 });
                 
                 $$('a#linkEsqueceuSenha').on('click', function () {
                     cpf_cnpj = $('form#login-form input[name=cpf_cnpj]').val();
                     if(!cpf_cnpj) {
-                        myApp.alert('Preencha o campo e-mail e clique no link para recebeu em seu e-mail uma nova senha.', 'Esqueceu a senha?'); 
+                        alert('Preencha o campo CPF/CNPJ e clique novamente no link para receber em seu e-mail uma nova senha.', 'Esqueceu a senha?'); 
                     } else {
                         ajaxApi('nova-senha', {cpf_cnpj: cpf_cnpj}, function(r) {
                             if(r.status == null) {
-                                myApp.alert('Sua conta nao foi encontrada, verifique os dados informados e tente novamente.', 'Esqueceu a senha?');                     
+                                alert('Sua conta não foi encontrada, verifique os dados informados e tente novamente.', 'Esqueceu a senha?');                     
                                 
                             } else if(r.status) {
-                                myApp.alert('Foi enviado um e-mail para <strong>' + r.email + '</strong> com a nova senha!', 'Esqueceu a senha?');                     
+                                alert('Foi enviado um e-mail para <strong>' + r.email + '</strong> com a nova senha!', 'Esqueceu a senha?');                     
                                 
                             } else {
-                                myApp.alert('Não foi possível recuperar a senha, tente novamente.', 'Esqueceu a senha?');                     
+                                alert('Não foi possível recuperar a senha, tente novamente.', 'Esqueceu a senha?');                     
                                 
                             }
                         });
@@ -459,7 +521,7 @@
                             validaEmail();
                             goMain();
                         } else {
-                            myApp.alert('Acesse seu e-mail e clique no link ou se você não recebeu o e-mail clique no botão "reenviar e-mail".','A conta não foi ativada'); 
+                            alert('Acesse seu e-mail e clique no link ou se você não recebeu o e-mail clique no botão "reenviar e-mail".','A conta não foi ativada'); 
                         }
                     });
                 });
@@ -468,7 +530,7 @@
                 $$('a#ReenviarEmail').on('click', function () {
                     ajaxApi('reenviar-email-validacao', param, function (a) {
                         console.log(a.responseText);
-                       //myApp.alert(a.msg,'Atenção'); 
+                       //alert(a.msg,'Atenção'); 
                     });
                 });
                 
@@ -483,9 +545,9 @@
                                     var novoEmail = $('input#valid_new_email').val();
                                     ajaxApi('alterar-email-usuario', {param: param, new_email: novoEmail}, function (a) {
                                         if(typeof a.responseText != 'undefined'){
-                                            myApp.alert('Seu e-mail não foi alterado: ' + a.responseText,'Opss');
+                                            alert('Seu e-mail não foi alterado: ' + a.responseText,'Opss');
                                         } else {
-                                            myApp.alert('','E-mail alterado com sucesso!');
+                                            alert('','E-mail alterado com sucesso!');
                                             $('div#destino-templateValidEmail strong').text(novoEmail);
                                         }
                                     });
@@ -510,11 +572,11 @@
                 ajaxApi('politica-privacidade-termos-uso', {}, function (a) {
                     
                     $$('a#alert-politica-privacidade').on('click', function () {
-                        myApp.alert(a.PP, 'Política de privacidade');
+                        alert(a.PP, 'Política de privacidade');
                     });
 
                     $$('a#alert-termos-uso').on('click', function () {
-                        myApp.alert(a.TU, 'Termos de uso');
+                        alert(a.TU, 'Termos de uso');
                     });
 
                     // envia form de cadastro de usuario
@@ -522,7 +584,7 @@
                         if(formRegistration.isChecked('PP') && formRegistration.isChecked('TU')) {
                             ajaxApi('login-create', myApp.formToJSON('#loginCreate-form'), callbackLoginCreate);
                         } else {
-                            myApp.alert('Não é possível criar uma conta sem ler e concordar com a <strong>política de privacidade</strong> e os <strong>termos de uso</strong>', 'Importante');
+                            alert('Não é possível criar uma conta sem ler e concordar com a <strong>política de privacidade</strong> e os <strong>termos de uso</strong>', 'Importante');
                         }
                     });
 
@@ -531,7 +593,7 @@
                 // callback login create
                 var callbackLoginCreate = function(data) {                      
                     saveUserLSAndRedirectToIndex(appConfig.localStorageName, JSON.parse(data.retorno));
-                    //myApp.alert('','Usuário cadastrado!');
+                    //alert('','Usuário cadastrado!');
                     //mainView.router.loadPage('index.html');
                 };
             });
@@ -544,9 +606,9 @@
                 $.extend(page.query, getUserData());
                 templateMain.compileAjax('promocao', page.query, function (a) {
                     if (typeof a.estabelecimentos == 'undefined') {	
-                        myApp.alert('Nenhum estabelecimento cadastrado...', 'Opss');
+                        alert('Nenhum estabelecimento cadastrado...', 'Opss');
                     }else if(typeof a.estabelecimentos == 'undefined' || !a.estabelecimentos.length) {	
-                        myApp.alert('Nenhum estabelecimento encontrado para o filtro selecionado...', 'Opss', function(){ 
+                        alert('Nenhum estabelecimento encontrado para o filtro selecionado...', 'Opss', function(){ 
                             mainView.router.loadPage('filter.html'); 
                         });
                     }
@@ -645,6 +707,8 @@
             // -----------------------------------------------------------------
             // categorias
             securePage('category', function (page) {
+				
+				
                 var templateEstablishment = new Template('templateCategory');
                 templateEstablishment.compileAjax('category', {user_auth_key: getUserData().auth_key});
             });
@@ -661,8 +725,25 @@
                         // texto: r.texto;
                     });
                     $$('a#alert-regras-convite').on('click', function () {
-                        myApp.alert(r.regras, 'REGRAS');
+                        alert(r.regras, 'REGRAS');
                     });
+					//$('.navbar').hide();
+				
+					//Ao clicar na tela convidar amigo abre o aplicativo WhatsApp para compartilhamento
+				   $('#sh').on('click',function(){
+						var auth_key = JSON.parse(localStorage.getItem('esUser'))['auth_key'];
+					    window.plugins.socialsharing.shareViaWhatsApp(
+							'APP Estalecas - Compre e ganhe dinheiro de volta! Estou usando e gostando muito!', 
+							'http://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Dollar-Sign-PNG-Image-500x713.png',
+							appConfig.indicacaoUrl + auth_key, 
+							null,
+							function(errormsg){alert("Error: Erro ao compartillhar. tente novamente mais tarde")}
+						)
+					})
+					
+					
+
+					
                 });
             });
 
@@ -674,14 +755,14 @@
                 var callbackCashOut = function (a) {
                     
                     if(a.saque_realizado == true) {
-                        //myApp.alert('Solicitação de saque realizada com sucesso.', 'Tudo certo!');                        
+                        //alert('Solicitação de saque realizada com sucesso.', 'Tudo certo!');                        
                         mainView.router.loadPage('cash-out-message.html');
                         return;
                         
                     } else {
 
                         // form de solicitacao de saque
-                        var formCashOut = new Form('cashOut-form');
+                        formCashOut = new Form('cashOut-form');
 
                         // add opcoes de banco
                         formCashOut.addOptionsSelect("CB03_COD_BANCO", a.bancos);
@@ -693,19 +774,84 @@
                         formCashOut.setMoney(["CB03_VALOR"]);
                             
                         if (a.conta_bancaria.CB03_AGENCIA) {
+						a.conta_bancaria.CB03_AGENCIA = a.conta_bancaria.CB03_AGENCIA.replace(/[^0-9.]/g, "");
+						a.conta_bancaria.CB03_NUM_CONTA = a.conta_bancaria.CB03_NUM_CONTA.replace(/[^0-9.]/g, "");
+						console.log(a.conta_bancaria)
                             formCashOut.setFormData(a.conta_bancaria);
-                            formCashOut.form.find('select, input').attr('disabled', true);
-                            formCashOut.form.find('input[name=CB03_VALOR]').attr('disabled', false);
+                        //    formCashOut.form.find('select, input').attr('disabled', true);
+							formCashOut.form.find('input[name=CB03_VALOR]')[0].value = a.conta_bancaria.CB03_SAQUE_MAX
+                            formCashOut.form.find('input[name=CB03_VALOR]').attr('disabled', true);
+						
                         }
                         
-                        $('a#cashOut-submit').on('click', function () {
-                            var dadosForm = formCashOut.getFormData();
-                            var dadosCompl = {CB03_NOME_BANCO: formCashOut.getSelected('CB03_COD_BANCO').text};
-                            ajaxCashOut($.extend(dadosCompl,dadosForm));
-                        });
-                        
+                        $('a#cashOut-submit').on('click', function(){
+						
+						
+						
+						var v = formCashOut.CB03_VALOR.value,
+							b = $('select[name="CB03_COD_BANCO"] option:selected').text(),
+							ag = formCashOut.CB03_AGENCIA.value,
+							nc = formCashOut.CB03_NUM_CONTA.value,
+							tc = $('select[name="CB03_TP_CONTA"] option:selected').text(),
+							sm = formCashOut.CB03_VALOR.value;
+							
+							if (v == 0){
+								
+								myApp.modal({
+									title:  'Você não possui saldo suficiente para sacar.',							
+									buttons: [
+									  {
+										text: 'OK',									
+									  },								 							  
+									]
+								  });
+							}else{
+							
+								if (ag == '' || b == '' || ag == '' || nc == '' || tc == '') {
+								myApp.modal({
+									title:  'Favor preencher todos os campos.',							
+									buttons: [
+									  {
+										text: 'OK',									
+									  },								 							  
+									]
+								  });
+								  
+								} else {
+								 myApp.modal({
+									title:  'Confira os dados do saque:',
+									text: 'Valor: <strong>'+v+'</strong> <br>Banco: <strong>'+b+'</strong><br>Agência: <strong>'+ag+'</strong><br>N°. Conta: <strong>'+nc+'</strong><br>Tipo Ct: <strong>'+ tc+'</strong>',
+									buttons: [
+									  {
+										text: 'Cancelar',									
+									  },
+									  {
+										text: 'Sacar',
+										onClick: function() {
+										  var dadosForm = formCashOut.getFormData();
+										  var dadosCompl = {CB03_NOME_BANCO: formCashOut.getSelected('CB03_COD_BANCO').text};
+										ajaxCashOut({
+											CB03_VALOR:v,
+											CB03_COD_BANCO: $('select[name="CB03_COD_BANCO"] option:selected').val(),
+											CB03_AGENCIA:ag,
+											CB03_NUM_CONTA:nc,
+											CB03_TP_CONTA: $('select[name="CB03_TP_CONTA"] option:selected').val(),
+											CB03_SAQUE_MAX:v,
+											CB03_NOME_BANCO:formCashOut.getSelected('CB03_COD_BANCO').text
+											});
+										}
+									  },								  
+									]
+								  });
+								}
+							}
+                       
+			
+						
+						});
+                          myApp.closeModal();
                         $('a#alert-regras').on('click', function () {
-                            myApp.alert(a.regras, 'Regras para saque');
+                            alert(a.regras, 'Regras para saque');
                         });
                     }
                 },
@@ -809,7 +955,7 @@
                 
                 // vefifica se e obrigatoria a alteracao da senha
                 if(typeof page.query.r != 'undefined') {
-                    myApp.alert('É muito importante para sua segurança!','Altere sua senha');
+                    alert('É muito importante para sua segurança!','Altere sua senha');
                 }
                 
                 // form - alterar senha
@@ -819,13 +965,13 @@
                 $('a#changePassword-submit').on('click', function () {
                     var param = formChangePassword.getFormData();
                     if(param['current-password'] === '' || param['new-password'] === '') {
-                        myApp.alert('','Preencha os dois campos.');
+                        alert('','Preencha os dois campos.');
                         return;
                     }
                     ajaxApiUser('change-password', param, function(a){
                         if(typeof a.message != 'undefined') {
                             formChangePassword.clear();
-                            myApp.alert('',a.message);
+                            alert('',a.message);
                             validaAlteracaoSenha();
                         }
                     });
@@ -854,7 +1000,7 @@
                             ultimoCEP = v;
                             Util.getEnderecoByCEP(v, function (data) {
                                 if (data.erro) {
-                                    myApp.alert('O CEP digitado não foi encontrado, verifique o CEP ou preencha os dados do endereço');
+                                    alert('O CEP digitado não foi encontrado, verifique o CEP ou preencha os dados do endereço');
                                     formDeliveryAddress.clear(['CB16_COMPRADOR_END_LOGRADOURO','CB16_COMPRADOR_END_BAIRRO','CB16_COMPRADOR_END_CIDADE','CB16_COMPRADOR_END_UF']);                                    
                                     formDeliveryAddress.CB16_COMPRADOR_END_CEP.focus();
                                 } else {
@@ -962,7 +1108,7 @@
                         
                         var callbackCheckout =  function(r){
                             if (r.status === true) {
-                                myApp.alert('Pagamento efetuado!', 'Tudo Certo');
+									alert('Pagamento efetuado!', 'Tudo Certo');
                                 // testa se o pedido é delivery.. exibe pagina personalizada
                                 if (a.CB06_DISTRIBUICAO == "0") {
                                     mainView.router.loadPage('purchase-message.html');
@@ -970,7 +1116,7 @@
                                     mainView.router.loadPage('delivery-message.html?order=' + param.order);
                                 }
                             } else {
-                                myApp.alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
+                                alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
 
                             }
                         };
@@ -988,7 +1134,7 @@
                                 // cria token do pagamento IUGU
                                 Iugu.createPaymentToken(formCheckout.form[0], function(data) {
                                     if (data.errors) {
-                                        myApp.alert(Util.errorCartToString(data.errors), 'Opss');
+                                        alert(Util.errorCartToString(data.errors), 'Opss');
 
                                     } else {
                                         $("#token").val( data.id );
@@ -1113,7 +1259,7 @@
                                     }
                                 });
                             } else {
-                                myApp.alert('', 'Selecione uma promoção');
+                                alert('', 'Selecione uma promoção');
                             }
                         });
                         
@@ -1125,8 +1271,7 @@
                 
             });
 
-            
-        </script>
+</script>
 
     </body>
 </html>
