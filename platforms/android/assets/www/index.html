@@ -390,10 +390,11 @@
         
 <script>
 alert = function(a,b,c = 'error'){
-	
-	   swal(b, a, c);
+		swal({
+		  title: a,
+		  type: c,
+		})
 }
-
              document.addEventListener('deviceready', function(){
 			    modalConectionLost = myApp.modal({
 					title: 'Sem internet!',
@@ -406,8 +407,7 @@ alert = function(a,b,c = 'error'){
 								'</div>',
 				/*	buttons: [
 					  {
-						text: 'Tentar Novamente!',
-						bold: true,
+						text: 'Tentar Novamente!',"
 						onClick: function () {									 
 							if (navigator.connection.type == Connection.NONE) {
 								tentarNovamente7();
@@ -735,7 +735,8 @@ alert = function(a,b,c = 'error'){
 					    window.plugins.socialsharing.shareViaWhatsApp(
 							'APP Estalecas - Compre e ganhe dinheiro de volta! Estou usando e gostando muito!', 
 							'http://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Dollar-Sign-PNG-Image-500x713.png',
-							appConfig.indicacaoUrl + auth_key, 
+							//appConfig.indicacaoUrl + auth_key, 
+							"https://goo.gl/A2KW5V",
 							null,
 							function(errormsg){alert("Error: Erro ao compartillhar. tente novamente mais tarde")}
 						)
@@ -1045,6 +1046,7 @@ alert = function(a,b,c = 'error'){
                 formaPagamento;
                 param.user_auth_key = getUserData().auth_key;
                 templateProfile.compileAjax('checkout', param, function (a) {
+                    var a;
                     if(a === false) {
                         mainView.router.loadPage('main.html'); 
                         
@@ -1063,7 +1065,7 @@ alert = function(a,b,c = 'error'){
                         ajaxApiUser('iugu-id-account', {}, function(a){
                             if(a){
                                 Iugu.setAccountID(a); // id Iugu
-                                Iugu.setTestMode(true); // para teste
+                                Iugu.setTestMode(false); // para teste
                                 Iugu.setup(); // validar os dados de cartao no form
                             }
                         });
@@ -1105,14 +1107,14 @@ alert = function(a,b,c = 'error'){
                         
                         $('select#CHECKOUT-FORMA-PAGAMENTO').trigger('change');
                         
-                        var callbackCheckout =  function(a){
-                            if (a.status === true) {
-                                alert('Pagamento efetuado!', 'Tudo Certo');
-                                // testa se o pedido é delivery.. exibe pagina diferente
-                                if (!a.retorno.delivery) {
+                        var callbackCheckout =  function(r){
+                            if (r.status === true) {
+									alert('Pagamento efetuado!', 'Tudo Certo');
+                                // testa se o pedido é delivery.. exibe pagina personalizada
+                                if (a.CB06_DISTRIBUICAO == "0") {
                                     mainView.router.loadPage('purchase-message.html');
                                 } else {
-                                    mainView.router.loadPage('delivery-message.html');
+                                    mainView.router.loadPage('delivery-message.html?order=' + param.order);
                                 }
                             } else {
                                 alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
@@ -1125,6 +1127,7 @@ alert = function(a,b,c = 'error'){
 
 
                             var formDataCheckout = pageQuery;
+							
                             formDataCheckout.data = formCheckout.getFormData();
 
                             // se nao pagar com saldo estaleca

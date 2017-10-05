@@ -197,10 +197,10 @@ $$(document).on('pageInit', function (e) {
                         var response = JSON.parse(data);
 
                         if(!response.error) {
-                            myApp.alert(response.msg, '');
+                            alert(response.msg, '');
                             form.find("input[type=text], input[type=email], textarea").val("");;
                         } else {
-                            myApp.alert(response.msg, '');
+                            alert(response.msg, '');
                         }
                   });
             }

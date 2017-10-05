@@ -390,11 +390,10 @@
         
 <script>
 alert = function(a,b,c = 'error'){
-		swal({
-		  title: a,
-		  type: c,
-		})
+	
+	   swal(b, a, c);
 }
+
              document.addEventListener('deviceready', function(){
 			    modalConectionLost = myApp.modal({
 					title: 'Sem internet!',
@@ -407,7 +406,8 @@ alert = function(a,b,c = 'error'){
 								'</div>',
 				/*	buttons: [
 					  {
-						text: 'Tentar Novamente!',"
+						text: 'Tentar Novamente!',
+						bold: true,
 						onClick: function () {									 
 							if (navigator.connection.type == Connection.NONE) {
 								tentarNovamente7();
@@ -735,8 +735,7 @@ alert = function(a,b,c = 'error'){
 					    window.plugins.socialsharing.shareViaWhatsApp(
 							'APP Estalecas - Compre e ganhe dinheiro de volta! Estou usando e gostando muito!', 
 							'http://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Dollar-Sign-PNG-Image-500x713.png',
-							//appConfig.indicacaoUrl + auth_key, 
-							"https://goo.gl/A2KW5V",
+							appConfig.indicacaoUrl + auth_key, 
 							null,
 							function(errormsg){alert("Error: Erro ao compartillhar. tente novamente mais tarde")}
 						)
@@ -1065,7 +1064,7 @@ alert = function(a,b,c = 'error'){
                         ajaxApiUser('iugu-id-account', {}, function(a){
                             if(a){
                                 Iugu.setAccountID(a); // id Iugu
-                                Iugu.setTestMode(false); // para teste
+                                Iugu.setTestMode(true); // para teste
                                 Iugu.setup(); // validar os dados de cartao no form
                             }
                         });
@@ -1107,14 +1106,22 @@ alert = function(a,b,c = 'error'){
                         
                         $('select#CHECKOUT-FORMA-PAGAMENTO').trigger('change');
                         
+<<<<<<< HEAD
+                        var callbackCheckout =  function(a){
+                            if (a.status === true) {
+                                alert('Pagamento efetuado!', 'Tudo Certo');
+                                // testa se o pedido é delivery.. exibe pagina diferente
+                                if (!a.retorno.delivery) {
+=======
                         var callbackCheckout =  function(r){
                             if (r.status === true) {
-									alert('Pagamento efetuado!', 'Tudo Certo');
+                                myApp.alert('Pagamento efetuado!', 'Tudo Certo');
                                 // testa se o pedido é delivery.. exibe pagina personalizada
-                                if (a.CB06_DISTRIBUICAO == "0") {
+                                if (!a.CB06_DISTRIBUICAO) {
+>>>>>>> 005c3670f4e8d72fcfc2feade682fd71c71f758b
                                     mainView.router.loadPage('purchase-message.html');
                                 } else {
-                                    mainView.router.loadPage('delivery-message.html?order=' + param.order);
+                                    mainView.router.loadPage('delivery-message.html');
                                 }
                             } else {
                                 alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
@@ -1127,7 +1134,6 @@ alert = function(a,b,c = 'error'){
 
 
                             var formDataCheckout = pageQuery;
-							
                             formDataCheckout.data = formCheckout.getFormData();
 
                             // se nao pagar com saldo estaleca

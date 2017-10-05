@@ -7183,3 +7183,18 @@ a#cashOut-submit {
     float: left;
 	z-index:999999;
 }
+
+.sweet-alert h2 {
+    
+    font-size: 17px !important;
+	    font-family: inherit;
+		    margin: -14px 0 !important;
+    
+}
+
+.list-block > ul {
+    color: #989898;
+     border: none !important; 
+    border-radius: unset !important;
+    padding: 10px;
+}
