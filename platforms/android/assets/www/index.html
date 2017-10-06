@@ -33,13 +33,47 @@
         <link rel="stylesheet" href="bower_components/swipebox/src/css/swipebox.css" type="text/css">
         <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.carousel.css" type="text/css">
         <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.theme.css" type="text/css">
-
+    
         <link rel="stylesheet" href="assets/css/app.css" type="text/css">
-		<link rel="stylesheet" href="assets/css/sweetalert.css" type="text/css">
+	<link rel="stylesheet" href="assets/css/sweetalert.css" type="text/css">
+        <link rel="stylesheet" href="assets/jquery-bar-rating/dist/themes/css-stars.css" type="text/css">
         <!--<link rel="stylesheet" href="assets/themes//style.css" id="theme-style">-->
-		
-
+        
         <style>
+            
+            /* CSS ESTRELA AVALIACAO ---------------------------------------- */
+            .avaliacao {
+                margin-top: 10px;
+                border-bottom: 1px silver solid;
+            }
+            .avaliacao .estrela-avaliacao {
+                padding-top: 8px; 
+                width: 100%;
+                display: block;
+                height: 40px; 
+                border-top: 1px silver solid;
+            }
+            .avaliacao .estrela-avaliacao span {
+                margin-top: 5px;
+                float: left;
+                font-weight: bold;
+            }
+            .avaliacao .estrela-avaliacao .select-star {
+                float: right;
+            }
+            .avaliacao-comentario {
+                width: 100%;
+                text-align: left;
+                margin-top: 15px;
+                border-top: 0px solid silver;
+            }
+            .avaliacao-comentario textarea{
+                width: 100%;
+                text-align: left;
+                margin-top: 10px;
+                height: 50px
+            }
+            
             .negrito {
                 font-weight: bold;
             }
@@ -387,6 +421,7 @@
         <script type="text/javascript" src="assets/js/formatter.js"></script>
 		<script type="text/javascript" src="assets/js/sweetalert.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="assets/jquery-bar-rating/jquery.barrating.js"></script>
         
 <script>
 alert = function(a,b,c = 'error'){

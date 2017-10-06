@@ -2,7 +2,7 @@
 var appConfig = {
 
     url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',	
- //  url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
+   url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
     
     urlFoto: 'http://52.67.208.141/cashbackdev/frontend/web/',	
 //	urlFoto: 'http://localhost/apiestalecas/frontend/web/',
@@ -13,8 +13,8 @@ var appConfig = {
     //urlFoto: 'http://localhost/apiestalecas/frontend/web/',
     
     // Eduardo
-    url: 'http://localhost/cashback/frontend/web/index.php?r=',
-    urlFoto: 'http://localhost/cashback/frontend/web/',
+   // url: 'http://localhost/cashback/frontend/web/index.php?r=',
+    //urlFoto: 'http://localhost/cashback/frontend/web/',
     indicacaoUrl:'http://52.67.208.141/cashbackdev/indicacao/register.php?auth_key=',
     localStorageName: 'esUser',
     back: false,
