@@ -14,7 +14,7 @@ var appConfig = {
     
     // Eduardo
     url: 'http://localhost/cashback/frontend/web/index.php?r=',
-    urlFoto: 'http://localhost/cashback/frontend/web/',
+    //urlFoto: 'http://localhost/cashback/frontend/web/',
     indicacaoUrl:'http://52.67.208.141/cashbackdev/indicacao/register.php?auth_key=',
     localStorageName: 'esUser',
     back: false,
