@@ -40,11 +40,14 @@
                 {{#each data}}
                     <li>
                     {{#js_compare "this.CB16_STATUS == 10"}}
+                        <!-- AGUARDANDO PAGAMENTO -->
                         <a href='checkout.html?order={{CB16_ID}}' class="link">
                     {{else}}
-                        {{#js_compare "this.CB16_STATUS_DELIVERY != 3"}}
+                        {{#js_compare "this.CB06_DISTRIBUICAO == 1 && this.CB16_STATUS_DELIVERY != 3"}}
+                            <!-- DELIVERY QUE NAO FOI ENTREGUE -->
                             <a href='delivery-message.html?order={{CB16_ID}}' class="link">
                         {{else}}
+                            <!-- FINALIZADO - NAO TEM ACAO -->
                             <a href='#' class="link">
                         {{/js_compare}}
                     {{/js_compare}}

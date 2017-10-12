@@ -13,8 +13,10 @@ var appConfig = {
     //urlFoto: 'http://localhost/apiestalecas/frontend/web/',
     
     // Eduardo
+   // url: 'http://localhost/cashback/frontend/web/index.php?r=
    // url: 'http://localhost/cashback/frontend/web/index.php?r=',
     //urlFoto: 'http://localhost/cashback/frontend/web/',
+	
     indicacaoUrl:'http://52.67.208.141/cashbackdev/indicacao/register.php?auth_key=',
     localStorageName: 'esUser',
     back: false,
