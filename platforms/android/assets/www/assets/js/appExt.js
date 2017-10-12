@@ -2,7 +2,7 @@
 var appConfig = {
 
     url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',	
-   url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
+ //  url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
     
     urlFoto: 'http://52.67.208.141/cashbackdev/frontend/web/',	
 //	urlFoto: 'http://localhost/apiestalecas/frontend/web/',
@@ -264,55 +264,68 @@ var orderEvaluation = function () {
 
 var showOrderEvaluation = function (r) {
     var r;
-    var pedidos = [];
-    var avaliacoes = [];
-    var ii = 0;    
-    var msgEstrela = '<i class="font-xs">Marque a quantidade de estrelas que indicam seu grau de satisfação.</i>';
-    
-    for(var j in r) {
-        avaliacao = r[j].avaliacao;
-        avaliacoes[j] = avaliacao;
-        pedidos[j] = r[j].pedido;
+    if (r.length) {
+        
+        var pedidos = [];
+        var avaliacoes = [];
+        var ii = 0;    
+        var msgEstrela = '<i class="font-xs">Marque a quantidade de estrelas que indicam seu grau de satisfação.</i>';
 
-        // itens da avaliacao
-        itensAvaliacao = '<div class="avaliacao">\n';
-        for(var i in avaliacao) {
-            itensAvaliacao += '<div class="estrela-avaliacao"><span><i class="fa fa-'+avaliacao[i].CB23_ICONE+' fa-fw"></i> &nbsp;'+avaliacao[i].CB23_DESCRICAO+'</span><div class="select-star"><select id="css-star-'+j+'-'+i+'" name="rating" autocomplete="off"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div></div>\n';
-        }
-        itensAvaliacao += '</div>\n';
-        
-        // nome da empresa + produto
-        empresaProduto = '<div class="negrito">'+pedidos[j].empresa+' - '+pedidos[j].produto+'</div>';
-        
-        // campo para comentario
-        campoComentario = '<div class="avaliacao-comentario">Deixe seu comentário:<textarea id="comentario-avaliacao-'+j+'"></textarea></div>';
-            
-        myApp.modal({
-            title: 'Avaliação',
-            text: empresaProduto + itensAvaliacao + msgEstrela + campoComentario,
-            buttons: [{text: 'Enviar Avaliação', onClick: function () {
-                for(var i in avaliacoes[ii]) {
-                    valorSelect = $('select#css-star-'+ii+'-'+i).val();
-                    comentario = $('textarea#comentario-avaliacao-'+ii).val();
-                    resultado = {
-                        CB21_ITEM_AVALIACAO_ID: avaliacoes[ii][i].CB20_ID,
-                        CB21_PRODUTO_PEDIDO_ID: pedidos[ii].id,
-                        CB21_NOTA: valorSelect,
-                        COMENTARIO: comentario,
-                    };
-                    console.log(resultado);
-                    console.log('------------');
-                }
-                ii++;
-            }}]
-        });
-        
-        $(function() {
+        for(var j in r) {
+            avaliacao = r[j].avaliacao;
+            avaliacoes[j] = avaliacao;
+            pedidos[j] = r[j].pedido;
+
+            // itens da avaliacao
+            itensAvaliacao = '<div class="avaliacao">\n';
             for(var i in avaliacao) {
-                $('#css-star-'+j+'-'+i).barrating({theme: 'css-stars'});
+                itensAvaliacao += '<div class="estrela-avaliacao"><span><i class="fa fa-'+avaliacao[i].CB23_ICONE+' fa-fw"></i> &nbsp;'+avaliacao[i].CB23_DESCRICAO+'</span><div class="select-star"><select id="css-star-'+j+'-'+i+'" name="rating" autocomplete="off"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div></div>\n';
             }
-        });
-        
+            itensAvaliacao += '</div>\n';
+
+            // nome da empresa + produto
+            empresaProduto = '<div class="negrito">'+pedidos[j].empresa+' - '+pedidos[j].produto+'</div>';
+
+            // campo para comentario
+            campoComentario = '<div class="avaliacao-comentario">Deixe seu comentário:<textarea id="comentario-avaliacao-'+j+'"></textarea></div>';
+
+            myApp.modal({
+                title: 'Avaliação',
+                text: empresaProduto + itensAvaliacao + (avaliacao.length ? msgEstrela : '') + campoComentario,
+                buttons: [{text: 'Enviar Avaliação', onClick: function () {
+
+                    // dados do comentario
+                    resultadoComentario = {
+                        CB22_COMENTARIO: $('textarea#comentario-avaliacao-'+ii).val(),
+                        CB22_AVALIACAO_ID: pedidos[ii].avaliacao_id,
+                        CB22_PRODUTO_PEDIDO_ID: pedidos[ii].produto_pedido
+                    };
+
+                    // dados da avaliacao
+                    resultadoAvaliacao = [];
+                    for(var i in avaliacoes[ii]) {
+                        valorSelect = $('select#css-star-'+ii+'-'+i).val();
+                        resultadoAvaliacao.push({
+                            CB21_ITEM_AVALIACAO_ID: avaliacoes[ii][i].CB20_ID,
+                            CB21_PRODUTO_PEDIDO_ID: pedidos[ii].produto_pedido,
+                            CB21_NOTA: valorSelect,
+                        });
+                    }
+
+                    // salva a avaliacao
+                    ajaxApiUser('save-avaliacao', {produto_pedido: pedidos[ii].produto_pedido, avaliacao: resultadoAvaliacao, comentario: resultadoComentario});
+
+                    ii++;
+                }}]
+            });
+
+            $(function() {
+                for(var i in avaliacao) {
+                    $('#css-star-'+j+'-'+i).barrating({theme: 'css-stars'});
+                }
+            });
+
+        }
     }
     
 };
