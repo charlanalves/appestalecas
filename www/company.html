@@ -117,7 +117,7 @@
                         Promoções
                     </a>
                     <a href="#tab-product-2-{{data.PRODUTO}}" class="show-tab-product-2 tab-link button buttonTabProduct button-primary">
-                        Regras
+                        Info
                     </a>
                     <a href="#tab-product-3-{{data.PRODUTO}}" class="show-tab-product-3 tab-link button buttonTabProduct button-primary">
                         Local
@@ -210,9 +210,26 @@
 
         <!-- Template regras do produto -->
         <script type="text/template" id="templateRules">
+
             <blockquote>
-                {{data.CB05_IMPORTANTE}}
+                <div class="content-block m-0" style="font-size: 16px;">
+                    <div class="row">
+                        {{#each data.itens}}
+                            <div class="col-50 color-black">
+                              <i class="fa fa-lg fa-check"></i>&nbsp; {{CB11_DESCRICAO}}
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
             </blockquote>
+
+            <div>
+                <h2 class="font-logo align-center mb-0">Importante</h2>
+                <p class="color-black p-5-15 m-0">
+                    {{data.importante.CB05_IMPORTANTE}}
+                </p>
+            </div>
+
         </script>        
 
         <!-- Template local do produto -->

@@ -16,41 +16,39 @@
 
 <div class="pages">
     <div data-page="promotions-by-category" class="page">
-        <div class="page-content" style="padding-bottom: 0px;">
+        <div class="page-content infinite-scroll" style="padding-bottom: 0px;">
             <div class="list-block">
                 <ul id="destino-templatePromotionsByCategory"></ul>
+                <a id="a-btn-filter" href="filter.html?pg=">
+                    <div class="button button-primary button-fill mb-10 btn-filter" style="bottom: 0px!important;">
+                        <i class="fa fa-lg fa-filter"></i>
+                    </div>
+                </a>
             </div>
         </div>
 
         <!-- Template -->
         <script type="text/template" id="templatePromotionsByCategory">
-            {{#if data.result}}
-                <!--
-                <li class="item-divider">
-                    <div class="item-content">
-                        <div class="item-title">Resultado</div>
-                        <div class="item-after">{{count data}}</div>
-                    </div>
-                </li>
-                -->
-                {{#each data.result reverse="false"}}
+            {{#if data}}
+                {{#each data reverse="false"}}
                     <li>
                         <a href="company.html?company={{CB04_ID}}&product={{CB06_PRODUTO_ID}}&promotion={{CB06_ID}}" class="">
                             <div class="item-content" style="padding: 5px 0px; border-bottom: 1px silver solid; height: 135px">
                                 <div class="item-media"><img src="{{#if CB14_URL}}{{foto CB14_URL}}{{else}}assets/img/sem_imagem2.jpg{{/if}}" width="150"></div>
                                 <div class="item-inner" style="padding: 10px 2px; margin-left: 10px;">
-                                  <div class="item-title-row" style="margin-top: -50px;">
+                                  <div class="item-title-row" style="margin-top: -60px;">
                                     
                                     <div class="item-title">{{CB04_NOME}}</div>
 
                                     <div class="item-after" style="display: block;">
                                         {{CB06_DESCRICAO}}
-                                        <br />
-                                        <span style="font-size: 11px;text-decoration: line-through;">R$ {{real CB06_PRECO}}</span>
-                                        <br />
-                                        <strong> por R$ {{real CB06_PRECO_PROMOCIONAL}}</strong>
+                                        <br /><span style="font-size: 11px;text-decoration: line-through;">R$ {{real CB06_PRECO}}</span>
+                                        <br /><strong> por R$ {{real CB06_PRECO_PROMOCIONAL}}</strong>
+                                        {{#if DISTANCIA}}
+                                            <br /><small>Aprox.: {{distancia DISTANCIA}}</small>
+                                        {{/if}}
                                         <span class="badge badge-primary badge-square text-uppercase" style="
-                                            top: 33px!important;
+                                            top: 70px!important;
                                             right: 0px!important;
                                             float: right!important;
                                             padding: 9px 6px!important;
@@ -64,19 +62,12 @@
                                   </div>
                                 </div>
                             </div>
-
-                            <!--
-                            <div class="item-media"><img src="{{foto CB14_URL}}" width="50"></div>
-                            <div class="item-inner">
-                                <div class="item-title">{{CB04_NOME}}</div>
-                            </div>
-                            -->
-
                         </a>
                     </li>
                 {{/each}}
+
             {{/if}}
         </script>
-        
+
     </div>
 </div>

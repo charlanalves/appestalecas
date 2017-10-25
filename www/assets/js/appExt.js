@@ -16,6 +16,7 @@ var appConfig = {
     url: 'http://localhost/cashback/frontend/web/index.php?r=',
     //urlFoto: 'http://localhost/cashback/frontend/web/',
     indicacaoUrl:'http://52.67.208.141/cashbackdev/indicacao/register.php?auth_key=',
+    urlFotoDefault: 'img/empresa_default.png',
     localStorageName: 'esUser',
     back: false,
     backRecarregou: true,
@@ -364,7 +365,7 @@ Template7.registerHelper('percent2', function (a, b) {
 });
 
 Template7.registerHelper('foto', function (a, options) {
-  return appConfig.urlFoto + a;
+  return appConfig.urlFoto + (a || appConfig.urlFotoDefault);
 });
 
 Template7.registerHelper('data', function (a) {
@@ -380,6 +381,18 @@ Template7.registerHelper('data', function (a) {
 Template7.registerHelper('real', function (a, options) {
     var aParse = String(parseFloat(a).toFixed(2)).replace('.',',');
     return (aParse === 'NaN') ? '0,00' : aParse;
+});
+
+Template7.registerHelper('distancia', function (a, options) {
+    if (a < 1) {
+        a = a * 1000;
+        unidadeMedida = "metros"
+        aParse = String(parseFloat(a)).replace('.',',');
+    } else {
+        unidadeMedida = "Km"
+        aParse = String(parseFloat(a).toFixed(2)).replace('.',',');
+    }
+    return (aParse === 'NaN') ? '' : aParse + ' ' + unidadeMedida;
 });
 
 // Class Template --------------------------------------------------------------
