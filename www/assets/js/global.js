@@ -31,7 +31,7 @@ var Form = function (formId) {
             }
         });
         return data;
-    },    
+    },
     this.getSelected = function (name) {
         var selected = this.form.find('select[name=' + name + '] option:selected');
         return {text: selected.text(), value: selected.val()};
@@ -39,8 +39,7 @@ var Form = function (formId) {
     this.isChecked = function (name) {
         var checked = this.form.find('input[name=' + name + ']:checked').val();
         return (typeof checked != 'undefined' ? checked : false);
-    },
-            
+    },  
     this.send = function (url, callback)
     {
         var ajaxParams = {},
@@ -57,8 +56,10 @@ var Form = function (formId) {
                 $.extend(ajaxParams, newAjaxParams);
             }
 
+            $.blockUI();
             var ajax = $.ajax(ajaxParams);
             ajax.always(function (data) {
+                $.unblockUI();
                 if (typeof callback == 'function')
                     callback(data);
             });
@@ -102,6 +103,7 @@ var Form = function (formId) {
     this.setFormData = function (data)
     {
         var $inputs = this.form.find(':input');
+        var money = this.getMoney;
         $inputs.each(function (k, v) {
             nameCompare = v.name.replace('[', '').replace(']', '');
             // input
@@ -121,8 +123,11 @@ var Form = function (formId) {
                         }
 
                     } else {
+                        // verifica se o campo é monetario e formata
+                        if($.inArray(nameCompare, money) != -1){
+                            data[nameCompare] = Util.formatNumber(data[nameCompare]);
+                        }
                         $(this).val(data[nameCompare]);
-                        
                     }
                 }
             }
@@ -150,7 +155,28 @@ var Form = function (formId) {
             checkbox += '<label class="checkbox"><input type="checkbox" name="' + checkboxName + '[]" value="' + key + '"><i></i>' + value + '</label>' + "\n";
         });
         destiny.append($("<div></div>").attr("class", "inline-group").html(checkbox));
-    },   
+    },
+    this.addCheckboxInLineFormPgto = function (destinyId, checkboxName, data)
+    {
+        var destiny = this.form.find('#' + destinyId), checkbox = '';
+        var count = 0;
+        $.each(data, function (key, value) {
+            if (typeof value == "object") {
+                key = value.ID;
+                value = value.TEXTO;
+            }
+            checkbox += '<label class="checkbox"><input type="checkbox"  name="FORMA-PAGTO['+count+'][CB09_ID_FORMA_PAG]" value="' + key + '"><i></i>' + value + '</label>' + "\n";
+            
+            checkbox += '<section class="col col-2">Perc Adquirente<label class="input"> <i class="icon-prepend fa fa-suitcase"></i>';
+            checkbox += '<input required type="text" name="FORMA-PAGTO['+count+'][CB09_PERC_ADQ]"  placeholder=""> </label>';
+            	
+            checkbox += 'Perc Admin<label class="input"> <i class="icon-prepend fa fa-suitcase"></i>';
+            checkbox += '<input required type="text" name="FORMA-PAGTO['+count+'][CB09_PERC_ADMIN]"  placeholder=""> </label></section>';
+            
+            count++;
+        });
+        destiny.append($("<div></div>").attr("class", "inline-group").html(checkbox));
+    },
     this.clear = function (itemName) {
         // se nao informar o itemName limpa todos os itens do form
         if (typeof itemName != 'undefined') {
@@ -226,6 +252,7 @@ var Util = {
             title: 'Copiado...',
             hold: 1500
         });
+        
         
     },
     formatNumber: function (n, c, d, t) {
@@ -500,5 +527,49 @@ var Util = {
         if (!worked) { // unknown browser / error
             alert("It didn't worked in your browser.");
         }   
+    },
+    infiniteScroll: function(action, param, callback, autoLoad){
+        
+        var limiteQtd = (param.limiteQtd || 10),
+            stopLoading = false,
+            loading = false,
+            findApp = function() {
+                if (!stopLoading) {
+                    ajaxApi(action, param, function (a) {
+                        console.log(a);
+                        if(!a.length) {
+                            stopLoading = true;
+                        } else {
+                            callback(a);
+                        }
+                    });
+                }
+            };
+
+            $$('.infinite-scroll').on('infinite', function () {
+
+                if (loading) {
+                    return;
+                }
+
+                loading = true;
+
+                setTimeout(function () {
+
+                    loading = false;
+                    if (stopLoading) {
+                        $$('.page .page-content').removeClass('infinite-scroll');
+                        return;
+                    }
+                    param.limiteInicio = (param.limiteInicio || 0) + limiteQtd;
+                    findApp();
+                }, 100);
+
+            });
+        
+        if(autoLoad !== false) {
+            findApp();
+        }
+        
     }
 };
