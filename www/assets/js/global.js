@@ -536,7 +536,6 @@ var Util = {
             findApp = function() {
                 if (!stopLoading) {
                     ajaxApi(action, param, function (a) {
-                        console.log(a);
                         if(!a.length) {
                             stopLoading = true;
                         } else {
