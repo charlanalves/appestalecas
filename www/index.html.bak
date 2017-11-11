@@ -33,13 +33,56 @@
         <link rel="stylesheet" href="bower_components/swipebox/src/css/swipebox.css" type="text/css">
         <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.carousel.css" type="text/css">
         <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.theme.css" type="text/css">
-
+    
         <link rel="stylesheet" href="assets/css/app.css" type="text/css">
-		<link rel="stylesheet" href="assets/css/sweetalert.css" type="text/css">
+	<link rel="stylesheet" href="assets/css/sweetalert.css" type="text/css">
+        <link rel="stylesheet" href="assets/jquery-bar-rating/dist/themes/css-stars.css" type="text/css">
         <!--<link rel="stylesheet" href="assets/themes//style.css" id="theme-style">-->
-		
-
+        
         <style>
+            
+            @font-face { font-family: eurosteal; src: url('assets/fonts/Eurosteal.ttf'); }
+            .font-logo { font:18px eurosteal, Arial, Tahoma, Sans-serif;}
+            .color-black { color: #000!important; }
+            .align-center {text-align: center;}
+            .p-5-15 {padding: 5px 15px;}
+            .m-0 {margin: 0px;}
+            .m-10 {margin: 10px;}
+            .m-20 {margin: 20px;}
+            
+            /* CSS ESTRELA AVALIACAO ---------------------------------------- */
+            .avaliacao {
+                margin-top: 10px;
+                border-bottom: 1px silver solid;
+            }
+            .avaliacao .estrela-avaliacao {
+                padding-top: 8px; 
+                width: 100%;
+                display: block;
+                height: 40px; 
+                border-top: 1px silver solid;
+            }
+            .avaliacao .estrela-avaliacao span {
+                margin-top: 5px;
+                float: left;
+                font-weight: bold;
+            }
+            .avaliacao .estrela-avaliacao .select-star {
+                float: right;
+            }
+            .avaliacao-comentario {
+                width: 100%;
+                text-align: left;
+                margin-top: 15px;
+                border-top: 0px solid silver;
+            }
+            .avaliacao-comentario textarea{
+                width: 100%;
+                text-align: left;
+                margin-top: 10px;
+                height: 50px
+            }
+            
             .negrito {
                 font-weight: bold;
             }
@@ -91,6 +134,14 @@
             }
             
             /* CSS FILTRO --------------------------------------------------- */
+            /* btn */
+            div.btn-filter {
+                display:scroll; 
+                position:fixed!important; 
+                bottom:45px!important; 
+                right:5px; 
+                z-index: 9999;
+            }
             #page-filter .content-block-title{
                 color: #000;
                 font-weight: bold
@@ -173,6 +224,24 @@
                 width:34px;
                 height:34px;
             }   
+            
+            div.footer-promocao {
+                margin: 0!important;
+                position: absolute;
+                z-index: 10;
+                bottom: 9px;
+                width: 100%;
+            }            
+            small.distancia {
+                background-color: #EEE;
+                border-radius: 9px;
+                padding: 3px 5px!important;
+                margin: 0!important;
+                color: #333!important;
+                float: right!important;
+                font-size: 14px;
+                margin-right: 5px!important;
+            }
         </style>
 
     </head>
@@ -185,10 +254,14 @@
         <div class="panel panel-left panel-reveal">
             <div class="line"></div>
 
-            <div class="logo-box mt-10">
-                <strong>Saldo Atual</strong>
-                <div>R$ 0,00</div>
-            </div>
+			<!-- <script type="text/template" id="templateCategory">
+				<div class="logo-box mt-10">
+				<h2>Saldo Atual</h2>
+				<strong>Saldo Atual</strong>
+					<div>R$ {{real data.saldo}}</div>				
+				</div>
+			</script>
+               --> 
 
             <div class="list-block mt-15">
                 <div class="list-group">
@@ -387,13 +460,22 @@
         <script type="text/javascript" src="assets/js/formatter.js"></script>
 		<script type="text/javascript" src="assets/js/sweetalert.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="assets/jquery-bar-rating/jquery.barrating.js"></script>
         
+<<<<<<< HEAD
 <script>
 alert = function(a,b,c = 'error'){
-	
-	   swal(b, a, c);
+		swal({
+		  title: a,
+		  type: c,
+		})
 }
+=======
+        <script>
 
+            alert = function(a,b,c = 'error'){swal(b, a, c);};
+
+>>>>>>> 75de5ef859875f5d3b282a16f15ec00bbaef66c7
              document.addEventListener('deviceready', function(){
 			    modalConectionLost = myApp.modal({
 					title: 'Sem internet!',
@@ -406,8 +488,7 @@ alert = function(a,b,c = 'error'){
 								'</div>',
 				/*	buttons: [
 					  {
-						text: 'Tentar Novamente!',
-						bold: true,
+						text: 'Tentar Novamente!',"
 						onClick: function () {									 
 							if (navigator.connection.type == Connection.NONE) {
 								tentarNovamente7();
@@ -460,250 +541,254 @@ alert = function(a,b,c = 'error'){
             // mascara de CPF
             // $("input[name='cpf_cnpj']").mask("999.999.999-99").attr('placeholder', 'CPF');
             
-            
-            // -----------------------------------------------------------------
-            // index carrega a pagina principal ou tela de login
-            (validateLogin()) ? mainView.router.loadPage('category.html') : mainView.router.loadPage('login.html');
+            var app = function () {
 
-            // -----------------------------------------------------------------
-            // login
-            myApp.onPageInit('login', function (page) {
-                blockPanelLeft(page.name);
-                $('div#tabbar-bottom').hide();
-                $$('#login-button').on('click', function () {
-					var cpf_cnpj = $('form#login-form input[name=cpf_cnpj]').val();
-					    pass = $('form#login-form input[name=password]').val();
-					  if (cpf_cnpj == '' || pass == '' ){
-							 alert('Os campos CPF/CNPJ e SENHA são obrigatórios.', 'Preencha os campos:');                     
-					  } else {
-						validateLogin(myApp.formToJSON('#login-form'));
-					}
-                });
-                
-                $$('a#linkEsqueceuSenha').on('click', function () {
-                    cpf_cnpj = $('form#login-form input[name=cpf_cnpj]').val();
-                    if(!cpf_cnpj) {
-                        alert('Preencha o campo CPF/CNPJ e clique novamente no link para receber em seu e-mail uma nova senha.', 'Esqueceu a senha?'); 
-                    } else {
-                        ajaxApi('nova-senha', {cpf_cnpj: cpf_cnpj}, function(r) {
-                            if(r.status == null) {
-                                alert('Sua conta não foi encontrada, verifique os dados informados e tente novamente.', 'Esqueceu a senha?');                     
-                                
-                            } else if(r.status) {
-                                alert('Foi enviado um e-mail para <strong>' + r.email + '</strong> com a nova senha!', 'Esqueceu a senha?');                     
-                                
-                            } else {
-                                alert('Não foi possível recuperar a senha, tente novamente.', 'Esqueceu a senha?');                     
-                                
-                            }
-                        });
-                    }
-                });
-            });
-            
+                // -----------------------------------------------------------------
+                // index carrega a pagina principal ou tela de login
+                (validateLogin()) ? mainView.router.loadPage('category.html') : mainView.router.loadPage('login.html');
 
-            // -----------------------------------------------------------------
-            // validar email
-            myApp.onPageInit('valid-email', function (page) {
-                blockPanelLeft(page.name);
-                var param = getUserData();
-                if(param.email_valid) {goMain();}
-                
-                $('div#tabbar-bottom').hide();
-                
-                var templateValidEmail = new Template('templateValidEmail');
-                templateValidEmail.compileAndLoadData(param);
-                
-                // btn validar conta de email
-                $$('a#ValidEmail').on('click', function () {
-                    ajaxApi('verifica-email', param, function (a) {
-                        if(a){
-                            validaEmail();
-                            goMain();
+                // -----------------------------------------------------------------
+                // login
+                myApp.onPageInit('login', function (page) {
+                    blockPanelLeft(page.name);
+                    $('div#tabbar-bottom').hide();
+                    $$('#login-button').on('click', function () {
+                                            var cpf_cnpj = $('form#login-form input[name=cpf_cnpj]').val();
+                                                pass = $('form#login-form input[name=password]').val();
+                                              if (cpf_cnpj == '' || pass == '' ){
+                                                             alert('Os campos CPF/CNPJ e SENHA são obrigatórios.', 'Preencha os campos:');                     
+                                              } else {
+                                                    validateLogin(myApp.formToJSON('#login-form'));
+                                            }
+                    });
+
+                    $$('a#linkEsqueceuSenha').on('click', function () {
+                        cpf_cnpj = $('form#login-form input[name=cpf_cnpj]').val();
+                        if(!cpf_cnpj) {
+                            alert('Preencha o campo CPF/CNPJ e clique novamente no link para receber em seu e-mail uma nova senha.', 'Esqueceu a senha?'); 
                         } else {
-                            alert('Acesse seu e-mail e clique no link ou se você não recebeu o e-mail clique no botão "reenviar e-mail".','A conta não foi ativada'); 
-                        }
-                    });
-                });
-                
-                // btn reenviar email
-                $$('a#ReenviarEmail').on('click', function () {
-                    ajaxApi('reenviar-email-validacao', param, function (a) {
-                        console.log(a.responseText);
-                       //alert(a.msg,'Atenção'); 
-                    });
-                });
-                
-                // btn alterar email
-                $$('a#AlterarEmail').on('click', function () {
-                    myApp.modal({
-                        title:  'Alterar E-mail',
-                        text: '<div class="list-block"><div class="item-content"><div class="item-input"><input type="email" id="valid_new_email" placeholder="Novo e-mail"></div></div></div>',
-                        buttons: [
-                            {text: 'Cancelar', onClick: function() {}},
-                            {text: 'Salvar', onClick: function() {
-                                    var novoEmail = $('input#valid_new_email').val();
-                                    ajaxApi('alterar-email-usuario', {param: param, new_email: novoEmail}, function (a) {
-                                        if(typeof a.responseText != 'undefined'){
-                                            alert('Seu e-mail não foi alterado: ' + a.responseText,'Opss');
-                                        } else {
-                                            alert('','E-mail alterado com sucesso!');
-                                            $('div#destino-templateValidEmail strong').text(novoEmail);
-                                        }
-                                    });
+                            ajaxApi('nova-senha', {cpf_cnpj: cpf_cnpj}, function(r) {
+                                if(r.status == null) {
+                                    alert('Sua conta não foi encontrada, verifique os dados informados e tente novamente.', 'Esqueceu a senha?');                     
+
+                                } else if(r.status) {
+                                    alert('Foi enviado um e-mail para <strong>' + r.email + '</strong> com a nova senha!', 'Esqueceu a senha?');                     
+
+                                } else {
+                                    alert('Não foi possível recuperar a senha, tente novamente.', 'Esqueceu a senha?');                     
+
                                 }
+                            });
+                        }
+                    });
+                });
+
+
+                // -----------------------------------------------------------------
+                // validar email
+                myApp.onPageInit('valid-email', function (page) {
+                    blockPanelLeft(page.name);
+                    var param = getUserData();
+                    if(param.email_valid) {goMain();}
+
+                    $('div#tabbar-bottom').hide();
+
+                    var templateValidEmail = new Template('templateValidEmail');
+                    templateValidEmail.compileAndLoadData(param);
+
+                    // btn validar conta de email
+                    $$('a#ValidEmail').on('click', function () {
+                        ajaxApi('verifica-email', param, function (a) {
+                            if(a){
+                                validaEmail();
+                                goMain();
+                            } else {
+                                alert('Acesse seu e-mail e clique no link ou se você não recebeu o e-mail clique no botão "reenviar e-mail".','A conta não foi ativada'); 
                             }
-                        ]
-                    });
-                    $('input#valid_new_email').focus();
-                });
-                
-            });
-            
-            
-            // -----------------------------------------------------------------
-            // registration
-            myApp.onPageInit('registration', function (page) {
-                blockPanelLeft(page.name);
-                $('div#tabbar-bottom').hide();
-                var formRegistration = new Form('loginCreate-form');
-
-                // get politica de privacidade + termos de uso
-                ajaxApi('politica-privacidade-termos-uso', {}, function (a) {
-                    
-                    $$('a#alert-politica-privacidade').on('click', function () {
-                        alert(a.PP, 'Política de privacidade');
-                    });
-
-                    $$('a#alert-termos-uso').on('click', function () {
-                        alert(a.TU, 'Termos de uso');
-                    });
-
-                    // envia form de cadastro de usuario
-                    $$('#loginCreate-button').on('click', function () {
-                        if(formRegistration.isChecked('PP') && formRegistration.isChecked('TU')) {
-                            ajaxApi('login-create', myApp.formToJSON('#loginCreate-form'), callbackLoginCreate);
-                        } else {
-                            alert('Não é possível criar uma conta sem ler e concordar com a <strong>política de privacidade</strong> e os <strong>termos de uso</strong>', 'Importante');
-                        }
-                    });
-
-                });
-                
-                // callback login create
-                var callbackLoginCreate = function(data) {                      
-                    saveUserLSAndRedirectToIndex(appConfig.localStorageName, JSON.parse(data.retorno));
-                    //alert('','Usuário cadastrado!');
-                    //mainView.router.loadPage('index.html');
-                };
-            });
-            
-
-            // -----------------------------------------------------------------
-            // promocoes
-            securePage('main', function (page) {
-                var templateMain = new Template('templateMain');
-                $.extend(page.query, getUserData());
-                templateMain.compileAjax('promocao', page.query, function (a) {
-                    if (typeof a.estabelecimentos == 'undefined') {	
-                        alert('Nenhum estabelecimento cadastrado...', 'Opss');
-                    }else if(typeof a.estabelecimentos == 'undefined' || !a.estabelecimentos.length) {	
-                        alert('Nenhum estabelecimento encontrado para o filtro selecionado...', 'Opss', function(){ 
-                            mainView.router.loadPage('filter.html'); 
                         });
-                    }
+                    });
+
+                    // btn reenviar email
+                    $$('a#ReenviarEmail').on('click', function () {
+                        ajaxApi('reenviar-email-validacao', param, function (a) {
+                            console.log(a.responseText);
+                           //alert(a.msg,'Atenção'); 
+                        });
+                    });
+
+                    // btn alterar email
+                    $$('a#AlterarEmail').on('click', function () {
+                        myApp.modal({
+                            title:  'Alterar E-mail',
+                            text: '<div class="list-block"><div class="item-content"><div class="item-input"><input type="email" id="valid_new_email" placeholder="Novo e-mail"></div></div></div>',
+                            buttons: [
+                                {text: 'Cancelar', onClick: function() {}},
+                                {text: 'Salvar', onClick: function() {
+                                        var novoEmail = $('input#valid_new_email').val();
+                                        ajaxApi('alterar-email-usuario', {param: param, new_email: novoEmail}, function (a) {
+                                            if(typeof a.responseText != 'undefined'){
+                                                alert('Seu e-mail não foi alterado: ' + a.responseText,'Opss');
+                                            } else {
+                                                alert('','E-mail alterado com sucesso!');
+                                                $('div#destino-templateValidEmail strong').text(novoEmail);
+                                            }
+                                        });
+                                    }
+                                }
+                            ]
+                        });
+                        $('input#valid_new_email').focus();
+                    });
+
                 });
-            });
-            
-            
-            // -----------------------------------------------------------------
-            // pesquisa
-            securePage('search', function (page) {
-                var limite = 0,
-                    dataPesquisa = '',
-                    stopLoading = false,
-                    templateSearch = new Template('templateSearch');
-                    
-                // busca registros
-                var findApp = function() {
-                    if (dataPesquisa) {
-                        ajaxApi('search', {param:{texto:dataPesquisa,limite:limite}}, callbackSearch);
-                    }
-                };
-                
-                // callback da pesquisa
-                var callbackSearch = function(a) {
-                    if(!a.length) {
-                        stopLoading = true;
-                    } else {
-                        templateSearch.compileData(a);
-                        templateSearch.appendData();
-                    }
-                };
-                
-                $$('input#campo-pesquisa').focus();
-                
-                $$('a#btn-pesquisa').on('click', function () {
-                    dataPesquisa = $('input#campo-pesquisa').val();                    
-                    stopLoading = false;
-                    templateSearch.clear();
-                    limite = 0;
-                    findApp();
+
+
+                // -----------------------------------------------------------------
+                // registration
+                myApp.onPageInit('registration', function (page) {
+                    blockPanelLeft(page.name);
+                    $('div#tabbar-bottom').hide();
+                    var formRegistration = new Form('loginCreate-form');
+
+                    // get politica de privacidade + termos de uso
+                    ajaxApi('politica-privacidade-termos-uso', {}, function (a) {
+
+                        $$('a#alert-politica-privacidade').on('click', function () {
+                            alert(a.PP, 'Política de privacidade');
+                        });
+
+                        $$('a#alert-termos-uso').on('click', function () {
+                            alert(a.TU, 'Termos de uso');
+                        });
+
+                        // envia form de cadastro de usuario
+                        $$('#loginCreate-button').on('click', function () {
+                            if(formRegistration.isChecked('PP') && formRegistration.isChecked('TU')) {
+                                ajaxApi('login-create', myApp.formToJSON('#loginCreate-form'), callbackLoginCreate);
+                            } else {
+                                alert('Não é possível criar uma conta sem ler e concordar com a <strong>política de privacidade</strong> e os <strong>termos de uso</strong>', 'Importante');
+                            }
+                        });
+
+                    });
+
+                    // callback login create
+                    var callbackLoginCreate = function(data) {                      
+                        saveUserLSAndRedirectToIndex(appConfig.localStorageName, JSON.parse(data.retorno));
+                        //alert('','Usuário cadastrado!');
+                        //mainView.router.loadPage('index.html');
+                    };
                 });
-                
-                $$('.infinite-scroll').on('infinite', function () {
-                    
-                    // Emulate 1s loading
-                    setTimeout(function () {
-                       
-                        if (stopLoading) {
-                            // Nothing more to load, detach infinite scroll events to prevent unnecessary loadings
-                            myApp.detachInfiniteScroll($$('.infinite-scroll'));
-                            // Remove preloader
-                            $$('.infinite-scroll-preloader').remove();
-                            return;
+
+
+                // -----------------------------------------------------------------
+                // promocoes
+                securePage('main', function (page) {
+                    var templateMain = new Template('templateMain');
+                    $.extend(page.query, {pg: page.name}, getUserData());
+                    templateMain.compileAjax('promocao', page.query, function (a) {
+                        if (typeof a.estabelecimentos == 'undefined') {	
+                            alert('Nenhum estabelecimento cadastrado...', 'Opss');
+                        }else if(typeof a.estabelecimentos == 'undefined' || !a.estabelecimentos.length) {	
+                            alert('Nenhum estabelecimento encontrado para o filtro selecionado...', 'Opss', function(){ 
+                                mainView.router.loadPage('filter.html'); 
+                            });
                         }
-
-                        limite += 10; 
-                        // Append new items
-                        findApp();
-                        
-                    }, 100);
-                
-                });
-            });
-            
-            
-            // -----------------------------------------------------------------
-            // lista promocoes por categoria
-            securePage('promotions-by-category', function (page) {
-                var templateEstablishment = new Template('templatePromotionsByCategory');
-                templateEstablishment.compileAjax('promotions-by-category', {param: page.query.category}, function (a) {
-                    $('.title-top').text(a.category);
-                });
-            });
-
-
-            // -----------------------------------------------------------------
-            // filtro
-            securePage('filter', function (page) {
-                var templateFilter = new Template('templateFilter');
-
-                // busca categorias
-                ajaxApi('filter-category', {}, function(a) {
-                    templateFilter.compileAndLoadData(a);
-                    
-                    // slides
-                    myApp.swiper('.swiper-4', {
-                      //pagination:'.swiper-4 .swiper-pagination',
-                      spaceBetween: 20,
-                      slidesPerView: 4
                     });
                 });
 
-            });
+
+                // -----------------------------------------------------------------
+                // pesquisa
+                securePage('search', function (page) {
+                    var limiteQtd = 25,
+                        templateSearch = new Template('templateSearch');
+
+                    $$('input#campo-pesquisa').focus();
+
+                    $$('a#btn-pesquisa').on('click', function () {
+
+                        var dataPesquisa = $('input#campo-pesquisa').val().trim();
+
+                        if(dataPesquisa) {
+                            templateSearch.clear();
+
+                            // Infinite Scroll
+                            var action = 'search', 
+                                param = {limiteQtd:limiteQtd, param: {texto:dataPesquisa}},
+                                callback = function(a) {
+                                    templateSearch.compileData(a);
+                                    templateSearch.appendData();
+                                };
+
+                            Util.infiniteScroll(action, param, callback);
+
+                        }
+                    });
 
 
+                });
+
+
+                // -----------------------------------------------------------------
+                // lista promocoes por categoria
+                securePage('promotions-by-category', function (page) {
+                    var param = page.query,
+                        limiteQtd = 25,
+                        templateEstablishment = new Template('templatePromotionsByCategory');
+
+                        $('a#a-btn-filter').attr('href','filter.html?pg=' + page.name);
+                        $('.title-top').text(page.query.catName);
+
+                    $.extend(param, {limiteQtd:limiteQtd, param:{cat: page.query.cat}}, getUserData());
+
+                    // Infinite Scroll
+                    var action = 'promotions-by-category', 
+                        callback = function(a) {
+                            templateEstablishment.compileData(a);
+                            templateEstablishment.appendData();
+                        };
+
+                    Util.infiniteScroll(action, param, callback);
+
+                });
+
+
+                // -----------------------------------------------------------------
+                // filtro
+                securePage('filter', function (page) {
+
+                    var pg = (typeof page.query.pg === 'string' ? page.query.pg : 'main'),
+                        templateFilter = new Template('templateFilter');
+
+                    // busca categorias
+                    ajaxApi('filter-category', {}, function(a) {
+                        templateFilter.compileAndLoadData(a);
+
+                        // slides
+                        myApp.swiper('.swiper-4', {
+                          //pagination:'.swiper-4 .swiper-pagination',
+                          spaceBetween: 20,
+                          slidesPerView: 4
+                        });
+
+                        // aplicar o filtro
+                        $('a#btn-filter').on('click',function(){
+                            var cat = $('input[type=radio][name=categoria-radio]:checked').val(),
+                                catName = $('input[type=radio][name=categoria-radio]:checked').attr('title'),
+                                ord = $('input[type=radio][name=ordem-radio]:checked').val();
+                            mainView.router.loadPage(pg + '.html?cat=' + cat + '&catName=' + catName + '&ord=' + ord);
+                        });
+                    });
+
+                });
+
+
+                // -----------------------------------------------------------------
+                // categorias
+                securePage('category', function (page) {
+
+<<<<<<< HEAD
             // -----------------------------------------------------------------
             // categorias
             securePage('category', function (page) {
@@ -735,7 +820,8 @@ alert = function(a,b,c = 'error'){
 					    window.plugins.socialsharing.shareViaWhatsApp(
 							'APP Estalecas - Compre e ganhe dinheiro de volta! Estou usando e gostando muito!', 
 							'http://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Dollar-Sign-PNG-Image-500x713.png',
-							appConfig.indicacaoUrl + auth_key, 
+							//appConfig.indicacaoUrl + auth_key, 
+							"https://goo.gl/A2KW5V",
 							null,
 							function(errormsg){alert("Error: Erro ao compartillhar. tente novamente mais tarde")}
 						)
@@ -744,295 +830,222 @@ alert = function(a,b,c = 'error'){
 					
 
 					
+=======
+
+                    var templateEstablishment = new Template('templateCategory');
+                    templateEstablishment.compileAjax('category', {user_auth_key: getUserData().auth_key});
+>>>>>>> 75de5ef859875f5d3b282a16f15ec00bbaef66c7
                 });
-            });
 
 
-            // -----------------------------------------------------------------
-            // solicitar saque
-            securePage('cash-out', function (page) {
-                var templateCashOut = new Template('templateCashOut');
-                var callbackCashOut = function (a) {
-                    
-                    if(a.saque_realizado == true) {
-                        //alert('Solicitação de saque realizada com sucesso.', 'Tudo certo!');                        
-                        mainView.router.loadPage('cash-out-message.html');
-                        return;
-                        
-                    } else {
-
-                        // form de solicitacao de saque
-                        formCashOut = new Form('cashOut-form');
-
-                        // add opcoes de banco
-                        formCashOut.addOptionsSelect("CB03_COD_BANCO", a.bancos);
-
-                        // add opcoes de tipo de conta
-                        formCashOut.addOptionsSelect("CB03_TP_CONTA", a.tp_conta);
-
-                        // add mascara de moeda (REAL)
-                        formCashOut.setMoney(["CB03_VALOR"]);
-                            
-                        if (a.conta_bancaria.CB03_AGENCIA) {
-						a.conta_bancaria.CB03_AGENCIA = a.conta_bancaria.CB03_AGENCIA.replace(/[^0-9.]/g, "");
-						a.conta_bancaria.CB03_NUM_CONTA = a.conta_bancaria.CB03_NUM_CONTA.replace(/[^0-9.]/g, "");
-						console.log(a.conta_bancaria)
-                            formCashOut.setFormData(a.conta_bancaria);
-                        //    formCashOut.form.find('select, input').attr('disabled', true);
-							formCashOut.form.find('input[name=CB03_VALOR]')[0].value = a.conta_bancaria.CB03_SAQUE_MAX
-                            formCashOut.form.find('input[name=CB03_VALOR]').attr('disabled', true);
-						
-                        }
-                        
-                        $('a#cashOut-submit').on('click', function(){
-						
-						
-						
-						var v = formCashOut.CB03_VALOR.value,
-							b = $('select[name="CB03_COD_BANCO"] option:selected').text(),
-							ag = formCashOut.CB03_AGENCIA.value,
-							nc = formCashOut.CB03_NUM_CONTA.value,
-							tc = $('select[name="CB03_TP_CONTA"] option:selected').text(),
-							sm = formCashOut.CB03_VALOR.value;
-							
-							if (v == 0){
-								
-								myApp.modal({
-									title:  'Você não possui saldo suficiente para sacar.',							
-									buttons: [
-									  {
-										text: 'OK',									
-									  },								 							  
-									]
-								  });
-							}else{
-							
-								if (ag == '' || b == '' || ag == '' || nc == '' || tc == '') {
-								myApp.modal({
-									title:  'Favor preencher todos os campos.',							
-									buttons: [
-									  {
-										text: 'OK',									
-									  },								 							  
-									]
-								  });
-								  
-								} else {
-								 myApp.modal({
-									title:  'Confira os dados do saque:',
-									text: 'Valor: <strong>'+v+'</strong> <br>Banco: <strong>'+b+'</strong><br>Agência: <strong>'+ag+'</strong><br>N°. Conta: <strong>'+nc+'</strong><br>Tipo Ct: <strong>'+ tc+'</strong>',
-									buttons: [
-									  {
-										text: 'Cancelar',									
-									  },
-									  {
-										text: 'Sacar',
-										onClick: function() {
-										  var dadosForm = formCashOut.getFormData();
-										  var dadosCompl = {CB03_NOME_BANCO: formCashOut.getSelected('CB03_COD_BANCO').text};
-										ajaxCashOut({
-											CB03_VALOR:v,
-											CB03_COD_BANCO: $('select[name="CB03_COD_BANCO"] option:selected').val(),
-											CB03_AGENCIA:ag,
-											CB03_NUM_CONTA:nc,
-											CB03_TP_CONTA: $('select[name="CB03_TP_CONTA"] option:selected').val(),
-											CB03_SAQUE_MAX:v,
-											CB03_NOME_BANCO:formCashOut.getSelected('CB03_COD_BANCO').text
-											});
-										}
-									  },								  
-									]
-								  });
-								}
-							}
-                       
-			
-						
-						});
-                          myApp.closeModal();
-                        $('a#alert-regras').on('click', function () {
-                            alert(a.regras, 'Regras para saque');
+                // -----------------------------------------------------------------
+                // convidar amigo
+                securePage('invite-friend', function (page) {
+                    var templateInviteFriend = new Template('templateInviteFriend');
+                    templateInviteFriend.compileAjax('invite-friend', {user_auth_key: getUserData().auth_key}, function (a) {
+                        var r = a;
+                        $$('a#btn-convidar-amigos').on('click', function () {
+                            // codigo para abrir o compartilhamento no cell
+                            // texto: r.texto;
                         });
-                    }
-                },
+                        $$('a#alert-regras-convite').on('click', function () {
+                            alert(r.regras, 'REGRAS');
+                        });
+                                            //$('.navbar').hide();
 
-                // busca dados da tela de solicitacao de saque
-                ajaxCashOut = function (param) { 
-                    var param = (param || {});
-                    templateCashOut.compileAjax('cash-out', $.extend(param, {user_auth_key: getUserData().auth_key}), callbackCashOut);
-                };
-                
-                ajaxCashOut();
-                
-            });
-            
-            
-            // -----------------------------------------------------------------
-            // Mensagem de saque
-            securePage('cash-out-message', function (page) {
-                var templatePurchaseMessage = new Template('templateCashOutMessage');
-                templatePurchaseMessage.compileAjax('cash-out-message', {user_auth_key: getUserData().auth_key});
-            });
-            
-            
-            // -----------------------------------------------------------------
-            // Mensagem de delivery
-            securePage('delivery-message', function (page) {
-                var param = page.query;
-                $.extend(param, getUserData());
-                var templatePurchaseMessage = new Template('templateDeliveryMessage');
-                templatePurchaseMessage.compileAjax('delivery-message', param, function(a){
-                    if(!a){
-                        goMain();    
-                    }
-                });
-            });
+                                            //Ao clicar na tela convidar amigo abre o aplicativo WhatsApp para compartilhamento
+                                       $('#sh').on('click',function(){
+                                                    var auth_key = JSON.parse(localStorage.getItem('esUser'))['auth_key'];
+                                                window.plugins.socialsharing.shareViaWhatsApp(
+                                                            'APP Estalecas - Compre e ganhe dinheiro de volta! Estou usando e gostando muito!', 
+                                                            'http://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Dollar-Sign-PNG-Image-500x713.png',
+                                                            appConfig.indicacaoUrl + auth_key, 
+                                                            null,
+                                                            function(errormsg){alert("Error: Erro ao compartillhar. tente novamente mais tarde")}
+                                                    )
+                                            })
 
 
-            // -----------------------------------------------------------------
-            // minhas compras
-            securePage('shopping', function (page) {
-                var templateShopping = new Template('templateShopping');
-                templateShopping.compileAjax('shopping', {user_auth_key: getUserData().auth_key});
-            });
 
 
-            // -----------------------------------------------------------------
-            // extrato
-            securePage('extract', function (page) {
-                
-                // lista extrato
-                var templateExtractList = new Template('templateExtractList');
-                var findExtract = function() {
-                    dataPeriodo = $('select#extract-periodo option:selected').val();
-                    templateExtractList.compileAjax('extract-list', {periodo:dataPeriodo,user_auth_key:getUserData().auth_key});
-                };
-                
-                // saldo + periodos
-                var templateExtract = new Template('templateExtract');
-                templateExtract.compileAjax('extract', {user_auth_key: getUserData().auth_key}, function () {
-                    // depois de carregar o saldo e montar o select com os meses carrega o extrato para o periodo selecionado
-                    findExtract();
-                    // cria evento de clique no botao de busca de extrato por periodo
-                    $('a#btn-filtrar-extrato').on('click', function () {
-                        templateExtractList.clear();
-                        findExtract();
                     });
                 });
-                
-            });
 
 
-            // -----------------------------------------------------------------
-            // estabelecimento
-            securePage('establishment', function (page) {
-                var templateEstablishment = new Template('templateEstablishment');
-                templateEstablishment.compileAjax('establishment', {});
-            });
+                // -----------------------------------------------------------------
+                // solicitar saque
+                securePage('cash-out', function (page) {
+                    var templateCashOut = new Template('templateCashOut');
+                    var callbackCashOut = function (a) {
 
+                        if(a.saque_realizado == true) {
+                            //alert('Solicitação de saque realizada com sucesso.', 'Tudo certo!');                        
+                            mainView.router.loadPage('cash-out-message.html');
+                            return;
 
-            // -----------------------------------------------------------------
-            // mensagem de compra realizada
-            securePage('purchase-message', function (page) {
-                var templatePurchaseMessage = new Template('templatePurchaseMessage');
-                templatePurchaseMessage.compileAjax('purchase-message', {});
-            });
-
-
-            // -----------------------------------------------------------------
-            // perfil
-            securePage('profile', function (page) {
-                var templateProfile = new Template('templateProfile');
-                templateProfile.compileAjax('profile', {user_auth_key: getUserData().auth_key});
-            });
-
-
-            // -----------------------------------------------------------------
-            // alterar senha
-            securePage('change-password', function (page) {
-                var templateProfile = new Template('templateChangePassword');
-                templateProfile.compileAndLoadData();
-                
-                // vefifica se e obrigatoria a alteracao da senha
-                if(typeof page.query.r != 'undefined') {
-                    alert('É muito importante para sua segurança!','Altere sua senha');
-                }
-                
-                // form - alterar senha
-                var formChangePassword = new Form('changePassword-form');
-                
-                // salvar
-                $('a#changePassword-submit').on('click', function () {
-                    var param = formChangePassword.getFormData();
-                    if(param['current-password'] === '' || param['new-password'] === '') {
-                        alert('','Preencha os dois campos.');
-                        return;
-                    }
-                    ajaxApiUser('change-password', param, function(a){
-                        if(typeof a.message != 'undefined') {
-                            formChangePassword.clear();
-                            alert('',a.message);
-                            validaAlteracaoSenha();
-                        }
-                    });
-                });
-                
-            });
-
-
-            // -----------------------------------------------------------------
-            // delivery address
-            securePage('delivery-address', function (page) {
-                var templateProfile = new Template('templateDeliveryAddress'),
-                param = getUserData();
-                $.extend(param, page.query);
-                templateProfile.compileAjax('delivery-address', param, function (a) {
-                    
-                    // form - delivery address
-                    var formDeliveryAddress = new Form('delivery-address-form');
-                    formDeliveryAddress.setFormData(a);
-                    
-                    // Busca CEP  
-                    var ultimoCEP = ultimoCEPV = '';
-                    $('#delivery-address-form input[name=CB16_COMPRADOR_END_CEP').keyup(function () {
-                        var v = this.value;
-                        if (v.length === 8 && ultimoCEP !== v) {
-                            ultimoCEP = v;
-                            Util.getEnderecoByCEP(v, function (data) {
-                                if (data.erro) {
-                                    alert('O CEP digitado não foi encontrado, verifique o CEP ou preencha os dados do endereço');
-                                    formDeliveryAddress.clear(['CB16_COMPRADOR_END_LOGRADOURO','CB16_COMPRADOR_END_BAIRRO','CB16_COMPRADOR_END_CIDADE','CB16_COMPRADOR_END_UF']);                                    
-                                    formDeliveryAddress.CB16_COMPRADOR_END_CEP.focus();
-                                } else {
-                                    formDeliveryAddress.setFormData({
-                                        CB16_COMPRADOR_END_LOGRADOURO: data.logradouro,
-                                        CB16_COMPRADOR_END_BAIRRO: data.bairro,
-                                        CB16_COMPRADOR_END_CIDADE: data.localidade,
-                                        CB16_COMPRADOR_END_UF: data.uf
-                                    });
-                                    formDeliveryAddress.CB16_COMPRADOR_END_NUMERO.focus();
-                                }
-                            });
-                        } else if (v.length > 9 || v == '') {
-                            this.value = (ultimoCEPV.length === 1 ? '' : ultimoCEPV);
-                            return false;
                         } else {
-                            ultimoCEPV = v;
+
+                            // form de solicitacao de saque
+                            formCashOut = new Form('cashOut-form');
+
+                            // add opcoes de banco
+                            formCashOut.addOptionsSelect("CB03_COD_BANCO", a.bancos);
+
+                            // add opcoes de tipo de conta
+                            formCashOut.addOptionsSelect("CB03_TP_CONTA", a.tp_conta);
+
+                            // add mascara de moeda (REAL)
+                            formCashOut.setMoney(["CB03_VALOR"]);
+
+                            if (a.conta_bancaria.CB03_AGENCIA) {
+                                                    a.conta_bancaria.CB03_AGENCIA = a.conta_bancaria.CB03_AGENCIA.replace(/[^0-9.]/g, "");
+                                                    a.conta_bancaria.CB03_NUM_CONTA = a.conta_bancaria.CB03_NUM_CONTA.replace(/[^0-9.]/g, "");
+                                                    console.log(a.conta_bancaria)
+                                formCashOut.setFormData(a.conta_bancaria);
+                            //    formCashOut.form.find('select, input').attr('disabled', true);
+                                                            formCashOut.form.find('input[name=CB03_VALOR]')[0].value = a.conta_bancaria.CB03_SAQUE_MAX
+                                formCashOut.form.find('input[name=CB03_VALOR]').attr('disabled', true);
+
+                            }
+
+                            $('a#cashOut-submit').on('click', function(){
+
+
+
+                                                    var v = formCashOut.CB03_VALOR.value,
+                                                            b = $('select[name="CB03_COD_BANCO"] option:selected').text(),
+                                                            ag = formCashOut.CB03_AGENCIA.value,
+                                                            nc = formCashOut.CB03_NUM_CONTA.value,
+                                                            tc = $('select[name="CB03_TP_CONTA"] option:selected').text(),
+                                                            sm = formCashOut.CB03_VALOR.value;
+
+                                                            if (v == 0){
+
+                                                                    myApp.modal({
+                                                                            title:  'Você não possui saldo suficiente para sacar.',							
+                                                                            buttons: [
+                                                                              {
+                                                                                    text: 'OK',									
+                                                                              },								 							  
+                                                                            ]
+                                                                      });
+                                                            }else{
+
+                                                                    if (ag == '' || b == '' || ag == '' || nc == '' || tc == '') {
+                                                                    myApp.modal({
+                                                                            title:  'Favor preencher todos os campos.',							
+                                                                            buttons: [
+                                                                              {
+                                                                                    text: 'OK',									
+                                                                              },								 							  
+                                                                            ]
+                                                                      });
+
+                                                                    } else {
+                                                                     myApp.modal({
+                                                                            title:  'Confira os dados do saque:',
+                                                                            text: 'Valor: <strong>'+v+'</strong> <br>Banco: <strong>'+b+'</strong><br>Agência: <strong>'+ag+'</strong><br>N°. Conta: <strong>'+nc+'</strong><br>Tipo Ct: <strong>'+ tc+'</strong>',
+                                                                            buttons: [
+                                                                              {
+                                                                                    text: 'Cancelar',									
+                                                                              },
+                                                                              {
+                                                                                    text: 'Sacar',
+                                                                                    onClick: function() {
+                                                                                      var dadosForm = formCashOut.getFormData();
+                                                                                      var dadosCompl = {CB03_NOME_BANCO: formCashOut.getSelected('CB03_COD_BANCO').text};
+                                                                                    ajaxCashOut({
+                                                                                            CB03_VALOR:v,
+                                                                                            CB03_COD_BANCO: $('select[name="CB03_COD_BANCO"] option:selected').val(),
+                                                                                            CB03_AGENCIA:ag,
+                                                                                            CB03_NUM_CONTA:nc,
+                                                                                            CB03_TP_CONTA: $('select[name="CB03_TP_CONTA"] option:selected').val(),
+                                                                                            CB03_SAQUE_MAX:v,
+                                                                                            CB03_NOME_BANCO:formCashOut.getSelected('CB03_COD_BANCO').text
+                                                                                            });
+                                                                                    }
+                                                                              },								  
+                                                                            ]
+                                                                      });
+                                                                    }
+                                                            }
+
+
+
+                                                    });
+                              myApp.closeModal();
+                            $('a#alert-regras').on('click', function () {
+                                alert(a.regras, 'Regras para saque');
+                            });
+                        }
+                    },
+
+                    // busca dados da tela de solicitacao de saque
+                    ajaxCashOut = function (param) { 
+                        var param = (param || {});
+                        templateCashOut.compileAjax('cash-out', $.extend(param, {user_auth_key: getUserData().auth_key}), callbackCashOut);
+                    };
+
+                    ajaxCashOut();
+
+                });
+
+
+                // -----------------------------------------------------------------
+                // Mensagem de saque
+                securePage('cash-out-message', function (page) {
+                    var templatePurchaseMessage = new Template('templateCashOutMessage');
+                    templatePurchaseMessage.compileAjax('cash-out-message', {user_auth_key: getUserData().auth_key});
+                });
+
+
+                // -----------------------------------------------------------------
+                // Mensagem de delivery
+                securePage('delivery-message', function (page) {
+                    var param = page.query;
+                    $.extend(param, getUserData());
+                    var templatePurchaseMessage = new Template('templateDeliveryMessage');
+                    templatePurchaseMessage.compileAjax('delivery-message', param, function(a){
+                        if(!a){
+                            goMain();    
                         }
                     });
-                    
-                    // salvar
-                    $('a#delivery-address-submit').on('click', function () {    
-                        var UserData = getUserData(), params = {};
-                            params.auth_key = UserData.auth_key;
-                            params.order = param.order;
-                            params.address = formDeliveryAddress.getFormData();
-                        ajaxApi('delivery-address', params, function (a) {
-                            mainView.router.loadPage('checkout.html?order=' + param.order);
+                });
+
+
+                // -----------------------------------------------------------------
+                // minhas compras
+                securePage('shopping', function (page) {
+                    var templateShopping = new Template('templateShopping');
+                    templateShopping.compileAjax('shopping', {user_auth_key: getUserData().auth_key});
+                });
+
+
+                // -----------------------------------------------------------------
+                // extrato
+                securePage('extract', function (page) {
+
+                    // lista extrato
+                    var templateExtractList = new Template('templateExtractList');
+                    var findExtract = function() {
+                        dataPeriodo = $('select#extract-periodo option:selected').val();
+                        templateExtractList.compileAjax('extract-list', {periodo:dataPeriodo,user_auth_key:getUserData().auth_key});
+                    };
+
+                    // saldo + periodos
+                    var templateExtract = new Template('templateExtract');
+                    templateExtract.compileAjax('extract', {user_auth_key: getUserData().auth_key}, function () {
+                        // depois de carregar o saldo e montar o select com os meses carrega o extrato para o periodo selecionado
+                        findExtract();
+                        // cria evento de clique no botao de busca de extrato por periodo
+                        $('a#btn-filtrar-extrato').on('click', function () {
+                            templateExtractList.clear();
+                            findExtract();
                         });
                     });
-                    
+
                 });
+<<<<<<< HEAD
             });
             
             
@@ -1064,222 +1077,370 @@ alert = function(a,b,c = 'error'){
                         ajaxApiUser('iugu-id-account', {}, function(a){
                             if(a){
                                 Iugu.setAccountID(a); // id Iugu
-                                Iugu.setTestMode(true); // para teste
+                                Iugu.setTestMode(false); // para teste
                                 Iugu.setup(); // validar os dados de cartao no form
-                            }
-                        });
-                        
-                        // btn info
-                        $$('i#info-validade').on('click', function () {
-                            var buttons = [
-                                {text: '<span style="text-align:justify;padding:10px;font-size:15px;"><h1 style="margin: 0px;">VENCIMENTO</h1>A data de vencimento está na parte da frente do cartão, abaixo do número.</span><img src="assets/img/cvv-caption_new.png" style="width: 140px;">', label: true},
-                                {text: 'OK', bg: 'blue', color: 'red'}
-                            ];
-                            myApp.actions(buttons);
-                        });
-                        $$('i#info-CVV').on('click', function () {
-                            var buttons = [
-                                {text: '<span style="text-align:justify;padding:10px;font-size:15px;"><h1 style="margin:0px;">CVV</h1>O código de três dígitos do seu cartão, localizado no verso.</span><img src="assets/img/cvv-caption_new.png" style="width: 140px;">', label: true},
-                                {text: 'OK', bg: 'blue', color: 'red'}
-                            ];
-                            myApp.actions(buttons);
-                        });
-
-                        // altera validade
-                        $('input.credit_card_expiration-1, input.credit_card_expiration-2').attr('maxlength', 2).change(function (){
-                            mes = $('input.credit_card_expiration-1').val();
-                            ano = $('input.credit_card_expiration-2').val();
-                            $('input.credit_card_expiration').val(mes + '/' + ano);
-                        });
-                        
-
-                        // altera forma de pagamento
-                        $('select#CHECKOUT-FORMA-PAGAMENTO').change(function (){
-                            formaPagamento = this.value;
-                            if (formaPagamento == 1) {
-                                $('div#DATA-CARD').hide('fast');
-                            } else {
-                                $('div#DATA-CARD').show('fast');
-                                $('div#DATA-CARD input.credit_card_number').focus();
-                            }
-                        });
-                        
-                        $('select#CHECKOUT-FORMA-PAGAMENTO').trigger('change');
-                        
-<<<<<<< HEAD
-                        var callbackCheckout =  function(a){
-                            if (a.status === true) {
-                                alert('Pagamento efetuado!', 'Tudo Certo');
-                                // testa se o pedido é delivery.. exibe pagina diferente
-                                if (!a.retorno.delivery) {
 =======
-                        var callbackCheckout =  function(r){
-                            if (r.status === true) {
-                                myApp.alert('Pagamento efetuado!', 'Tudo Certo');
-                                // testa se o pedido é delivery.. exibe pagina personalizada
-                                if (!a.CB06_DISTRIBUICAO) {
->>>>>>> 005c3670f4e8d72fcfc2feade682fd71c71f758b
-                                    mainView.router.loadPage('purchase-message.html');
-                                } else {
-                                    mainView.router.loadPage('delivery-message.html');
-                                }
-                            } else {
-                                alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
-
-                            }
-                        };
-                        
-                        // salvar
-                        $('a#checkout-submit').on('click', function () {
 
 
-                            var formDataCheckout = pageQuery;
-                            formDataCheckout.data = formCheckout.getFormData();
+                // -----------------------------------------------------------------
+                // estabelecimento
+                securePage('establishment', function (page) {
+                    var templateEstablishment = new Template('templateEstablishment');
+                    templateEstablishment.compileAjax('establishment', {});
+                });
 
-                            // se nao pagar com saldo estaleca
-                            if(formaPagamento != 1){
-                                
-                                // cria token do pagamento IUGU
-                                Iugu.createPaymentToken(formCheckout.form[0], function(data) {
-                                    if (data.errors) {
-                                        alert(Util.errorCartToString(data.errors), 'Opss');
 
-                                    } else {
-                                        $("#token").val( data.id );
-                                        formDataCheckout.data = formCheckout.getFormData();
-                                        ajaxApiUser('checkout-purchase', formDataCheckout, callbackCheckout);
-                                    }
-                                });
-                                
-                            } else {
-                                ajaxApiUser('checkout-purchase', formDataCheckout, callbackCheckout);
-                                
-                            }   
-                            
+                // -----------------------------------------------------------------
+                // mensagem de compra realizada
+                securePage('purchase-message', function (page) {
+                    var templatePurchaseMessage = new Template('templatePurchaseMessage');
+                    templatePurchaseMessage.compileAjax('purchase-message', {});
+                });
+
+
+                // -----------------------------------------------------------------
+                // perfil
+                securePage('profile', function (page) {
+                    var templateProfile = new Template('templateProfile');
+                    templateProfile.compileAjax('profile', {user_auth_key: getUserData().auth_key});
+                });
+
+
+                // -----------------------------------------------------------------
+                // alterar senha
+                securePage('change-password', function (page) {
+                    var templateProfile = new Template('templateChangePassword');
+                    templateProfile.compileAndLoadData();
+
+                    // vefifica se e obrigatoria a alteracao da senha
+                    if(typeof page.query.r != 'undefined') {
+                        alert('É muito importante para sua segurança!','Altere sua senha');
+                    }
+
+                    // form - alterar senha
+                    var formChangePassword = new Form('changePassword-form');
+
+                    // salvar
+                    $('a#changePassword-submit').on('click', function () {
+                        var param = formChangePassword.getFormData();
+                        if(param['current-password'] === '' || param['new-password'] === '') {
+                            alert('','Preencha os dois campos.');
                             return;
-                            
-                        }); 
-                        
-                    }
-                });
-                
-            });
-
-
-            // -----------------------------------------------------------------
-            // produtos do estabelecimento
-            securePage('company', function (page) {
-                var templateProfile = new Template('templateCompany'),
-                paramDefault = {company: '', product: ''},
-                paramNew = page.query,
-                companyAtual = paramNew.company;
-                
-                $.extend(paramDefault, paramNew);
-                
-                templateProfile.compileAjax('company', paramDefault, function (a) {
-                    if(a === false || !a.produtos.length) {
-                        mainView.router.loadPage('main.html'); 
-                        
-                    } else {
-                        var a, idProdutoAtual = false, promocaoAtual = false;
-                        
-                        // Template do produto (fotos, abas e btn "comprar")
-                        a.loadTemplateProduto = function (id) {
-                            idProdutoAtual = id;
-                            var templateProduct = new Template('templateProduct', idProdutoAtual);
-                          
-                            
-                            templateProduct.compileAjax('company-product', {product: idProdutoAtual}, function(r_product){
-                                
-                                // slider image
-                                myApp.swiper('.swiper-image-product', {
-                                    pagination:'.swiper-image-product .swiper-pagination',
-                                    paginationHide: false,
-                                    paginationClickable: true,
-                                    spaceBetween: 50, // between slides
-                                    preloadImages: false,
-                                    lazyLoading: true,
-                                    //nextButton: '.swiper-button-next',
-                                    //prevButton: '.swiper-button-prev',
-                                });
-                                
-                                // carrega abas do produto
-                                a.loadTemplatePromocoes();
-                                a.loadTemplateRegras();
-                                a.loadTemplateLocal();
-                                
-                            });
-                            
-                        };
-                        
-                        // Template com as promocoes do produto (list)
-                        a.loadTemplatePromocoes = function () {
-                            var templatePromotions = new Template('templatePromotions', idProdutoAtual);
-                            templatePromotions.compileAjax('company-promotions', paramNew, function(r_promotions){
-                                
-                                // cria evento de click nas promocoes
-                                $$('.promocoes-do-produto').on('click', function (){
-                                    var dataPromocao = $(this).attr('user-data');
-                                    if (dataPromocao) {
-                                        a.loadValueTabbarBuy(JSON.parse(dataPromocao));
-                                    }
-                                });
-                                
-                                // verifica se alguma promocao foi marcada para atualizar os valores de compra
-                                promocaoSelecionada = $('input[name="promocoes-checkbox"]:checked');
-                                if(promocaoSelecionada){
-                                    promocaoSelecionada.trigger( "click" );
-                                }
-                            });
-                        };
-                        
-                        // Template com as regras do produto (Text)
-                        a.loadTemplateRegras = function () {
-                            var templateRules = new Template('templateRules', idProdutoAtual);
-                            templateRules.compileAjax('company-rules', {product: idProdutoAtual});
-                        };
-                        
-                        // Template com informacoes sobre o local (Text)
-                        a.loadTemplateLocal = function () {
-                            var templateLocal = new Template('templateLocal', idProdutoAtual);
-                            templateLocal.compileAjax('company-local', {company: companyAtual});
-                        };
-                        
-                        // carrega valores na tab bar Comprar
-                        a.loadValueTabbarBuy = function (data) {
-                            promocaoAtual = data;
-                            $('#tabbar-buy #tabbar-buy-pague').text('R$ ' + data.valor);
-                            $('#tabbar-buy #tabbar-buy-de-volta').text('R$ ' + data.deVolta);
-                        };
-                        
-                        // cria os evento de click nas abas dos produtos
-                        $$('.show-tab').on('click', function () {
-                            a.loadTemplateProduto($(this).attr('data-product'));
-                        });
-                        
-                        // cria os evento de click no botao comprar
-                        $$('#tabbar-buy #buy-submit').on('click', function () {
-                            // se alguma promocao estiver marcada realiza o pedido
-                            if (typeof promocaoAtual === 'object') {
-                                ajaxApiUser('company-buy-product', promocaoAtual, function (a) {
-                                    if(a) {
-                                        mainView.router.loadPage('checkout.html?order=' + a);
-                                    }
-                                });
-                            } else {
-                                alert('', 'Selecione uma promoção');
+                        }
+                        ajaxApiUser('change-password', param, function(a){
+                            if(typeof a.message != 'undefined') {
+                                formChangePassword.clear();
+                                alert('',a.message);
+                                validaAlteracaoSenha();
+>>>>>>> 75de5ef859875f5d3b282a16f15ec00bbaef66c7
                             }
                         });
-                        
-                        // carrega o produto da "aba ativa"
-                        a.loadTemplateProduto(a.produtoAtual.CB05_ID);
-                        
-                    }
-                });
-                
-            });
+                    });
 
-</script>
+                });
+
+
+                // -----------------------------------------------------------------
+                // delivery address
+                securePage('delivery-address', function (page) {
+                    var templateProfile = new Template('templateDeliveryAddress'),
+                    param = getUserData();
+                    $.extend(param, page.query);
+                    templateProfile.compileAjax('delivery-address', param, function (a) {
+
+                        // form - delivery address
+                        var formDeliveryAddress = new Form('delivery-address-form');
+                        formDeliveryAddress.setFormData(a);
+
+                        // Busca CEP  
+                        var ultimoCEP = ultimoCEPV = '';
+                        $('#delivery-address-form input[name=CB16_COMPRADOR_END_CEP').keyup(function () {
+                            var v = this.value;
+                            if (v.length === 8 && ultimoCEP !== v) {
+                                ultimoCEP = v;
+                                Util.getEnderecoByCEP(v, function (data) {
+                                    if (data.erro) {
+                                        alert('O CEP digitado não foi encontrado, verifique o CEP ou preencha os dados do endereço');
+                                        formDeliveryAddress.clear(['CB16_COMPRADOR_END_LOGRADOURO','CB16_COMPRADOR_END_BAIRRO','CB16_COMPRADOR_END_CIDADE','CB16_COMPRADOR_END_UF']);                                    
+                                        formDeliveryAddress.CB16_COMPRADOR_END_CEP.focus();
+                                    } else {
+                                        formDeliveryAddress.setFormData({
+                                            CB16_COMPRADOR_END_LOGRADOURO: data.logradouro,
+                                            CB16_COMPRADOR_END_BAIRRO: data.bairro,
+                                            CB16_COMPRADOR_END_CIDADE: data.localidade,
+                                            CB16_COMPRADOR_END_UF: data.uf
+                                        });
+                                        formDeliveryAddress.CB16_COMPRADOR_END_NUMERO.focus();
+                                    }
+                                });
+                            } else if (v.length > 9 || v == '') {
+                                this.value = (ultimoCEPV.length === 1 ? '' : ultimoCEPV);
+                                return false;
+                            } else {
+                                ultimoCEPV = v;
+                            }
+                        });
+
+                        // salvar
+                        $('a#delivery-address-submit').on('click', function () {    
+                            var UserData = getUserData(), params = {};
+                                params.auth_key = UserData.auth_key;
+                                params.order = param.order;
+                                params.address = formDeliveryAddress.getFormData();
+                            ajaxApi('delivery-address', params, function (a) {
+                                mainView.router.loadPage('checkout.html?order=' + param.order);
+                            });
+                        });
+
+                    });
+                });
+
+
+                // -----------------------------------------------------------------
+                // checkout
+                securePage('checkout', function (page) {
+                    var templateProfile = new Template('templateCheckout'),
+                    pageQuery = page.query,
+                    param = pageQuery,
+                    formaPagamento;
+                    param.user_auth_key = getUserData().auth_key;
+                    templateProfile.compileAjax('checkout', param, function (a) {
+                        var a;
+                        if(a === false) {
+                            mainView.router.loadPage('main.html'); 
+
+<<<<<<< HEAD
+                            var formDataCheckout = pageQuery;
+							
+                            formDataCheckout.data = formCheckout.getFormData();
+=======
+                        } else if(a.delivery === true) {
+                            mainView.router.loadPage('delivery-address.html?order=' + param.order); 
+>>>>>>> 75de5ef859875f5d3b282a16f15ec00bbaef66c7
+
+                        } else {
+
+                            // form - checkout
+                            var formCheckout = new Form('checkout-form');
+
+                            // abre opcao de pagamento
+                            Util.openSelect('#CHECKOUT-FORMA-PAGAMENTO');
+
+                            // iugu
+                            ajaxApiUser('iugu-id-account', {}, function(a){
+                                if(a){
+                                    Iugu.setAccountID(a); // id Iugu
+                                    Iugu.setTestMode(true); // para teste
+                                    Iugu.setup(); // validar os dados de cartao no form
+                                }
+                            });
+
+                            // btn info
+                            $$('i#info-validade').on('click', function () {
+                                var buttons = [
+                                    {text: '<span style="text-align:justify;padding:10px;font-size:15px;"><h1 style="margin: 0px;">VENCIMENTO</h1>A data de vencimento está na parte da frente do cartão, abaixo do número.</span><img src="assets/img/cvv-caption_new.png" style="width: 140px;">', label: true},
+                                    {text: 'OK', bg: 'blue', color: 'red'}
+                                ];
+                                myApp.actions(buttons);
+                            });
+                            $$('i#info-CVV').on('click', function () {
+                                var buttons = [
+                                    {text: '<span style="text-align:justify;padding:10px;font-size:15px;"><h1 style="margin:0px;">CVV</h1>O código de três dígitos do seu cartão, localizado no verso.</span><img src="assets/img/cvv-caption_new.png" style="width: 140px;">', label: true},
+                                    {text: 'OK', bg: 'blue', color: 'red'}
+                                ];
+                                myApp.actions(buttons);
+                            });
+
+                            // altera validade
+                            $('input.credit_card_expiration-1, input.credit_card_expiration-2').attr('maxlength', 2).change(function (){
+                                mes = $('input.credit_card_expiration-1').val();
+                                ano = $('input.credit_card_expiration-2').val();
+                                $('input.credit_card_expiration').val(mes + '/' + ano);
+                            });
+
+
+                            // altera forma de pagamento
+                            $('select#CHECKOUT-FORMA-PAGAMENTO').change(function (){
+                                formaPagamento = this.value;
+                                if (formaPagamento == 1) {
+                                    $('div#DATA-CARD').hide('fast');
+                                } else {
+                                    $('div#DATA-CARD').show('fast');
+                                    $('div#DATA-CARD input.credit_card_number').focus();
+                                }
+                            });
+
+                            $('select#CHECKOUT-FORMA-PAGAMENTO').trigger('change');
+
+                            var callbackCheckout =  function(r){
+                                if (r.status === true) {
+                                                                            alert('Pagamento efetuado!', 'Tudo Certo');
+                                    // testa se o pedido é delivery.. exibe pagina personalizada
+                                    if (a.CB06_DISTRIBUICAO == "0") {
+                                        mainView.router.loadPage('purchase-message.html');
+                                    } else {
+                                        mainView.router.loadPage('delivery-message.html?order=' + param.order);
+                                    }
+                                } else {
+                                    alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
+
+                                }
+                            };
+
+                            // salvar
+                            $('a#checkout-submit').on('click', function () {
+
+
+                                var formDataCheckout = pageQuery;
+                                formDataCheckout.data = formCheckout.getFormData();
+
+                                // se nao pagar com saldo estaleca
+                                if(formaPagamento != 1){
+
+                                    // cria token do pagamento IUGU
+                                    Iugu.createPaymentToken(formCheckout.form[0], function(data) {
+                                        if (data.errors) {
+                                            alert(Util.errorCartToString(data.errors), 'Opss');
+
+                                        } else {
+                                            $("#token").val( data.id );
+                                            formDataCheckout.data = formCheckout.getFormData();
+                                            ajaxApiUser('checkout-purchase', formDataCheckout, callbackCheckout);
+                                        }
+                                    });
+
+                                } else {
+                                    ajaxApiUser('checkout-purchase', formDataCheckout, callbackCheckout);
+
+                                }   
+
+                                return;
+
+                            }); 
+
+                        }
+                    });
+
+                });
+
+
+                // -----------------------------------------------------------------
+                // produtos do estabelecimento
+                securePage('company', function (page) {
+                    var templateProfile = new Template('templateCompany'),
+                    paramDefault = {company: '', product: ''},
+                    paramNew = page.query,
+                    companyAtual = paramNew.company;
+
+                    $.extend(paramDefault, paramNew);
+
+                    templateProfile.compileAjax('company', paramDefault, function (a) {
+                        if(a === false || !a.produtos.length) {
+                            mainView.router.loadPage('main.html'); 
+
+                        } else {
+                            var a, idProdutoAtual = false, promocaoAtual = false;
+
+                            // Template do produto (fotos, abas e btn "comprar")
+                            a.loadTemplateProduto = function (id) {
+                                idProdutoAtual = id;
+                                var templateProduct = new Template('templateProduct', idProdutoAtual);
+
+
+                                templateProduct.compileAjax('company-product', {product: idProdutoAtual}, function(r_product){
+
+                                    // slider image
+                                    myApp.swiper('.swiper-image-product', {
+                                        pagination:'.swiper-image-product .swiper-pagination',
+                                        paginationHide: false,
+                                        paginationClickable: true,
+                                        spaceBetween: 50, // between slides
+                                        preloadImages: false,
+                                        lazyLoading: true,
+                                        //nextButton: '.swiper-button-next',
+                                        //prevButton: '.swiper-button-prev',
+                                    });
+
+                                    // carrega abas do produto
+                                    a.loadTemplatePromocoes();
+                                    a.loadTemplateRegras();
+                                    a.loadTemplateLocal();
+
+                                });
+
+                            };
+
+                            // Template com as promocoes do produto (list)
+                            a.loadTemplatePromocoes = function () {
+                                var templatePromotions = new Template('templatePromotions', idProdutoAtual);
+                                templatePromotions.compileAjax('company-promotions', paramNew, function(r_promotions){
+
+                                    // cria evento de click nas promocoes
+                                    $$('.promocoes-do-produto').on('click', function (){
+                                        var dataPromocao = $(this).attr('user-data');
+                                        if (dataPromocao) {
+                                            a.loadValueTabbarBuy(JSON.parse(dataPromocao));
+                                        }
+                                    });
+
+                                    // verifica se alguma promocao foi marcada para atualizar os valores de compra
+                                    promocaoSelecionada = $('input[name="promocoes-checkbox"]:checked');
+                                    if(promocaoSelecionada){
+                                        promocaoSelecionada.trigger( "click" );
+                                    }
+                                });
+                            };
+
+                            // Template com as regras/Info do produto (Text)
+                            a.loadTemplateRegras = function () {
+                                var templateRules = new Template('templateRules', idProdutoAtual);
+                                templateRules.compileAjax('company-rules', {product: idProdutoAtual});
+                            };
+
+                            // Template com informacoes sobre o local (Text)
+                            a.loadTemplateLocal = function () {
+                                var templateLocal = new Template('templateLocal', idProdutoAtual);
+                                templateLocal.compileAjax('company-local', {company: companyAtual});
+                            };
+
+                            // carrega valores na tab bar Comprar
+                            a.loadValueTabbarBuy = function (data) {
+                                promocaoAtual = data;
+                                $('#tabbar-buy #tabbar-buy-pague').text('R$ ' + data.valor);
+                                $('#tabbar-buy #tabbar-buy-de-volta').text('R$ ' + data.deVolta);
+                            };
+
+                            // cria os evento de click nas abas dos produtos
+                            $$('.show-tab').on('click', function () {
+                                a.loadTemplateProduto($(this).attr('data-product'));
+                            });
+
+                            // cria os evento de click no botao comprar
+                            $$('#tabbar-buy #buy-submit').on('click', function () {
+                                // se alguma promocao estiver marcada realiza o pedido
+                                if (typeof promocaoAtual === 'object') {
+                                    ajaxApiUser('company-buy-product', promocaoAtual, function (a) {
+                                        if(a) {
+                                            mainView.router.loadPage('checkout.html?order=' + a);
+                                        }
+                                    });
+                                } else {
+                                    alert('', 'Selecione uma promoção');
+                                }
+                            });
+
+                            // carrega o produto da "aba ativa"
+                            a.loadTemplateProduto(a.produtoAtual.CB05_ID);
+
+                        }
+                    });
+
+                });
+            };
+            
+            init();
+            
+        </script>
 
     </body>
 </html>

@@ -1,31 +1,18 @@
 
-var appConfig = {
 
-    url: 'http://www.estalecas.com.br/api/frontend/web/index.php?r=',	
- //  url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
-    
-    urlFoto: 'http://www.estalecas.com.br/api/frontend/web/',	
-//	urlFoto: 'http://localhost/apiestalecas/frontend/web/',
-    //urlFoto: 'http://localhost/cashback/frontend/web/',
-    
-    //url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',
-    //url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
-    //urlFoto: 'http://localhost/apiestalecas/frontend/web/',
-    
-    // Eduardo
-   // url: 'http://localhost/cashback/frontend/web/index.php?r=
-   // url: 'http://localhost/cashback/frontend/web/index.php?r=',
-    //urlFoto: 'http://localhost/cashback/frontend/web/',
-	
-    indicacaoUrl:'http://www.estalecas.com.br/api/indicacao/register.php?auth_key=',
-    urlFotoDefault: 'img/empresa_default.png',
-    localStorageName: 'esUser',
-    back: false,
-    backRecarregou: true,
-    actionInit: false,
-    topTransparent: ['company', 'main', 'cash-out','invite-friend'],
-    panelLeftHide: ['login', 'valid-email', 'registration','invite-friend'],
-    tabbarBottomShow: ['category', 'main', 'invite-friend', 'cash-out', 'change-password']
+var appConfig = {};
+var init = function () {
+    params = {};
+    params.type = 'POST';
+    params.dataType = 'json';
+    params.async = false;
+    params.url = 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=api-empresa/param';
+    params.url = 'http://localhost/cashback/frontend/web/index.php?r=api-empresa/param';
+    var ajaxParam = $.ajax(params);
+    ajaxParam.always(function (data) {
+        appConfig = data;
+        app();
+    });
 };
 
 var blockPanelLeft = function (pgName) {    
