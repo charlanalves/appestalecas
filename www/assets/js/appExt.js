@@ -1,10 +1,10 @@
 
 var appConfig = {
 
-    url: 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=',	
+    url: 'http://www.estalecas.com.br/api/frontend/web/index.php?r=',	
  //  url: 'http://localhost/apiestalecas/frontend/web/index.php?r=',
     
-    urlFoto: 'http://52.67.208.141/cashbackdev/frontend/web/',	
+    urlFoto: 'http://www.estalecas.com.br/api/frontend/web/',	
 //	urlFoto: 'http://localhost/apiestalecas/frontend/web/',
     //urlFoto: 'http://localhost/cashback/frontend/web/',
     
@@ -17,7 +17,7 @@ var appConfig = {
    // url: 'http://localhost/cashback/frontend/web/index.php?r=',
     //urlFoto: 'http://localhost/cashback/frontend/web/',
 	
-    indicacaoUrl:'http://52.67.208.141/cashbackdev/indicacao/register.php?auth_key=',
+    indicacaoUrl:'http://www.estalecas.com.br/api/indicacao/register.php?auth_key=',
     urlFotoDefault: 'img/empresa_default.png',
     localStorageName: 'esUser',
     back: false,

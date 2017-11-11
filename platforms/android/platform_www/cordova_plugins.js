@@ -47,7 +47,7 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.3.2",
     "nl.madebymark.share": "0.1.1",
     "es6-promise-plugin": "4.1.0",
-    "cordova-plugin-x-socialsharing": "5.1.8"
+    "cordova-plugin-x-socialsharing": "5.2.1"
 };
 // BOTTOM OF METADATA
 });

@@ -1,3 +1,4 @@
+<script></script>
 <div class="navbar navbar-clear">
     <div class="navbar-inner">
         <div class="left">
@@ -20,18 +21,13 @@
     <div data-page="main" class="page">
         <div class="page-content" style="padding-top: 0px;">
             <div class="list-block" id="destino-templateMain" style="margin: 0px;"></div>
-            <a href="filter.html">
-                <div class="button button-primary button-fill mb-10" style="display:scroll; position:fixed; bottom:45px; right:5px; z-index: 9999">
-                    <i class="fa fa-lg fa-filter"></i>
-                </div>
-            </a>
         </div>
 
         <!-- Template -->
         <script type="text/template" id="templateMain">
 
             {{#each data.estabelecimentos}}
-                <a href="company.html?company={{CB04_ID}}&product={{CB05_ID}}">
+                <a href="company.html?company={{CB04_ID}}&product={{CB05_ID}}&promotion={{CB06_ID}}">
                     <article style="margin-bottom: -5px;">
                         <div class="author {{#if @first}} primeira-promo {{/if}}">
                             <img src="{{foto CB04_URL_LOGOMARCA}}" alt=""/>
@@ -40,6 +36,7 @@
                                 <div class="short-desc">{{CB04_END_COMPLEMENTO}}</div>
                             </span>
                         </div>
+
                         <div class="tags promocoes">
                             <span class="badge badge-primary badge-square text-uppercase">
                                 <span class="text-cashback">
@@ -48,14 +45,23 @@
                             </span>
                         </div>
                         <div class="text">
-                            <h2>
-                                {{CB05_TITULO}}: {{CB06_DESCRICAO}}
-                            </h2>
+                            <h2>{{CB05_TITULO}}: {{CB06_DESCRICAO}}</h2>
+                        </div>
+                        <div class="footer-promocao">
+                            {{#if DISTANCIA}}
+                                <small class="distancia">Aprox.: {{distancia DISTANCIA}}</small>
+                            {{/if}}
                         </div>
                         <img class="article-bg" src="{{foto CB14_URL}}" alt=""/>
                     </article>
                 </a>
             {{/each}}
+
+            <a href="filter.html?pg={{data.pg}}">
+                <div class="button button-primary button-fill mb-10 btn-filter">
+                    <i class="fa fa-lg fa-filter"></i>
+                </div>
+            </a>
 
         </script>
 
