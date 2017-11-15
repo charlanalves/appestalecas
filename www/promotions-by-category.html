@@ -34,7 +34,7 @@
                     <li>
                         <a href="company.html?company={{CB04_ID}}&product={{CB06_PRODUTO_ID}}&promotion={{CB06_ID}}" class="">
                             <div class="item-content" style="padding: 5px 0px; border-bottom: 1px silver solid; height: 135px">
-                                <div class="item-media"><img src="{{#if CB14_URL}}{{foto CB14_URL}}{{else}}assets/img/sem_imagem2.jpg{{/if}}" width="150"></div>
+                                <div class="item-media"><img src="{{#if CB14_URL}}{{@global.urlFoto}}/{{CB14_URL}}{{else}}{{@global.urlFoto}}/assets/img/sem_imagem2.jpg{{/if}}" width="150"></div>
                                 <div class="item-inner" style="padding: 10px 2px; margin-left: 10px;">
                                   <div class="item-title-row" style="margin-top: -60px;">
                                     

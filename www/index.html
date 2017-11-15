@@ -735,6 +735,8 @@
                     // Infinite Scroll
                     var action = 'promotions-by-category', 
                         callback = function(a) {
+							Template7.global = appConfig;
+							
                             templateEstablishment.compileData(a);
                             templateEstablishment.appendData();
                         };

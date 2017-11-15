@@ -6,8 +6,9 @@ var init = function () {
     params.type = 'POST';
     params.dataType = 'json';
     params.async = false;
-    params.url = 'http://52.67.208.141/cashbackdev/frontend/web/index.php?r=api-empresa/param';
     params.url = 'http://localhost/cashback/frontend/web/index.php?r=api-empresa/param';
+	params.url = 'http://localhost/apiestalecas/frontend/web/index.php?r=api-empresa/param';
+    params.url = 'http://www.estalecas.com.br/api/frontend/web/index.php?r=api-empresa/param';
     var ajaxParam = $.ajax(params);
     ajaxParam.always(function (data) {
         appConfig = data;
