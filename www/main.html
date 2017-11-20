@@ -37,23 +37,27 @@
                             </span>
                         </div>
 
-                        <div class="tags promocoes">
+                      
+                   
+                        <img class="article-bg" src="{{foto CB14_URL}}" alt=""/>
+                    </article>
+					<div class="promo-bottom">
+					  <div class="tags promo-cb">
                             <span class="badge badge-primary badge-square text-uppercase">
                                 <span class="text-cashback">
                                     {{real CB06_DINHEIRO_VOLTA}}%
                                 </span>
                             </span>
                         </div>
-                        <div class="text">
-                            <h2>{{CB05_TITULO}}: {{CB06_DESCRICAO}}</h2>
+					     <div class="text promo-titulo-desc">
+                            <span >{{CB05_TITULO}}: {{CB06_DESCRICAO}}</span>
                         </div>
-                        <div class="footer-promocao">
+					<!--	<div class="footer-distancia">
                             {{#if DISTANCIA}}
                                 <small class="distancia">Aprox.: {{distancia DISTANCIA}}</small>
                             {{/if}}
-                        </div>
-                        <img class="article-bg" src="{{foto CB14_URL}}" alt=""/>
-                    </article>
+                        </div> -->
+					</div>
                 </a>
             {{/each}}
 

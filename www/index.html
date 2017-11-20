@@ -1268,9 +1268,16 @@
                                     });
 
                                     // carrega abas do produto
-                                    a.loadTemplatePromocoes();
                                     a.loadTemplateRegras();
                                     a.loadTemplateLocal();
+									a.loadTemplateInfoEmpresa();
+									//a.loadTemplatePromocoesEmpresa();
+                                    //a.loadTemplatePromocoes();
+									a.loadTemplateProductPromotions();
+									
+									//templateProduct.compileAndLoadData([{tabPromoActive : 'active', tabInfoActive: ''}]);
+
+								
 
                                 });
 
@@ -1296,6 +1303,34 @@
                                     }
                                 });
                             };
+							
+							  a.loadTemplateProductPromotions= function () {
+									var templateProductPromotions = new Template('templateProductPromotions', idProdutoAtual);
+									templateProductPromotions.compileAjax('product-promotions', paramNew, function(r_promotions){
+											$('.abaFotosProdutouniq').on('click',function(){
+												idp = $(this).attr('data-idp');
+												setTimeout(function(){
+												
+													myApp.swiper('.swiper-image-promotion'+idp, {
+															pagination:'.swiper-image-promotion'+idp+' .swiper-pagination',
+															paginationHide: false,
+															paginationClickable: true,
+															spaceBetween: 50, // between slides
+															preloadImages: false,
+															lazyLoading: true,
+															//nextButton: '.swiper-button-next',
+															//prevButton: '.swiper-button-prev',
+													});
+												},300);
+											});
+                                });
+                            };
+							
+								 // Template com informacoes sobre o local (Text)
+                            a.loadTemplateInfoEmpresa = function () {
+                                var templateInfoEmpresa = new Template('templateInfoEmpresa', idProdutoAtual);
+                                templateInfoEmpresa.compileAjax('info-empresa', {company: companyAtual});
+                            };
 
                             // Template com as regras/Info do produto (Text)
                             a.loadTemplateRegras = function () {
@@ -1308,6 +1343,15 @@
                                 var templateLocal = new Template('templateLocal', idProdutoAtual);
                                 templateLocal.compileAjax('company-local', {company: companyAtual});
                             };
+							
+							// Template Aba promoções
+                            a.loadTemplatePromocoesEmpresa = function () {
+							
+                                var templatePromocoesEmpresa = new Template('templatePromocoesEmpresa', idProdutoAtual);
+                                templatePromocoesEmpresa.compileAjax('company-local', {company: companyAtual});
+                            };
+							
+						
 
                             // carrega valores na tab bar Comprar
                             a.loadValueTabbarBuy = function (data) {

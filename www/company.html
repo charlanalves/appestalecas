@@ -17,7 +17,7 @@
             <div id="destino-templateCompany" style="margin-bottom: 50px;"></div>            
         </div>
 
-        <div class="toolbar tabbar color-default" id="tabbar-buy" style="height: 110px;">
+  <!--      <div class="toolbar tabbar color-default" id="tabbar-buy" style="height: 110px;">
 
             <div class="row">
                 <div class="col-50">
@@ -35,7 +35,7 @@
                 <div class="col-10"></div>
             </div>
         </div>
-
+-->
 
         <!-- Template com as abas dos produtos produtos -->
         <script type="text/template" id="templateCompany">
@@ -84,67 +84,112 @@
             </div>
 
             <div class="content-block" style="
-                margin: 0px 0px; 
-                padding: 0px;
-                z-index: 99!important;
-                margin-top: -35px;
-                position: absolute;
-                color: #FFF;
-                padding: 6px;
-                font-size: 18px;
-                text-shadow: 0.1em 0.1em 0.2em #222;
-                width: 100%;
-                background: rgba(33, 33, 33, 0.5);">
+                   font-weight: bold;
+					margin: 0px 0px;
+					margin-top: 0;
+					color: #4a4a4a;
+					padding-top: 9px;
+					padding-left: 6px;
+					font-size: 13px;
+					width: 100%;
+					font-family: verdana;">
                 <!--<span class="tituloProduto"><h2 style="margin: 5px 0px;"></h2></span>-->
                 <!--{{data.IMG[0].CB14_PRODUTO_ID}}-->
                 {{data.PRODUTO_DATA.CB04_NOME}}
-            </div>
-
-            <div class="content-block" style="
-                color: #222;
-                padding: 5px;
-                margin: 0px;
-                text-align: justify;
-                font-size: 18px;">
-                <strong">{{data.PRODUTO_DATA.CB05_TITULO}}:</strong> 
-                {{data.PRODUTO_DATA.CB05_DESCRICAO}}
             </div>
 
             <!-- Abas (promocoes, info, local) -->
             <div class="content-block" style="margin: 10px 0px 5px 0px; padding: 0px;">
                 <div class="buttons-row">
                     <a href="#tab-product-1-{{data.PRODUTO}}" class="show-tab-product-1 tab-link button buttonTabProduct button-primary active">
-                        Promoções
-                    </a>
-                    <a href="#tab-product-2-{{data.PRODUTO}}" class="show-tab-product-2 tab-link button buttonTabProduct button-primary">
-                        Info
-                    </a>
+                        Info                   
+					</a>
+                    <a href="#tab-product-2-{{data.PRODUTO}}" class="show-tab-product-2 tab-link button buttonTabProduct button-primary ">
+                        Local                 
+					</a>
                     <a href="#tab-product-3-{{data.PRODUTO}}" class="show-tab-product-3 tab-link button buttonTabProduct button-primary">
-                        Local
+                        Promoções
                     </a>
                 </div>
             </div>
 
             <div class="tabs">
-                <div id="tab-product-1-{{data.PRODUTO}}" class="tab active">
+			 <!-- <div id="tab-product-1-{{data.PRODUTO}}" class="tab active">
                     <div class="content-block" style="margin: 0px; padding: 0px;">
                         <div id="destino-templatePromotions{{data.PRODUTO}}">Promoções</div>
                     </div>
                 </div>
+				-->
+                <div id="tab-product-1-{{data.PRODUTO}}" class="tab active">
+                    <div class="content-block" style="margin: 0px; padding: 0px;">
+                        <div id="destino-templateInfoEmpresa{{data.PRODUTO}}">Info</div>
+                    </div>
+                </div>
                 <div id="tab-product-2-{{data.PRODUTO}}" class="tab">
                     <div class="content-block" style="margin: 0px; padding: 0px;">
-                        <div id="destino-templateRules{{data.PRODUTO}}">Regras</div>
+                        <div id="destino-templateLocal{{data.PRODUTO}}">Regras</div>
                     </div>
                 </div>
                 <div id="tab-product-3-{{data.PRODUTO}}" class="tab">
                     <div class="content-block" style="margin: 0px; padding: 0px;">
-                        <div id="destino-templateLocal{{data.PRODUTO}}">Local</div>
+                        <div id="destino-templateProductPromotions{{data.PRODUTO}}">Local</div>
                     </div>
                 </div>
             </div>
 
         </script>
-
+		
+		  <!-- Template aba Info empresa-->
+		   <script type="text/template" id="templateInfoEmpresa">
+				<div>
+					<div class="dv">Dinheiro de Volta:</div>
+					<table>
+						  <tr>
+						 {{#each data.P}}
+								<th style="{{#if HOJE}}background-color:#00be79;{{/if}}">{{PERC}}</th>  								
+						 {{/each}}
+						  </tr>
+						  <tr>
+							<td>SEG</td>
+							<td>TER</td>
+							<td>QUA</td>
+							<td>QUI</td>
+							<td>SEX</td>
+							<td>SAB</td>
+							<td>DOM</td>
+						  </tr>
+					 </table>
+				</div>
+				
+				<div class="dv">Formas de Pagamento:</div>
+				 
+				 {{#if data.F.DEBITO.EXISTE}}
+						<div>
+							<div class="dv">Débito:</div>
+							 {{#each data.F.DEBITO.BANDEIRAS}}
+								<span><img class="bandeirasapp" src="{{CB08_URL_IMG}}"></span>
+							 {{/each}}
+						</div>	
+				 {{/if}}
+				 {{#if data.F.CREDITO.EXISTE}}
+						<div>
+							<div class="dv">Crédito:</div>
+							 {{#each data.F.CREDITO.BANDEIRAS}}
+								<span><img class="bandeirasapp" src="{{CB08_URL_IMG}}"></span>
+							 {{/each}}
+						</div>
+				 {{/if}}
+				 {{#if data.F.VOUCHER.EXISTE}}
+							<div class="dv">Voucher:</div>
+							 {{#each data.F.VOUCHER.BANDEIRAS}}
+								<span><img class="bandeirasapp" src="{{CB08_URL_IMG}}"></span>
+							{{/each}}
+						</div>
+				 {{/if}}
+				
+			 
+		   </script> 
+       
 
         <!-- Template promocoes/variacoes do produto -->
         <script type="text/template" id="templatePromotions">
@@ -207,6 +252,139 @@
             </div>
             {{/each}}
         </script>
+		
+		   <!-- Template que exibe as promoções por produto-->
+        <script type="text/template" id="templateProductPromotions">
+		{{#each data}}
+			<div>
+				<div class="dv">{{CB05_TITULO}}</div>				
+			</div>
+		 <!-- Abas (promocoes, info, local) -->
+            <div id="abaspromocoesdaempresa"class="content-block" style="margin: 10px 0px 5px 0px; padding: 0px;">
+                <div class="buttons-row abas-produto">
+                    <a  href="#tab-pp-1-{{CB05_ID}}" class="show-tab-pp-1-{{CB05_ID}} tab-link button buttonTabProduct button-primary border-bottom {active">
+                        Valores                   
+					</a>
+                    <a data-idp ="{{CB05_ID}} "href="#tab-pp-2-{{CB05_ID}}" class="show-tab-pp-2-{{CB05_ID}} tab-link button buttonTabProduct button-primary border-bottom abaFotosProdutouniq">
+                        Fotos                 
+					</a>
+                    <a href="#tab-pp-3-{{CB05_ID}}" class="show-tab-pp-3-{{CB05_ID}} tab-link button buttonTabProduct button-primary border-bottom">
+                        Info
+                    </a>
+                </div>
+            </div>
+
+            <div class="tabs">			
+                <div id="tab-pp-1-{{CB05_ID}}" class="tab active">
+                    <div class="content-block" style="margin: 0px; padding: 0px;">
+                        <div id="pp-price{{CB05_ID}}">
+								{{#each PROMOCOES}}
+									<div class="list-block media-list promocoes-do-produto" user-data='{"produto":"{{@root.data.PRODUTO}}", "promocao":"{{CB06_ID}}", "valor":"{{real CB06_PRECO_PROMOCIONAL}}", "deVolta":"{{percent CB06_PRECO_PROMOCIONAL CB06_DINHEIRO_VOLTA}}"}'>
+									  <ul style="padding: 5px;">
+										<li>
+										  <label class="label-checkbox item-content" style="padding-left: 5px;">
+											<input type="radio" name="promocoes-checkbox" {{checked_html @root.data.PROMOCAO_SELECIONADA this.CB06_ID}}>
+											<div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+											<div class="item-inner" style="padding: 0px 2px; margin-left: 5px;">
+											  <div class="item-title-row" style="min-height: 60px;">
+												<div class="item-title" style="
+													word-wrap: break-word!important;
+													width: 100%;
+													height: auto;
+													white-space: inherit;">
+													{{CB06_DESCRICAO}}
+												</div>
+												<div class="item-after">
+													<!--<strong class="percCb">CB + {{real CB06_DINHEIRO_VOLTA}}%</strong>-->
+													<div style="font-size: 11px; float: right; text-align: right;">
+														<span style="text-decoration: line-through;">
+															R$ {{real CB06_PRECO}}
+														</span>
+														<br />
+														<strong style="font-size: 18px; color: #be0000">
+															R$ {{real CB06_PRECO_PROMOCIONAL}}
+														</strong>    
+													</div>
+												</div>
+											  </div>
+											  <!--<div class="item-subtitle">{{CB06_TITULO}}</div>-->
+											  <div class="item-text" style="border-top: 1px #ededed solid; height: inherit;">
+
+													<span style="font-size: 12px;">
+														Ganhe de volta 
+														<span class="badge badge-primary badge-square text-uppercase" style="
+														top: 0px!important;
+														right: 0px!important;
+														padding: 9px 6px!important;
+														margin: 5px;
+														background: linear-gradient(to bottom, #1db5e9 0%, #1496c3 100%);
+														font-size: 12px;">
+															{{real CB06_DINHEIRO_VOLTA}}%
+														</span>
+													</span>
+													<span style="font-size: 12px; float: right; font-weight: bold; padding-top: 5px;">
+														R$ {{percent CB06_PRECO_PROMOCIONAL CB06_DINHEIRO_VOLTA}}
+													</span>
+													<!--
+													<span style="font-size: 11px;">R$ {{real CB06_PRECO}}</span>
+													<strong> R$ {{real CB06_PRECO_PROMOCIONAL}}</strong>
+													-->
+											  </div>
+											</div>
+										  </label>
+										</li>
+									  </ul>
+									</div>
+								{{/each}}
+						</div>
+                    </div>
+                </div>
+                <div id="tab-pp-2-{{CB05_ID}}" class="tab">
+                    <div class="content-block" style="margin: 0px; padding: 0px;">
+                        <div id="destino-pp-photos{{CB05_ID}}">
+							 <!-- Slider (fotos do produto) -->
+								<div class="swiper-custom">
+									<div class="swiper-container swiper-image-promotion{{CB05_ID}}" style="background-color: #222;">
+										<div class="swiper-pagination"></div>
+										<div class="swiper-wrapper" style="color: #000!important">
+										{{#each FOTOS}}
+											<div class="swiper-slide" style="max-height: 272px; min-height: 180px">
+												<img data-src="{{foto CB14_URL}}" class="swiper-lazy" style="">
+												<div class="preloader"></div>
+											</div>
+										{{/each}}
+										</div>
+									</div>								
+								</div>
+						</div>
+                    </div>
+                </div>
+                <div id="tab-pp-3-{{CB05_ID}}" class="tab">
+                    <div class="content-block" style="margin: 0px; padding: 0px;">
+                        <div id="destino-pp-info{{CB05_ID}}">
+							<blockquote>
+								<div class="content-block m-0" style="font-size: 16px;">
+									<div class="row">
+										{{#each ITENS}}
+											<div class="col-50 color-black">
+											  <i class="fa fa-lg fa-check"></i>&nbsp; {{CB11_DESCRICAO}}
+											</div>
+										{{/each}}
+									</div>
+								</div>
+							</blockquote>
+							<div>
+								<h2 class="font-logo align-center mb-0">Importante</h2>
+								<p class="color-black p-5-15 m-0">
+									{{CB05_IMPORTANTE}}
+								</p>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>		
+		 {{/each}}
+        </script>
 
         <!-- Template regras do produto -->
         <script type="text/template" id="templateRules">
@@ -232,7 +410,7 @@
 
         </script>        
 
-        <!-- Template local do produto -->
+		  <!-- Template local do produto -->
         <script type="text/template" id="templateLocal">
             <h2>
                 <i class="fa fa-map-marker"></i>
@@ -241,6 +419,8 @@
                 {{data.CB04_END_CIDADE}} - {{data.CB04_END_UF}}
             </h2>
         </script>  
-
+		
+        		
+		
     </div>
 </div>

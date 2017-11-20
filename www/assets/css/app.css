@@ -7198,3 +7198,89 @@ a#cashOut-submit {
     border-radius: unset !important;
     padding: 10px;
 }
+table {
+  width: 100%;  
+  height: 72px;
+  border-collapse: collapse;
+    // border: 1px solid #38678f;
+  margin: 5px auto;
+  background: white;
+}
+th {
+  background: steelblue;
+  height: 28px;
+  width: auto;
+  font-weight: lighter;
+  text-shadow: 0 1px 0 #38678f;
+  color: white;
+  border: 1px solid #38678f;
+  box-shadow: inset 0px 1px 2px #568ebd;
+  transition: all 0.2s;
+}
+tr {
+  border-bottom: 1px solid #cccccc;
+}
+tr:last-child {
+  border-bottom: 0px;
+}
+td {
+        color: #656565;
+  border-right: 1px solid #cccccc;
+  padding: 10px;
+  transition: all 0.2s;
+   
+}
+td:last-child {
+  border-right: 0px;
+}
+td.selected {
+  background: #d7e4ef;  
+}
+.dv{
+    color: #292929;
+    margin-top: 15px;
+    margin-left: 6px;
+}
+.bandeirasapp{
+    width: 50px;
+    height: 32px;
+    margin-left: 8px;
+}
+.abas-produto .border-bottom {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border: 3px solid #d4d4d4;
+    color: #1fa4c3;
+}
+
+.abas-produto .button.button-primary:hover, .abas-produto .button.button-primary.active, .abas-produto .button.button-primary.active-state {
+    background: none;
+    color: #1fa4c3;
+    border: none;
+    border-bottom: 3px solid;
+    border-radius: 0;
+}
+.tags.promo-cb {
+    width: 86px;
+    float: left;
+}
+
+.text.promo-titulo-desc span {
+    color: white;
+    font-size: 14px;
+    font-family: verdana;
+}
+.tabbar-fixed .page-content, .tabbar-through .page-content, .toolbar-fixed .page-content, .toolbar-through .page-content {
+    padding-bottom: 98px;
+}
+
+.promo-bottom{
+	height: 30px;
+	background: black;	
+	background: #7d7e7d; /* Old browsers */
+	background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+}
