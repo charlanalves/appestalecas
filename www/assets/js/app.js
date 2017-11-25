@@ -15,7 +15,8 @@ $$('body').on('click', '.js-add-to-fav', function () {
 });
 
 var mainView = myApp.addView('.view-main', {
-    dynamicNavbar: true
+    dynamicNavbar: true,
+    domCache: true
 });
 
 
