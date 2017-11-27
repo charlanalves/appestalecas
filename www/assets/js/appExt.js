@@ -166,7 +166,7 @@ var securePage = function (page, callback) {
     
     // evento voltar (class BACK)
     myApp.onPageBack(page, function (pg) {
-        appConfig.back = true;
+        //appConfig.back = true;
     });
     
     // evento apos a animacao da page
@@ -185,13 +185,13 @@ var securePage = function (page, callback) {
             return false;
         }
         
-        if(!appConfig.back || appConfig.backRecarregou) {
+        //if(appConfig.back || appConfig.backRecarregou) {
             (validateLogin()) ? callback(pg) : logout();
-            appConfig.backRecarregou = false;
-        } else {
-            appConfig.backRecarregou = true;
-        }
-        appConfig.back = false;
+        //    appConfig.backRecarregou = false;
+        //} else {
+        //    appConfig.backRecarregou = true;
+        //}
+        //appConfig.back = false;
         
     });
 };
