@@ -6,8 +6,8 @@ var init = function () {
     params.type = 'POST';
     params.dataType = 'json';
     params.async = false;
-    params.url = 'http://localhost/cashback/frontend/web/index.php?r=api-empresa/param';
-	params.url = 'http://localhost/apiestalecas/frontend/web/index.php?r=api-empresa/param';
+    params.url = 'http://localhost/apiestalecas/frontend/web/index.php?r=api-empresa/param';
+    params.url = 'http://localhost/cashback/frontend/web/index.php?r=api-empresa/param'; // eduardo
     params.url = 'http://www.estalecas.com.br/api/frontend/web/index.php?r=api-empresa/param';
     var ajaxParam = $.ajax(params);
     ajaxParam.always(function (data) {
@@ -111,12 +111,21 @@ var ajaxApi = function (method, params, callback) {
     ajaxParams.dataType = 'json';
     ajaxParams.data = (params || {});
     ajaxParams.url = appConfig.url + 'api-empresa/' + method;
+    ajaxParams.timeout = 7000;
 
     $.blockUI();
     var ajax = $.ajax(ajaxParams);
-    ajax.always(function (data) {
+    ajax.always(function (data, textStatus) {
         $.unblockUI();
-        if ( typeof data.error != "undefined" && data.error && typeof data.status == "undefined") {
+
+        // error timeout
+        if (textStatus == 'timeout') {
+            errorStr = 'O tempo limite de conexão foi atingido, tente novamente.';
+            alert(errorStr, 'Opss');
+            return;
+        }
+
+        if (typeof data.error != "undefined" && data.error && typeof data.status == "undefined") {
             var errorStr = '';
             for (var i in data.error) {
                 errorStr += "* " + data.error[i][0] + "<br />";

@@ -1,11 +1,11 @@
-<div class="navbar navbar-clear" style="background: transparent;border: 0px!important;height: 44px;">
+<div class="navbar navbar-clear" style="border: 0px!important;height: 44px;">
     <div class="navbar-inner">
         <div class="left">
             <a href="#" class="link back">
-                <i class="fa fa-lg fa-chevron-circle-left"></i>
+                <i class="fa fa-long-arrow-left"></i>
             </a>
         </div>
-        <div class="center sliding"></div>
+        <div class="center sliding title-company"></div>
         <div class="right"></div>
     </div>
 </div>
@@ -66,40 +66,31 @@
         <!-- Template detalhe do produto -->
         <script type="text/template" id="templateProduct">
 
-            <!-- Slider (fotos do produto) -->
-            <div class="swiper-custom">
-                <div class="swiper-container swiper-image-product" style="background-color: #222;">
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-wrapper" style="color: #000!important">
-                        {{#each data.IMG}}
-                        <div class="swiper-slide" style="max-height: 272px; min-height: 180px">
-                            <img data-src="{{foto CB14_URL}}" class="swiper-lazy" style="">
-                            <div class="preloader"></div>
-                        </div>
-                        {{/each}}
-                    </div>
-                </div>
-                <!-- <div class="swiper-button-prev"></div> -->
-                <!-- <div class="swiper-button-next"></div> -->
-            </div>
-
-            <div class="content-block" style="
-                   font-weight: bold;
-					margin: 0px 0px;
-					margin-top: 0;
-					color: #4a4a4a;
-					padding-top: 9px;
-					padding-left: 6px;
-					font-size: 13px;
-					width: 100%;
-					font-family: verdana;">
-                <!--<span class="tituloProduto"><h2 style="margin: 5px 0px;"></h2></span>-->
-                <!--{{data.IMG[0].CB14_PRODUTO_ID}}-->
-                {{data.PRODUTO_DATA.CB04_NOME}}
+            <div class="content-block" style="margin: 10px 0px 0px 0px; padding: 0px;">
+            {{#if data.DADOS.CB04_URL_LOGOMARCA}}
+                <div style="
+                    height: 170px; 
+                    width:100%; 
+                    margin-top: 75px;
+                    background-image: url({{foto data.DADOS.CB04_URL_LOGOMARCA}});
+                    background-size: contain;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center center;">
+                </div> 
+            {{else}}
+                <div style="
+                    height: 100px; 
+                    width:100%;
+                    padding-top: 90px; 
+                    text-align: center;">
+                    <i class="fa fa-5x fa-{{data.DADOS.CB10_ICO}}" style="margin: 0 auto; color: #333"></i>
+                </div> 
+            {{/if}}
             </div>
 
             <!-- Abas (promocoes, info, local) -->
-            <div class="content-block" style="margin: 10px 0px 5px 0px; padding: 0px;">
+            <div class="content-block" style="margin: 0px 0px 5px 0px; padding: 0px;">
                 <div class="buttons-row">
                     <a href="#tab-product-1-{{data.PRODUTO}}" class="show-tab-product-1 tab-link button buttonTabProduct button-primary active">
                         Info                   
@@ -412,15 +403,16 @@
 
 		  <!-- Template local do produto -->
         <script type="text/template" id="templateLocal">
-            <h2>
-                <i class="fa fa-map-marker"></i>
-                {{data.CB04_END_LOGRADOURO}} {{data.CB04_END_NUMERO}}, {{data.CB04_END_BAIRRO}}
-                <br />
-                {{data.CB04_END_CIDADE}} - {{data.CB04_END_UF}}
-            </h2>
+            <div class="content-block m-10" style="">
+                <h2>
+                    <i class="fa fa-map-marker"></i>
+                    {{data.CB04_END_LOGRADOURO}} {{data.CB04_END_NUMERO}}, 
+                    <br />
+                    {{data.CB04_END_BAIRRO}} - 
+                    {{data.CB04_END_CIDADE}}/{{data.CB04_END_UF}}
+                </h2>
+            </div>
         </script>  
-		
-        		
 		
     </div>
 </div>

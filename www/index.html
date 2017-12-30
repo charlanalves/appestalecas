@@ -1,258 +1,274 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-        <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-touch-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-touch-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-touch-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-touch-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-touch-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-touch-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-touch-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon-180x180.png">
-        <link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
-        <link rel="icon" type="image/png" href="assets/img/favicons/android-chrome-192x192.png" sizes="192x192">
-        <link rel="icon" type="image/png" href="assets/img/favicons/favicon-96x96.png" sizes="96x96">
-        <link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
-        <link rel="manifest" href="assets/img/favicons/manifest.json">
+	<link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon-180x180.png">
+	<link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="assets/img/favicons/android-chrome-192x192.png" sizes="192x192">
+	<link rel="icon" type="image/png" href="assets/img/favicons/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="assets/img/favicons/manifest.json">
         <!--
         <meta name="msapplication-TileColor" content="#2b5797">
         <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-144x144.png">
         <meta name="theme-color" content="#ffffff">
     -->
-        <title>ESTALECAS</title>
+    <title>ESTALECAS</title>
 
-        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
-        <link rel="stylesheet" href="bower_components/framework7/dist/css/framework7.ios.min.css" type="text/css">
-        <link rel="stylesheet" href="bower_components/swipebox/src/css/swipebox.css" type="text/css">
-        <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.carousel.css" type="text/css">
-        <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.theme.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/framework7/dist/css/framework7.ios.min.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/swipebox/src/css/swipebox.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.theme.css" type="text/css">
     
-        <link rel="stylesheet" href="assets/css/app.css" type="text/css">
-	<link rel="stylesheet" href="assets/css/sweetalert.css" type="text/css">
-        <link rel="stylesheet" href="assets/jquery-bar-rating/dist/themes/css-stars.css" type="text/css">
-        <!--<link rel="stylesheet" href="assets/themes//style.css" id="theme-style">-->
-        
-        <style>
-            
-            @font-face { font-family: eurosteal; src: url('assets/fonts/Eurosteal.ttf'); }
-            .font-logo { font:18px eurosteal, Arial, Tahoma, Sans-serif;}
-            .color-black { color: #000!important; }
-            .align-center {text-align: center;}
-            .p-5-15 {padding: 5px 15px;}
-            .m-0 {margin: 0px;}
-            .m-10 {margin: 10px;}
-            .m-20 {margin: 20px;}
-            
-            /* CSS ESTRELA AVALIACAO ---------------------------------------- */
-            .avaliacao {
-                margin-top: 10px;
-                border-bottom: 1px silver solid;
-            }
-            .avaliacao .estrela-avaliacao {
-                padding-top: 8px; 
-                width: 100%;
-                display: block;
-                height: 40px; 
-                border-top: 1px silver solid;
-            }
-            .avaliacao .estrela-avaliacao span {
-                margin-top: 5px;
-                float: left;
-                font-weight: bold;
-            }
-            .avaliacao .estrela-avaliacao .select-star {
-                float: right;
-            }
-            .avaliacao-comentario {
-                width: 100%;
-                text-align: left;
-                margin-top: 15px;
-                border-top: 0px solid silver;
-            }
-            .avaliacao-comentario textarea{
-                width: 100%;
-                text-align: left;
-                margin-top: 10px;
-                height: 50px
-            }
-            
-            .negrito {
-                font-weight: bold;
-            }
-            .navbar:after {
-                height: 0px;
-            }
-            
-            .pages, .pages input, .pages select, .pages textarea, .pages option {
-                color: #000 !important;
-            }
-            
-            .list-block {
-                margin: 5px 0;
-            }
+    <link rel="stylesheet" href="assets/css/app.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/sweetalert.css" type="text/css">
+    <link rel="stylesheet" href="assets/jquery-bar-rating/dist/themes/css-stars.css" type="text/css">
+    <!--<link rel="stylesheet" href="assets/themes//style.css" id="theme-style">-->
 
-            .buttonTabProduct {
-                min-height: 32px;
-                line-height: 30px;
-            }
-            
-            select, input {
-                padding: 0 10px!important;    
-                font-size: 16px;
-            }
-            
-            .button-valid-1 {background: #30b8ff!important;}
-            .button-valid-2 {background-color: #175779!important;}
-            .button-valid-3 {background-color: #0f3c54!important;}
-            .button-valid-1,.button-valid-2,.button-valid-3 {
-                border: 0px!important;
-                width: 100%;
-                font-weight: bold;
-                font-size: 18px;
-                margin: 2px 5px!important;
-                right: 8px;
-            }
+    <style>
 
-            /* CSS TAB BAR "COMPRAR" ---------------------------------------- */
-            #tabbar-buy div[class*="col-"] {
-                text-align: center;
-                color: #FFF;
-                padding: 5px 0px;
-                font-size: 11px;
-            }
-            #tabbar-buy div[class*="col-"] strong {
-                font-size: 22px;
-                 display:block; 
-                 clear:both
-            }
-            
-            /* CSS FILTRO --------------------------------------------------- */
-            /* btn */
-            div.btn-filter {
-                display:scroll; 
-                position:fixed!important; 
-                bottom:45px!important; 
-                right:5px; 
-                z-index: 9999;
-            }
-            #page-filter .content-block-title{
-                color: #000;
-                font-weight: bold
-            }
-            #page-filter .swiper-wrapper {
-                margin: 5px;
-                color: #000;
-            }
-            #page-filter .swiper-slide {
-                color: #000;
-                background: #FFF;
-                box-sizing: border-box;
-                border: 1px solid #d8d8d8;
-                border-radius: 12px;
-                margin-right: 18px!important
-            }
-            #page-filter .swiper-slide label {
-                text-align:center;
-                display:block;
-                font-size:16px;
-            }
-            #page-filter .swiper-slide label div {
-                text-align:center;
-                width: 100%;
-				height: 96px;
-            }
-            #page-filter .swiper-slide label div.item-inner {
-                padding-top: 22px;
-            }
-            #page-filter .swiper-container {
-                height: 120px;
-                margin: 5px;
-                overflow: visible;
-            }
-            #page-filter .swiper-slide label.label-radio input[type=radio]:checked~.item-inner {
-                  background-size: 25px;
-				background-position: center top;
-				background-image: initial;
-				background-color: #0089be;
-				height: 96px;
-				border-radius: 12px;
-				color: white;
-				font-size: 14px;
-            }
-            #page-filter .swiper-slide label.label-radio input[type=radio]~.item-inner {
-                padding-right: 0px;
-            }
-            
-            .navbar-fixed .page-content, .navbar-through .page-content {
-            }
-            
-            .list-block .item-inner:after{
-                height: 0px;
-            }
-            
-            .link-tabbar-bottom i{
-                font-size: 28px;
-            }
-            .link-tabbar-bottom{
-                color: #666!important;
-                width: 20%!important;
-            }
-            
-            .link-tabbar-bottom.active{
-                color: #FFF!important;
-                background-color: #be0000;
-            }
-            
-            .link-tabbar-bottom img {
-                max-width: inherit; 
-                width: 71px!important;
-            }
-            
-            .infinite-scroll-preloader {
-                margin-top: 20px;
-                margin-bottom: 20px;
-                text-align: center;
-            }
-            .infinite-scroll-preloader .preloader {
-                width:34px;
-                height:34px;
-            }   
-            
-            div.footer-promocao {
-                margin: 0!important;
-                position: absolute;
-                z-index: 10;
-                bottom: 9px;
-                width: 100%;
-            }            
-            small.distancia {
-                background-color: #EEE;
-                border-radius: 9px;
-                padding: 3px 5px!important;
-                margin: 0!important;
-                color: #333!important;
-                float: right!important;
-                font-size: 14px;
-                margin-right: 5px!important;
-            }
-        </style>
+    	@font-face { font-family: eurosteal; src: url('assets/fonts/Eurosteal.ttf'); }
+    	.font-logo { font:18px eurosteal, Arial, Tahoma, Sans-serif;}
+    	.color-black { color: #000!important; }
+    	.align-center {text-align: center;}
+    	.p-5-15 {padding: 5px 15px;}
+    	.m-0 {margin: 0px;}
+    	.m-10 {margin: 10px;}
+    	.m-20 {margin: 20px;}
 
-    </head>
-    <body class="">
+    	/* CSS ESTRELA AVALIACAO ---------------------------------------- */
+    	.avaliacao {
+    		margin-top: 10px;
+    		border-bottom: 1px silver solid;
+    	}
+    	.avaliacao .estrela-avaliacao {
+    		padding-top: 8px; 
+    		width: 100%;
+    		display: block;
+    		height: 40px; 
+    		border-top: 1px silver solid;
+    	}
+    	.avaliacao .estrela-avaliacao span {
+    		margin-top: 5px;
+    		float: left;
+    		font-weight: bold;
+    	}
+    	.avaliacao .estrela-avaliacao .select-star {
+    		float: right;
+    	}
+    	.avaliacao-comentario {
+    		width: 100%;
+    		text-align: left;
+    		margin-top: 15px;
+    		border-top: 0px solid silver;
+    	}
+    	.avaliacao-comentario textarea{
+    		width: 100%;
+    		text-align: left;
+    		margin-top: 10px;
+    		height: 50px
+    	}
 
-        <div class="statusbar-overlay"></div>
-        <div class="panel-overlay"></div>
+    	.negrito {
+    		font-weight: bold;
+    	}
+    	.navbar:after {
+    		height: 0px;
+    	}
 
-        <!-- Left panel -->
-        <div class="panel panel-left panel-reveal">
-            <div class="line"></div>
+    	.pages, .pages input, .pages select, .pages textarea, .pages option {
+    		color: #000 !important;
+    	}
+
+    	.list-block {
+    		margin: 5px 0;
+    	}
+
+    	.buttonTabProduct {
+    		min-height: 32px;
+    		line-height: 30px;
+    	}
+
+    	select, input {
+    		padding: 0 10px!important;    
+    		font-size: 16px;
+    	}
+
+    	.button-valid-1 {background: #30b8ff!important;}
+    	.button-valid-2 {background-color: #175779!important;}
+    	.button-valid-3 {background-color: #0f3c54!important;}
+    	.button-valid-1,.button-valid-2,.button-valid-3 {
+    		border: 0px!important;
+    		width: 100%;
+    		font-weight: bold;
+    		font-size: 18px;
+    		margin: 2px 5px!important;
+    		right: 8px;
+    	}
+
+    	/* CSS TAB BAR "COMPRAR" ---------------------------------------- */
+    	#tabbar-buy div[class*="col-"] {
+    		text-align: center;
+    		color: #FFF;
+    		padding: 5px 0px;
+    		font-size: 11px;
+    	}
+    	#tabbar-buy div[class*="col-"] strong {
+    		font-size: 22px;
+    		display:block; 
+    		clear:both
+    	}
+
+    	/* CSS FILTRO --------------------------------------------------- */
+    	/* btn */
+    	div.btn-filter {
+    		display:scroll; 
+    		position:fixed!important; 
+    		bottom:45px!important; 
+    		right:5px; 
+    		z-index: 9999;
+    	}
+    	#page-filter .content-block-title{
+    		color: #000;
+    		font-weight: bold
+    	}
+    	#page-filter .swiper-wrapper {
+    		margin: 5px;
+    		color: #000;
+    	}
+    	#page-filter .swiper-slide {
+    		color: #000;
+    		background: #FFF;
+    		box-sizing: border-box;
+    		border: 1px solid #d8d8d8;
+    		border-radius: 12px;
+    		margin-right: 18px!important
+    	}
+    	#page-filter .swiper-slide label {
+    		text-align:center;
+    		display:block;
+    		font-size:14px;
+    	}
+    	#page-filter .swiper-slide label div {
+    		text-align:center;
+    		width: 100%;
+    		height: 96px;
+    	}
+    	#page-filter .swiper-slide label div.item-inner {
+    		padding-top: 22px;
+    	}
+    	#page-filter .swiper-container {
+    		height: 120px;
+    		margin: 5px;
+    		overflow: visible;
+    	}
+    	#page-filter .swiper-slide label.label-radio input[type=radio]:checked~.item-inner {
+    		background-size: 25px;
+    		background-position: center top;
+    		background-image: initial;
+    		background-color: #0089be;
+    		height: 96px;
+    		border-radius: 12px;
+    		color: white;
+    		font-size: 14px;
+    		font-weight: bolder;
+    	}
+    	#page-filter .swiper-slide label.label-radio input[type=radio]~.item-inner {
+    		padding-right: 0px;
+    	}
+
+    	.navbar-fixed .page-content, .navbar-through .page-content {
+    	}
+
+    	.list-block .item-inner:after{
+    		height: 0px;
+    	}
+
+    	.link-tabbar-bottom i{
+    		font-size: 28px;
+    	}
+    	.link-tabbar-bottom{
+    		color: #666!important;
+    		width: 20%!important;
+    	}
+
+    	.link-tabbar-bottom.active{
+    		color: #FFF!important;
+    		background-color: #be0000;
+    	}
+
+    	.link-tabbar-bottom img {
+    		max-width: inherit; 
+    		width: 71px!important;
+    	}
+
+    	.infinite-scroll-preloader {
+    		margin-top: 20px;
+    		margin-bottom: 20px;
+    		text-align: center;
+    	}
+    	.infinite-scroll-preloader .preloader {
+    		width:34px;
+    		height:34px;
+    	}   
+
+    	div.footer-promocao {
+    		margin: 0!important;
+    		position: absolute;
+    		z-index: 10;
+    		bottom: 9px;
+    		width: 100%;
+    	}            
+    	small.distancia {
+    		background-color: #EEE;
+    		border-radius: 9px;
+    		padding: 3px 5px!important;
+    		margin: 0!important;
+    		color: #333!important;
+    		float: right!important;
+    		font-size: 14px;
+    		margin-right: 5px!important;
+    	}
+    	div.img-list-empresa{
+    		background-color: #fafafa;
+    		text-align: center!important;
+    		height: 100%!important;
+            width: 40%!important;    
+            border-radius: 50%;
+    	}
+    	/*voltar das paginas*/
+    	.navbar-inner .left a {
+    		padding-left: 10px;
+    	}
+    	/*titulo das paginas*/
+    	.navbar-inner .center {
+    		font-weight: bolder;
+    	}
+    </style>
+
+</head>
+<body class="">
+
+	<div class="statusbar-overlay"></div>
+	<div class="panel-overlay"></div>
+
+	<!-- Left panel -->
+	<div class="panel panel-left panel-reveal">
+		<div class="line"></div>
 
 			<!-- <script type="text/template" id="templateCategory">
 				<div class="logo-box mt-10">
@@ -261,15 +277,15 @@
 					<div>R$ {{real data.saldo}}</div>				
 				</div>
 			</script>
-               --> 
+		--> 
 
-            <div class="list-block mt-15">
-                <div class="list-group">
-                    <nav>
-                        <ul>
-                            <li class="divider">
-                                Menu
-                            </li>
+		<div class="list-block mt-15">
+			<div class="list-group">
+				<nav>
+					<ul>
+						<li class="divider">
+							Menu
+						</li>
                             <!--
                             <li>
                                 <a href="profile.html" class="item-link close-panel item-content">
@@ -281,87 +297,89 @@
                                     </div>
                                 </a>
                             </li>
-                            -->
-                            <li>
-                                <a href="category.html" class="item-link close-panel item-content">
-                                    <div class="item-media">
-                                        <i class="fa fa-th-list"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Categorias</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="main.html" class="item-link close-panel item-content">
-                                    <div class="item-media">
-                                        <i class="fa fa-tags"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Promoções</div>
-                                    </div>
-                                </a>
-                            </li>
-                           <!-- <li>
-                                <a href="establishment.html" class="item-link close-panel item-content">
-                                    <div class="item-media">
-                                        <i class="fa fa-home"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <!--<div class="item-title">Estabelecimentos</div>
-                                    </div>
-                                </a>
-                            </li>-->
-                            <li>
-                                <a href="shopping.html" class="item-link close-panel item-content">
-                                    <div class="item-media">
-                                        <i class="fa fa-check"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Compras realizadas</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="extract.html" class="item-link close-panel item-content">
-                                    <div class="item-media">
-                                        <i class="fa fa-list"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Extrato</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="cash-out.html" class="item-link close-panel item-content">
-                                    <div class="item-media">
-                                        <i class="fa fa-money"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Solicitar saque</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="invite-friend.html" class="item-link close-panel item-content">
-                                    <div class="item-media">
-                                        <i class="fa fa-users"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Convidar amigos</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="filter.html" class="item-link close-panel item-content">
-                                    <div class="item-media">
-                                        <i class="fa fa-filter"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Filtrar</div>
-                                    </div>
-                                </a>
-                            </li>
+                        -->
+                        <li>
+                        	<a href="category.html" class="item-link close-panel item-content">
+                        		<div class="item-media">
+                        			<i class="fa fa-th-list"></i>
+                        		</div>
+                        		<div class="item-inner">
+                        			<div class="item-title">Categorias</div>
+                        		</div>
+                        	</a>
+                        </li>
+                           <!-- 
+                        <li>
+                        	<a href="main.html" class="item-link close-panel item-content">
+                        		<div class="item-media">
+                        			<i class="fa fa-tags"></i>
+                        		</div>
+                        		<div class="item-inner">
+                        			<div class="item-title">Promoções</div>
+                        		</div>
+                        	</a>
+                        </li>
+                       	<li>
+                            <a href="establishment.html" class="item-link close-panel item-content">
+                                <div class="item-media">
+                                    <i class="fa fa-home"></i>
+                                </div>
+                                <div class="item-inner">
+                                    <!--<div class="item-title">Estabelecimentos</div>
+                                </div>
+                            </a>
+                        </li>
+                        -->
+                        <li>
+                        	<a href="shopping.html" class="item-link close-panel item-content">
+                        		<div class="item-media">
+                        			<i class="fa fa-check"></i>
+                        		</div>
+                        		<div class="item-inner">
+                        			<div class="item-title">Compras realizadas</div>
+                        		</div>
+                        	</a>
+                        </li>
+                        <li>
+                        	<a href="extract.html" class="item-link close-panel item-content">
+                        		<div class="item-media">
+                        			<i class="fa fa-list"></i>
+                        		</div>
+                        		<div class="item-inner">
+                        			<div class="item-title">Extrato</div>
+                        		</div>
+                        	</a>
+                        </li>
+                        <li>
+                        	<a href="cash-out.html" class="item-link close-panel item-content">
+                        		<div class="item-media">
+                        			<i class="fa fa-money"></i>
+                        		</div>
+                        		<div class="item-inner">
+                        			<div class="item-title">Solicitar saque</div>
+                        		</div>
+                        	</a>
+                        </li>
+                        <li>
+                        	<a href="invite-friend.html" class="item-link close-panel item-content">
+                        		<div class="item-media">
+                        			<i class="fa fa-users"></i>
+                        		</div>
+                        		<div class="item-inner">
+                        			<div class="item-title">Convidar amigos</div>
+                        		</div>
+                        	</a>
+                        </li>
+                        <li>
+                        	<a href="filter.html" class="item-link close-panel item-content">
+                        		<div class="item-media">
+                        			<i class="fa fa-filter"></i>
+                        		</div>
+                        		<div class="item-inner">
+                        			<div class="item-title">Filtrar</div>
+                        		</div>
+                        	</a>
+                        </li>
                             <!--
                             <li>
                                 <a href="change-password.html" class="item-link close-panel item-content">
@@ -373,109 +391,109 @@
                                     </div>
                                 </a>
                             </li>
-                            -->
-                            <li>
-                                <a href="#" class="item-link close-panel item-content" onclick="logout()">
-                                    <div class="item-media">
-                                        <i class="fa fa-close"></i>
-                                    </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">Sair</div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                        -->
+                        <li>
+                        	<a href="#" class="item-link close-panel item-content" onclick="logout()">
+                        		<div class="item-media">
+                        			<i class="fa fa-close"></i>
+                        		</div>
+                        		<div class="item-inner">
+                        			<div class="item-title">Sair</div>
+                        		</div>
+                        	</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-
         </div>
 
-        <!-- Right panel -->
-        <div class="panel panel-right panel-reveal"></div>
+    </div>
 
-        <!-- Views -->
-        <div class="views">
-            
-            <div class="view view-main">
-                
-                <div class="navbar"></div>
-                
-                <div class="pages navbar-fixed toolbar-fixed " id="page-main" ></div>
-                
-                <div class="toolbar tabbar tabbar-labels" id="tabbar-bottom">
-                    <div class="toolbar-inner">
-                        <a href="category.html" class="link link-tabbar-bottom active-category">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                            <span class="tabbar-label">buscar</span>
-                        </a>
-                        <a href="main.html" class="link link-tabbar-bottom active-main">
-                            <i class="fa fa-fire"></i>
-                            <span class="tabbar-label">promoções</span>
-                        </a>
-                        <a href="invite-friend.html" class="link link-tabbar-bottom active-invite-friend">
-                            <i class="fa fa-gift"></i>
-                            <span class="tabbar-label">indique</span>
-                        </a>
-                        <a href="cash-out.html" class="link link-tabbar-bottom active-cash-out">
-                            <i class="fa fa-usd"></i>
-                            <span class="tabbar-label">resgatar</span>
-                        </a>
-                        <a href="change-password.html" class="link link-tabbar-bottom active-change-password">
-                            <i class="fa fa-user"></i>
-                            <span class="tabbar-label">conta</span>
-                        </a>
-                    </div>
-                </div>
-                
-            </div>
-            
-        </div>
+    <!-- Right panel -->
+    <div class="panel panel-right panel-reveal"></div>
 
-        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="bower_components/swipebox/src/js/jquery.swipebox.min.js"></script>
-        <script type="text/javascript" src="bower_components/framework7/dist/js/framework7.min.js"></script>
-        <script type="text/javascript" src="bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
-        <script type="text/javascript" src="bower_components/Tweetie/tweetie.min.js"></script>
-        <script type="text/javascript" src="bower_components/chartjs/Chart.js"></script>
-        <script type="text/javascript" src="bower_components/scrollAnimate/jquery.scrollAnimate.js"></script>
-        <script src="bower_components/owl-carousel/owl-carousel/owl.carousel.min.js"></script>
+    <!-- Views -->
+    <div class="views">
 
-        <script type="text/javascript" src="assets/js/jflickrfeed.min.js"></script>
-        <script type="text/javascript" src="assets/js/min/app.js"></script>
-        <script type="text/javascript" src="assets/js/animations.js"></script>
+    	<div class="view view-main">
 
-        <!-- Complementares -->
-        <script type="text/javascript" src="assets/js/jquery-block/jquery.blockUI.js"></script>
-        <script type="text/javascript" src="assets/js/masked-input/jquery.maskedinput.min.js"></script>
-        <script type="text/javascript" src="assets/js/masked-input/jquery.maskMoney.min.js"></script>
-        <script type="text/javascript" src="assets/js/appExt.js"></script>
-        <script type="text/javascript" src="assets/js/global.js"></script>
-        
-        
-        <!-- iugu local -->
-        <script type="text/javascript" src="assets/js/iugu.js"></script>
-        <!-- iugu remoto -->
-        <!-- <script type="text/javascript" src="https://js.iugu.com/v2"></script> -->
-        <script type="text/javascript" src="assets/js/formatter.js"></script>
-		<script type="text/javascript" src="assets/js/sweetalert.min.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="assets/jquery-bar-rating/jquery.barrating.js"></script>
-        
-        <script>
+    		<div class="navbar"></div>
 
-            alert = function(a,b,c = 'error'){swal(b, a, c);};
+    		<div class="pages navbar-fixed toolbar-fixed " id="page-main" ></div>
 
-             document.addEventListener('deviceready', function(){
-			    modalConectionLost = myApp.modal({
-					title: 'Sem internet!',
-					text: 'Verifique sua conexão para continuar.',
-					afterText:  '<div class="swiper-container" style="width: auto; margin:5px -15px -15px">'+
-								  '<div class="swiper-pagination"></div>'+
-								  '<div class="swiper-wrapper">'+                    
-									'<div class="swiper-slide"><img src="assets/img/lostcon.png" height="150"></div>'+
-								  '</div>'+
-								'</div>',
+    		<div class="toolbar tabbar tabbar-labels" id="tabbar-bottom">
+    			<div class="toolbar-inner">
+    				<a href="category.html" class="link link-tabbar-bottom active-category">
+    					<i class="fa fa-search" aria-hidden="true"></i>
+    					<span class="tabbar-label">buscar</span>
+    				</a>
+    				<a href="main.html" class="link link-tabbar-bottom active-main" style="display: none">
+    					<i class="fa fa-fire"></i>
+    					<span class="tabbar-label">promoções</span>
+    				</a>
+    				<a href="invite-friend.html" class="link link-tabbar-bottom active-invite-friend">
+    					<i class="fa fa-gift"></i>
+    					<span class="tabbar-label">indique</span>
+    				</a>
+    				<a href="cash-out.html" class="link link-tabbar-bottom active-cash-out">
+    					<i class="fa fa-usd"></i>
+    					<span class="tabbar-label">resgatar</span>
+    				</a>
+    				<a href="change-password.html" class="link link-tabbar-bottom active-change-password">
+    					<i class="fa fa-user"></i>
+    					<span class="tabbar-label">conta</span>
+    				</a>
+    			</div>
+    		</div>
+
+    	</div>
+
+    </div>
+
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/swipebox/src/js/jquery.swipebox.min.js"></script>
+    <script type="text/javascript" src="bower_components/framework7/dist/js/framework7.min.js"></script>
+    <script type="text/javascript" src="bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="bower_components/Tweetie/tweetie.min.js"></script>
+    <script type="text/javascript" src="bower_components/chartjs/Chart.js"></script>
+    <script type="text/javascript" src="bower_components/scrollAnimate/jquery.scrollAnimate.js"></script>
+    <script src="bower_components/owl-carousel/owl-carousel/owl.carousel.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/jflickrfeed.min.js"></script>
+    <script type="text/javascript" src="assets/js/min/app.js"></script>
+    <script type="text/javascript" src="assets/js/animations.js"></script>
+
+    <!-- Complementares -->
+    <script type="text/javascript" src="assets/js/jquery-block/jquery.blockUI.js"></script>
+    <script type="text/javascript" src="assets/js/masked-input/jquery.maskedinput.min.js"></script>
+    <script type="text/javascript" src="assets/js/masked-input/jquery.maskMoney.min.js"></script>
+    <script type="text/javascript" src="assets/js/appExt.js"></script>
+    <script type="text/javascript" src="assets/js/global.js"></script>
+
+
+    <!-- iugu local -->
+    <script type="text/javascript" src="assets/js/iugu.js"></script>
+    <!-- iugu remoto -->
+    <!-- <script type="text/javascript" src="https://js.iugu.com/v2"></script> -->
+    <script type="text/javascript" src="assets/js/formatter.js"></script>
+    <script type="text/javascript" src="assets/js/sweetalert.min.js"></script>
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <script type="text/javascript" src="assets/jquery-bar-rating/jquery.barrating.js"></script>
+
+    <script>
+
+    	alert = function(a,b,c = 'error'){swal(b, a, c);};
+
+    	document.addEventListener('deviceready', function(){
+    		modalConectionLost = myApp.modal({
+    			title: 'Sem internet!',
+    			text: 'Verifique sua conexão para continuar.',
+    			afterText:  '<div class="swiper-container" style="width: auto; margin:5px -15px -15px">'+
+    			'<div class="swiper-pagination"></div>'+
+    			'<div class="swiper-wrapper">'+                    
+    			'<div class="swiper-slide"><img src="assets/img/lostcon.png" height="150"></div>'+
+    			'</div>'+
+    			'</div>',
 				/*	buttons: [
 					  {
 						text: 'Tentar Novamente!',"
@@ -490,24 +508,25 @@
 							}
 						}
 					  },
-					]*/
-				  });
-				$('.modal').hide();
-				$('.modal-overlay.modal-overlay-visible').hide();
-				
+					  ]*/
+					});
+    		$('.modal').hide();
+    		$('.modal-overlay.modal-overlay-visible').hide();
+
 				 // Tratamento de erros de conexão
 				 document.addEventListener("offline", onOffline, false);
 				 document.addEventListener("online", onOnline, false);				 
-					function onOffline() {
-							 $('.modal').show();
-							 $('.modal-overlay.modal-overlay-visible').show();
-					}
+				 function onOffline() {
+				 	$('.modal').show();
+				 	$('.modal-overlay.modal-overlay-visible').show();
+				 }
 
-					function onOnline() {
-						$('.modal').hide();
-						$('.modal-overlay.modal-overlay-visible').hide();
-					}
-				 }, false);
+				 function onOnline() {
+				 	$('.modal').hide();
+				 	$('.modal-overlay.modal-overlay-visible').hide();
+				 }
+				 
+				}, false);
       //  document.addEventListener('deviceready', onDeviceReady, false);
 
          //   function onDeviceReady () {
@@ -526,7 +545,7 @@
                     a = document.querySelectorAll('.toolbar')[0];
                     a.style.display = "block";
                 });
-*/
+                */
            // }   
             // mascara de CPF
             // $("input[name='cpf_cnpj']").mask("999.999.999-99").attr('placeholder', 'CPF');
@@ -540,94 +559,94 @@
                 // -----------------------------------------------------------------
                 // login
                 myApp.onPageInit('login', function (page) {
-                    blockPanelLeft(page.name);
-                    $('div#tabbar-bottom').hide();
-                    $$('#login-button').on('click', function () {
-                                            var cpf_cnpj = $('form#login-form input[name=cpf_cnpj]').val();
-                                                pass = $('form#login-form input[name=password]').val();
-                                              if (cpf_cnpj == '' || pass == '' ){
-                                                             alert('Os campos CPF/CNPJ e SENHA são obrigatórios.', 'Preencha os campos:');                     
-                                              } else {
-                                                    validateLogin(myApp.formToJSON('#login-form'));
-                                            }
-                    });
+                	blockPanelLeft(page.name);
+                	$('div#tabbar-bottom').hide();
+                	$$('#login-button').on('click', function () {
+                		var cpf_cnpj = $('form#login-form input[name=cpf_cnpj]').val();
+                		pass = $('form#login-form input[name=password]').val();
+                		if (cpf_cnpj == '' || pass == '' ){
+                			alert('Os campos CPF/CNPJ e SENHA são obrigatórios.', 'Preencha os campos:');                     
+                		} else {
+                			validateLogin(myApp.formToJSON('#login-form'));
+                		}
+                	});
 
-                    $$('a#linkEsqueceuSenha').on('click', function () {
-                        cpf_cnpj = $('form#login-form input[name=cpf_cnpj]').val();
-                        if(!cpf_cnpj) {
-                            alert('Preencha o campo CPF/CNPJ e clique novamente no link para receber em seu e-mail uma nova senha.', 'Esqueceu a senha?'); 
-                        } else {
-                            ajaxApi('nova-senha', {cpf_cnpj: cpf_cnpj}, function(r) {
-                                if(r.status == null) {
-                                    alert('Sua conta não foi encontrada, verifique os dados informados e tente novamente.', 'Esqueceu a senha?');                     
+                	$$('a#linkEsqueceuSenha').on('click', function () {
+                		cpf_cnpj = $('form#login-form input[name=cpf_cnpj]').val();
+                		if(!cpf_cnpj) {
+                			alert('Preencha o campo CPF/CNPJ e clique novamente no link para receber em seu e-mail uma nova senha.', 'Esqueceu a senha?'); 
+                		} else {
+                			ajaxApi('nova-senha', {cpf_cnpj: cpf_cnpj}, function(r) {
+                				if(r.status == null) {
+                					alert('Sua conta não foi encontrada, verifique os dados informados e tente novamente.', 'Esqueceu a senha?');                     
 
-                                } else if(r.status) {
-                                    alert('Foi enviado um e-mail para <strong>' + r.email + '</strong> com a nova senha!', 'Esqueceu a senha?');                     
+                				} else if(r.status) {
+                					alert('Foi enviado um e-mail para <strong>' + r.email + '</strong> com a nova senha!', 'Esqueceu a senha?');                     
 
-                                } else {
-                                    alert('Não foi possível recuperar a senha, tente novamente.', 'Esqueceu a senha?');                     
+                				} else {
+                					alert('Não foi possível recuperar a senha, tente novamente.', 'Esqueceu a senha?');                     
 
-                                }
-                            });
-                        }
-                    });
+                				}
+                			});
+                		}
+                	});
                 });
 
 
                 // -----------------------------------------------------------------
                 // validar email
                 myApp.onPageInit('valid-email', function (page) {
-                    blockPanelLeft(page.name);
-                    var param = getUserData();
-                    if(param.email_valid) {goMain();}
+                	blockPanelLeft(page.name);
+                	var param = getUserData();
+                	if(param.email_valid) {goMain();}
 
-                    $('div#tabbar-bottom').hide();
+                	$('div#tabbar-bottom').hide();
 
-                    var templateValidEmail = new Template('templateValidEmail');
-                    templateValidEmail.compileAndLoadData(param);
+                	var templateValidEmail = new Template('templateValidEmail');
+                	templateValidEmail.compileAndLoadData(param);
 
                     // btn validar conta de email
                     $$('a#ValidEmail').on('click', function () {
-                        ajaxApi('verifica-email', param, function (a) {
-                            if(a){
-                                validaEmail();
-                                goMain();
-                            } else {
-                                alert('Acesse seu e-mail e clique no link ou se você não recebeu o e-mail clique no botão "reenviar e-mail".','A conta não foi ativada'); 
-                            }
-                        });
+                    	ajaxApi('verifica-email', param, function (a) {
+                    		if(a){
+                    			validaEmail();
+                    			goMain();
+                    		} else {
+                    			alert('Acesse seu e-mail e clique no link ou se você não recebeu o e-mail clique no botão "reenviar e-mail".','A conta não foi ativada'); 
+                    		}
+                    	});
                     });
 
                     // btn reenviar email
                     $$('a#ReenviarEmail').on('click', function () {
-                        ajaxApi('reenviar-email-validacao', param, function (a) {
-                            console.log(a.responseText);
+                    	ajaxApi('reenviar-email-validacao', param, function (a) {
+                    		console.log(a.responseText);
                            //alert(a.msg,'Atenção'); 
-                        });
+                       });
                     });
 
                     // btn alterar email
                     $$('a#AlterarEmail').on('click', function () {
-                        myApp.modal({
-                            title:  'Alterar E-mail',
-                            text: '<div class="list-block"><div class="item-content"><div class="item-input"><input type="email" id="valid_new_email" placeholder="Novo e-mail"></div></div></div>',
-                            buttons: [
-                                {text: 'Cancelar', onClick: function() {}},
-                                {text: 'Salvar', onClick: function() {
-                                        var novoEmail = $('input#valid_new_email').val();
-                                        ajaxApi('alterar-email-usuario', {param: param, new_email: novoEmail}, function (a) {
-                                            if(typeof a.responseText != 'undefined'){
-                                                alert('Seu e-mail não foi alterado: ' + a.responseText,'Opss');
-                                            } else {
-                                                alert('','E-mail alterado com sucesso!');
-                                                $('div#destino-templateValidEmail strong').text(novoEmail);
-                                            }
-                                        });
-                                    }
-                                }
-                            ]
-                        });
-                        $('input#valid_new_email').focus();
+                    	myApp.modal({
+                    		title:  'Alterar E-mail',
+                    		text: '<div class="list-block"><div class="item-content"><div class="item-input"><input type="email" id="valid_new_email" placeholder="Novo e-mail"></div></div></div>',
+                    		buttons: [
+                    		{text: 'Cancelar', onClick: function() {}},
+                    		{text: 'Salvar', onClick: function() {
+                    			var novoEmail = $('input#valid_new_email').val();
+                    			ajaxApi('alterar-email-usuario', {param: param, new_email: novoEmail}, function (a) {
+                    				if(typeof a.responseText != 'undefined'){
+                    					alert('Seu e-mail não foi alterado: ' + a.responseText,'Opss');
+                    				} else {
+                    					alert('','E-mail alterado com sucesso!');
+                    					$('div#destino-templateValidEmail strong').text(novoEmail);
+                    				}
+                    			});
+                    		}
+                    	}
+                    	]
+                    });
+                    	$('input#valid_new_email').focus();
                     });
 
                 });
@@ -636,35 +655,35 @@
                 // -----------------------------------------------------------------
                 // registration
                 myApp.onPageInit('registration', function (page) {
-                    blockPanelLeft(page.name);
-                    $('div#tabbar-bottom').hide();
-                    var formRegistration = new Form('loginCreate-form');
+                	blockPanelLeft(page.name);
+                	$('div#tabbar-bottom').hide();
+                	var formRegistration = new Form('loginCreate-form');
 
                     // get politica de privacidade + termos de uso
                     ajaxApi('politica-privacidade-termos-uso', {}, function (a) {
 
-                        $$('a#alert-politica-privacidade').on('click', function () {
-                            alert(a.PP, 'Política de privacidade');
-                        });
+                    	$$('a#alert-politica-privacidade').on('click', function () {
+                    		alert(a.PP, 'Política de privacidade');
+                    	});
 
-                        $$('a#alert-termos-uso').on('click', function () {
-                            alert(a.TU, 'Termos de uso');
-                        });
+                    	$$('a#alert-termos-uso').on('click', function () {
+                    		alert(a.TU, 'Termos de uso');
+                    	});
 
                         // envia form de cadastro de usuario
                         $$('#loginCreate-button').on('click', function () {
-                            if(formRegistration.isChecked('PP') && formRegistration.isChecked('TU')) {
-                                ajaxApi('login-create', myApp.formToJSON('#loginCreate-form'), callbackLoginCreate);
-                            } else {
-                                alert('Não é possível criar uma conta sem ler e concordar com a <strong>política de privacidade</strong> e os <strong>termos de uso</strong>', 'Importante');
-                            }
+                        	if(formRegistration.isChecked('PP') && formRegistration.isChecked('TU')) {
+                        		ajaxApi('login-create', myApp.formToJSON('#loginCreate-form'), callbackLoginCreate);
+                        	} else {
+                        		alert('Não é possível criar uma conta sem ler e concordar com a <strong>política de privacidade</strong> e os <strong>termos de uso</strong>', 'Importante');
+                        	}
                         });
 
                     });
 
                     // callback login create
                     var callbackLoginCreate = function(data) {                      
-                        saveUserLSAndRedirectToIndex(appConfig.localStorageName, JSON.parse(data.retorno));
+                    	saveUserLSAndRedirectToIndex(appConfig.localStorageName, JSON.parse(data.retorno));
                         //alert('','Usuário cadastrado!');
                         //mainView.router.loadPage('index.html');
                     };
@@ -674,42 +693,43 @@
                 // -----------------------------------------------------------------
                 // promocoes
                 securePage('main', function (page) {
-                    var templateMain = new Template('templateMain');
-                    $.extend(page.query, {pg: page.name}, getUserData());
-                    templateMain.compileAjax('promocao', page.query, function (a) {
-                        if (typeof a.estabelecimentos == 'undefined') {	
-                            alert('Nenhum estabelecimento cadastrado...', 'Opss');
-                        }else if(typeof a.estabelecimentos == 'undefined' || !a.estabelecimentos.length) {	
-                            alert('Nenhum estabelecimento encontrado para o filtro selecionado...', 'Opss', function(){ 
-                                mainView.router.loadPage('filter.html'); 
-                            });
-                        }
-                    });
+                	var templateMain = new Template('templateMain');
+                	$.extend(page.query, {pg: page.name}, getUserData());
+                	templateMain.compileAjax('promocao', page.query, function (a) {
+                		if (typeof a.estabelecimentos == 'undefined') {	
+                			alert('Nenhum estabelecimento cadastrado...', 'Opss');
+                		}else if(typeof a.estabelecimentos == 'undefined' || !a.estabelecimentos.length) {	
+                			alert('Nenhum estabelecimento encontrado para o filtro selecionado...', 'Opss', function(){ 
+                				mainView.router.loadPage('filter.html'); 
+                			});
+                		}
+                	});
                 });
 
 
                 // -----------------------------------------------------------------
                 // pesquisa
                 securePage('search', function (page) {
-                    var limiteQtd = 25,
-                        templateSearch = new Template('templateSearch');
+                	var limiteQtd = 25,
+                	templateSearch = new Template('templateSearch');
+                	templateSearch.clear();
 
-                    $$('input#campo-pesquisa').focus();
+                	$$('input#campo-pesquisa').focus();
 
-                    $$('a#btn-pesquisa').on('click', function () {
+                	$$('a#btn-pesquisa').on('click', function () {
 
-                        var dataPesquisa = $('input#campo-pesquisa').val().trim();
+                		var dataPesquisa = $('input#campo-pesquisa').val().trim();
 
-                        if(dataPesquisa) {
-                            templateSearch.clear();
+                		if(dataPesquisa) {
+                			templateSearch.clear();
 
                             // Infinite Scroll
                             var action = 'search', 
-                                param = {limiteQtd:limiteQtd, param: {texto:dataPesquisa}},
-                                callback = function(a) {
-                                    templateSearch.compileData(a);
-                                    templateSearch.appendData();
-                                };
+                            param = {limiteQtd:limiteQtd, param: {texto:dataPesquisa}},
+                            callback = function(a) {
+                            	templateSearch.compileData(a);
+                            	templateSearch.appendData();
+                            };
 
                             Util.infiniteScroll(action, param, callback);
 
@@ -723,23 +743,24 @@
                 // -----------------------------------------------------------------
                 // lista promocoes por categoria
                 securePage('promotions-by-category', function (page) {
-                    var param = page.query,
-                        limiteQtd = 25,
-                        templateEstablishment = new Template('templatePromotionsByCategory');
+                	var param = page.query,
+                	limiteQtd = 25,
+                	templateEstablishment = new Template('templatePromotionsByCategory');
+                	templateEstablishment.clear();
 
-                        $('a#a-btn-filter').attr('href','filter.html?pg=' + page.name);
-                        $('.title-top').text(page.query.catName);
+                	$('a#a-btn-filter').attr('href','filter.html?pg=' + page.name + '&catName=' + param.catName + '&cat=' +param.cat);
+                	$('.title-top').text(param.catName);
 
-                    $.extend(param, {limiteQtd:limiteQtd, param:{cat: page.query.cat}}, getUserData());
+                	$.extend(param, {limiteQtd:limiteQtd, param:{cat: param.cat}}, getUserData());
 
                     // Infinite Scroll
                     var action = 'promotions-by-category', 
-                        callback = function(a) {
-							Template7.global = appConfig;
-							
-                            templateEstablishment.compileData(a);
-                            templateEstablishment.appendData();
-                        };
+                    callback = function(a) {
+                    	Template7.global = appConfig;
+
+                    	templateEstablishment.compileData(a);
+                    	templateEstablishment.appendData();
+                    };
 
                     Util.infiniteScroll(action, param, callback);
 
@@ -750,28 +771,30 @@
                 // filtro
                 securePage('filter', function (page) {
 
-                    var pg = (typeof page.query.pg === 'string' ? page.query.pg : 'main'),
-                        templateFilter = new Template('templateFilter');
+                	var pg = (typeof page.query.pg === 'string' ? page.query.pg : 'promotions-by-category');
+                	var cat = (typeof page.query.cat === 'string' ? page.query.cat : '0');
+                	var catName = (typeof page.query.cat === 'string' ? page.query.catName : 'Todas');
+
+                    // slides
+                	myApp.swiper('.swiper-4', {
+                    	//pagination:'.swiper-4 .swiper-pagination',
+              			spaceBetween: 20,
+        				slidesPerView: 3
+              		});
+
+                    // aplicar o filtro
+                    $('a#btn-filter').on('click',function(){
+                    	//var cat = $('input[type=radio][name=categoria-radio]:checked').val();
+                    	//var catName = $('input[type=radio][name=categoria-radio]:checked').attr('title'),
+                    	var ord = $('input[type=radio][name=ordem-radio]:checked').val();
+                    	mainView.router.loadPage(pg + '.html?cat=' + cat + '&catName=' + catName + '&ord=' + ord);
+                    });
 
                     // busca categorias
-                    ajaxApi('filter-category', {}, function(a) {
-                        templateFilter.compileAndLoadData(a);
-
-                        // slides
-                        myApp.swiper('.swiper-4', {
-                          //pagination:'.swiper-4 .swiper-pagination',
-                          spaceBetween: 20,
-                          slidesPerView: 4
-                        });
-
-                        // aplicar o filtro
-                        $('a#btn-filter').on('click',function(){
-                            var cat = $('input[type=radio][name=categoria-radio]:checked').val(),
-                                catName = $('input[type=radio][name=categoria-radio]:checked').attr('title'),
-                                ord = $('input[type=radio][name=ordem-radio]:checked').val();
-                            mainView.router.loadPage(pg + '.html?cat=' + cat + '&catName=' + catName + '&ord=' + ord);
-                        });
-                    });
+                    // var templateFilter = new Template('templateFilter');
+                    //ajaxApi('filter-category', {}, function(a) {
+                    //	templateFilter.compileAndLoadData(a);
+                    //});
 
                 });
 
@@ -781,52 +804,52 @@
                 securePage('category', function (page) {
 
 
-                    var templateEstablishment = new Template('templateCategory');
-                    templateEstablishment.compileAjax('category', {user_auth_key: getUserData().auth_key});
+                	var templateEstablishment = new Template('templateCategory');
+                	templateEstablishment.compileAjax('category', {user_auth_key: getUserData().auth_key});
                 });
 
 
                 // -----------------------------------------------------------------
                 // convidar amigo
                 securePage('invite-friend', function (page) {
-                    var templateInviteFriend = new Template('templateInviteFriend');
-                    templateInviteFriend.compileAjax('invite-friend', {user_auth_key: getUserData().auth_key}, function (a) {
-                        var r = a;
-                        $$('a#btn-convidar-amigos').on('click', function () {
+                	var templateInviteFriend = new Template('templateInviteFriend');
+                	templateInviteFriend.compileAjax('invite-friend', {user_auth_key: getUserData().auth_key}, function (a) {
+                		var r = a;
+                		$$('a#btn-convidar-amigos').on('click', function () {
                             // codigo para abrir o compartilhamento no cell
                             // texto: r.texto;
                         });
-                        $$('a#alert-regras-convite').on('click', function () {
-                            alert(r.regras, 'REGRAS');
-                        });
+                		$$('a#alert-regras-convite').on('click', function () {
+                			alert(r.regras, 'REGRAS');
+                		});
                                             //$('.navbar').hide();
 
                                             //Ao clicar na tela convidar amigo abre o aplicativo WhatsApp para compartilhamento
-                                       $('#sh').on('click',function(){
-                                                    var auth_key = JSON.parse(localStorage.getItem('esUser'))['auth_key'];
-                                                window.plugins.socialsharing.shareViaWhatsApp(
-                                                            'APP Estalecas - Compre e ganhe dinheiro de volta! Estou usando e gostando muito!', 
-                                                            'http://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Dollar-Sign-PNG-Image-500x713.png',
-                                                            appConfig.indicacaoUrl + auth_key, 
-                                                            null,
-                                                            function(errormsg){alert("Error: Erro ao compartillhar. tente novamente mais tarde")}
-                                                    )
+                                            $('#sh').on('click',function(){
+                                            	var auth_key = JSON.parse(localStorage.getItem('esUser'))['auth_key'];
+                                            	window.plugins.socialsharing.shareViaWhatsApp(
+                                            		'APP Estalecas - Compre e ganhe dinheiro de volta! Estou usando e gostando muito!', 
+                                            		'http://www.pngpix.com/wp-content/uploads/2016/10/PNGPIX-COM-Dollar-Sign-PNG-Image-500x713.png',
+                                            		appConfig.indicacaoUrl + auth_key, 
+                                            		null,
+                                            		function(errormsg){alert("Error: Erro ao compartillhar. tente novamente mais tarde")}
+                                            		)
                                             })
 
 
 
 
-                    });
+                                        });
                 });
 
 
                 // -----------------------------------------------------------------
                 // solicitar saque
                 securePage('cash-out', function (page) {
-                    var templateCashOut = new Template('templateCashOut');
-                    var callbackCashOut = function (a) {
+                	var templateCashOut = new Template('templateCashOut');
+                	var callbackCashOut = function (a) {
 
-                        if(a.saque_realizado == true) {
+                		if(a.saque_realizado == true) {
                             //alert('Solicitação de saque realizada com sucesso.', 'Tudo certo!');                        
                             mainView.router.loadPage('cash-out-message.html');
                             return;
@@ -846,92 +869,92 @@
                             formCashOut.setMoney(["CB03_VALOR"]);
 
                             if (a.conta_bancaria.CB03_AGENCIA) {
-                                                    a.conta_bancaria.CB03_AGENCIA = a.conta_bancaria.CB03_AGENCIA.replace(/[^0-9.]/g, "");
-                                                    a.conta_bancaria.CB03_NUM_CONTA = a.conta_bancaria.CB03_NUM_CONTA.replace(/[^0-9.]/g, "");
-                                                    console.log(a.conta_bancaria)
-                                formCashOut.setFormData(a.conta_bancaria);
+                            	a.conta_bancaria.CB03_AGENCIA = a.conta_bancaria.CB03_AGENCIA.replace(/[^0-9.]/g, "");
+                            	a.conta_bancaria.CB03_NUM_CONTA = a.conta_bancaria.CB03_NUM_CONTA.replace(/[^0-9.]/g, "");
+                            	console.log(a.conta_bancaria)
+                            	formCashOut.setFormData(a.conta_bancaria);
                             //    formCashOut.form.find('select, input').attr('disabled', true);
-                                                            formCashOut.form.find('input[name=CB03_VALOR]')[0].value = a.conta_bancaria.CB03_SAQUE_MAX
-                                formCashOut.form.find('input[name=CB03_VALOR]').attr('disabled', true);
+                            formCashOut.form.find('input[name=CB03_VALOR]')[0].value = a.conta_bancaria.CB03_SAQUE_MAX
+                            formCashOut.form.find('input[name=CB03_VALOR]').attr('disabled', true);
 
-                            }
-
-                            $('a#cashOut-submit').on('click', function(){
-
-
-
-                                                    var v = formCashOut.CB03_VALOR.value,
-                                                            b = $('select[name="CB03_COD_BANCO"] option:selected').text(),
-                                                            ag = formCashOut.CB03_AGENCIA.value,
-                                                            nc = formCashOut.CB03_NUM_CONTA.value,
-                                                            tc = $('select[name="CB03_TP_CONTA"] option:selected').text(),
-                                                            sm = formCashOut.CB03_VALOR.value;
-
-                                                            if (v == 0){
-
-                                                                    myApp.modal({
-                                                                            title:  'Você não possui saldo suficiente para sacar.',							
-                                                                            buttons: [
-                                                                              {
-                                                                                    text: 'OK',									
-                                                                              },								 							  
-                                                                            ]
-                                                                      });
-                                                            }else{
-
-                                                                    if (ag == '' || b == '' || ag == '' || nc == '' || tc == '') {
-                                                                    myApp.modal({
-                                                                            title:  'Favor preencher todos os campos.',							
-                                                                            buttons: [
-                                                                              {
-                                                                                    text: 'OK',									
-                                                                              },								 							  
-                                                                            ]
-                                                                      });
-
-                                                                    } else {
-                                                                     myApp.modal({
-                                                                            title:  'Confira os dados do saque:',
-                                                                            text: 'Valor: <strong>'+v+'</strong> <br>Banco: <strong>'+b+'</strong><br>Agência: <strong>'+ag+'</strong><br>N°. Conta: <strong>'+nc+'</strong><br>Tipo Ct: <strong>'+ tc+'</strong>',
-                                                                            buttons: [
-                                                                              {
-                                                                                    text: 'Cancelar',									
-                                                                              },
-                                                                              {
-                                                                                    text: 'Sacar',
-                                                                                    onClick: function() {
-                                                                                      var dadosForm = formCashOut.getFormData();
-                                                                                      var dadosCompl = {CB03_NOME_BANCO: formCashOut.getSelected('CB03_COD_BANCO').text};
-                                                                                    ajaxCashOut({
-                                                                                            CB03_VALOR:v,
-                                                                                            CB03_COD_BANCO: $('select[name="CB03_COD_BANCO"] option:selected').val(),
-                                                                                            CB03_AGENCIA:ag,
-                                                                                            CB03_NUM_CONTA:nc,
-                                                                                            CB03_TP_CONTA: $('select[name="CB03_TP_CONTA"] option:selected').val(),
-                                                                                            CB03_SAQUE_MAX:v,
-                                                                                            CB03_NOME_BANCO:formCashOut.getSelected('CB03_COD_BANCO').text
-                                                                                            });
-                                                                                    }
-                                                                              },								  
-                                                                            ]
-                                                                      });
-                                                                    }
-                                                            }
-
-
-
-                                                    });
-                              myApp.closeModal();
-                            $('a#alert-regras').on('click', function () {
-                                alert(a.regras, 'Regras para saque');
-                            });
                         }
-                    },
+
+                        $('a#cashOut-submit').on('click', function(){
+
+
+
+                        	var v = formCashOut.CB03_VALOR.value,
+                        	b = $('select[name="CB03_COD_BANCO"] option:selected').text(),
+                        	ag = formCashOut.CB03_AGENCIA.value,
+                        	nc = formCashOut.CB03_NUM_CONTA.value,
+                        	tc = $('select[name="CB03_TP_CONTA"] option:selected').text(),
+                        	sm = formCashOut.CB03_VALOR.value;
+
+                        	if (v == 0){
+
+                        		myApp.modal({
+                        			title:  'Você não possui saldo suficiente para sacar.',							
+                        			buttons: [
+                        			{
+                        				text: 'OK',									
+                        			},								 							  
+                        			]
+                        		});
+                        	}else{
+
+                        		if (ag == '' || b == '' || ag == '' || nc == '' || tc == '') {
+                        			myApp.modal({
+                        				title:  'Favor preencher todos os campos.',							
+                        				buttons: [
+                        				{
+                        					text: 'OK',									
+                        				},								 							  
+                        				]
+                        			});
+
+                        		} else {
+                        			myApp.modal({
+                        				title:  'Confira os dados do saque:',
+                        				text: 'Valor: <strong>'+v+'</strong> <br>Banco: <strong>'+b+'</strong><br>Agência: <strong>'+ag+'</strong><br>N°. Conta: <strong>'+nc+'</strong><br>Tipo Ct: <strong>'+ tc+'</strong>',
+                        				buttons: [
+                        				{
+                        					text: 'Cancelar',									
+                        				},
+                        				{
+                        					text: 'Sacar',
+                        					onClick: function() {
+                        						var dadosForm = formCashOut.getFormData();
+                        						var dadosCompl = {CB03_NOME_BANCO: formCashOut.getSelected('CB03_COD_BANCO').text};
+                        						ajaxCashOut({
+                        							CB03_VALOR:v,
+                        							CB03_COD_BANCO: $('select[name="CB03_COD_BANCO"] option:selected').val(),
+                        							CB03_AGENCIA:ag,
+                        							CB03_NUM_CONTA:nc,
+                        							CB03_TP_CONTA: $('select[name="CB03_TP_CONTA"] option:selected').val(),
+                        							CB03_SAQUE_MAX:v,
+                        							CB03_NOME_BANCO:formCashOut.getSelected('CB03_COD_BANCO').text
+                        						});
+                        					}
+                        				},								  
+                        				]
+                        			});
+                        		}
+                        	}
+
+
+
+                        });
+                        myApp.closeModal();
+                        $('a#alert-regras').on('click', function () {
+                        	alert(a.regras, 'Regras para saque');
+                        });
+                    }
+                },
 
                     // busca dados da tela de solicitacao de saque
                     ajaxCashOut = function (param) { 
-                        var param = (param || {});
-                        templateCashOut.compileAjax('cash-out', $.extend(param, {user_auth_key: getUserData().auth_key}), callbackCashOut);
+                    	var param = (param || {});
+                    	templateCashOut.compileAjax('cash-out', $.extend(param, {user_auth_key: getUserData().auth_key}), callbackCashOut);
                     };
 
                     ajaxCashOut();
@@ -942,30 +965,30 @@
                 // -----------------------------------------------------------------
                 // Mensagem de saque
                 securePage('cash-out-message', function (page) {
-                    var templatePurchaseMessage = new Template('templateCashOutMessage');
-                    templatePurchaseMessage.compileAjax('cash-out-message', {user_auth_key: getUserData().auth_key});
+                	var templatePurchaseMessage = new Template('templateCashOutMessage');
+                	templatePurchaseMessage.compileAjax('cash-out-message', {user_auth_key: getUserData().auth_key});
                 });
 
 
                 // -----------------------------------------------------------------
                 // Mensagem de delivery
                 securePage('delivery-message', function (page) {
-                    var param = page.query;
-                    $.extend(param, getUserData());
-                    var templatePurchaseMessage = new Template('templateDeliveryMessage');
-                    templatePurchaseMessage.compileAjax('delivery-message', param, function(a){
-                        if(!a){
-                            goMain();    
-                        }
-                    });
+                	var param = page.query;
+                	$.extend(param, getUserData());
+                	var templatePurchaseMessage = new Template('templateDeliveryMessage');
+                	templatePurchaseMessage.compileAjax('delivery-message', param, function(a){
+                		if(!a){
+                			goMain();    
+                		}
+                	});
                 });
 
 
                 // -----------------------------------------------------------------
                 // minhas compras
                 securePage('shopping', function (page) {
-                    var templateShopping = new Template('templateShopping');
-                    templateShopping.compileAjax('shopping', {user_auth_key: getUserData().auth_key});
+                	var templateShopping = new Template('templateShopping');
+                	templateShopping.compileAjax('shopping', {user_auth_key: getUserData().auth_key});
                 });
 
 
@@ -976,8 +999,8 @@
                     // lista extrato
                     var templateExtractList = new Template('templateExtractList');
                     var findExtract = function() {
-                        dataPeriodo = $('select#extract-periodo option:selected').val();
-                        templateExtractList.compileAjax('extract-list', {periodo:dataPeriodo,user_auth_key:getUserData().auth_key});
+                    	dataPeriodo = $('select#extract-periodo option:selected').val();
+                    	templateExtractList.compileAjax('extract-list', {periodo:dataPeriodo,user_auth_key:getUserData().auth_key});
                     };
 
                     // saldo + periodos
@@ -987,8 +1010,8 @@
                         findExtract();
                         // cria evento de clique no botao de busca de extrato por periodo
                         $('a#btn-filtrar-extrato').on('click', function () {
-                            templateExtractList.clear();
-                            findExtract();
+                        	templateExtractList.clear();
+                        	findExtract();
                         });
                     });
 
@@ -998,36 +1021,36 @@
                 // -----------------------------------------------------------------
                 // estabelecimento
                 securePage('establishment', function (page) {
-                    var templateEstablishment = new Template('templateEstablishment');
-                    templateEstablishment.compileAjax('establishment', {});
+                	var templateEstablishment = new Template('templateEstablishment');
+                	templateEstablishment.compileAjax('establishment', {});
                 });
 
 
                 // -----------------------------------------------------------------
                 // mensagem de compra realizada
                 securePage('purchase-message', function (page) {
-                    var templatePurchaseMessage = new Template('templatePurchaseMessage');
-                    templatePurchaseMessage.compileAjax('purchase-message', {});
+                	var templatePurchaseMessage = new Template('templatePurchaseMessage');
+                	templatePurchaseMessage.compileAjax('purchase-message', {});
                 });
 
 
                 // -----------------------------------------------------------------
                 // perfil
                 securePage('profile', function (page) {
-                    var templateProfile = new Template('templateProfile');
-                    templateProfile.compileAjax('profile', {user_auth_key: getUserData().auth_key});
+                	var templateProfile = new Template('templateProfile');
+                	templateProfile.compileAjax('profile', {user_auth_key: getUserData().auth_key});
                 });
 
 
                 // -----------------------------------------------------------------
                 // alterar senha
                 securePage('change-password', function (page) {
-                    var templateProfile = new Template('templateChangePassword');
-                    templateProfile.compileAndLoadData();
+                	var templateProfile = new Template('templateChangePassword');
+                	templateProfile.compileAndLoadData();
 
                     // vefifica se e obrigatoria a alteracao da senha
                     if(typeof page.query.r != 'undefined') {
-                        alert('É muito importante para sua segurança!','Altere sua senha');
+                    	alert('É muito importante para sua segurança!','Altere sua senha');
                     }
 
                     // form - alterar senha
@@ -1035,18 +1058,18 @@
 
                     // salvar
                     $('a#changePassword-submit').on('click', function () {
-                        var param = formChangePassword.getFormData();
-                        if(param['current-password'] === '' || param['new-password'] === '') {
-                            alert('','Preencha os dois campos.');
-                            return;
-                        }
-                        ajaxApiUser('change-password', param, function(a){
-                            if(typeof a.message != 'undefined') {
-                                formChangePassword.clear();
-                                alert('',a.message);
-                                validaAlteracaoSenha();
-                            }
-                        });
+                    	var param = formChangePassword.getFormData();
+                    	if(param['current-password'] === '' || param['new-password'] === '') {
+                    		alert('','Preencha os dois campos.');
+                    		return;
+                    	}
+                    	ajaxApiUser('change-password', param, function(a){
+                    		if(typeof a.message != 'undefined') {
+                    			formChangePassword.clear();
+                    			alert('',a.message);
+                    			validaAlteracaoSenha();
+                    		}
+                    	});
                     });
 
                 });
@@ -1055,10 +1078,10 @@
                 // -----------------------------------------------------------------
                 // delivery address
                 securePage('delivery-address', function (page) {
-                    var templateProfile = new Template('templateDeliveryAddress'),
-                    param = getUserData();
-                    $.extend(param, page.query);
-                    templateProfile.compileAjax('delivery-address', param, function (a) {
+                	var templateProfile = new Template('templateDeliveryAddress'),
+                	param = getUserData();
+                	$.extend(param, page.query);
+                	templateProfile.compileAjax('delivery-address', param, function (a) {
 
                         // form - delivery address
                         var formDeliveryAddress = new Form('delivery-address-form');
@@ -1067,41 +1090,41 @@
                         // Busca CEP  
                         var ultimoCEP = ultimoCEPV = '';
                         $('#delivery-address-form input[name=CB16_COMPRADOR_END_CEP').keyup(function () {
-                            var v = this.value;
-                            if (v.length === 8 && ultimoCEP !== v) {
-                                ultimoCEP = v;
-                                Util.getEnderecoByCEP(v, function (data) {
-                                    if (data.erro) {
-                                        alert('O CEP digitado não foi encontrado, verifique o CEP ou preencha os dados do endereço');
-                                        formDeliveryAddress.clear(['CB16_COMPRADOR_END_LOGRADOURO','CB16_COMPRADOR_END_BAIRRO','CB16_COMPRADOR_END_CIDADE','CB16_COMPRADOR_END_UF']);                                    
-                                        formDeliveryAddress.CB16_COMPRADOR_END_CEP.focus();
-                                    } else {
-                                        formDeliveryAddress.setFormData({
-                                            CB16_COMPRADOR_END_LOGRADOURO: data.logradouro,
-                                            CB16_COMPRADOR_END_BAIRRO: data.bairro,
-                                            CB16_COMPRADOR_END_CIDADE: data.localidade,
-                                            CB16_COMPRADOR_END_UF: data.uf
-                                        });
-                                        formDeliveryAddress.CB16_COMPRADOR_END_NUMERO.focus();
-                                    }
-                                });
-                            } else if (v.length > 9 || v == '') {
-                                this.value = (ultimoCEPV.length === 1 ? '' : ultimoCEPV);
-                                return false;
-                            } else {
-                                ultimoCEPV = v;
-                            }
+                        	var v = this.value;
+                        	if (v.length === 8 && ultimoCEP !== v) {
+                        		ultimoCEP = v;
+                        		Util.getEnderecoByCEP(v, function (data) {
+                        			if (data.erro) {
+                        				alert('O CEP digitado não foi encontrado, verifique o CEP ou preencha os dados do endereço');
+                        				formDeliveryAddress.clear(['CB16_COMPRADOR_END_LOGRADOURO','CB16_COMPRADOR_END_BAIRRO','CB16_COMPRADOR_END_CIDADE','CB16_COMPRADOR_END_UF']);                                    
+                        				formDeliveryAddress.CB16_COMPRADOR_END_CEP.focus();
+                        			} else {
+                        				formDeliveryAddress.setFormData({
+                        					CB16_COMPRADOR_END_LOGRADOURO: data.logradouro,
+                        					CB16_COMPRADOR_END_BAIRRO: data.bairro,
+                        					CB16_COMPRADOR_END_CIDADE: data.localidade,
+                        					CB16_COMPRADOR_END_UF: data.uf
+                        				});
+                        				formDeliveryAddress.CB16_COMPRADOR_END_NUMERO.focus();
+                        			}
+                        		});
+                        	} else if (v.length > 9 || v == '') {
+                        		this.value = (ultimoCEPV.length === 1 ? '' : ultimoCEPV);
+                        		return false;
+                        	} else {
+                        		ultimoCEPV = v;
+                        	}
                         });
 
                         // salvar
                         $('a#delivery-address-submit').on('click', function () {    
-                            var UserData = getUserData(), params = {};
-                                params.auth_key = UserData.auth_key;
-                                params.order = param.order;
-                                params.address = formDeliveryAddress.getFormData();
-                            ajaxApi('delivery-address', params, function (a) {
-                                mainView.router.loadPage('checkout.html?order=' + param.order);
-                            });
+                        	var UserData = getUserData(), params = {};
+                        	params.auth_key = UserData.auth_key;
+                        	params.order = param.order;
+                        	params.address = formDeliveryAddress.getFormData();
+                        	ajaxApi('delivery-address', params, function (a) {
+                        		mainView.router.loadPage('checkout.html?order=' + param.order);
+                        	});
                         });
 
                     });
@@ -1111,20 +1134,20 @@
                 // -----------------------------------------------------------------
                 // checkout
                 securePage('checkout', function (page) {
-                    var templateProfile = new Template('templateCheckout'),
-                    pageQuery = page.query,
-                    param = pageQuery,
-                    formaPagamento;
-                    param.user_auth_key = getUserData().auth_key;
-                    templateProfile.compileAjax('checkout', param, function (a) {
-                        var a;
-                        if(a === false) {
-                            mainView.router.loadPage('main.html'); 
+                	var templateProfile = new Template('templateCheckout'),
+                	pageQuery = page.query,
+                	param = pageQuery,
+                	formaPagamento;
+                	param.user_auth_key = getUserData().auth_key;
+                	templateProfile.compileAjax('checkout', param, function (a) {
+                		var a;
+                		if(a === false) {
+                			mainView.router.loadPage('main.html'); 
 
-                        } else if(a.delivery === true) {
-                            mainView.router.loadPage('delivery-address.html?order=' + param.order); 
+                		} else if(a.delivery === true) {
+                			mainView.router.loadPage('delivery-address.html?order=' + param.order); 
 
-                        } else {
+                		} else {
 
                             // form - checkout
                             var formCheckout = new Form('checkout-form');
@@ -1134,7 +1157,7 @@
 
                             // iugu
                             ajaxApiUser('iugu-id-account', {}, function(a){
-                                if(a){
+                            	if(a){
                                     Iugu.setAccountID(a); // id Iugu
                                     Iugu.setTestMode(true); // para teste
                                     Iugu.setup(); // validar os dados de cartao no form
@@ -1143,52 +1166,52 @@
 
                             // btn info
                             $$('i#info-validade').on('click', function () {
-                                var buttons = [
-                                    {text: '<span style="text-align:justify;padding:10px;font-size:15px;"><h1 style="margin: 0px;">VENCIMENTO</h1>A data de vencimento está na parte da frente do cartão, abaixo do número.</span><img src="assets/img/cvv-caption_new.png" style="width: 140px;">', label: true},
-                                    {text: 'OK', bg: 'blue', color: 'red'}
-                                ];
-                                myApp.actions(buttons);
+                            	var buttons = [
+                            	{text: '<span style="text-align:justify;padding:10px;font-size:15px;"><h1 style="margin: 0px;">VENCIMENTO</h1>A data de vencimento está na parte da frente do cartão, abaixo do número.</span><img src="assets/img/cvv-caption_new.png" style="width: 140px;">', label: true},
+                            	{text: 'OK', bg: 'blue', color: 'red'}
+                            	];
+                            	myApp.actions(buttons);
                             });
                             $$('i#info-CVV').on('click', function () {
-                                var buttons = [
-                                    {text: '<span style="text-align:justify;padding:10px;font-size:15px;"><h1 style="margin:0px;">CVV</h1>O código de três dígitos do seu cartão, localizado no verso.</span><img src="assets/img/cvv-caption_new.png" style="width: 140px;">', label: true},
-                                    {text: 'OK', bg: 'blue', color: 'red'}
-                                ];
-                                myApp.actions(buttons);
+                            	var buttons = [
+                            	{text: '<span style="text-align:justify;padding:10px;font-size:15px;"><h1 style="margin:0px;">CVV</h1>O código de três dígitos do seu cartão, localizado no verso.</span><img src="assets/img/cvv-caption_new.png" style="width: 140px;">', label: true},
+                            	{text: 'OK', bg: 'blue', color: 'red'}
+                            	];
+                            	myApp.actions(buttons);
                             });
 
                             // altera validade
                             $('input.credit_card_expiration-1, input.credit_card_expiration-2').attr('maxlength', 2).change(function (){
-                                mes = $('input.credit_card_expiration-1').val();
-                                ano = $('input.credit_card_expiration-2').val();
-                                $('input.credit_card_expiration').val(mes + '/' + ano);
+                            	mes = $('input.credit_card_expiration-1').val();
+                            	ano = $('input.credit_card_expiration-2').val();
+                            	$('input.credit_card_expiration').val(mes + '/' + ano);
                             });
 
 
                             // altera forma de pagamento
                             $('select#CHECKOUT-FORMA-PAGAMENTO').change(function (){
-                                formaPagamento = this.value;
-                                if (formaPagamento == 1) {
-                                    $('div#DATA-CARD').hide('fast');
-                                } else {
-                                    $('div#DATA-CARD').show('fast');
-                                    $('div#DATA-CARD input.credit_card_number').focus();
-                                }
+                            	formaPagamento = this.value;
+                            	if (formaPagamento == 1) {
+                            		$('div#DATA-CARD').hide('fast');
+                            	} else {
+                            		$('div#DATA-CARD').show('fast');
+                            		$('div#DATA-CARD input.credit_card_number').focus();
+                            	}
                             });
 
                             $('select#CHECKOUT-FORMA-PAGAMENTO').trigger('change');
 
                             var callbackCheckout =  function(r){
-                                if (r.status === true) {
-                                                                            alert('Pagamento efetuado!', 'Tudo Certo');
+                            	if (r.status === true) {
+                            		alert('Pagamento efetuado!', 'Tudo Certo');
                                     // testa se o pedido é delivery.. exibe pagina personalizada
                                     if (a.CB06_DISTRIBUICAO == "0") {
-                                        mainView.router.loadPage('purchase-message.html');
+                                    	mainView.router.loadPage('purchase-message.html');
                                     } else {
-                                        mainView.router.loadPage('delivery-message.html?order=' + param.order);
+                                    	mainView.router.loadPage('delivery-message.html?order=' + param.order);
                                     }
                                 } else {
-                                    alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
+                                	alert('Não foi possível efetuar o pagamento, tente novamente.', 'Opss');
 
                                 }
                             };
@@ -1197,26 +1220,26 @@
                             $('a#checkout-submit').on('click', function () {
 
 
-                                var formDataCheckout = pageQuery;
-                                formDataCheckout.data = formCheckout.getFormData();
+                            	var formDataCheckout = pageQuery;
+                            	formDataCheckout.data = formCheckout.getFormData();
 
                                 // se nao pagar com saldo estaleca
                                 if(formaPagamento != 1){
 
                                     // cria token do pagamento IUGU
                                     Iugu.createPaymentToken(formCheckout.form[0], function(data) {
-                                        if (data.errors) {
-                                            alert(Util.errorCartToString(data.errors), 'Opss');
+                                    	if (data.errors) {
+                                    		alert(Util.errorCartToString(data.errors), 'Opss');
 
-                                        } else {
-                                            $("#token").val( data.id );
-                                            formDataCheckout.data = formCheckout.getFormData();
-                                            ajaxApiUser('checkout-purchase', formDataCheckout, callbackCheckout);
-                                        }
+                                    	} else {
+                                    		$("#token").val( data.id );
+                                    		formDataCheckout.data = formCheckout.getFormData();
+                                    		ajaxApiUser('checkout-purchase', formDataCheckout, callbackCheckout);
+                                    	}
                                     });
 
                                 } else {
-                                    ajaxApiUser('checkout-purchase', formDataCheckout, callbackCheckout);
+                                	ajaxApiUser('checkout-purchase', formDataCheckout, callbackCheckout);
 
                                 }   
 
@@ -1227,155 +1250,158 @@
                         }
                     });
 
-                });
+});
 
 
                 // -----------------------------------------------------------------
                 // produtos do estabelecimento
                 securePage('company', function (page) {
-                    var templateProfile = new Template('templateCompany'),
-                    paramDefault = {company: '', product: ''},
-                    paramNew = page.query,
-                    companyAtual = paramNew.company;
+                	var templateProfile = new Template('templateCompany'),
+                	paramDefault = {company: '', product: ''},
+                	paramNew = page.query,
+                	companyAtual = paramNew.company;
 
-                    $.extend(paramDefault, paramNew);
+                	$.extend(paramDefault, paramNew);
 
-                    templateProfile.compileAjax('company', paramDefault, function (a) {
-                        if(a === false || !a.produtos.length) {
-                            mainView.router.loadPage('main.html'); 
+                	templateProfile.compileAjax('company', paramDefault, function (a) {
+                		if(a === false || !a.produtos.length) {
+                			mainView.router.loadPage('main.html'); 
 
-                        } else {
-                            var a, idProdutoAtual = false, promocaoAtual = false;
+                		} else {
+                			var a, idProdutoAtual = false, promocaoAtual = false;
 
                             // Template do produto (fotos, abas e btn "comprar")
                             a.loadTemplateProduto = function (id) {
-                                idProdutoAtual = id;
-                                var templateProduct = new Template('templateProduct', idProdutoAtual);
+                            	idProdutoAtual = id;
+                            	var templateProduct = new Template('templateProduct', idProdutoAtual);
 
 
-                                templateProduct.compileAjax('company-product', {product: idProdutoAtual}, function(r_product){
+                            	templateProduct.compileAjax('company-product', {product: idProdutoAtual}, function(r_product){
 
+                            		// titulo da pagina
+                            		$("div.title-company").text(r_product.DADOS.CB04_NOME);
+
+                            		/*
                                     // slider image
                                     myApp.swiper('.swiper-image-product', {
-                                        pagination:'.swiper-image-product .swiper-pagination',
-                                        paginationHide: false,
-                                        paginationClickable: true,
+                                    	pagination:'.swiper-image-product .swiper-pagination',
+                                    	paginationHide: false,
+                                    	paginationClickable: true,
                                         spaceBetween: 50, // between slides
                                         preloadImages: false,
                                         lazyLoading: true,
                                         //nextButton: '.swiper-button-next',
                                         //prevButton: '.swiper-button-prev',
                                     });
-
+                                    */
+                                
                                     // carrega abas do produto
-                                    a.loadTemplateRegras();
+                                    //a.loadTemplateRegras();
                                     a.loadTemplateLocal();
-									a.loadTemplateInfoEmpresa();
+                                    a.loadTemplateInfoEmpresa();
+                                    a.loadTemplateProductPromotions();
 									//a.loadTemplatePromocoesEmpresa();
                                     //a.loadTemplatePromocoes();
-									a.loadTemplateProductPromotions();
-									
+
 									//templateProduct.compileAndLoadData([{tabPromoActive : 'active', tabInfoActive: ''}]);
 
-								
-
-                                });
+								});
 
                             };
 
                             // Template com as promocoes do produto (list)
                             a.loadTemplatePromocoes = function () {
-                                var templatePromotions = new Template('templatePromotions', idProdutoAtual);
-                                templatePromotions.compileAjax('company-promotions', paramNew, function(r_promotions){
+                            	var templatePromotions = new Template('templatePromotions', idProdutoAtual);
+                            	templatePromotions.compileAjax('company-promotions', paramNew, function(r_promotions){
 
                                     // cria evento de click nas promocoes
                                     $$('.promocoes-do-produto').on('click', function (){
-                                        var dataPromocao = $(this).attr('user-data');
-                                        if (dataPromocao) {
-                                            a.loadValueTabbarBuy(JSON.parse(dataPromocao));
-                                        }
+                                    	var dataPromocao = $(this).attr('user-data');
+                                    	if (dataPromocao) {
+                                    		a.loadValueTabbarBuy(JSON.parse(dataPromocao));
+                                    	}
                                     });
 
                                     // verifica se alguma promocao foi marcada para atualizar os valores de compra
                                     promocaoSelecionada = $('input[name="promocoes-checkbox"]:checked');
                                     if(promocaoSelecionada){
-                                        promocaoSelecionada.trigger( "click" );
+                                    	promocaoSelecionada.trigger( "click" );
                                     }
                                 });
                             };
-							
-							  a.loadTemplateProductPromotions= function () {
-									var templateProductPromotions = new Template('templateProductPromotions', idProdutoAtual);
-									templateProductPromotions.compileAjax('product-promotions', paramNew, function(r_promotions){
-											$('.abaFotosProdutouniq').on('click',function(){
-												idp = $(this).attr('data-idp');
-												setTimeout(function(){
-												
-													myApp.swiper('.swiper-image-promotion'+idp, {
-															pagination:'.swiper-image-promotion'+idp+' .swiper-pagination',
-															paginationHide: false,
-															paginationClickable: true,
+
+                            a.loadTemplateProductPromotions= function () {
+                            	var templateProductPromotions = new Template('templateProductPromotions', idProdutoAtual);
+                            	templateProductPromotions.compileAjax('product-promotions', paramNew, function(r_promotions){
+                            		$('.abaFotosProdutouniq').on('click',function(){
+                            			idp = $(this).attr('data-idp');
+                            			setTimeout(function(){
+
+                            				myApp.swiper('.swiper-image-promotion'+idp, {
+                            					pagination:'.swiper-image-promotion'+idp+' .swiper-pagination',
+                            					paginationHide: false,
+                            					paginationClickable: true,
 															spaceBetween: 50, // between slides
 															preloadImages: false,
 															lazyLoading: true,
 															//nextButton: '.swiper-button-next',
 															//prevButton: '.swiper-button-prev',
-													});
-												},300);
-											});
-                                });
+														});
+                            			},300);
+                            		});
+                            	});
                             };
-							
-								 // Template com informacoes sobre o local (Text)
-                            a.loadTemplateInfoEmpresa = function () {
-                                var templateInfoEmpresa = new Template('templateInfoEmpresa', idProdutoAtual);
-                                templateInfoEmpresa.compileAjax('info-empresa', {company: companyAtual});
-                            };
+
+							 // Template com informacoes sobre o local (Text)
+							 a.loadTemplateInfoEmpresa = function () {
+							 	var templateInfoEmpresa = new Template('templateInfoEmpresa', idProdutoAtual);
+							 	templateInfoEmpresa.compileAjax('info-empresa', {company: companyAtual});
+							 };
 
                             // Template com as regras/Info do produto (Text)
                             a.loadTemplateRegras = function () {
-                                var templateRules = new Template('templateRules', idProdutoAtual);
-                                templateRules.compileAjax('company-rules', {product: idProdutoAtual});
+                            	var templateRules = new Template('templateRules', idProdutoAtual);
+                            	templateRules.compileAjax('company-rules', {product: idProdutoAtual});
                             };
 
                             // Template com informacoes sobre o local (Text)
                             a.loadTemplateLocal = function () {
-                                var templateLocal = new Template('templateLocal', idProdutoAtual);
-                                templateLocal.compileAjax('company-local', {company: companyAtual});
+                            	var templateLocal = new Template('templateLocal', idProdutoAtual);
+                            	templateLocal.compileAjax('company-local', {company: companyAtual});
                             };
-							
+
 							// Template Aba promoções
-                            a.loadTemplatePromocoesEmpresa = function () {
+							a.loadTemplatePromocoesEmpresa = function () {
+
+								var templatePromocoesEmpresa = new Template('templatePromocoesEmpresa', idProdutoAtual);
+								templatePromocoesEmpresa.compileAjax('company-local', {company: companyAtual});
+							};
 							
-                                var templatePromocoesEmpresa = new Template('templatePromocoesEmpresa', idProdutoAtual);
-                                templatePromocoesEmpresa.compileAjax('company-local', {company: companyAtual});
-                            };
-							
-						
+
 
                             // carrega valores na tab bar Comprar
                             a.loadValueTabbarBuy = function (data) {
-                                promocaoAtual = data;
-                                $('#tabbar-buy #tabbar-buy-pague').text('R$ ' + data.valor);
-                                $('#tabbar-buy #tabbar-buy-de-volta').text('R$ ' + data.deVolta);
+                            	promocaoAtual = data;
+                            	$('#tabbar-buy #tabbar-buy-pague').text('R$ ' + data.valor);
+                            	$('#tabbar-buy #tabbar-buy-de-volta').text('R$ ' + data.deVolta);
                             };
 
                             // cria os evento de click nas abas dos produtos
                             $$('.show-tab').on('click', function () {
-                                a.loadTemplateProduto($(this).attr('data-product'));
+                            	a.loadTemplateProduto($(this).attr('data-product'));
                             });
 
                             // cria os evento de click no botao comprar
                             $$('#tabbar-buy #buy-submit').on('click', function () {
                                 // se alguma promocao estiver marcada realiza o pedido
                                 if (typeof promocaoAtual === 'object') {
-                                    ajaxApiUser('company-buy-product', promocaoAtual, function (a) {
-                                        if(a) {
-                                            mainView.router.loadPage('checkout.html?order=' + a);
-                                        }
-                                    });
+                                	ajaxApiUser('company-buy-product', promocaoAtual, function (a) {
+                                		if(a) {
+                                			mainView.router.loadPage('checkout.html?order=' + a);
+                                		}
+                                	});
                                 } else {
-                                    alert('', 'Selecione uma promoção');
+                                	alert('', 'Selecione uma promoção');
                                 }
                             });
 
@@ -1385,14 +1411,14 @@
                         }
                     });
 
-                });
-            };
-            
-            init();
-            
-        </script>
+});
+};
 
-    </body>
+init();
+
+</script>
+
+</body>
 </html>
 
 

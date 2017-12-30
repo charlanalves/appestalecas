@@ -5324,20 +5324,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-family: 'robotolight', sans-serif;
+  font-family: 'verdana', sans-serif;
   color: #be0000;
 }
 
 h2 {
-  font-family: 'robotolight', sans-serif;
+  font-family: 'verdana', sans-serif;
 }
 
 h3, h4 {
-  font-family: 'robotomedium', sans-serif;
+  font-family: 'verdana', sans-serif;
 }
 
 h5, h6 {
-  font-family: 'robotomedium', sans-serif;
+  font-family: 'verdana', sans-serif;
 }
 
 img {
