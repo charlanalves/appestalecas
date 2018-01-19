@@ -57,6 +57,7 @@
             {{#if data}}
                 <ul style="border: 0px; padding-top: 5px;">
 	                {{#each data reverse="false"}}
+                    {{#if PEDIDO_ID}}
 	                    <li>
                             <div class="item-content" style="padding: 5px 0px; border-bottom: 1px silver solid; height: 135px">
                                 <div class="item-inner" style="padding: 10px 2px; margin-left: 10px;">
@@ -86,7 +87,26 @@
                                 </div>
                             </div>
 	                    </li>
-	                {{/each}}
+                    {{else}}
+                        <li>
+                            <div class="item-content" style="padding: 5px 0px; border-bottom: 1px silver solid; height: 135px">
+                                <div class="item-inner" style="padding: 10px 2px; margin-left: 10px;">
+                                  <div class="item-title-row" style="width: 100%;">
+                                    <div class="item-title">
+                                        <small>{{data DT_CRIACAO}}</small>
+                                        <br />
+                                        <div style="margin-top: 10px; padding-right: 5px;">
+                                            SAQUE - CONTA BANCÁRIA<span style="float: right;">R$ {{real VALOR}}</span>
+                                        </div>
+                                        <br />
+                                        <center>Crédito <strong>+0,00</strong></center>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </li>
+                    {{/if}}
+                    {{/each}}
                 </ul>
             {{/if}}
         </script>
