@@ -39,18 +39,18 @@
 	        <!-- formulario para saque -->
             <div class="list form-box">
                 <form id="cashOut-form" class="form nice-label" action="{{data.utl_action}}"  method="POST">
-                	<input type="hidden" name="user_auth_key">
-					 <div class="form-row">
-						<div class="item-content"><span style=" width: 113px;">Valor (R$):</span>
+                	<input type="hidden" name="user_auth_key" />
+					 <div class="form-row" style="display: none">
+						<div class="item-content" style="min-height: 46px!important;"><span style=" width: 113px;">Valor (R$):</span>
 							<div class="item-inner">
 								<div class="item-input">
-									<input type="text"  id="valorco" name="CB03_VALOR" value="{{real data.conta_bancaria.CB03_SAQUE_MAX}}">
+									<input type="text" name="CB03_VALOR" value="{{real data.conta_bancaria.CB03_SAQUE_MAX}}" style="height: 30px!important;" readonly="" />
 								</div>
 							</div>
 						</div>
                     </div>
                     <div class="form-row">
-						<div class="item-content">Banco:
+						<div class="item-content" style="min-height: 46px!important;">Banco:
 							<div class="item-inner">
 								<div class="item-input">
 									<select name="CB03_COD_BANCO" required=""></select>
@@ -59,7 +59,7 @@
 						</div>
                     </div>
 					<div class="form-row">
-						<div class="item-content">Tipo:
+						<div class="item-content" style="min-height: 46px!important;">Tipo:
 							<div class="item-inner">
 								<div class="item-input">
 									<select name="CB03_TP_CONTA" required=""></select>
@@ -69,20 +69,20 @@
                     </div>
                     <div class="form-row floatLeft50">
 					<div style = "font-size: 12px; padding-bottom: 6px;">Somente os números da Agência com o digito</div>
-						<div class="item-content"><span style="font-size: 15px;">Agência</span>
+						<div class="item-content" style="min-height: 46px!important;"><span style="font-size: 15px;">Agência</span>
 							<div class="item-inner">
 								<div class="item-input font30">
-									<input type="number" name="CB03_AGENCIA" required="true"  pattern="\d+">
+									<input type="text" name="CB03_AGENCIA" required="true"  pattern="\d+">
 								</div>
 							</div>
 						</div>
                     </div>
                     <div class="form-row">
 					<div style = "font-size: 12px; padding-bottom: 6px;">Somente os números da conta com o digito</div>
-						<div class="item-content"><span style="font-size: 15px;">Conta</span>	
+						<div class="item-content" style="min-height: 46px!important;"><span style="font-size: 15px;">Conta</span>	
 						<div class="item-inner">
 								<div class="item-input font30">
-									<input type="number" name="CB03_NUM_CONTA" placeholder="" required="true" pattern="\d+">
+									<input type="text" name="CB03_NUM_CONTA" placeholder="" required="true" pattern="\d+">
 								</div>
 							</div>
 						</div>

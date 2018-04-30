@@ -482,7 +482,7 @@
 
     <script>
 
-    	alert = function(a,b,c = 'error'){swal(b, a, c);};
+    	alert = function(a,b,c){swal(b,a, (c || 'error'))};
 
     	document.addEventListener('deviceready', function(){
     		modalConectionLost = myApp.modal({
@@ -565,7 +565,7 @@
                 		var cpf_cnpj = $('form#login-form input[name=cpf_cnpj]').val();
                 		pass = $('form#login-form input[name=password]').val();
                 		if (cpf_cnpj == '' || pass == '' ){
-                			alert('Os campos CPF/CNPJ e SENHA são obrigatórios.', 'Preencha os campos:');                     
+                			alert('Os campos <strong>CPF/CNPJ</strong> e <strong>SENHA</strong> são obrigatórios.', 'Preencha os campos:');                     
                 		} else {
                 			validateLogin(myApp.formToJSON('#login-form'));
                 		}
@@ -574,17 +574,17 @@
                 	$$('a#linkEsqueceuSenha').on('click', function () {
                 		cpf_cnpj = $('form#login-form input[name=cpf_cnpj]').val();
                 		if(!cpf_cnpj) {
-                			alert('Preencha o campo CPF/CNPJ e clique novamente no link para receber em seu e-mail uma nova senha.', 'Esqueceu a senha?'); 
+                			alert('Esqueceu a senha? Preencha o campo <strong>CPF/CNPJ</strong> e clique novamente no link para receber em seu e-mail uma nova senha.', '', 'warning'); 
                 		} else {
                 			ajaxApi('nova-senha', {cpf_cnpj: cpf_cnpj}, function(r) {
                 				if(r.status == null) {
-                					alert('Sua conta não foi encontrada, verifique os dados informados e tente novamente.', 'Esqueceu a senha?');                     
+                					alert('Sua conta não foi encontrada, verifique os dados informados e tente novamente.', '');                     
 
                 				} else if(r.status) {
-                					alert('Foi enviado um e-mail para <strong>' + r.email + '</strong> com a nova senha!', 'Esqueceu a senha?');                     
+                					alert('Foi enviado um e-mail para <strong>' + r.email + '</strong> com a nova senha!', '', 'success');                     
 
                 				} else {
-                					alert('Não foi possível recuperar a senha, tente novamente.', 'Esqueceu a senha?');                     
+                					alert('Não foi possível recuperar a senha, tente novamente.', '');                     
 
                 				}
                 			});
@@ -663,11 +663,11 @@
                     ajaxApi('politica-privacidade-termos-uso', {}, function (a) {
 
                     	$$('a#alert-politica-privacidade').on('click', function () {
-                    		alert(a.PP, 'Política de privacidade');
+                    		alert(a.PP, 'Política de privacidade', 'info');
                     	});
 
                     	$$('a#alert-termos-uso').on('click', function () {
-                    		alert(a.TU, 'Termos de uso');
+                    		alert(a.TU, 'Termos de uso', 'info');
                     	});
 
                         // envia form de cadastro de usuario
@@ -675,15 +675,19 @@
                         	if(formRegistration.isChecked('PP') && formRegistration.isChecked('TU')) {
                         		ajaxApi('login-create', myApp.formToJSON('#loginCreate-form'), callbackLoginCreate);
                         	} else {
-                        		alert('Não é possível criar uma conta sem ler e concordar com a <strong>política de privacidade</strong> e os <strong>termos de uso</strong>', 'Importante');
+                        		alert('Não é possível criar uma conta sem ler e concordar com a <strong>política de privacidade</strong> e os <strong>termos de uso</strong>', '', 'info');
                         	}
                         });
 
                     });
 
                     // callback login create
-                    var callbackLoginCreate = function(data) {                      
-                    	saveUserLSAndRedirectToIndex(appConfig.localStorageName, JSON.parse(data.retorno));
+                    var callbackLoginCreate = function(data) {
+                        if (typeof data.error != "undefined" && data.error) {
+                            alert(data.error, '', 'error');
+                        } else {
+                            saveUserLSAndRedirectToIndex(appConfig.localStorageName, JSON.parse(data.retorno));
+                        }
                         //alert('','Usuário cadastrado!');
                         //mainView.router.loadPage('index.html');
                     };
@@ -848,7 +852,6 @@
                 securePage('cash-out', function (page) {
                 	var templateCashOut = new Template('templateCashOut');
                 	var callbackCashOut = function (a) {
-
                 		if(a.saque_realizado == true) {
                             //alert('Solicitação de saque realizada com sucesso.', 'Tudo certo!');                        
                             mainView.router.loadPage('cash-out-message.html');
@@ -856,94 +859,83 @@
 
                         } else {
 
-                            // form de solicitacao de saque
-                            formCashOut = new Form('cashOut-form');
+                            if(parseFloat(a.conta_bancaria.CB03_SAQUE_MAX) < parseFloat(a.conta_bancaria.CB03_SAQUE_MIN)) {
+                                $('a#cashOut-submit, #cashOut-form').attr('disabled','disabled');
 
-                            // add opcoes de banco
-                            formCashOut.addOptionsSelect("CB03_COD_BANCO", a.bancos);
+                            } else {
+                                
+                                // form de solicitacao de saque
+                                formCashOut = new Form('cashOut-form');
 
-                            // add opcoes de tipo de conta
-                            formCashOut.addOptionsSelect("CB03_TP_CONTA", a.tp_conta);
+                                // add opcoes de banco
+                                formCashOut.addOptionsSelect("CB03_COD_BANCO", a.bancos);
 
-                            // add mascara de moeda (REAL)
-                            formCashOut.setMoney(["CB03_VALOR"]);
+                                // add opcoes de tipo de conta
+                                formCashOut.addOptionsSelect("CB03_TP_CONTA", a.tp_conta);
 
-                            if (a.conta_bancaria.CB03_AGENCIA) {
-                            	a.conta_bancaria.CB03_AGENCIA = a.conta_bancaria.CB03_AGENCIA.replace(/[^0-9.]/g, "");
-                            	a.conta_bancaria.CB03_NUM_CONTA = a.conta_bancaria.CB03_NUM_CONTA.replace(/[^0-9.]/g, "");
-                            	console.log(a.conta_bancaria)
-                            	formCashOut.setFormData(a.conta_bancaria);
-                            //    formCashOut.form.find('select, input').attr('disabled', true);
-                            formCashOut.form.find('input[name=CB03_VALOR]')[0].value = a.conta_bancaria.CB03_SAQUE_MAX
-                            formCashOut.form.find('input[name=CB03_VALOR]').attr('disabled', true);
+                                // add mascara de moeda (REAL)
+                                // formCashOut.setMoney(["CB03_VALOR"]);
 
-                        }
+                                if (a.conta_bancaria.CB03_AGENCIA) {
+                                	a.conta_bancaria.CB03_AGENCIA = a.conta_bancaria.CB03_AGENCIA.replace(/[^0-9.]/g, "");
+                                	a.conta_bancaria.CB03_NUM_CONTA = a.conta_bancaria.CB03_NUM_CONTA.replace(/[^0-9.]/g, "");
+                                    delete a.conta_bancaria.CB03_VALOR;
+                                	formCashOut.setFormData(a.conta_bancaria);
+                                    // formCashOut.form.find('select, input').attr('disabled', true);
+                                    //formCashOut.form.find('input[name=CB03_VALOR]')[0].value = a.conta_bancaria.CB03_SAQUE_MAX
+                                    // formCashOut.form.find('input[name=CB03_VALOR]').attr('disabled', true);
 
-                        $('a#cashOut-submit').on('click', function(){
+                                }   
 
+                                
+                                $('a#cashOut-submit').on('click', function(){
 
+                                	var v = formCashOut.CB03_VALOR.value,
+                                	b = $('select[name="CB03_COD_BANCO"] option:selected').text(),
+                                	ag = formCashOut.CB03_AGENCIA.value,
+                                	nc = formCashOut.CB03_NUM_CONTA.value,
+                                	tc = $('select[name="CB03_TP_CONTA"] option:selected').text(),
+                                	sm = formCashOut.CB03_VALOR.value;
 
-                        	var v = formCashOut.CB03_VALOR.value,
-                        	b = $('select[name="CB03_COD_BANCO"] option:selected').text(),
-                        	ag = formCashOut.CB03_AGENCIA.value,
-                        	nc = formCashOut.CB03_NUM_CONTA.value,
-                        	tc = $('select[name="CB03_TP_CONTA"] option:selected').text(),
-                        	sm = formCashOut.CB03_VALOR.value;
+                                	if (parseInt(v) < parseFloat(a.conta_bancaria.CB03_SAQUE_MIN)) {
+                                        alert('Você não possui saldo suficiente para sacar.','');
 
-                        	if (v == 0){
+                                	} else {
 
-                        		myApp.modal({
-                        			title:  'Você não possui saldo suficiente para sacar.',							
-                        			buttons: [
-                        			{
-                        				text: 'OK',									
-                        			},								 							  
-                        			]
-                        		});
-                        	}else{
+                                		if (ag == '' || b == '' || nc == '' || tc == '') {
+                                			alert('Favor preencher todos os campos.','');
 
-                        		if (ag == '' || b == '' || ag == '' || nc == '' || tc == '') {
-                        			myApp.modal({
-                        				title:  'Favor preencher todos os campos.',							
-                        				buttons: [
-                        				{
-                        					text: 'OK',									
-                        				},								 							  
-                        				]
-                        			});
+                                		} else {
+                                			myApp.modal({
+                                				title:  'Confira os dados do saque:',
+                                				text: 'Valor: <strong>'+v+'</strong> <br>Banco: <strong>'+b+'</strong><br>Agência: <strong>'+ag+'</strong><br>N°. Conta: <strong>'+nc+'</strong><br>Tipo Ct: <strong>'+ tc+'</strong>',
+                                				buttons: [
+                                				{
+                                					text: 'Cancelar',									
+                                				},
+                                				{
+                                					text: 'Sacar',
+                                					onClick: function() {
+                                						var dadosForm = formCashOut.getFormData();
+                                						var dadosCompl = {CB03_NOME_BANCO: formCashOut.getSelected('CB03_COD_BANCO').text};
+                                						ajaxCashOut({
+                                							CB03_VALOR:v,
+                                							CB03_COD_BANCO: $('select[name="CB03_COD_BANCO"] option:selected').val(),
+                                							CB03_AGENCIA:ag,
+                                							CB03_NUM_CONTA:nc,
+                                							CB03_TP_CONTA: $('select[name="CB03_TP_CONTA"] option:selected').val(),
+                                							CB03_SAQUE_MAX:v,
+                                							CB03_NOME_BANCO:formCashOut.getSelected('CB03_COD_BANCO').text
+                                						});
+                                					}
+                                				},								  
+                                				]
+                                			});
+                                		}
+                                	}
+                                });
+                            }
 
-                        		} else {
-                        			myApp.modal({
-                        				title:  'Confira os dados do saque:',
-                        				text: 'Valor: <strong>'+v+'</strong> <br>Banco: <strong>'+b+'</strong><br>Agência: <strong>'+ag+'</strong><br>N°. Conta: <strong>'+nc+'</strong><br>Tipo Ct: <strong>'+ tc+'</strong>',
-                        				buttons: [
-                        				{
-                        					text: 'Cancelar',									
-                        				},
-                        				{
-                        					text: 'Sacar',
-                        					onClick: function() {
-                        						var dadosForm = formCashOut.getFormData();
-                        						var dadosCompl = {CB03_NOME_BANCO: formCashOut.getSelected('CB03_COD_BANCO').text};
-                        						ajaxCashOut({
-                        							CB03_VALOR:v,
-                        							CB03_COD_BANCO: $('select[name="CB03_COD_BANCO"] option:selected').val(),
-                        							CB03_AGENCIA:ag,
-                        							CB03_NUM_CONTA:nc,
-                        							CB03_TP_CONTA: $('select[name="CB03_TP_CONTA"] option:selected').val(),
-                        							CB03_SAQUE_MAX:v,
-                        							CB03_NOME_BANCO:formCashOut.getSelected('CB03_COD_BANCO').text
-                        						});
-                        					}
-                        				},								  
-                        				]
-                        			});
-                        		}
-                        	}
-
-
-
-                        });
                         myApp.closeModal();
                         $('a#alert-regras').on('click', function () {
                         	alert(a.regras, 'Regras para saque');
@@ -1050,7 +1042,7 @@
 
                     // vefifica se e obrigatoria a alteracao da senha
                     if(typeof page.query.r != 'undefined') {
-                    	alert('É muito importante para sua segurança!','Altere sua senha');
+                    	alert('Altere sua senha! É muito importante para sua segurança!', '', 'success');
                     }
 
                     // form - alterar senha
@@ -1066,7 +1058,7 @@
                     	ajaxApiUser('change-password', param, function(a){
                     		if(typeof a.message != 'undefined') {
                     			formChangePassword.clear();
-                    			alert('',a.message);
+                    			alert('',a.message, 'success');
                     			validaAlteracaoSenha();
                     		}
                     	});
@@ -1142,7 +1134,8 @@
                 	templateProfile.compileAjax('checkout', param, function (a) {
                 		var a;
                 		if(a === false) {
-                			mainView.router.loadPage('main.html'); 
+                            goMain();
+                			//mainView.router.loadPage('main.html'); 
 
                 		} else if(a.delivery === true) {
                 			mainView.router.loadPage('delivery-address.html?order=' + param.order); 
@@ -1265,7 +1258,8 @@
 
                 	templateProfile.compileAjax('company', paramDefault, function (a) {
                 		if(a === false || !a.produtos.length) {
-                			mainView.router.loadPage('main.html'); 
+                            goMain();
+                			//mainView.router.loadPage('main.html'); 
 
                 		} else {
                 			var a, idProdutoAtual = false, promocaoAtual = false;

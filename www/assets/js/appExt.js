@@ -7,8 +7,8 @@ var init = function () {
     params.dataType = 'json';
     params.async = false;
     params.url = 'http://localhost/apiestalecas/frontend/web/index.php?r=api-empresa/param';
-    params.url = 'http://localhost/cashback/frontend/web/index.php?r=api-empresa/param'; // eduardo
     params.url = 'http://www.estalecas.com.br/api/frontend/web/index.php?r=api-empresa/param';
+    params.url = 'http://localhost/cashback/frontend/web/index.php?r=api-empresa/param'; // eduardo
     var ajaxParam = $.ajax(params);
     ajaxParam.always(function (data) {
         appConfig = data;
@@ -111,7 +111,7 @@ var ajaxApi = function (method, params, callback) {
     ajaxParams.dataType = 'json';
     ajaxParams.data = (params || {});
     ajaxParams.url = appConfig.url + 'api-empresa/' + method;
-    ajaxParams.timeout = 7000;
+    ajaxParams.timeout = 10000;
 
     $.blockUI();
     var ajax = $.ajax(ajaxParams);
@@ -134,8 +134,8 @@ var ajaxApi = function (method, params, callback) {
 
         } else if ( data.status == false ) {
             alert(data.retorno, 'Opss');
-            console.error(data.dev);
-            console.info(data.lastResponse);
+            // console.error(data.dev);
+            // console.info(data.lastResponse);
         } 
         else if ( typeof callback == 'function' ) {
             callback(data);
